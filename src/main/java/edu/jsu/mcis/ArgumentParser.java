@@ -28,7 +28,7 @@ public class ArgumentParser{
 		return array.length;
 	}
 	
-	public static float floatConverter(String original){
+	/*public static float floatConverter(String original){
 		float number;
 		try {
 			number = Float.valueOf(original);
@@ -52,9 +52,49 @@ public class ArgumentParser{
 		}
 		
 		return number;
+	}*/
+	
+	public static String getType(String original){
+		String type = "String";
+		boolean boolTester;
+		float floatNumber;
+		int number;
+		try {
+			if (boolTester = Boolean.parseBoolean(original)){
+				type = "Boolean";
+			}
+		}
+		catch (Exception b){
+			boolTester = false;
+		}
+		try {
+			floatNumber = Float.valueOf(original);
+			if(floatNumber == Math.round(floatNumber)){
+				floatNumber = 0;
+				type = "Float";
+			}
+		}
+		catch (Exception f) {
+			floatNumber = 0;
+		}
+		try {
+			number = Integer.parseInt(original);
+			if(number == floatNumber){
+				number = 0;
+				type = "Integer";
+			}
+			else{
+				type = "Integer";
+			}
+		}
+		catch (Exception i) {
+			number = 0;
+		}
+		
+		return type;
 	}
 	
-	public static boolean booleanConverter(String original){
+	/*public static boolean booleanConverter(String original){
 		boolean boolTester;
 		try {
 			boolTester = Boolean.parseBoolean(original);
@@ -65,7 +105,7 @@ public class ArgumentParser{
 		}
 		
 		return boolTester;
-	}
+	}*/
 	
 
 	public static void main(String[] args){
@@ -83,7 +123,9 @@ public class ArgumentParser{
 			System.exit(0);
 		}
 		
-		System.out.println(floatConverter(args[0]));
+		System.out.println(getType(args[0]));
+		System.out.println(getType(args[1]));
+		System.out.println(getType(args[2]));
 		
 	}
 
