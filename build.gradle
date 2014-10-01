@@ -7,7 +7,7 @@ jar {
     manifest {
         attributes 'Implementation-Title': 'Parser', 
                    'Implementation-Version': version, 
-                   'Main-Class': 'edu.jsu.mcis.ArguementParser'
+                   'Main-Class': 'edu.jsu.mcis.ArgumentParser'
     }
 }
 

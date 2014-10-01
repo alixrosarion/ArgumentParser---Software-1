@@ -3,11 +3,11 @@ package edu.jsu.mcis;
 import org.junit.*;
 import static org.junit.Assert.*;
 
-public class ArguementParserTest {
+public class ArguemntParserTest {
 
 	@Test
 	public void testEmptyStrings () {
-		ArguementParser tester = new ArguementParser("", "", "");
+		ArgumentParser tester = new ArgumentParser("", "", "");
 		assertEquals("", tester.getArg1());
 		assertEquals("", tester.getArg2());
 		assertEquals("", tester.getArg3());
@@ -15,7 +15,7 @@ public class ArguementParserTest {
 	
 	@Test
 	public void testCommandLine () {
-		ArguementParser tester = new ArguementParser("7", "5","2");
+		ArgumentParser tester = new ArgumentParser("7", "5","2");
 		assertEquals("7", tester.getArg1());
 		assertEquals("5", tester.getArg2());
 		assertEquals("2", tester.getArg3());
