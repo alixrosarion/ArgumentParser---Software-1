@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Implementation-Title: TicTacToe
+Implementation-Title: Parser
 Implementation-Version: 1.0
-Main-Class: edu.jsu.mcis.Parser
+Main-Class: edu.jsu.mcis.ArguementParser
 
