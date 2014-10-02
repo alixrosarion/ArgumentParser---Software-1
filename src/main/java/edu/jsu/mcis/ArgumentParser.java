@@ -21,6 +21,7 @@ public class ArgumentParser
 	{
 		return argumentList.size();
 	}
+	
 	public String getArgumentValue(String str)
 	{
 		return argumentValue.get(argumentList.indexOf(str));
