@@ -73,4 +73,12 @@ public class ArgumentParserTest {
 		tester.parse("VolCalc 7 5");
 		assertEquals("Not Enough", tester.wrongArgument());
 	}
+	
+	@Test
+	public void testHelpOptionReads(){
+		ArgumentParser tester = new ArgumentParser();
+		tester.addArgumentValue("-h");
+		tester.parse("VolCalc -h");
+		assertEquals("-p", tester.getArgumentValue("length"));
+	}
 }
