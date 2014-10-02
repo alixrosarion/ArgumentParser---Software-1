@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="edu.jsu.mcis.ArgumentValuesTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2014-10-01T22:57:14" hostname="ALIX" time="0.006">
+  <properties/>
+  <testcase name="fooTest" classname="edu.jsu.mcis.ArgumentValuesTest" time="0.006"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
