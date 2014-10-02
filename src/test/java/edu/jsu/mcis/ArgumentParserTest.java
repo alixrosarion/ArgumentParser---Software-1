@@ -30,4 +30,54 @@ public class ArgumentParserTest {
 		tester.parse("VolCalc 7");
 		assertEquals("7", tester.getArgumentValue("length"));
 	}
+	
+	@Test
+	public void testVolCalc() {
+		ArgumentParser tester = new ArgumentParser();
+		tester.addArgument("length");
+		tester.parse("VolCalc 7");
+		assertEquals("7", tester.getArgumentValue("length"));
+		tester.addArgument("width");
+		tester.parse("VolCalc 5");
+		assertEquals("5", tester.getArgumentValue("width"));
+		tester.addArgument("height");
+		tester.parse("VolCalc 2");
+		assertEquals("2", tester.getArgumentValue("height"));
+	}
+	
+	@Test
+	public void testRightNumberOfArguments() {
+		ArgumentParser tester = new ArgumentParser();
+		tester.addArgument("length");
+		tester.parse("VolCalc 7");
+		tester.addArgument("width");
+		tester.parse("VolCalc 5");
+		tester.addArgument("height");
+		tester.parse("VolCalc 2");
+		assertEquals("", tester.wrongArgument());
+	}
+	
+	@Test
+	public void testTooManyArguments() {
+		ArgumentParser tester = new ArgumentParser();
+		tester.addArgument("length");
+		tester.parse("VolCalc 7");
+		tester.addArgument("width");
+		tester.parse("VolCalc 5");
+		tester.addArgument("height");
+		tester.parse("VolCalc 2");
+		tester.parse("VolCalc dog");		
+		assertEquals("Too Many Arguments! Extra one is dog", tester.wrongArgument());
+	}
+	
+	//@Test
+	public void testNotEnoughArguments() {
+		ArgumentParser tester = new ArgumentParser();
+		tester.addArgument("length");
+		tester.parse("VolCalc 7");
+		tester.addArgument("width");
+		tester.parse("VolCalc 5");
+		tester.addArgument("height");
+		assertEquals("Not Enough Arguments!", tester.wrongArgument());
+	}
 }

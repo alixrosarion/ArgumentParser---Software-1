@@ -1,11 +1,5 @@
 Manifest-Version: 1.0
-<<<<<<< HEAD
 Implementation-Title: GroupA
 Implementation-Version: 1.0
-Main-Class: edu.jsu.mcis.ArgumentValues
-=======
-Implementation-Title: Parser
-Implementation-Version: 1.0
-Main-Class: edu.jsu.mcis.ArguementParser
->>>>>>> 5b4b847ed55764bfa5a357a99b1a400b84276090
+Main-Class: edu.jsu.mcis.ArgumentParser
 
