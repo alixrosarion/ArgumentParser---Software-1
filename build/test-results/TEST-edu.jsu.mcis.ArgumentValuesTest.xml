@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="edu.jsu.mcis.ArgumentValuesTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2014-10-02T05:32:24" hostname="SeeZeR" time="0.001">
+<testsuite name="edu.jsu.mcis.ArgumentValuesTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2014-10-02T18:19:53" hostname="SeeZeR" time="0.001">
   <properties/>
   <testcase name="testCorrectOrder" classname="edu.jsu.mcis.ArgumentValuesTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>

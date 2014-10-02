@@ -27,6 +27,7 @@ public class ArgumentParserTest {
 	public void testParseSingleArgument() {
 		ArgumentParser tester = new ArgumentParser();
 		tester.addArgument("length");
+		tester.addArgumentValue("7");
 		tester.parse("VolCalc 7");
 		assertEquals("7", tester.getArgumentValue("length"));
 	}
@@ -35,25 +36,15 @@ public class ArgumentParserTest {
 	public void testVolCalc() {
 		ArgumentParser tester = new ArgumentParser();
 		tester.addArgument("length");
-		tester.parse("VolCalc 7");
+		tester.addArgumentValue("7");
+		tester.addArgument("width");
+		tester.addArgumentValue("5");
+		tester.addArgument("height");
+		tester.addArgumentValue("2");
+		tester.parse("VolCalc 7 5 2");
 		assertEquals("7", tester.getArgumentValue("length"));
-		tester.addArgument("width");
-		tester.parse("VolCalc 5");
 		assertEquals("5", tester.getArgumentValue("width"));
-		tester.addArgument("height");
-		tester.parse("VolCalc 2");
 		assertEquals("2", tester.getArgumentValue("height"));
-	}
-	
-	@Test
-	public void testRightNumberOfArguments() {
-		ArgumentParser tester = new ArgumentParser();
-		tester.addArgument("length");
-		tester.parse("VolCalc 7");
-		tester.addArgument("width");
-		tester.parse("VolCalc 5");
-		tester.addArgument("height");
-		tester.parse("VolCalc 2");
 		assertEquals("", tester.wrongArgument());
 	}
 	
@@ -61,23 +52,25 @@ public class ArgumentParserTest {
 	public void testTooManyArguments() {
 		ArgumentParser tester = new ArgumentParser();
 		tester.addArgument("length");
-		tester.parse("VolCalc 7");
+		tester.addArgumentValue("7");
 		tester.addArgument("width");
-		tester.parse("VolCalc 5");
+		tester.addArgumentValue("5");
 		tester.addArgument("height");
-		tester.parse("VolCalc 2");
-		tester.parse("VolCalc dog");		
-		assertEquals("Too Many Arguments! Extra one is dog", tester.wrongArgument());
+		tester.addArgumentValue("2");
+		tester.addArgumentValue("dog");
+		tester.parse("VolCalc 7 5 2 dog");	
+		assertEquals("Too Many Arguments", tester.wrongArgument());
 	}
 	
-	//@Test
+	@Test
 	public void testNotEnoughArguments() {
 		ArgumentParser tester = new ArgumentParser();
 		tester.addArgument("length");
-		tester.parse("VolCalc 7");
+		tester.addArgumentValue("7");
 		tester.addArgument("width");
-		tester.parse("VolCalc 5");
+		tester.addArgumentValue("5");
 		tester.addArgument("height");
-		assertEquals("Not Enough Arguments!", tester.wrongArgument());
+		tester.parse("VolCalc 7 5");
+		assertEquals("Not Enough", tester.wrongArgument());
 	}
 }
