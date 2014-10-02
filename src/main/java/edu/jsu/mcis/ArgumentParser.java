@@ -6,6 +6,7 @@ public class ArgumentParser
 {
 	private ArrayList<String> argumentList;
 	private ArrayList<String> argumentValue;
+	private String errorMessage;
 	
 	public ArgumentParser()
 	{
@@ -17,6 +18,10 @@ public class ArgumentParser
 		argumentList.add(str);
 	}
 	
+	public void addArgumentValue(String str){
+		argumentValue.add(str);
+	}
+	
 	public int getNumArguments()
 	{
 		return argumentList.size();
@@ -26,11 +31,22 @@ public class ArgumentParser
 	{
 		return argumentValue.get(argumentList.indexOf(str));
 	}
+	public String wrongArgument(){
+		return errorMessage;
+	}
 	
 	public void parse(String str)
 	{
+		errorMessage = "";
+		
 		Scanner scan = new Scanner(str);
 		String program = scan.next();
-		argumentValue.add(scan.next());	
+		if(argumentList.size() < argumentValue.size()){
+			errorMessage = "Too Many Arguments";
+		}
+		
+		else if (argumentList.size() > argumentValue.size()){
+			errorMessage = "Not Enough";
+		}
 	}
 }
