@@ -77,8 +77,9 @@ public class ArgumentParserTest {
 	@Test
 	public void testHelpOptionReads(){
 		ArgumentParser tester = new ArgumentParser();
+		tester.addArgument("help");
 		tester.addArgumentValue("-h");
 		tester.parse("VolCalc -h");
-		assertEquals("-p", tester.getArgumentValue("length"));
+		assertEquals("-h", tester.getArgumentValue("help"));
 	}
 }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="edu.jsu.mcis.ArgumentValuesTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2014-10-02T19:16:09" hostname="Kris-PC" time="0.011">
+<testsuite name="edu.jsu.mcis.ArgumentValuesTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2014-10-03T00:05:40" hostname="SeeZeR" time="0.0">
   <properties/>
-  <testcase name="testCorrectOrder" classname="edu.jsu.mcis.ArgumentValuesTest" time="0.011"/>
+  <testcase name="testCorrectOrder" classname="edu.jsu.mcis.ArgumentValuesTest" time="0.0"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
