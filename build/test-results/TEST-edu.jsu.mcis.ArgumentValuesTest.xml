@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="edu.jsu.mcis.ArgumentValuesTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2014-10-03T22:56:35" hostname="ALIX" time="0.004">
-  <properties/>
-  <testcase name="testCorrectOrder" classname="edu.jsu.mcis.ArgumentValuesTest" time="0.004"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

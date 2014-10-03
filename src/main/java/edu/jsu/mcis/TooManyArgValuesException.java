@@ -5,8 +5,4 @@ public class TooManyArgValuesException extends Exception
 {
 	public TooManyArgValuesException(){}
 	
-	public TooManyArgValuesException(String message)
-	{
-		super(message);
-	}
 }
