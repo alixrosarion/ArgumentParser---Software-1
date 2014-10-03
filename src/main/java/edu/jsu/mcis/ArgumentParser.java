@@ -6,9 +6,10 @@ public class ArgumentParser
 {
 	private ArrayList<String> argumentList;
 	private ArrayList<String> argumentValue;
-	private String errorMessage;
 	private String help;
 	private String program;
+	private String unmatched;
+	
 	
 	public ArgumentParser()
 	{
@@ -33,23 +34,42 @@ public class ArgumentParser
 	{
 		return argumentValue.get(argumentList.indexOf(str));
 	}
-	public String wrongArgument(){
-		return errorMessage;
-	}
 	
-	public void parse(String str) throws NotEnoughArgsException, TooManyArgsException
+	public void storeUnmatched()
 	{
-		//errorMessage = "";
+		unmatched = "";
+		if(argumentList.size() > argumentValue.size())
+		{
+			for (int i= argumentValue.size(); i< argumentList.size();i++)
+			{
+				unmatched += argumentList.get(i);
+			}
+		}
+		else if (argumentList.size() < argumentValue.size())
+		{
+			for (int i= argumentList.size(); i< argumentValue.size();i++)
+			{
+				unmatched += argumentValue.get(i);
+			}
+		}
+	}
+	public String getUnmatched()
+	{
+		return unmatched;
+	}
+	public void parse(String str) throws NotEnoughArgValuesException, TooManyArgValuesException
+	{
 		
 		Scanner scan = new Scanner(str);
 		program = scan.next();
 		if(argumentList.size() > argumentValue.size()){
-			throw new NotEnoughArgsException();
+			storeUnmatched();
+			throw new NotEnoughArgValuesException();
 		}
 		
 		else if (argumentList.size() < argumentValue.size()){
-			///errorMessage = "Not Enough";
-			throw new TooManyArgsException();
+			storeUnmatched();
+			throw new TooManyArgValuesException();
 		}
 	}
 	
@@ -107,4 +127,18 @@ public class ArgumentParser
 		//no such elemnt
 		
 	}
+	/*public static void main(String [] args)
+	{
+		ArgumentParser tester = new ArgumentParser();
+		String input = "";
+		for (int i=0; i<args.length; i++)
+		{
+			input += args[i] + " ";
+		}
+		try{
+		tester.parse("VolCalc 7");
+		}catch(TooManyArgValuesException | NotEnoughArgValuesException e){
+			System.out.println(tester.getUnmatched());
+		}
+	}*/
 }

@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 
 public class ArgumentParserTest {
 	
-	//@Test
+	@Test
 	public void testAddSingleArgument () {
 		ArgumentParser tester = new ArgumentParser();
 		assertEquals(0, tester.getNumArguments());
@@ -28,13 +28,12 @@ public class ArgumentParserTest {
 		ArgumentParser tester = new ArgumentParser();
 		tester.addArgument("length");
 		tester.addArgumentValue("7");
-		try
-		{
-			tester.parse("VolCalc 7");
-			//assertTrue(false);
-		}catch(TooManyArgsException | NotEnoughArgsException e){
-			//assertTrue(false);
-		}
+		try{
+		tester.parse("VolCalc 7");
+			assertEquals("7", tester.getArgumentValue("length"));
+		}catch(TooManyArgValuesException | NotEnoughArgValuesException e){
+			assertTrue(false);
+			}
 	}
 	
 	@Test
@@ -50,7 +49,7 @@ public class ArgumentParserTest {
 		{
 			tester.parse("VolCalc 7 5 2");
 			//assertTrue(false);
-		}catch(NotEnoughArgsException  | TooManyArgsException e){
+		}catch(NotEnoughArgValuesException  | TooManyArgValuesException e){
 			//assertTrue(false);
 		}
 		assertEquals("7", tester.getArgumentValue("length"));
@@ -67,13 +66,13 @@ public class ArgumentParserTest {
 		tester.addArgumentValue("5");
 		tester.addArgument("height");
 		tester.addArgumentValue("2");
-		tester.addArgumentValue("dog");
+		tester.addArgumentValue("10");
 		try
 		{
-			tester.parse("VolCalc 7 5 2 dog");
+			tester.parse("VolCalc 7 5 2 10");
 			assertTrue(false);
-		}catch(TooManyArgsException | NotEnoughArgsException e){
-			//assertTrue(false);
+		}catch(TooManyArgValuesException | NotEnoughArgValuesException e){
+			assertEquals("10", tester.getUnmatched());
 		}
 	}
 	
@@ -89,8 +88,8 @@ public class ArgumentParserTest {
 		{
 			tester.parse("VolCalc 7 5");
 			assertTrue(false);
-		}catch(NotEnoughArgsException  | TooManyArgsException e){
-			//assertTrue(false);
+		}catch(NotEnoughArgValuesException  | TooManyArgValuesException e){
+			assertEquals("height", tester.getUnmatched());
 		}
 	}
 	
@@ -102,12 +101,12 @@ public class ArgumentParserTest {
 		try
 		{
 		tester.parse("VolCalc -h");
-		}catch(NotEnoughArgsException | TooManyArgsException e)
+		}catch(NotEnoughArgValuesException | TooManyArgValuesException e)
 		{}
 		assertEquals("-h", tester.getArgumentValue("help"));
 	}
 	
-	@Test
+	/*@Test
 	public void testOptionText(){
 		ArgumentParser tester = new ArgumentParser();
 		tester.addArgument("length");
@@ -120,11 +119,11 @@ public class ArgumentParserTest {
 		{
 			tester.parse("VolCalc 7 5 2");
 			//assertTrue(false);
-		}catch(NotEnoughArgsException  | TooManyArgsException e){
+		}catch(NotEnoughArgValuesException  | TooManyArgValuesException e){
 			//assertTrue(false);
 		}
 		assertEquals("usage: java VolCalc length width height \nCalculate the volume of a box\nPositional Arguments:\nlength\t\tthe length of the box\n width\t\tthe width of the box\n height\t\ttheheight of the box", tester.helpText());
-	}
+	}*/
 	
 	
 	@Test
