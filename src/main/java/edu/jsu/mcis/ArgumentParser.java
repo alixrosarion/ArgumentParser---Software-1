@@ -7,6 +7,8 @@ public class ArgumentParser
 	private ArrayList<String> argumentList;
 	private ArrayList<String> argumentValue;
 	private String errorMessage;
+	private String help;
+	private String program;
 	
 	public ArgumentParser()
 	{
@@ -40,7 +42,7 @@ public class ArgumentParser
 		//errorMessage = "";
 		
 		Scanner scan = new Scanner(str);
-		String program = scan.next();
+		program = scan.next();
 		if(argumentList.size() > argumentValue.size()){
 			throw new NotEnoughArgsException();
 		}
@@ -93,5 +95,16 @@ public class ArgumentParser
 		}
 		
 		return type;
+	}
+	
+	public String helpText(){
+		String argumentString = "";
+		for (String s: argumentList){
+			argumentString += s + " ";
+		}
+		help = "usage: java " + program + " " + argumentString + "\n" + "Calculate the volume of a box\nPositional Arguments:\nlength\t\tthe length of the box\n width\t\tthe width of the box\n height\t\ttheheight of the box";
+		return help;
+		//no such elemnt
+		
 	}
 }
