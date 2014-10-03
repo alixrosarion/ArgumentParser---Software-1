@@ -35,18 +35,19 @@ public class ArgumentParser
 		return errorMessage;
 	}
 	
-	public void parse(String str)
+	public void parse(String str) throws NotEnoughArgsException, TooManyArgsException
 	{
-		errorMessage = "";
+		//errorMessage = "";
 		
 		Scanner scan = new Scanner(str);
 		String program = scan.next();
-		if(argumentList.size() < argumentValue.size()){
-			errorMessage = "Too Many Arguments";
+		if(argumentList.size() > argumentValue.size()){
+			throw new NotEnoughArgsException();
 		}
 		
-		else if (argumentList.size() > argumentValue.size()){
-			errorMessage = "Not Enough";
+		else if (argumentList.size() < argumentValue.size()){
+			///errorMessage = "Not Enough";
+			throw new TooManyArgsException();
 		}
 	}
 }
