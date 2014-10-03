@@ -6,6 +6,7 @@ public class ArgumentParser
 {
 	private ArrayList<String> argumentList;
 	private ArrayList<String> argumentValue;
+	private ArrayList<String> argumentType;
 	private String help;
 	private String program;
 	private String unmatched;
@@ -15,6 +16,7 @@ public class ArgumentParser
 	{
 		argumentList = new ArrayList<String>();
 		argumentValue = new ArrayList<String>();
+		argumentType = new ArrayList<String>();
 	}
 	public void addArgument(String str)
 	{
@@ -23,6 +25,9 @@ public class ArgumentParser
 	
 	public void addArgumentValue(String str){
 		argumentValue.add(str);
+	}
+	public void addArgumentType(String str){
+		argumentType.add(str);
 	}
 	
 	public int getNumArguments()
@@ -33,6 +38,10 @@ public class ArgumentParser
 	public String getArgumentValue(String str)
 	{
 		return argumentValue.get(argumentList.indexOf(str));
+	}
+	
+	public String getArgumentType(String str) {
+		return argumentType.get(argumentList.indexOf(str));
 	}
 	
 	public void storeUnmatched()
@@ -57,11 +66,19 @@ public class ArgumentParser
 	{
 		return unmatched;
 	}
+	
 	public void parse(String str) throws NotEnoughArgValuesException, TooManyArgValuesException
 	{
 		
 		Scanner scan = new Scanner(str);
 		program = scan.next();
+	/*	if (scan.next() == "-h"){
+			System.out.println(helpText());
+		}*/
+		while(scan.hasNext())
+		{
+			addArgumentValue(scan.next());
+		}
 		if(argumentList.size() > argumentValue.size()){
 			storeUnmatched();
 			throw new NotEnoughArgValuesException();
@@ -73,49 +90,40 @@ public class ArgumentParser
 		}
 	}
 	
-	public String getArgumentType(String str){
-		String type = "String";
-		String value = "";
-		if (argumentList.contains(str)){
-			value = getArgumentValue(str).toString();
-		}
-		boolean boolTester;
-		float floatNumber;
-		int number;
+	public void typeParser(String str){		
+		String type = "";
+		boolean boolTester = false;
+		int intTester = 0;
+		float floatTester = 0;
 		try {
-			if (boolTester = Boolean.parseBoolean(value)){
-				type = "Boolean";
+			if (getArgumentType(str) == "Boolean"){
+				boolTester = Boolean.parseBoolean(str);
 			}
 		}
-		catch (Exception b){
-			boolTester = false;
-		}
-		try {
-			floatNumber = Float.valueOf(value);
-			if(floatNumber == Float.parseFloat(value)){
-				floatNumber = 0;
-				type = "Float";
-			}
-		}
-		catch (Exception f) {
-			floatNumber = 0;
-		}
-		try {
-			number = Integer.parseInt(value);
-			if(number == floatNumber){
-				number = 0;
-				type = "Integer";
-			}
-			else{
-				type = "Integer";
-			}
-		}
-		catch (Exception i) {
-			number = 0;
-		}
+		catch (Exception b){}
 		
-		return type;
+		try {
+			if(getArgumentType(str) == "Float"){
+				floatTester = Float.valueOf(str);
+			}
+		}
+		catch (Exception f) {}
+		
+		try {
+			if(getArgumentType(str) == "Integer"){
+				intTester = Integer.parseInt(str);
+			}
+		}
+		catch (Exception i) {}
+		
+		try {
+			if(getArgumentType(str) == "String"){
+				type = str;
+			}
+		}
+		catch (Exception s) {}
 	}
+
 	
 	public String helpText(){
 		String argumentString = "";
@@ -124,7 +132,6 @@ public class ArgumentParser
 		}
 		help = "usage: java " + program + " " + argumentString + "\n" + "Calculate the volume of a box\nPositional Arguments:\nlength\t\tthe length of the box\n width\t\tthe width of the box\n height\t\ttheheight of the box";
 		return help;
-		//no such elemnt
 		
 	}
 	/*public static void main(String [] args)
