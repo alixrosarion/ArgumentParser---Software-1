@@ -50,4 +50,48 @@ public class ArgumentParser
 			throw new TooManyArgsException();
 		}
 	}
+	
+	public String getArgumentType(String str){
+		String type = "String";
+		String value = "";
+		if (argumentList.contains(str)){
+			value = getArgumentValue(str).toString();
+		}
+		boolean boolTester;
+		float floatNumber;
+		int number;
+		try {
+			if (boolTester = Boolean.parseBoolean(value)){
+				type = "Boolean";
+			}
+		}
+		catch (Exception b){
+			boolTester = false;
+		}
+		try {
+			floatNumber = Float.valueOf(value);
+			if(floatNumber == Float.parseFloat(value)){
+				floatNumber = 0;
+				type = "Float";
+			}
+		}
+		catch (Exception f) {
+			floatNumber = 0;
+		}
+		try {
+			number = Integer.parseInt(value);
+			if(number == floatNumber){
+				number = 0;
+				type = "Integer";
+			}
+			else{
+				type = "Integer";
+			}
+		}
+		catch (Exception i) {
+			number = 0;
+		}
+		
+		return type;
+	}
 }

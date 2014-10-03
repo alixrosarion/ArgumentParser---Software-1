@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="edu.jsu.mcis.ArguementParserTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2014-10-03T01:42:12" hostname="ALIX" time="0.006">
+<testsuite name="edu.jsu.mcis.ArguementParserTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2014-10-03T02:05:38" hostname="SeeZeR" time="0.004">
   <properties/>
-  <testcase name="testCommandLine" classname="edu.jsu.mcis.ArguementParserTest" time="0.005"/>
+  <testcase name="testCommandLine" classname="edu.jsu.mcis.ArguementParserTest" time="0.003"/>
   <testcase name="testEmptyStrings" classname="edu.jsu.mcis.ArguementParserTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
