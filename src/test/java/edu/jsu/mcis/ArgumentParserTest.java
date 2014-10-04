@@ -27,7 +27,6 @@ public class ArgumentParserTest {
 	public void testParseSingleArgument() {
 		ArgumentParser tester = new ArgumentParser();
 		tester.addArgument("length");
-		//tester.addArgumentValue("7");
 		try{
 		tester.parse("VolCalc 7");
 			assertEquals("7", tester.getArgumentValue("length"));
@@ -40,11 +39,8 @@ public class ArgumentParserTest {
 	public void testVolCalc() {
 		ArgumentParser tester = new ArgumentParser();
 		tester.addArgument("length");
-		//tester.addArgumentValue("7");
 		tester.addArgument("width");
-		//tester.addArgumentValue("5");
 		tester.addArgument("height");
-		//tester.addArgumentValue("2");
 		try
 		{
 			tester.parse("VolCalc 7 5 2");
@@ -61,12 +57,8 @@ public class ArgumentParserTest {
 	public void testTooManyArguments() {
 		ArgumentParser tester = new ArgumentParser();
 		tester.addArgument("length");
-		//tester.addArgumentValue("7");
 		tester.addArgument("width");
-		//tester.addArgumentValue("5");
 		tester.addArgument("height");
-		//tester.addArgumentValue("2");
-		//tester.addArgumentValue("10");
 		try
 		{
 			tester.parse("VolCalc 7 5 2 10");
@@ -80,9 +72,7 @@ public class ArgumentParserTest {
 	public void testNotEnoughArguments() {
 		ArgumentParser tester = new ArgumentParser();
 		tester.addArgument("length");
-		//tester.addArgumentValue("7");
 		tester.addArgument("width");
-		//tester.addArgumentValue("5");
 		tester.addArgument("height");
 		try
 		{
@@ -97,11 +87,8 @@ public class ArgumentParserTest {
 	public void testHelpOptionReads(){
 		ArgumentParser tester = new ArgumentParser();
 		tester.addArgument("length");
-		//tester.addArgumentValue("7");
 		tester.addArgument("width");
-		//tester.addArgumentValue("5");
 		tester.addArgument("height");
-		//tester.addArgumentValue("2");
 
 		try
 		{
@@ -136,29 +123,19 @@ public class ArgumentParserTest {
 		ArgumentParser tester = new ArgumentParser();
 		tester.addArgument("length");
 		tester.addArgumentType("Integer");
-		//tester.addArgumentValue("7");
 		tester.addArgument("width");
 		tester.addArgumentType("Float");
-		//tester.addArgumentValue("5.2");
 		tester.addArgument("height");
 		tester.addArgumentType("Boolean");
-	//	tester.addArgumentValue("true");
 		tester.addArgument("dog");
 		tester.addArgumentType("String");
-		//tester.addArgumentValue("falafel");
-		try
-		{
-			tester.parse("VolCalc 7 5.2 false random");
-		}catch(NotEnoughArgValuesException  | TooManyArgValuesException e){
-			assertTrue(false);
-		}
 		assertEquals("Integer", tester.getArgumentType("length"));
 		assertEquals("Float", tester.getArgumentType("width"));
 		assertEquals("Boolean", tester.getArgumentType("height"));
 		assertEquals("String", tester.getArgumentType("dog"));
 	}
 	
-	/*@Test
+	@Test
 	public void testParseType()
 	{
 		ArgumentParser tester = new ArgumentParser();
@@ -172,10 +149,11 @@ public class ArgumentParserTest {
 		tester.addArgumentType("String");
 		try
 		{
-			tester.parser("VolCalc 7 5.2 false random");
+			tester.parseType("VolCalc 7 5.2 false");
 		}catch(NotEnoughArgValuesException  | TooManyArgValuesException e){
 			assertTrue(false);
 		}
-	}*/
+		
+	}
 	
 }

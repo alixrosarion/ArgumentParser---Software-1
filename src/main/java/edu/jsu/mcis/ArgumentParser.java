@@ -5,7 +5,7 @@ import java.util.*;
 public class ArgumentParser
 {
 	private ArrayList<String> argumentList;
-	private ArrayList<String> argumentValue;
+	private ArrayList<Object> argumentValue;
 	private ArrayList<String> argumentType;
 	private String help;
 	private String program;
@@ -15,7 +15,7 @@ public class ArgumentParser
 	public ArgumentParser()
 	{
 		argumentList = new ArrayList<String>();
-		argumentValue = new ArrayList<String>();
+		argumentValue = new ArrayList<Object>();
 		argumentType = new ArrayList<String>();
 	}
 	public void addArgument(String str)
@@ -37,12 +37,16 @@ public class ArgumentParser
 	
 	public String getArgumentValue(String str)
 	{
-		return argumentValue.get(argumentList.indexOf(str));
+		return argumentValue.get(argumentList.indexOf(str)).toString();
 	}
 	
 	public String getArgumentType(String str) {
-		return argumentType.get(argumentList.indexOf(str));
+		String returner = "";
+		addArgumentValue(str);
+		returner = argumentType.get(argumentValue.indexOf(str));
+		return returner;
 	}
+	
 	
 	public void storeUnmatched()
 	{
@@ -92,43 +96,69 @@ public class ArgumentParser
 		}
 		}
 	}
+	
+	public void parseType(String str) throws NotEnoughArgValuesException, TooManyArgValuesException
+	{
+		
+		Scanner scan = new Scanner(str);
+		program = scan.next();
+		boolean boolTester = false;
+		int intTester = 0;
+		float floatTester = 0;	
+		while(scan.hasNext())
+		{
+			String extra = getArgumentType(scan.next());
+			System.out.println(extra);
+			try {
+				argumentValue.remove(0);
+				if (getArgumentType(scan.match().toString()) == "Boolean"){
+					boolTester = Boolean.parseBoolean(scan.match().toString());
+					//System.out.println(boolTester);
+					argumentValue.add(boolTester);
+				}
+			}
+			catch (Exception b){
+				try {
+					if(getArgumentType(scan.match().toString()) == "Float"){
+						floatTester = Float.parseFloat(scan.match().toString());
+						//System.out.println(floatTester);
+						argumentValue.add(floatTester);
+					}
+				}
+				catch (Exception f) {
+					try {
+						if(getArgumentType(scan.match().toString()) == "Integer"){
+							intTester = Integer.parseInt(scan.match().toString());
+							//System.out.println(intTester);
+							argumentValue.add(intTester);
+						}
+					}
+					catch (Exception i) {
+						try {
+							if(getArgumentType(scan.match().toString()) == "String"){;
+								argumentValue.add(scan.match().toString());
+							}
+						}
+						catch (Exception s) {}
+					}
+				}
+			}
+			
+		}
+		if(argumentList.size() > argumentValue.size()){
+			storeUnmatched();
+			throw new NotEnoughArgValuesException();
+		}
+		
+		else if (argumentList.size() < argumentValue.size()){
+			storeUnmatched();
+			throw new TooManyArgValuesException();
+		}
+	}
+	
 	public String getHelpText()
 	{
 		return help;
-	}
-	
-	public void typeParser(String str){		
-		String type = "";
-		boolean boolTester = false;
-		int intTester = 0;
-		float floatTester = 0;
-		try {
-			if (getArgumentType(str) == "Boolean"){
-				boolTester = Boolean.parseBoolean(str);
-			}
-		}
-		catch (Exception b){}
-		
-		try {
-			if(getArgumentType(str) == "Float"){
-				floatTester = Float.valueOf(str);
-			}
-		}
-		catch (Exception f) {}
-		
-		try {
-			if(getArgumentType(str) == "Integer"){
-				intTester = Integer.parseInt(str);
-			}
-		}
-		catch (Exception i) {}
-		
-		try {
-			if(getArgumentType(str) == "String"){
-				type = str;
-			}
-		}
-		catch (Exception s) {}
 	}
 
 	
