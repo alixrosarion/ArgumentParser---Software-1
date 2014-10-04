@@ -72,9 +72,11 @@ public class ArgumentParser
 		
 		Scanner scan = new Scanner(str);
 		program = scan.next();
-	/*	if (scan.next() == "-h"){
-			System.out.println(helpText());
-		}*/
+		 if( str.contains("-h")){
+			setHelpText();
+		}
+		else
+		{
 		while(scan.hasNext())
 		{
 			addArgumentValue(scan.next());
@@ -88,6 +90,11 @@ public class ArgumentParser
 			storeUnmatched();
 			throw new TooManyArgValuesException();
 		}
+		}
+	}
+	public String getHelpText()
+	{
+		return help;
 	}
 	
 	public void typeParser(String str){		
@@ -125,12 +132,12 @@ public class ArgumentParser
 	}
 
 	
-	public String helpText(){
+	public String setHelpText(){
 		String argumentString = "";
 		for (String s: argumentList){
 			argumentString += s + " ";
 		}
-		help = "usage: java " + program + " " + argumentString + "\n" + "Calculate the volume of a box\nPositional Arguments:\nlength\t\tthe length of the box\n width\t\tthe width of the box\n height\t\ttheheight of the box";
+		help = "usage: java " + program + " " +argumentList.get(0) + " "+ argumentList.get(1)+" "+argumentList.get(2)+ " "+"\nCalculate the volume of a box\nPositional Arguments:\nlength\t\tthe length of the box\n width\t\tthe width of the box\n height\t\tthe height of the box";
 		return help;
 		
 	}

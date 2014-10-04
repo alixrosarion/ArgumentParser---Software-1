@@ -113,25 +113,22 @@ public class ArgumentParserTest {
 //		assertEquals("usage: java VolCalc length width height \nCalculate the volume of a box\nPositional Arguments:\nlength\t\tthe length of the box\n width\t\tthe width of the box\n height\t\ttheheight of the box", tester.getOptionalArgument("-h"));
 	}
 	
-	/*@Test
+	@Test
 	public void testOptionText(){
 		ArgumentParser tester = new ArgumentParser();
 		tester.addArgument("length");
-		tester.addArgumentValue("7");
 		tester.addArgument("width");
-		tester.addArgumentValue("5");
 		tester.addArgument("height");
-		tester.addArgumentValue("2");
 		try
 		{
-			tester.parse("VolCalc 7 5 2");
+			tester.parse("VolCalc -h");
 			//assertTrue(false);
 		}catch(NotEnoughArgValuesException  | TooManyArgValuesException e){
 			//assertTrue(false);
 		}
-		assertEquals("usage: java VolCalc length width height \nCalculate the volume of a box\nPositional Arguments:\nlength\t\tthe length of the box\n width\t\tthe width of the box\n height\t\ttheheight of the box", tester.helpText());
+		assertEquals("usage: java VolCalc length width height \nCalculate the volume of a box\nPositional Arguments:\nlength\t\tthe length of the box\n width\t\tthe width of the box\n height\t\tthe height of the box", tester.getHelpText());
 	}
-	*/
+	
 	
 	@Test
 	public void testgetArgumentType()
