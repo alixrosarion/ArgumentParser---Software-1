@@ -149,11 +149,14 @@ public class ArgumentParserTest {
 		tester.addArgumentType("String");
 		try
 		{
-			tester.parseType("VolCalc 7 5.2 false");
+			tester.parseType("VolCalc 7 5.2 true someString");
 		}catch(NotEnoughArgValuesException  | TooManyArgValuesException e){
 			assertTrue(false);
 		}
-		
+		assertEquals("7", tester.getArgumentValue("length"));
+		assertEquals("5.2", tester.getArgumentValue("width"));
+		assertEquals("true", tester.getArgumentValue("height"));
+		assertEquals("someString", tester.getArgumentValue("dog"));
 	}
 	
 }

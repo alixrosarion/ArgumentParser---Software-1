@@ -23,9 +23,10 @@ public class ArgumentParser
 		argumentList.add(str);
 	}
 	
-	public void addArgumentValue(String str){
+	public void addArgumentValue(Object  str){
 		argumentValue.add(str);
 	}
+	
 	public void addArgumentType(String str){
 		argumentType.add(str);
 	}
@@ -41,10 +42,7 @@ public class ArgumentParser
 	}
 	
 	public String getArgumentType(String str) {
-		String returner = "";
-		addArgumentValue(str);
-		returner = argumentType.get(argumentValue.indexOf(str));
-		return returner;
+		return argumentType.get(argumentList.indexOf(str));
 	}
 	
 	
@@ -104,46 +102,47 @@ public class ArgumentParser
 		program = scan.next();
 		boolean boolTester = false;
 		int intTester = 0;
-		float floatTester = 0;	
-		while(scan.hasNext())
+		float floatTester = 0;
+		int count = 0;
+		while(scan.hasNext() && count < argumentType.size())
 		{
-			String extra = getArgumentType(scan.next());
+			String extra = argumentType.get(count);
 			System.out.println(extra);
 			try {
-				argumentValue.remove(0);
-				if (getArgumentType(scan.match().toString()) == "Boolean"){
-					boolTester = Boolean.parseBoolean(scan.match().toString());
-					//System.out.println(boolTester);
+					if(extra.equals("Integer")){
+						intTester = Integer.parseInt(scan.next().toString());
+						System.out.println(intTester);
+						argumentValue.add(intTester);
+					}
+				}catch (Exception in) {}
+				
+			try {
+				if (extra.equals("Boolean")){
+					boolTester = Boolean.parseBoolean(scan.next().toString());
+					System.out.println(boolTester);
 					argumentValue.add(boolTester);
 				}
 			}
-			catch (Exception b){
-				try {
-					if(getArgumentType(scan.match().toString()) == "Float"){
-						floatTester = Float.parseFloat(scan.match().toString());
-						//System.out.println(floatTester);
+			catch (Exception b) {}
+			
+			try {
+				if(extra.equals("Float"))
+					{
+						floatTester = Float.parseFloat(scan.next().toString());
+						System.out.println(floatTester);
 						argumentValue.add(floatTester);
 					}
-				}
-				catch (Exception f) {
-					try {
-						if(getArgumentType(scan.match().toString()) == "Integer"){
-							intTester = Integer.parseInt(scan.match().toString());
-							//System.out.println(intTester);
-							argumentValue.add(intTester);
-						}
-					}
-					catch (Exception i) {
+				}catch (Exception f) {}
 						try {
-							if(getArgumentType(scan.match().toString()) == "String"){;
-								argumentValue.add(scan.match().toString());
-							}
+							if(extra.equals("String")){
+								String asd = scan.next();
+								argumentValue.add(asd);
+								System.out.println(asd);
+							} 
 						}
-						catch (Exception s) {}
-					}
-				}
-			}
-			
+				catch (Exception s) {}
+			count ++;
+			System.out.println("ArgumentList size is " + argumentValue.size());
 		}
 		if(argumentList.size() > argumentValue.size()){
 			storeUnmatched();
