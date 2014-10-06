@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 2.8.5 (Jython 2.5.3 on java1.8.0_20)" generated="20141005 20:05:52.035">
+<suite source="C:\Users\Alix\Documents\jsu-mcis-cs310\GroupA\acceptance\Feature1Tests.txt" name="Feature1Tests" id="s1">
+<test name="Check Whether Arguments Are Added" id="s1-t1">
+<kw type="kw" name="Feature1Keywords.Start Program">
+<doc></doc>
+<arguments>
+</arguments>
+<status endtime="20141005 20:05:52.527" starttime="20141005 20:05:52.523" status="PASS"></status>
+</kw>
+<kw type="kw" name="Add Argument">
+<doc></doc>
+<arguments>
+<arg>7</arg>
+</arguments>
+<msg level="FAIL" timestamp="20141005 20:05:52.532">User keyword 'Add Argument' contains no keywords.</msg>
+<status endtime="20141005 20:05:52.533" starttime="20141005 20:05:52.529" status="FAIL"></status>
+</kw>
+<doc></doc>
+<tags>
+</tags>
+<status critical="yes" endtime="20141005 20:05:52.534" starttime="20141005 20:05:52.519" status="FAIL">User keyword 'Add Argument' contains no keywords.</status>
+</test>
+<doc></doc>
+<metadata>
+</metadata>
+<status endtime="20141005 20:05:52.538" starttime="20141005 20:05:52.039" status="FAIL"></status>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1">Critical Tests</stat>
+<stat pass="0" fail="1">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="0" fail="1" name="Feature1Tests" id="s1">Feature1Tests</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

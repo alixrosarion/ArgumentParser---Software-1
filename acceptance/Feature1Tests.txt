@@ -1,0 +1,17 @@
+*** Settings ***
+Library           Feature1Keywords
+
+*** User Keywords ***
+Get Length	[Arguments]	
+
+*** Test Cases ***
+Check Whether Arguments Are Added
+	Start Program
+	Add Argument	7
+	${length}= Get Length
+	Should Be Equal 7 ${length}
+	${width}= Get Width
+	Should Be Equal 5 ${width}
+	${height}= Get Height
+	Should Be Equal 2 ${height}
+

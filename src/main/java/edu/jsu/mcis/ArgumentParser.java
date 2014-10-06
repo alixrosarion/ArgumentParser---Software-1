@@ -74,7 +74,7 @@ public class ArgumentParser
 		
 		Scanner scan = new Scanner(str);
 		program = scan.next();
-		 if( str.contains("-h")){
+		if( str.contains("-h")){
 			setHelpText();
 		}
 		else
