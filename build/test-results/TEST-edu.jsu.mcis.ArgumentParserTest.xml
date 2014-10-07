@@ -1,27 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="edu.jsu.mcis.ArgumentParserTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2014-10-06T00:55:17" hostname="ALIX" time="0.052">
+<testsuite name="edu.jsu.mcis.ArgumentParserTest" tests="11" skipped="0" failures="0" errors="0" timestamp="2014-10-07T00:32:32" hostname="SeeZeR" time="0.013">
   <properties/>
-  <testcase name="testAddMultipleArguments" classname="edu.jsu.mcis.ArgumentParserTest" time="0.009"/>
-  <testcase name="testNotEnoughArguments" classname="edu.jsu.mcis.ArgumentParserTest" time="0.005"/>
+  <testcase name="testAddMultipleArguments" classname="edu.jsu.mcis.ArgumentParserTest" time="0.005"/>
+  <testcase name="testNotEnoughArguments" classname="edu.jsu.mcis.ArgumentParserTest" time="0.003"/>
   <testcase name="testgetArgumentType" classname="edu.jsu.mcis.ArgumentParserTest" time="0.0"/>
   <testcase name="testAddSingleArgument" classname="edu.jsu.mcis.ArgumentParserTest" time="0.0"/>
-  <testcase name="testParseType" classname="edu.jsu.mcis.ArgumentParserTest" time="0.032"/>
-  <testcase name="testTooManyArguments" classname="edu.jsu.mcis.ArgumentParserTest" time="0.0"/>
+  <testcase name="testParseType" classname="edu.jsu.mcis.ArgumentParserTest" time="0.0"/>
+  <testcase name="testTooManyArguments" classname="edu.jsu.mcis.ArgumentParserTest" time="0.001"/>
   <testcase name="testVolCalc" classname="edu.jsu.mcis.ArgumentParserTest" time="0.0"/>
-  <testcase name="testOptionText" classname="edu.jsu.mcis.ArgumentParserTest" time="0.0"/>
-  <testcase name="testParseSingleArgument" classname="edu.jsu.mcis.ArgumentParserTest" time="0.001"/>
-  <system-out><![CDATA[Integer
-7
-ArgumentList size is 1
-Float
-5.2
-ArgumentList size is 2
-Boolean
-true
-ArgumentList size is 3
-String
-someString
-ArgumentList size is 4
-]]></system-out>
+  <testcase name="testOptionText" classname="edu.jsu.mcis.ArgumentParserTest" time="0.001"/>
+  <testcase name="testParseSingleArgument" classname="edu.jsu.mcis.ArgumentParserTest" time="0.0"/>
+  <testcase name="testNotEnoughArgumentsType" classname="edu.jsu.mcis.ArgumentParserTest" time="0.0"/>
+  <testcase name="testTooManyArgumentsType" classname="edu.jsu.mcis.ArgumentParserTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

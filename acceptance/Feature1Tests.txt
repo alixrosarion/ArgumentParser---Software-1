@@ -2,16 +2,59 @@
 Library           Feature1Keywords
 
 *** User Keywords ***
-Get Length	[Arguments]	
+Get Length
+    ${length}=		Get Argument Value		length
+	Should Be Equal		7		${length}
+	
+Get Width
+    ${width}=		Get Argument Value		width
+	Should Be Equal		5		${width}
+	
+Get Height
+    ${height}=		Get Argument Value		height
+	Should Be Equal		2		${height}
+	
+Get Pet
+    ${pet}=		Get Argument Value		pet
+	Should Be Equal		dog		${pet}
+	
+Get Number
+    ${number}=		Get Argument Value		number
+	Should Be Equal		2		${number}
+	
+Get Rainy
+    ${rainy}=		Get Argument Value		rainy
+	Should Be Equal		true		${rainy}
+	
+Get Bathrooms
+    ${bathrooms}=		Get Argument Value		bathrooms
+	Should Be Equal		3.5		${bathrooms}
 
+	
 *** Test Cases ***
-Check Whether Arguments Are Added
+Start Program With Arguments 7 5 2
 	Start Program
-	Add Argument	7
-	${length}= Get Length
-	Should Be Equal 7 ${length}
-	${width}= Get Width
-	Should Be Equal 5 ${width}
-	${height}= Get Height
-	Should Be Equal 2 ${height}
-
+	Add Argument		length
+	Add Argument		width
+	Add Argument		height
+	Add Values		VolCalc 7 5 2
+	${length}=   Get Length
+	${width}=   Get Width
+	${height}=   Get Height
+	
+Start Program With Arguments dog 2 true 3.5
+	Start Program
+	Add Argument		pet
+	Add Argument		number
+	Add Argument		rainy
+	Add Argument		bathrooms
+	Add Values		VolCalc dog 2 true 3.5
+	${pet}=   Get Pet
+	${number}=   Get Number
+	${rainy}=   Get Rainy
+	${bathrooms}=   Get Bathrooms
+	
+	
+	
+	
+	

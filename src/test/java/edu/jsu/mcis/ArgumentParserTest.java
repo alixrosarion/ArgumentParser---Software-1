@@ -44,7 +44,6 @@ public class ArgumentParserTest {
 		try
 		{
 			tester.parse("VolCalc 7 5 2");
-			//assertTrue(false);
 		}catch(NotEnoughArgValuesException  | TooManyArgValuesException e){
 			assertTrue(false);
 		}
@@ -82,23 +81,45 @@ public class ArgumentParserTest {
 			assertEquals("height", tester.getUnmatched());
 		}
 	}
-
-	//@Test
-	public void testHelpOptionReads(){
+	
+	@Test
+	public void testNotEnoughArgumentsType() {
 		ArgumentParser tester = new ArgumentParser();
 		tester.addArgument("length");
+		tester.addArgumentType("Integer");
 		tester.addArgument("width");
+		tester.addArgumentType("Integer");
 		tester.addArgument("height");
-
+		tester.addArgumentType("Integer");
 		try
 		{
-			tester.parse("VolCalc 7 5 2 -h");
-		}catch(NotEnoughArgValuesException | TooManyArgValuesException e)
-		{
+			tester.parseType("VolCalc 7 5");
 			assertTrue(false);
+		}catch(NotEnoughArgValuesException  | TooManyArgValuesException e){
+			assertEquals("height", tester.getUnmatched());
 		}
-//		assertEquals("usage: java VolCalc length width height \nCalculate the volume of a box\nPositional Arguments:\nlength\t\tthe length of the box\n width\t\tthe width of the box\n height\t\ttheheight of the box", tester.getOptionalArgument("-h"));
 	}
+	
+	@Test
+	public void testTooManyArgumentsType() {
+		ArgumentParser tester = new ArgumentParser();
+		tester.addArgument("length");
+		tester.addArgumentType("Integer");
+		tester.addArgument("width");
+		tester.addArgumentType("Integer");
+		tester.addArgument("height");
+		tester.addArgumentType("Integer");
+		tester.addArgumentType("Integer");
+		
+		try
+		{
+			tester.parseType("VolCalc 7 5 2 10");
+			assertTrue(false);
+		}catch(TooManyArgValuesException | NotEnoughArgValuesException e){
+			assertEquals("10", tester.getUnmatched());
+		}
+	}
+	
 	
 	@Test
 	public void testOptionText(){
@@ -109,9 +130,9 @@ public class ArgumentParserTest {
 		try
 		{
 			tester.parse("VolCalc -h");
-			//assertTrue(false);
+			tester.parseType("VolCalc -h");
 		}catch(NotEnoughArgValuesException  | TooManyArgValuesException e){
-			//assertTrue(false);
+			assertTrue(false);
 		}
 		assertEquals("usage: java VolCalc length width height \nCalculate the volume of a box\nPositional Arguments:\nlength\t\tthe length of the box\n width\t\tthe width of the box\n height\t\tthe height of the box", tester.getHelpText());
 	}

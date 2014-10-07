@@ -100,58 +100,57 @@ public class ArgumentParser
 		
 		Scanner scan = new Scanner(str);
 		program = scan.next();
-		boolean boolTester = false;
-		int intTester = 0;
-		float floatTester = 0;
-		int count = 0;
-		while(scan.hasNext() && count < argumentType.size())
+		if( str.contains("-h")){
+			setHelpText();
+		}
+		else
 		{
-			String extra = argumentType.get(count);
-			System.out.println(extra);
-			try {
-					if(extra.equals("Integer")){
-						intTester = Integer.parseInt(scan.next().toString());
-						System.out.println(intTester);
-						argumentValue.add(intTester);
-					}
-				}catch (Exception in) {}
-				
-			try {
-				if (extra.equals("Boolean")){
-					boolTester = Boolean.parseBoolean(scan.next().toString());
-					System.out.println(boolTester);
-					argumentValue.add(boolTester);
-				}
-			}
-			catch (Exception b) {}
-			
-			try {
-				if(extra.equals("Float"))
-					{
-						floatTester = Float.parseFloat(scan.next().toString());
-						System.out.println(floatTester);
-						argumentValue.add(floatTester);
-					}
-				}catch (Exception f) {}
-						try {
-							if(extra.equals("String")){
-								String asd = scan.next();
-								argumentValue.add(asd);
-								System.out.println(asd);
-							} 
+			boolean boolTester = false;
+			int intTester = 0;
+			float floatTester = 0;
+			int count = 0;
+			while(scan.hasNext() && count < argumentType.size())
+			{
+				String extra = argumentType.get(count);
+				try {
+						if(extra.equals("Integer")){
+							intTester = Integer.parseInt(scan.next().toString());
+							argumentValue.add(intTester);
 						}
-				catch (Exception s) {}
-			count ++;
-			System.out.println("ArgumentList size is " + argumentValue.size());
-		}
-		if(argumentList.size() > argumentValue.size()){
-			storeUnmatched();
-			throw new NotEnoughArgValuesException();
-		}
-		
-		else if (argumentList.size() < argumentValue.size()){
-			storeUnmatched();
-			throw new TooManyArgValuesException();
+					}catch (Exception in) {}
+					
+				try {
+					if (extra.equals("Boolean")){
+						boolTester = Boolean.parseBoolean(scan.next().toString());
+						argumentValue.add(boolTester);
+					}
+				}
+				catch (Exception b) {}
+				
+				try {
+					if(extra.equals("Float"))
+						{
+							floatTester = Float.parseFloat(scan.next().toString());
+							argumentValue.add(floatTester);
+						}
+					}catch (Exception f) {}
+							try {
+								if(extra.equals("String")){
+									argumentValue.add(scan.next());
+								} 
+							}
+					catch (Exception s) {}
+				count ++;
+			}
+			if(argumentList.size() > argumentValue.size()){
+				storeUnmatched();
+				throw new NotEnoughArgValuesException();
+			}
+			
+			else if (argumentList.size() < argumentValue.size()){
+				storeUnmatched();
+				throw new TooManyArgValuesException();
+			}
 		}
 	}
 	

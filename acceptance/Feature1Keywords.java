@@ -14,13 +14,15 @@ public class Feature1Keywords
 		parser.addArgument(arg);
 	}
 	
-	public void addValue(String arg)
+	public void addValues(String str)
 	{
-		parser.addArgumentValue(arg);
+		try{
+			parser.parse(str);
+		}catch(TooManyArgValuesException | NotEnoughArgValuesException e){}
 	}
 	
-	public String getLength(String args)
+	public String getArgumentValue(String args)
 	{
-		return parser.getArgumentValue(args);
+		return parser.getArgumentValue(args).toString();
 	}
 }
