@@ -178,7 +178,7 @@ public class ArgumentParser
 			input += args[i] + &quot; &quot;;
 		}
 		try{
-		tester.parse(&quot;VolCalc 7&quot;);
+		tester.parse(input);
 		}catch(TooManyArgValuesException | NotEnoughArgValuesException e){
 			System.out.println(tester.getUnmatched());
 		}

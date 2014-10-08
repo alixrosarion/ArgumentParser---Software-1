@@ -4,9 +4,9 @@ import java.util.*;
 
 public class ArgumentParser
 {
-	private ArrayList<String> argumentList;
-	private ArrayList<Object> argumentValue;
-	private ArrayList<String> argumentType;
+	private List<String> argumentList;
+	private List<Object> argumentValue;
+	private List<String> argumentType;
 	private String help;
 	private String program;
 	private String unmatched;
@@ -36,9 +36,9 @@ public class ArgumentParser
 		return argumentList.size();
 	}
 	
-	public String getArgumentValue(String str)
+	public Object getArgumentValue(String str)
 	{
-		return argumentValue.get(argumentList.indexOf(str)).toString();
+		return argumentValue.get(argumentList.indexOf(str));
 	}
 	
 	public String getArgumentType(String str) {
@@ -178,7 +178,7 @@ public class ArgumentParser
 			input += args[i] + " ";
 		}
 		try{
-		tester.parse("VolCalc 7");
+		tester.parse(input);
 		}catch(TooManyArgValuesException | NotEnoughArgValuesException e){
 			System.out.println(tester.getUnmatched());
 		}
