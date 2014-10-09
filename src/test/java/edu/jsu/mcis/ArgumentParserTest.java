@@ -127,9 +127,13 @@ public class ArgumentParserTest {
 		tester.addArgument("length");
 		tester.addArgument("width");
 		tester.addArgument("height");
+		tester.addArgumentDescription("the length of the box");
+		tester.addArgumentDescription("the width of the box");
+		tester.addArgumentDescription("the height of the box");
+		tester.addOptArg("-h", 0);
 		try
 		{
-			tester.parse("VolCalc -h");
+			tester.parse("VolCalc 7 5 2 -h");
 			tester.parseType("VolCalc -h");
 		}catch(NotEnoughArgValuesException  | TooManyArgValuesException e){
 			assertTrue(false);
@@ -185,9 +189,9 @@ public class ArgumentParserTest {
 	{
 		ArgumentParser tester = new ArgumentParser();
 		assertEquals(0, tester.getNumberOfOpts());
-		tester.addOptArg("type", 0);
+		tester.addOptArg("--type", 0);
 		assertEquals(1, tester.getNumberOfOpts());
-		assertTrue(tester.getOptArgs("type"));
+		assertTrue(tester.getOptArgs("--type"));
 	}
 	
 	@Test
@@ -196,14 +200,29 @@ public class ArgumentParserTest {
 		ArgumentParser tester = new ArgumentParser();
 		tester.addArgument("length");
 		tester.addArgumentType("Integer");
-		tester.addOptArg("type", 1);
+		tester.addOptArg("--type", 1);
 		try
 		{
 			tester.parse("VolCalc 7 --type sphere");
 		}catch(NotEnoughArgValuesException  | TooManyArgValuesException e){
 			assertTrue(false);
 		}
-		
+		assertEquals("sphere", tester.getObjectType());
+	}
+	
+	@Test
+	public void testOptionalArgumentAnywhere(){
+		ArgumentParser tester = new ArgumentParser();
+		tester.addArgument("length");
+		tester.addArgument("width");
+		tester.addArgument("height");
+		tester.addOptArg("--type", 1);
+		try
+		{
+			tester.parse("VolCalc 7 --type sphere 5 2");
+		}catch(NotEnoughArgValuesException  | TooManyArgValuesException e){
+			assertTrue(false);
+		}
 	}
 	
 }

@@ -8,9 +8,11 @@ public class ArgumentParser
 	private List<Object> argumentValue;
 	private List<String> argumentType;
 	private List<String> optArguments;
+	private List<String> argumentDescription;
 	private String help;
 	private String program;
 	private String unmatched;
+	private String objectType;
 	
 	
 	public ArgumentParser()
@@ -19,6 +21,7 @@ public class ArgumentParser
 		argumentValue = new ArrayList<Object>();
 		argumentType = new ArrayList<String>();
 		optArguments = new ArrayList<String>();
+		argumentDescription = new ArrayList<String>();
 	}
 	public void addArgument(String str)
 	{
@@ -31,6 +34,11 @@ public class ArgumentParser
 	
 	public void addArgumentType(String str){
 		argumentType.add(str);
+	}
+	
+	public void addArgumentDescription(String str)
+	{
+		argumentDescription.add(str);
 	}
 	
 	public void addOptArg(String str, int value)
@@ -58,8 +66,18 @@ public class ArgumentParser
 		return optArguments.contains(str);
 	}
 	
+	public String getArgumentDescription(String str)
+	{
+		return argumentDescription.get(argumentList.indexOf(str));
+	}
+	
 	public String getArgumentType(String str) {
 		return argumentType.get(argumentList.indexOf(str));
+	}
+	
+	public String getObjectType()
+	{
+		return objectType;
 	}
 	
 	
@@ -91,14 +109,24 @@ public class ArgumentParser
 		
 		Scanner scan = new Scanner(str);
 		program = scan.next();
-		if( str.contains("-h")){
-			setHelpText();
-		}
-		else
-		{
 		while(scan.hasNext())
 		{
-			addArgumentValue(scan.next());
+			String extra = scan.next();
+			if(optArguments.contains(extra)){
+				if(extra.equals("-h"))
+				{
+					setHelpText();
+				}
+				
+				else
+				{
+					objectType = scan.next();
+				}
+			}
+			else
+			{
+				addArgumentValue(extra);
+			}
 		}
 		if(argumentList.size() > argumentValue.size()){
 			storeUnmatched();
@@ -108,7 +136,6 @@ public class ArgumentParser
 		else if (argumentList.size() < argumentValue.size()){
 			storeUnmatched();
 			throw new TooManyArgValuesException();
-		}
 		}
 	}
 	
