@@ -7,6 +7,7 @@ public class ArgumentParser
 	private List<String> argumentList;
 	private List<Object> argumentValue;
 	private List<String> argumentType;
+	private List<String> optArguments;
 	private String help;
 	private String program;
 	private String unmatched;
@@ -17,6 +18,7 @@ public class ArgumentParser
 		argumentList = new ArrayList<String>();
 		argumentValue = new ArrayList<Object>();
 		argumentType = new ArrayList<String>();
+		optArguments = new ArrayList<String>();
 	}
 	public void addArgument(String str)
 	{
@@ -31,14 +33,29 @@ public class ArgumentParser
 		argumentType.add(str);
 	}
 	
+	public void addOptArg(String str, int value)
+	{
+		optArguments.add(str);
+	}
+	
 	public int getNumArguments()
 	{
 		return argumentList.size();
 	}
 	
+	public int getNumberOfOpts()
+	{
+		return optArguments.size();
+	}
+	
 	public Object getArgumentValue(String str)
 	{
 		return argumentValue.get(argumentList.indexOf(str));
+	}
+	
+	public boolean getOptArgs(String str)
+	{	
+		return optArguments.contains(str);
 	}
 	
 	public String getArgumentType(String str) {
