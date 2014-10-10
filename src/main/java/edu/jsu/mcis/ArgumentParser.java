@@ -115,7 +115,7 @@ public class ArgumentParser
 			if(optArguments.contains(extra)){
 				if(extra.equals("-h"))
 				{
-					setHelpText();
+					getHelpText();
 				}
 				
 				else
@@ -145,7 +145,7 @@ public class ArgumentParser
 		Scanner scan = new Scanner(str);
 		program = scan.next();
 		if( str.contains("-h")){
-			setHelpText();
+			getHelpText();
 		}
 		else
 		{
@@ -198,18 +198,14 @@ public class ArgumentParser
 		}
 	}
 	
-	public String getHelpText()
-	{
-		return help;
-	}
-
-	
-	public String setHelpText(){
+	public String getHelpText(){
 		String argumentString = "";
-		for (String s: argumentList){
-			argumentString += s + " ";
+		String description = "";
+		for (int i = 0; i<argumentList.size(); i++){
+			argumentString += argumentList.get(i) + " ";
+			description += argumentList.get(i) + "\t\t" + argumentDescription.get(i) + "\n";
 		}
-		help = "usage: java " + program + " " +argumentList.get(0) + " "+ argumentList.get(1)+" "+argumentList.get(2)+ " "+"\nCalculate the volume of a box\nPositional Arguments:\nlength\t\tthe length of the box\n width\t\tthe width of the box\n height\t\tthe height of the box";
+		help = "usage: java " + program + " " + argumentString + "\nCalculate the volume of a box\nPositional Arguments:\n" + description;
 		return help;
 		
 	}
