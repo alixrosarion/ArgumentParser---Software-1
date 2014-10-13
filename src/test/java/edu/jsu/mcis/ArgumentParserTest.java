@@ -225,4 +225,20 @@ public class ArgumentParserTest {
 		}
 	}
 	
+	@Test
+	public void testOptionalArgumentAsFlag() {
+		ArgumentParser tester = new ArgumentParser();
+		tester.addOptArg("--type", 0);
+		boolean flag = true;
+		assertEquals(flag, tester.getOptArgumentFlag());
+	}
+	
+	@Test
+	public void testOptionalArgumentAsNotFlag() {
+		ArgumentParser tester = new ArgumentParser();
+		tester.addOptArg("--type", 1);
+		boolean flag = false;
+		assertEquals(flag, tester.getOptArgumentFlag());
+	}
+	
 }

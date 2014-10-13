@@ -13,6 +13,7 @@ public class ArgumentParser
 	private String program;
 	private String unmatched;
 	private String objectType;
+	private boolean flag;
 	
 	
 	public ArgumentParser()
@@ -22,7 +23,9 @@ public class ArgumentParser
 		argumentType = new ArrayList<String>();
 		optArguments = new ArrayList<String>();
 		argumentDescription = new ArrayList<String>();
+		flag = false;
 	}
+	
 	public void addArgument(String str)
 	{
 		argumentList.add(str);
@@ -44,6 +47,10 @@ public class ArgumentParser
 	public void addOptArg(String str, int value)
 	{
 		optArguments.add(str);
+		if(value == 0) 
+		{
+			flag = true;
+		}
 	}
 	
 	public int getNumArguments()
@@ -80,6 +87,9 @@ public class ArgumentParser
 		return objectType;
 	}
 	
+	public boolean getOptArgumentFlag() {
+		return flag;
+	}	
 	
 	public void storeUnmatched()
 	{
@@ -99,6 +109,7 @@ public class ArgumentParser
 			}
 		}
 	}
+	
 	public String getUnmatched()
 	{
 		return unmatched;
