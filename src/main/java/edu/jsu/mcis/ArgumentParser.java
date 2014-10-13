@@ -8,11 +8,11 @@ public class ArgumentParser
 	private List<Object> argumentValue;
 	private List<String> argumentType;
 	private List<String> optArguments;
+	private List<String> optArgumentsValue;
 	private List<String> argumentDescription;
 	private String help;
 	private String program;
 	private String unmatched;
-	private String objectType;
 	private boolean flag;
 	
 	
@@ -22,6 +22,7 @@ public class ArgumentParser
 		argumentValue = new ArrayList<Object>();
 		argumentType = new ArrayList<String>();
 		optArguments = new ArrayList<String>();
+		optArgumentsValue = new ArrayList<String>();
 		argumentDescription = new ArrayList<String>();
 		flag = false;
 	}
@@ -31,7 +32,8 @@ public class ArgumentParser
 		argumentList.add(str);
 	}
 	
-	public void addArgumentValue(Object  str){
+	public void addArgumentValue(Object  str)
+	{
 		argumentValue.add(str);
 	}
 	
@@ -50,6 +52,11 @@ public class ArgumentParser
 		if(value == 0) 
 		{
 			flag = true;
+		}
+		else if(value > 0){
+			for(int i = 0;i < value; i++){
+				optArgumentsValue.add("");
+			}
 		}
 	}
 	
@@ -78,16 +85,18 @@ public class ArgumentParser
 		return argumentDescription.get(argumentList.indexOf(str));
 	}
 	
-	public String getArgumentType(String str) {
+	public String getArgumentType(String str) 
+	{
 		return argumentType.get(argumentList.indexOf(str));
 	}
 	
-	public String getObjectType()
+	public String getObjectType(String str)
 	{
-		return objectType;
+		return optArgumentsValue.get(optArguments.indexOf(str));
 	}
 	
-	public boolean getOptArgumentFlag() {
+	public boolean getOptArgumentFlag() 
+	{
 		return flag;
 	}	
 	
@@ -131,7 +140,14 @@ public class ArgumentParser
 				
 				else
 				{
-					objectType = scan.next();
+					int loc = optArguments.indexOf(extra);
+					if(scan.hasNextInt()){
+						addArgumentValue(scan.next());
+						optArgumentsValue.set(loc, "box");
+					}
+					else{
+						optArgumentsValue.set(loc, scan.next());
+					}
 				}
 			}
 			else
@@ -209,7 +225,8 @@ public class ArgumentParser
 		}
 	}
 	
-	public String getHelpText(){
+	public String getHelpText()
+	{
 		String argumentString = "";
 		String description = "";
 		for (int i = 0; i<argumentList.size(); i++){

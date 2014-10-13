@@ -207,7 +207,7 @@ public class ArgumentParserTest {
 		}catch(NotEnoughArgValuesException  | TooManyArgValuesException e){
 			assertTrue(false);
 		}
-		assertEquals("sphere", tester.getObjectType());
+		assertEquals("sphere", tester.getObjectType("--type"));
 	}
 	
 	@Test
@@ -223,6 +223,23 @@ public class ArgumentParserTest {
 		}catch(NotEnoughArgValuesException  | TooManyArgValuesException e){
 			assertTrue(false);
 		}
+		assertEquals("sphere", tester.getObjectType("--type"));
+	}
+	
+	@Test
+	public void testOptionalArgumentsWithDefaults(){
+		ArgumentParser tester = new ArgumentParser();
+		tester.addArgument("length");
+		tester.addArgument("width");
+		tester.addArgument("height");
+		tester.addOptArg("--type", 1);
+		try
+		{
+			tester.parse("VolCalc 7 --type 5 2");
+		}catch(NotEnoughArgValuesException  | TooManyArgValuesException e){
+			assertTrue(false);
+		}
+		assertEquals("box", tester.getObjectType("--type"));
 	}
 	
 	@Test
