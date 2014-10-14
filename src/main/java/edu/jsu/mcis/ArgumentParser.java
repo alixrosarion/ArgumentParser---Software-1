@@ -149,7 +149,6 @@ public class ArgumentParser
 	
 	public static void main(String [] args) 
 	{
-		System.out.println("Inside main");
 		ArgumentParser parser = new ArgumentParser();
 		parser.addArgument("length");
 		parser.addArgument("width");
@@ -157,9 +156,6 @@ public class ArgumentParser
 		String input = "VolCalc 7 2";
 		try{
 			parser.parse(input);
-		}catch(TooManyArgValuesException | NotEnoughArgValuesException e){
-			System.out.println(e);
-			System.out.println("Inside catch");
-		}
+		}catch(TooManyArgValuesException | NotEnoughArgValuesException e){e.printStackTrace();		}
 	}
 }
