@@ -4,183 +4,162 @@ import java.util.*;
 
 public class ArgumentParser
 {
-	private List<String> argumentList;
-	private List<Object> argumentValue;
-	private List<String> argumentType;
+	private List <Argument> argumentList;
+	private String unmatched;
 	private String help;
 	private String program;
-	private String unmatched;
-	
 	
 	public ArgumentParser()
 	{
-		argumentList = new ArrayList<String>();
-		argumentValue = new ArrayList<Object>();
-		argumentType = new ArrayList<String>();
-	}
-	public void addArgument(String str)
-	{
-		argumentList.add(str);
+		argumentList = new ArrayList<Argument>();
+		unmatched ="";
 	}
 	
-	public void addArgumentValue(Object  str){
-		argumentValue.add(str);
-	}
-	
-	public void addArgumentType(String str){
-		argumentType.add(str);
-	}
-	
-	public int getNumArguments()
+	public int getSize()
 	{
 		return argumentList.size();
 	}
 	
-	public Object getArgumentValue(String str)
+	public void addArgument(String str)
 	{
-		return argumentValue.get(argumentList.indexOf(str));
+		argumentList.add(new Argument(str));
+
 	}
 	
-	public String getArgumentType(String str) {
-		return argumentType.get(argumentList.indexOf(str));
-	}
-	
-	
-	public void storeUnmatched()
+	public void addArgument(String title, String type)
 	{
-		unmatched = "";
-		if(argumentList.size() > argumentValue.size())
-		{
-			for (int i= argumentValue.size(); i< argumentList.size();i++)
-			{
-				unmatched += argumentList.get(i);
-			}
-		}
-		else if (argumentList.size() < argumentValue.size())
-		{
-			for (int i= argumentList.size(); i< argumentValue.size();i++)
-			{
-				unmatched += argumentValue.get(i);
-			}
-		}
+		argumentList.add(new Argument(title));
+		argumentList.get(argumentList.indexOf(new Argument(title))).setType(type);
 	}
+	
+	public void addArgument(String title, String type, String description)
+	{
+		argumentList.add(new Argument(title));
+		argumentList.get(argumentList.indexOf(new Argument(title))).setType(type);
+		argumentList.get(argumentList.indexOf(new Argument(title))).setDescription(description);
+	}
+	
+	public void addArgumentValue(Object o, int index)
+	{
+		if(argumentList.get(index).getType().equals("Integer"))
+			try{
+				o =Integer.parseInt(o.toString());
+			}catch (Exception a){}
+		else if(argumentList.get(index).getType().equals("Boolean"))
+			try{
+				o =Boolean.parseBoolean(o.toString());
+			}catch (Exception b){}
+		else if(argumentList.get(index).getType().equals("Float"))
+			try{
+				o =Float.parseFloat(o.toString());
+			}catch (Exception c){}
+			
+		argumentList.get(index).addValue(o);
+	}
+	
+	public void addDescription(String title, String description)
+	{
+		argumentList.get(argumentList.indexOf(new Argument(title))).setDescription(description);
+	}
+	
+	public Object getArgumentDescription(String title)
+	{
+		return argumentList.get(argumentList.indexOf(new Argument(title))).getDescription();
+	}
+	
+	public Object getArgumentValue(String title)
+	{
+		return argumentList.get(argumentList.indexOf(new Argument(title))).getValue();
+	}
+	
+	public String getArgumentType(String title)
+	{
+		return argumentList.get(argumentList.indexOf(new Argument(title))).getType();
+	}
+	
 	public String getUnmatched()
 	{
 		return unmatched;
 	}
 	
-	public void parse(String str) throws NotEnoughArgValuesException, TooManyArgValuesException
+	public void parse(String str) throws NotEnoughArgValuesException, TooManyArgValuesException//, NoSuchElementException
 	{
 		
 		Scanner scan = new Scanner(str);
 		program = scan.next();
-		if( str.contains("-h")){
-			setHelpText();
+		
+		int countArgValues = 0;
+		if (str.contains("-h"))
+		{
+			getHelpText();
 		}
 		else
 		{
-		while(scan.hasNext())
-		{
-			addArgumentValue(scan.next());
-		}
-		if(argumentList.size() > argumentValue.size()){
-			storeUnmatched();
-			throw new NotEnoughArgValuesException();
-		}
-		
-		else if (argumentList.size() < argumentValue.size()){
-			storeUnmatched();
-			throw new TooManyArgValuesException();
-		}
-		}
-	}
-	
-	public void parseType(String str) throws NotEnoughArgValuesException, TooManyArgValuesException
-	{
-		
-		Scanner scan = new Scanner(str);
-		program = scan.next();
-		if( str.contains("-h")){
-			setHelpText();
-		}
-		else
-		{
-			boolean boolTester = false;
-			int intTester = 0;
-			float floatTester = 0;
-			int count = 0;
-			while(scan.hasNext() && count < argumentType.size())
+			unmatched = "unrecognised arguments: ";
+			while(scan.hasNext())
 			{
-				String extra = argumentType.get(count);
-				try {
-						if(extra.equals("Integer")){
-							intTester = Integer.parseInt(scan.next().toString());
-							argumentValue.add(intTester);
-						}
-					}catch (Exception in) {}
-					
-				try {
-					if (extra.equals("Boolean")){
-						boolTester = Boolean.parseBoolean(scan.next().toString());
-						argumentValue.add(boolTester);
+					if(countArgValues <argumentList.size())
+					{
+						addArgumentValue(scan.next(), countArgValues);
 					}
-				}
-				catch (Exception b) {}
-				
-				try {
-					if(extra.equals("Float"))
-						{
-							floatTester = Float.parseFloat(scan.next().toString());
-							argumentValue.add(floatTester);
-						}
-					}catch (Exception f) {}
-							try {
-								if(extra.equals("String")){
-									argumentValue.add(scan.next());
-								} 
-							}
-					catch (Exception s) {}
-				count ++;
+					else
+					{
+						
+							unmatched += scan.next() + " "; 
+					}
+					
+						countArgValues++;
 			}
-			if(argumentList.size() > argumentValue.size()){
-				storeUnmatched();
-				throw new NotEnoughArgValuesException();
+			if (unmatched != "")
+				unmatched = unmatched.substring(0, unmatched.length() -1);
+				
+			if(argumentList.size() > countArgValues){
+				unmatched = "the following arguments are required: ";
+				for(int k = countArgValues; k< argumentList.size(); k++)
+				{
+					if( k == argumentList.size() -1)
+							unmatched += argumentList.get(k).getTitle();
+					else
+						unmatched += argumentList.get(k).getTitle() + " ";
+				}
+				throw new NotEnoughArgValuesException(unmatched);
 			}
 			
-			else if (argumentList.size() < argumentValue.size()){
-				storeUnmatched();
-				throw new TooManyArgValuesException();
+			else if (argumentList.size() < countArgValues){
+				
+					throw new TooManyArgValuesException(unmatched);
 			}
 		}
-	}
-	
-	public String getHelpText()
-	{
-		return help;
-	}
-
-	
-	public String setHelpText(){
-		String argumentString = "";
-		for (String s: argumentList){
-			argumentString += s + " ";
-		}
-		help = "usage: java " + program + " " +argumentList.get(0) + " "+ argumentList.get(1)+" "+argumentList.get(2)+ " "+"\nCalculate the volume of a box\nPositional Arguments:\nlength\t\tthe length of the box\n width\t\tthe width of the box\n height\t\tthe height of the box";
-		return help;
 		
 	}
-	/*public static void main(String [] args)
+	public String getHelpText()
 	{
-		ArgumentParser tester = new ArgumentParser();
-		String input = "";
-		for (int i=0; i<args.length; i++)
+		String argumentTitles = "";
+		String description = "";
+		for (Argument a : argumentList)
 		{
-			input += args[i] + " ";
+			argumentTitles += a.getTitle() + " ";
+			description += a.getTitle() + "\t\t"+a.getDescription() + "\n";
+			
 		}
+		help = "usage: java " + program + " " + argumentTitles + "\nCalculate the volume of a box\nPositional Arguments:\n" + description;
+		
+		return help;
+	}
+	
+	/*public static void main(String [] args) 
+	{
+		System.out.println("Inside main");
+		ArgumentParser parser = new ArgumentParser();
+		parser.addArgument("length");
+		parser.addArgument("width");
+		parser.addArgument("height");
+		String input = "VolCalc 7 2";
 		try{
-		tester.parse(input);
+			parser.parse(input);
 		}catch(TooManyArgValuesException | NotEnoughArgValuesException e){
-			System.out.println(tester.getUnmatched());
+			System.out.println(e);
+			System.out.println("Inside catch");
 		}
 	}*/
 }
