@@ -48,4 +48,16 @@ public class OptionalArgument{
 		return defaultValue;
 	}
 	
+	public boolean equals(Object o)
+	{	
+		OptionalArgument arg = (OptionalArgument) o;
+		return (this.title.equals(arg.getTitle()) && (this.numValues == (arg.getNumValues())));
+	}
+	
+	public int hashCode() {
+        int result = 17;
+		
+		result = 31 * title.hashCode();
+		return result;
+    }
 }

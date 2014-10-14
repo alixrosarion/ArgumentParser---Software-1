@@ -133,33 +133,22 @@ public class ArgumentParserTest {
 		assertEquals("someString", tester.getArgumentValue("dog"));
 	}
 	
-	/*@Test
-	public void testOptionalArguments()
-	{
-		ArgumentParser tester = new ArgumentParser();
-		assertEquals(0, tester.getNumberOfOpts());
-		tester.addOptArg("--type", 0);
-		assertEquals(1, tester.getNumberOfOpts());
-		assertTrue(tester.getOptArgs("--type"));
-	}
-	
 	@Test
 	public void testOptionalArgumentAtEnd ()
 	{
 		ArgumentParser tester = new ArgumentParser();
-		tester.addArgument("length");
-		tester.addArgumentType("Integer");
-		tester.addOptArg("--type", 1);
+		tester.addArgument("length", "Integer");
+		tester.addOptArg("--type", 0);
+		assertEquals("--type", tester.getOptArg("--type", 0));
 		try
 		{
-			tester.parse("VolCalc 7 --type sphere");
+			tester.parse("VolCalc 7 --type");
 		}catch(NotEnoughArgValuesException  | TooManyArgValuesException e){
 			assertTrue(false);
 		}
-		assertEquals("sphere", tester.getObjectType("--type"));
 	}
 	
-	@Test
+	/*@Test
 	public void testOptionalArgumentAnywhere(){
 		ArgumentParser tester = new ArgumentParser();
 		tester.addArgument("length");

@@ -41,6 +41,11 @@ public class ArgumentParser
 		argumentList.get(argumentList.indexOf(new Argument(title))).setDescription(description);
 	}
 	
+	public void addOptArg(String title, int numValues)
+	{
+		optionalList.add(new OptionalArgument(title, numValues));
+	}
+	
 	public void addArgumentValue(Object o, int index)
 	{
 		if(argumentList.get(index).getType().equals("Integer"))
@@ -77,6 +82,11 @@ public class ArgumentParser
 	public String getArgumentType(String title)
 	{
 		return argumentList.get(argumentList.indexOf(new Argument(title))).getType();
+	}
+	
+	public String getOptArg(String title, int numValues)
+	{
+		return optionalList.get(optionalList.indexOf(new OptionalArgument(title, numValues))).getTitle();
 	}
 	
 	public String getUnmatched()
