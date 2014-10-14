@@ -4,77 +4,79 @@ import java.util.*;
 
 public class ArgumentParser
 {
-	private List <Argument> ourList;
+	private List <Argument> argumentList;
+	private List <OptionalArgument> optionalList;
 	private String unmatched;
 	private String help;
 	private String program;
 	
 	public ArgumentParser()
 	{
-		ourList = new ArrayList<Argument>();
+		argumentList = new ArrayList<Argument>();
+		optionalList = new ArrayList<OptionalArgument>();
 		unmatched ="";
 	}
 	
 	public int getSize()
 	{
-		return ourList.size();
+		return argumentList.size();
 	}
 	
 	public void addArgument(String str)
 	{
-		ourList.add(new Argument(str));
+		argumentList.add(new Argument(str));
 
 	}
 	
 	public void addArgument(String title, String type)
 	{
-		ourList.add(new Argument(title));
-		ourList.get(ourList.indexOf(new Argument(title))).setType(type);
+		argumentList.add(new Argument(title));
+		argumentList.get(argumentList.indexOf(new Argument(title))).setType(type);
 	}
 	
 	public void addArgument(String title, String type, String description)
 	{
-		ourList.add(new Argument(title));
-		ourList.get(ourList.indexOf(new Argument(title))).setType(type);
-		ourList.get(ourList.indexOf(new Argument(title))).setDescription(description);
+		argumentList.add(new Argument(title));
+		argumentList.get(argumentList.indexOf(new Argument(title))).setType(type);
+		argumentList.get(argumentList.indexOf(new Argument(title))).setDescription(description);
 	}
 	
 	public void addArgumentValue(Object o, int index)
 	{
-		if(ourList.get(index).getType().equals("Integer"))
+		if(argumentList.get(index).getType().equals("Integer"))
 			try{
 				o =Integer.parseInt(o.toString());
 			}catch (Exception a){}
-		else if(ourList.get(index).getType().equals("Boolean"))
+		else if(argumentList.get(index).getType().equals("Boolean"))
 			try{
 				o =Boolean.parseBoolean(o.toString());
 			}catch (Exception b){}
-		else if(ourList.get(index).getType().equals("Float"))
+		else if(argumentList.get(index).getType().equals("Float"))
 			try{
 				o =Float.parseFloat(o.toString());
 			}catch (Exception c){}
 			
-		ourList.get(index).addValue(o);
+		argumentList.get(index).addValue(o);
 	}
 	
 	public void addDescription(String title, String description)
 	{
-		ourList.get(ourList.indexOf(new Argument(title))).setDescription(description);
+		argumentList.get(argumentList.indexOf(new Argument(title))).setDescription(description);
 	}
 	
 	public Object getArgumentDescription(String title)
 	{
-		return ourList.get(ourList.indexOf(new Argument(title))).getDescription();
+		return argumentList.get(argumentList.indexOf(new Argument(title))).getDescription();
 	}
 	
 	public Object getArgumentValue(String title)
 	{
-		return ourList.get(ourList.indexOf(new Argument(title))).getValue();
+		return argumentList.get(argumentList.indexOf(new Argument(title))).getValue();
 	}
 	
 	public String getArgumentType(String title)
 	{
-		return ourList.get(ourList.indexOf(new Argument(title))).getType();
+		return argumentList.get(argumentList.indexOf(new Argument(title))).getType();
 	}
 	
 	public String getUnmatched()
@@ -98,7 +100,7 @@ public class ArgumentParser
 			unmatched = "unrecognised arguments: ";
 			while(scan.hasNext())
 			{
-					if(countArgValues <ourList.size())
+					if(countArgValues <argumentList.size())
 					{
 						addArgumentValue(scan.next(), countArgValues);
 					}
@@ -113,19 +115,19 @@ public class ArgumentParser
 			if (unmatched != "")
 				unmatched = unmatched.substring(0, unmatched.length() -1);
 				
-			if(ourList.size() > countArgValues){
+			if(argumentList.size() > countArgValues){
 				unmatched = "the following arguments are required: ";
-				for(int k = countArgValues; k< ourList.size(); k++)
+				for(int k = countArgValues; k< argumentList.size(); k++)
 				{
-					if( k == ourList.size() -1)
-							unmatched += ourList.get(k).getTitle();
+					if( k == argumentList.size() -1)
+							unmatched += argumentList.get(k).getTitle();
 					else
-						unmatched += ourList.get(k).getTitle() + " ";
+						unmatched += argumentList.get(k).getTitle() + " ";
 				}
 				throw new NotEnoughArgValuesException(unmatched);
 			}
 			
-			else if (ourList.size() < countArgValues){
+			else if (argumentList.size() < countArgValues){
 				
 					throw new TooManyArgValuesException(unmatched);
 			}
@@ -136,7 +138,7 @@ public class ArgumentParser
 	{
 		String argumentTitles = "";
 		String description = "";
-		for (Argument a : ourList)
+		for (Argument a : argumentList)
 		{
 			argumentTitles += a.getTitle() + " ";
 			description += a.getTitle() + "\t\t"+a.getDescription() + "\n";

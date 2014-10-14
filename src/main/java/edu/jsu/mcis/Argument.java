@@ -13,7 +13,7 @@ public class Argument
 		type = "";
 		description = "";
 	}
-
+	
 	public Argument(String title, String type, String description)
 	{
 		this.title = title;
