@@ -102,12 +102,23 @@ public class ArgumentParserTest {
 		tester.addArgument("length");
 		tester.addArgument("width");
 		tester.addArgument("height");
+<<<<<<< HEAD
 		tester.addDescription("length", "the length of the box");
 		tester.addDescription("width", "the width of the box");
 		tester.addDescription("height","the height of the box");
 		try
 		{
 			tester.parse("VolCalc -h");
+=======
+		tester.addArgumentDescription("the length of the box");
+		tester.addArgumentDescription("the width of the box");
+		tester.addArgumentDescription("the height of the box");
+		tester.addOptArg("-h", 0);
+		try
+		{
+			tester.parse("VolCalc 7 5 2 -h");
+			tester.parseType("VolCalc -h");
+>>>>>>> origin/master
 		}catch(NotEnoughArgValuesException  | TooManyArgValuesException e){
 			assertTrue(false);
 		}
@@ -132,6 +143,80 @@ public class ArgumentParserTest {
 		assertEquals(5.2f, tester.getArgumentValue("width"));
 		assertEquals(true, tester.getArgumentValue("rainy"));
 		assertEquals("someString", tester.getArgumentValue("dog"));
+	}
+	
+	@Test
+	public void testOptionalArguments()
+	{
+		ArgumentParser tester = new ArgumentParser();
+		assertEquals(0, tester.getNumberOfOpts());
+		tester.addOptArg("--type", 0);
+		assertEquals(1, tester.getNumberOfOpts());
+		assertTrue(tester.getOptArgs("--type"));
+	}
+	
+	@Test
+	public void testOptionalArgumentAtEnd ()
+	{
+		ArgumentParser tester = new ArgumentParser();
+		tester.addArgument("length");
+		tester.addArgumentType("Integer");
+		tester.addOptArg("--type", 1);
+		try
+		{
+			tester.parse("VolCalc 7 --type sphere");
+		}catch(NotEnoughArgValuesException  | TooManyArgValuesException e){
+			assertTrue(false);
+		}
+		assertEquals("sphere", tester.getObjectType("--type"));
+	}
+	
+	@Test
+	public void testOptionalArgumentAnywhere(){
+		ArgumentParser tester = new ArgumentParser();
+		tester.addArgument("length");
+		tester.addArgument("width");
+		tester.addArgument("height");
+		tester.addOptArg("--type", 1);
+		try
+		{
+			tester.parse("VolCalc 7 --type sphere 5 2");
+		}catch(NotEnoughArgValuesException  | TooManyArgValuesException e){
+			assertTrue(false);
+		}
+		assertEquals("sphere", tester.getObjectType("--type"));
+	}
+	
+	@Test
+	public void testOptionalArgumentsWithDefaults(){
+		ArgumentParser tester = new ArgumentParser();
+		tester.addArgument("length");
+		tester.addArgument("width");
+		tester.addArgument("height");
+		tester.addOptArg("--type", 1);
+		try
+		{
+			tester.parse("VolCalc 7 --type 5 2");
+		}catch(NotEnoughArgValuesException  | TooManyArgValuesException e){
+			assertTrue(false);
+		}
+		assertEquals("box", tester.getObjectType("--type"));
+	}
+	
+	@Test
+	public void testOptionalArgumentAsFlag() {
+		ArgumentParser tester = new ArgumentParser();
+		tester.addOptArg("--type", 0);
+		boolean flag = true;
+		assertEquals(flag, tester.getOptArgumentFlag());
+	}
+	
+	@Test
+	public void testOptionalArgumentAsNotFlag() {
+		ArgumentParser tester = new ArgumentParser();
+		tester.addOptArg("--type", 1);
+		boolean flag = false;
+		assertEquals(flag, tester.getOptArgumentFlag());
 	}
 	
 }
