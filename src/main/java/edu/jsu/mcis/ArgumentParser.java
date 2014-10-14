@@ -147,7 +147,7 @@ public class ArgumentParser
 		return help;
 	}
 	
-	/*public static void main(String [] args) 
+	public static void main(String [] args) 
 	{
 		System.out.println("Inside main");
 		ArgumentParser parser = new ArgumentParser();
@@ -161,5 +161,5 @@ public class ArgumentParser
 			System.out.println(e);
 			System.out.println("Inside catch");
 		}
-	}*/
+	}
 }
