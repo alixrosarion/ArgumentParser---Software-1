@@ -135,12 +135,12 @@ public class ArgumentParserTest {
 	}
 	
 	@Test
-	public void testOptionalArgumentAtEnd ()
+	public void testReadingOptionalArgumentAtEnd ()
 	{
 		ArgumentParser tester = new ArgumentParser();
 		tester.addArgument("length", "Integer");
-		tester.addOptArg("--type", 0);
-		assertEquals("--type", tester.getOptArg("--type", 0));
+		tester.addOptArg("--type", 1);
+		assertEquals("--type", tester.getOptArg("--type", 1));
 		try
 		{
 			tester.parse("VolCalc 7 --type sphere");
@@ -150,7 +150,7 @@ public class ArgumentParserTest {
 	}
 	
 	@Test
-	public void testOptionalArgumentAnywhere(){
+	public void testOptionalArgumentValues(){
 		ArgumentParser tester = new ArgumentParser();
 		tester.addArgument("length");
 		tester.addArgument("width");
@@ -159,6 +159,24 @@ public class ArgumentParserTest {
 		try
 		{
 			tester.parse("VolCalc 7 --type sphere 5 2");
+		}catch(NotEnoughArgValuesException  | TooManyArgValuesException e){
+			assertTrue(false);
+		}
+		assertEquals("sphere", tester.getOptionalValue());
+	}
+	
+	@Test
+	public void testReadingMoreOptionalArguments(){
+		ArgumentParser tester = new ArgumentParser();
+		tester.addArgument("length");
+		tester.addArgument("width");
+		tester.addArgument("height");
+		tester.addOptArg("--type", 1);
+		tester.addOptArg("-h", 0);
+		tester.addOptArg("--actor", 2);
+		try
+		{
+			tester.parse("VolCalc 7 --type sphere 5 -h 2 --actor will smith");
 		}catch(NotEnoughArgValuesException  | TooManyArgValuesException e){
 			assertTrue(false);
 		}

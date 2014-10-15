@@ -9,6 +9,7 @@ public class ArgumentParser
 	private String unmatched;
 	private String help;
 	private String program;
+	private String optionalValue;
 	
 	public ArgumentParser()
 	{
@@ -94,6 +95,11 @@ public class ArgumentParser
 		return unmatched;
 	}
 	
+	public String getOptionalValue()
+	{
+		return optionalValue;
+	}
+	
 	public void parse(String str) throws NotEnoughArgValuesException, TooManyArgValuesException
 	{
 		
@@ -104,15 +110,19 @@ public class ArgumentParser
 		while(scan.hasNext())
 		{
 			String extra  = scan.next();
-			if (extra.contains("-"))  //optionalList.get(optionalList.indexOf(new OptionalArgument(extra, 0))))
+			if (optionalList.contains(new OptionalArgument(extra,2)))  //optionalList.get(optionalList.indexOf(new OptionalArgument(extra, 0))))
 			{
-				System.out.println(extra);
 				if (extra.equals("-h"))
 				{
 					getHelpText();
 				}
-				else if (extra.equals("--type")){
-					scan.next();
+				else
+				{
+					int numberValues = optionalList.get(optionalList.indexOf(new OptionalArgument(extra, 9))).getNumValues();
+					for (int i = 0; i<numberValues; i++)
+					{
+						optionalValue = scan.next();
+					}	
 				}
 			}
 			

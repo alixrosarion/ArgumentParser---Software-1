@@ -51,7 +51,7 @@ public class OptionalArgument{
 	public boolean equals(Object o)
 	{	
 		OptionalArgument arg = (OptionalArgument) o;
-		return (this.title.equals(arg.getTitle()) && (this.numValues == (arg.getNumValues())));
+		return (this.title.equals(arg.getTitle()));
 	}
 	
 	public int hashCode() {
