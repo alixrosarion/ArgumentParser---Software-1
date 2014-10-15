@@ -94,55 +94,61 @@ public class ArgumentParser
 		return unmatched;
 	}
 	
-	public void parse(String str) throws NotEnoughArgValuesException, TooManyArgValuesException//, NoSuchElementException
+	public void parse(String str) throws NotEnoughArgValuesException, TooManyArgValuesException
 	{
 		
 		Scanner scan = new Scanner(str);
 		program = scan.next();
-		
 		int countArgValues = 0;
-		if (str.contains("-h"))
+		unmatched = "unrecognised arguments: ";
+		while(scan.hasNext())
 		{
-			getHelpText();
-		}
-		else
-		{
-			unmatched = "unrecognised arguments: ";
-			while(scan.hasNext())
+			String extra  = scan.next();
+			if (extra.contains("-"))  //optionalList.get(optionalList.indexOf(new OptionalArgument(extra, 0))))
 			{
-					if(countArgValues <argumentList.size())
-					{
-						addArgumentValue(scan.next(), countArgValues);
-					}
-					else
-					{
-						
-							unmatched += scan.next() + " "; 
-					}
-					
-						countArgValues++;
-			}
-			if (unmatched != "")
-				unmatched = unmatched.substring(0, unmatched.length() -1);
-				
-			if(argumentList.size() > countArgValues){
-				unmatched = "the following arguments are required: ";
-				for(int k = countArgValues; k< argumentList.size(); k++)
+				System.out.println(extra);
+				if (extra.equals("-h"))
 				{
-					if( k == argumentList.size() -1)
-							unmatched += argumentList.get(k).getTitle();
-					else
-						unmatched += argumentList.get(k).getTitle() + " ";
+					getHelpText();
 				}
-				throw new NotEnoughArgValuesException(unmatched);
+				else if (extra.equals("--type")){
+					scan.next();
+				}
 			}
 			
-			else if (argumentList.size() < countArgValues){
+			else
+			{	
+				if(countArgValues <argumentList.size())
+				{
+					addArgumentValue(extra, countArgValues);
+				}
+				else
+				{
+						unmatched += extra + " "; 
+				}
 				
-					throw new TooManyArgValuesException(unmatched);
+				countArgValues++;
 			}
 		}
+		if (unmatched != "")
+			unmatched = unmatched.substring(0, unmatched.length() -1);
+			
+		if(argumentList.size() > countArgValues){
+			unmatched = "the following arguments are required: ";
+			for(int k = countArgValues; k< argumentList.size(); k++)
+			{
+				if( k == argumentList.size() -1)
+						unmatched += argumentList.get(k).getTitle();
+				else
+					unmatched += argumentList.get(k).getTitle() + " ";
+			}
+			throw new NotEnoughArgValuesException(unmatched);
+		}
 		
+		else if (argumentList.size() < countArgValues){
+			
+				throw new TooManyArgValuesException(unmatched);
+		}		
 	}
 	public String getHelpText()
 	{

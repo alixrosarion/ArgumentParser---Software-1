@@ -105,6 +105,7 @@ public class ArgumentParserTest {
 		tester.addDescription("length", "the length of the box");
 		tester.addDescription("width", "the width of the box");
 		tester.addDescription("height","the height of the box");
+		tester.addOptArg("-h", 0);
 		try
 		{
 			tester.parse("VolCalc 7 5 2 -h");
@@ -142,13 +143,13 @@ public class ArgumentParserTest {
 		assertEquals("--type", tester.getOptArg("--type", 0));
 		try
 		{
-			tester.parse("VolCalc 7 --type");
+			tester.parse("VolCalc 7 --type sphere");
 		}catch(NotEnoughArgValuesException  | TooManyArgValuesException e){
 			assertTrue(false);
 		}
 	}
 	
-	/*@Test
+	@Test
 	public void testOptionalArgumentAnywhere(){
 		ArgumentParser tester = new ArgumentParser();
 		tester.addArgument("length");
@@ -161,10 +162,9 @@ public class ArgumentParserTest {
 		}catch(NotEnoughArgValuesException  | TooManyArgValuesException e){
 			assertTrue(false);
 		}
-		assertEquals("sphere", tester.getObjectType("--type"));
 	}
 	
-	@Test
+	/*@Test
 	public void testOptionalArgumentsWithDefaults(){
 		ArgumentParser tester = new ArgumentParser();
 		tester.addArgument("length");
