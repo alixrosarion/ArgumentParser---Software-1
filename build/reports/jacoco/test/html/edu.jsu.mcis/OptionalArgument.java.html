@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>OptionalArgument.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">GroupA</a> &gt; <a href="index.source.html" class="el_package">edu.jsu.mcis</a> &gt; <span class="el_source">OptionalArgument.java</span></div><h1>OptionalArgument.java</h1><pre class="source lang-java linenums">package edu.jsu.mcis;
+
+public class OptionalArgument{
+	
+	private String title;
+	private int numValues;
+	private String type;
+	private String description;
+	private Object defaultValue;
+	
+	public OptionalArgument(String title)
+<span class="fc" id="L12">	{</span>
+<span class="fc" id="L13">		this.title = title;</span>
+<span class="fc" id="L14">	}</span>
+	
+	public OptionalArgument(String title, int numValues)
+<span class="fc" id="L17">	{</span>
+<span class="fc" id="L18">		this.title = title;</span>
+<span class="fc" id="L19">		this.numValues = numValues;</span>
+<span class="fc" id="L20">	}</span>
+	
+	public OptionalArgument(String title, int numValues, String type, String description, Object defaultValue)
+<span class="fc" id="L23">	{</span>
+<span class="fc" id="L24">		this.title = title;</span>
+<span class="fc" id="L25">		this.numValues = numValues;</span>
+<span class="fc" id="L26">		this.type = type;</span>
+<span class="fc" id="L27">		this.description = description;</span>
+<span class="fc" id="L28">		this.defaultValue = defaultValue;</span>
+<span class="fc" id="L29">	}</span>
+	
+	public String getTitle()
+	{
+<span class="fc" id="L33">		return title;</span>
+	}
+	
+	public void setNumValues(int num)
+	{
+<span class="fc" id="L38">		numValues = num;</span>
+<span class="fc" id="L39">	}</span>
+	
+	public int getNumValues()
+	{
+<span class="fc" id="L43">		return numValues;</span>
+	}
+	
+	public void setType(String type)
+	{
+<span class="fc" id="L48">		type = type;</span>
+<span class="fc" id="L49">	}</span>
+	
+	public String getType()
+	{
+<span class="fc" id="L53">		return type;</span>
+	}
+	
+	public void setDescription(String desc)
+	{
+<span class="fc" id="L58">		description = desc;</span>
+<span class="fc" id="L59">	}</span>
+	
+	public String getDescription()
+	{
+<span class="fc" id="L63">		return description;</span>
+	}
+	
+	public void setDefaultValue(Object obj)
+	{
+<span class="fc" id="L68">		defaultValue = obj;</span>
+<span class="fc" id="L69">	}</span>
+	
+	public Object getDefaultValue()
+	{
+<span class="fc" id="L73">		return defaultValue;</span>
+	}
+	
+	public boolean equals(Object o)
+	{	
+<span class="fc" id="L78">		OptionalArgument arg = (OptionalArgument) o;</span>
+<span class="fc" id="L79">		return (this.title.equals(arg.getTitle()));</span>
+	}
+	
+	public int hashCode() {
+<span class="nc" id="L83">        int result = 17;</span>
+		
+<span class="nc" id="L85">		result = 31 * title.hashCode();</span>
+<span class="nc" id="L86">		return result;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>

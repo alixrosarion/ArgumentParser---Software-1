@@ -115,6 +115,11 @@ public class ArgumentParser
 	{
 		optionalList.get(optionalList.indexOf(new OptionalArgument(title))).setDefaultValue(value);
 	}
+	
+	public Object getDescription(String title)
+	{
+		return optionalList.get(optionalList.indexOf(new OptionalArgument(title))).getDescription();
+	}
 		
 	public Object getOptionalValue(String title)
 	{
@@ -207,11 +212,14 @@ public class ArgumentParser
 	
 	public static void main(String [] args) 
 	{
+		String input = "";
+		for(String arg: args){
+			input += arg + " ";
+		}
 		ArgumentParser parser = new ArgumentParser();
 		parser.addArgument("length");
 		parser.addArgument("width");
 		parser.addArgument("height");
-		String input = "VolCalc 7 2";
 		try{
 			parser.parse(input);
 		}catch(TooManyArgValuesException | NotEnoughArgValuesException e){e.printStackTrace();		}

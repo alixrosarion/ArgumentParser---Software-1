@@ -193,10 +193,10 @@ public class ArgumentParserTest {
 		try
 		{
 			tester.parse("VolCalc 7 5 2");
+			assertEquals("Box", tester.getOptionalValue("--type"));
 		}catch(NotEnoughArgValuesException  | TooManyArgValuesException e){
 			assertTrue(false);
 		}
-		assertEquals("Box", tester.getOptionalValue("--type"));
 	}
 	
 	@Test
@@ -205,7 +205,7 @@ public class ArgumentParserTest {
 		tester.addOptArg("--type", 0);
 		boolean flag = true;
 		try {
-			tester.parse("Volcalc --type");
+			tester.parse("VolCalc --type");
 			assertEquals(true, tester.getOptionalValue("--type"));
 		} catch (Exception e) {
 			assertTrue(false);
@@ -217,13 +217,23 @@ public class ArgumentParserTest {
 		ArgumentParser tester = new ArgumentParser();
 		tester.addOptArg("--type", 1);
 		try {
-			tester.parse("Volcalc --type shape");
+			tester.parse("VolCalc --type shape");
 			assertEquals("shape", tester.getOptionalValue("--type"));
 		} catch (Exception e) {
 			assertTrue(false);
 		}
 	}
 	
-	//add test for optional argument description
+	@Test
+	public void testOptionalArgumentDescription() {
+		ArgumentParser tester = new ArgumentParser();
+		tester.addOptArg("--type", 1, "String", "The shape the user defines", "Box");
+		try {
+			tester.parse("VolCalc --type shape");
+			assertEquals("The shape the user defines", tester.getDescription("--type"));
+		} catch (Exception e) {
+			assertTrue(false);
+		}
+	}
 	
 }
