@@ -163,7 +163,7 @@ public class ArgumentParserTest {
 		}catch(NotEnoughArgValuesException  | TooManyArgValuesException e){
 			assertTrue(false);
 		}
-		assertEquals("sphere", tester.getOptionalValue());
+		assertEquals("sphere", tester.getOptionalValue("--type"));
 	}
 	
 	@Test
@@ -196,7 +196,7 @@ public class ArgumentParserTest {
 		}catch(NotEnoughArgValuesException  | TooManyArgValuesException e){
 			assertTrue(false);
 		}
-		assertEquals("Box", tester.getDefaultValue("--type"));
+		assertEquals("Box", tester.getOptionalValue("--type"));
 	}
 	
 	@Test
@@ -206,22 +206,24 @@ public class ArgumentParserTest {
 		boolean flag = true;
 		try {
 			tester.parse("Volcalc --type");
-			assertEquals(true, tester.getDefaultValue("--type"));
+			assertEquals(true, tester.getOptionalValue("--type"));
 		} catch (Exception e) {
 			assertTrue(false);
 		}
 	}
 	
-	//@Test
-	public void testOptionalArgumentAsNotFlag() {
+	@Test
+	public void testOptionalArgumentOverrideDefaultValue() {
 		ArgumentParser tester = new ArgumentParser();
 		tester.addOptArg("--type", 1);
 		try {
 			tester.parse("Volcalc --type shape");
-			assertEquals("shape", tester.getDefaultValue("--type"));
+			assertEquals("shape", tester.getOptionalValue("--type"));
 		} catch (Exception e) {
 			assertTrue(false);
 		}
 	}
+	
+	//add test for optional argument description
 	
 }

@@ -116,7 +116,7 @@ public class ArgumentParser
 		optionalList.get(optionalList.indexOf(new OptionalArgument(title))).setDefaultValue(value);
 	}
 		
-	public Object getDefaultValue(String title)
+	public Object getOptionalValue(String title)
 	{
 		return optionalList.get(optionalList.indexOf(new OptionalArgument(title))).getDefaultValue();
 	}
@@ -124,11 +124,6 @@ public class ArgumentParser
 	public String getUnmatched()
 	{
 		return unmatched;
-	}
-	
-	public String getOptionalValue()
-	{
-		return optionalValue;
 	}
 	
 	public void parse(String str) throws NotEnoughArgValuesException, TooManyArgValuesException
@@ -141,7 +136,7 @@ public class ArgumentParser
 		while(scan.hasNext())
 		{
 			String extra  = scan.next();
-			if (optionalList.contains(new OptionalArgument(extra,2)))  //optionalList.get(optionalList.indexOf(new OptionalArgument(extra, 0))))
+			if (optionalList.contains(new OptionalArgument(extra)))  //optionalList.get(optionalList.indexOf(new OptionalArgument(extra, 0))))
 			{
 				if (extra.equals("-h"))
 				{
@@ -153,10 +148,10 @@ public class ArgumentParser
 				}
 				else
 				{
-					int numberValues = optionalList.get(optionalList.indexOf(new OptionalArgument(extra, 9))).getNumValues();
+					int numberValues = optionalList.get(optionalList.indexOf(new OptionalArgument(extra))).getNumValues();
 					for (int i = 0; i<numberValues; i++)
 					{
-						optionalValue = scan.next();
+						addOptionalValue(extra, scan.next());
 					}	
 				}
 			}
