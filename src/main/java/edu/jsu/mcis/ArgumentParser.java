@@ -9,6 +9,7 @@ public class ArgumentParser
 	private String unmatched;
 	private String help;
 	private String program;
+	private String programDescription;
 	private String optionalValue;
 	
 	public ArgumentParser()
@@ -21,6 +22,11 @@ public class ArgumentParser
 	public int getSize()
 	{
 		return argumentList.size();
+	}
+	
+	public void addProgram(String program, String description)
+	{
+		programDescription = description;
 	}
 	
 	public void addArgument(String str)
@@ -44,9 +50,19 @@ public class ArgumentParser
 	
 	public void addOptArg(String title, int numValues)
 	{
-		optionalList.add(new OptionalArgument(title, numValues));
+		optionalList.add(new OptionalArgument(title));
+		optionalList.get(optionalList.indexOf(new OptionalArgument(title))).setNumValues(numValues);
 	}
 	
+	public void addOptArg(String title, int numValues, String type, String description, Object defaultValue)
+		{
+			optionalList.add(new OptionalArgument(title));
+			optionalList.get(optionalList.indexOf(new OptionalArgument(title))).setNumValues(numValues);
+			optionalList.get(optionalList.indexOf(new OptionalArgument(title))).setType(type);
+			optionalList.get(optionalList.indexOf(new OptionalArgument(title))).setDescription(description);
+			optionalList.get(optionalList.indexOf(new OptionalArgument(title))).setDefaultValue(defaultValue);
+		}
+		
 	public void addArgumentValue(Object o, int index)
 	{
 		if(argumentList.get(index).getType().equals("Integer"))
@@ -90,6 +106,21 @@ public class ArgumentParser
 		return optionalList.get(optionalList.indexOf(new OptionalArgument(title, numValues))).getTitle();
 	}
 	
+	public void addOptionalFlag(String title) 
+	{
+		optionalList.get(optionalList.indexOf(new OptionalArgument(title))).setDefaultValue(true);
+	}
+	
+	public void addOptionalValue(String title, String value) 
+	{
+		optionalList.get(optionalList.indexOf(new OptionalArgument(title))).setDefaultValue(value);
+	}
+		
+	public Object getDefaultValue(String title)
+	{
+		return optionalList.get(optionalList.indexOf(new OptionalArgument(title))).getDefaultValue();
+	}
+	
 	public String getUnmatched()
 	{
 		return unmatched;
@@ -115,6 +146,10 @@ public class ArgumentParser
 				if (extra.equals("-h"))
 				{
 					getHelpText();
+				}
+				else if(optionalList.get(optionalList.indexOf(new OptionalArgument(extra))).getNumValues() == 0)
+				{
+					addOptionalFlag(extra);
 				}
 				else
 				{
@@ -170,7 +205,7 @@ public class ArgumentParser
 			description += a.getTitle() + "\t\t"+a.getDescription() + "\n";
 			
 		}
-		help = "usage: java " + program + " " + argumentTitles + "\nCalculate the volume of a box\nPositional Arguments:\n" + description;
+		help = "usage: java " + program + " " + argumentTitles + "\n" + programDescription +"\nPositional Arguments:\n" + description;
 		
 		return help;
 	}

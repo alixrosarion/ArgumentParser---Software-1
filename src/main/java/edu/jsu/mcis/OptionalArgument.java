@@ -8,6 +8,11 @@ public class OptionalArgument{
 	private String description;
 	private Object defaultValue;
 	
+	public OptionalArgument(String title)
+	{
+		this.title = title;
+	}
+	
 	public OptionalArgument(String title, int numValues)
 	{
 		this.title = title;
@@ -28,9 +33,19 @@ public class OptionalArgument{
 		return title;
 	}
 	
+	public void setNumValues(int num)
+	{
+		numValues = num;
+	}
+	
 	public int getNumValues()
 	{
 		return numValues;
+	}
+	
+	public void setType(String type)
+	{
+		type = type;
 	}
 	
 	public String getType()
@@ -38,9 +53,19 @@ public class OptionalArgument{
 		return type;
 	}
 	
+	public void setDescription(String desc)
+	{
+		description = desc;
+	}
+	
 	public String getDescription()
 	{
 		return description;
+	}
+	
+	public void setDefaultValue(Object obj)
+	{
+		defaultValue = obj;
 	}
 	
 	public Object getDefaultValue()

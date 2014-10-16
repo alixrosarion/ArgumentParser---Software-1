@@ -99,6 +99,7 @@ public class ArgumentParserTest {
 	@Test
 	public void testOptionText(){
 		ArgumentParser tester = new ArgumentParser();
+		tester.addProgram("Volcalc", "Calculate the volume of a box");
 		tester.addArgument("length");
 		tester.addArgument("width");
 		tester.addArgument("height");
@@ -182,20 +183,20 @@ public class ArgumentParserTest {
 		}
 	}
 	
-	/*@Test
+	@Test
 	public void testOptionalArgumentsWithDefaults(){
 		ArgumentParser tester = new ArgumentParser();
 		tester.addArgument("length");
 		tester.addArgument("width");
 		tester.addArgument("height");
-		tester.addOptArg("--type", 1);
+		tester.addOptArg("--type", 1, "String", "Type of shape", "Box");
 		try
 		{
-			tester.parse("VolCalc 7 --type 5 2");
+			tester.parse("VolCalc 7 5 2");
 		}catch(NotEnoughArgValuesException  | TooManyArgValuesException e){
 			assertTrue(false);
 		}
-		assertEquals("box", tester.getObjectType("--type"));
+		assertEquals("Box", tester.getDefaultValue("--type"));
 	}
 	
 	@Test
@@ -203,15 +204,24 @@ public class ArgumentParserTest {
 		ArgumentParser tester = new ArgumentParser();
 		tester.addOptArg("--type", 0);
 		boolean flag = true;
-		assertEquals(flag, tester.getOptArgumentFlag());
+		try {
+			tester.parse("Volcalc --type");
+			assertEquals(true, tester.getDefaultValue("--type"));
+		} catch (Exception e) {
+			assertTrue(false);
+		}
 	}
 	
-	@Test
+	//@Test
 	public void testOptionalArgumentAsNotFlag() {
 		ArgumentParser tester = new ArgumentParser();
 		tester.addOptArg("--type", 1);
-		boolean flag = false;
-		assertEquals(flag, tester.getOptArgumentFlag());
+		try {
+			tester.parse("Volcalc --type shape");
+			assertEquals("shape", tester.getDefaultValue("--type"));
+		} catch (Exception e) {
+			assertTrue(false);
+		}
 	}
-	*/
+	
 }
