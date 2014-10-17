@@ -47,6 +47,16 @@ public class ArgumentParser
 		argumentList.get(argumentList.indexOf(new Argument(title))).setDescription(description);
 	}
 	
+	public void addShortOpt(String title, String str)
+	{
+		optionalList.get(optionalList.indexOf(new OptionalArgument(title))).setShort(str);
+	}
+	
+	public String getShortOpt(String title)
+	{
+		return optionalList.get(optionalList.indexOf(new OptionalArgument(title))).getShort();
+	}
+	
 	public void addOptArg(String title, int numValues)
 	{
 		optionalList.add(new OptionalArgument(title));
@@ -140,7 +150,7 @@ public class ArgumentParser
 		while(scan.hasNext())
 		{
 			String extra  = scan.next();
-			if (optionalList.contains(new OptionalArgument(extra)))  //optionalList.get(optionalList.indexOf(new OptionalArgument(extra, 0))))
+			if (optionalList.contains(new OptionalArgument(extra)))
 			{
 				if (extra.equals("-h"))
 				{

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="edu.jsu.mcis.OptionalArgumentTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2014-10-17T00:35:37" hostname="ALIX" time="0.0">
+<testsuite name="edu.jsu.mcis.OptionalArgumentTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2014-10-17T01:07:05" hostname="SeeZeR" time="0.0">
   <properties/>
+  <testcase name="testShortName" classname="edu.jsu.mcis.OptionalArgumentTest" time="0.0"/>
   <testcase name="testTypeSingleValue" classname="edu.jsu.mcis.OptionalArgumentTest" time="0.0"/>
   <testcase name="testSetOptionalArgument" classname="edu.jsu.mcis.OptionalArgumentTest" time="0.0"/>
   <system-out><![CDATA[]]></system-out>

@@ -7,16 +7,19 @@ public class OptionalArgument{
 	private String type;
 	private String description;
 	private Object defaultValue;
+	private String shortName;
 	
 	public OptionalArgument(String title)
 	{
 		this.title = title;
+		shortName = "";
 	}
 	
 	public OptionalArgument(String title, int numValues)
 	{
 		this.title = title;
 		this.numValues = numValues;
+		shortName = "";
 	}
 	
 	public OptionalArgument(String title, int numValues, String type, String description, Object defaultValue)
@@ -26,11 +29,22 @@ public class OptionalArgument{
 		this.type = type;
 		this.description = description;
 		this.defaultValue = defaultValue;
+		shortName = "";
 	}
 	
 	public String getTitle()
 	{
 		return title;
+	}
+	
+	public void setShort(String str)
+	{
+		shortName = str;
+	}
+	
+	public String getShort()
+	{
+		return shortName;
 	}
 	
 	public void setNumValues(int num)
@@ -76,7 +90,16 @@ public class OptionalArgument{
 	public boolean equals(Object o)
 	{	
 		OptionalArgument arg = (OptionalArgument) o;
-		return (this.title.equals(arg.getTitle()));
+		boolean result = false;
+		if(this.title.equals(arg.getTitle()))
+			result = true;
+		if(!this.shortName.equals(""))
+		{
+			if(this.shortName.equals(arg.getShort()))
+				result = true;
+		}
+		return result;
+		//return (this.title.equals(arg.getTitle()));
 	}
 	
 	public int hashCode() {

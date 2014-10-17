@@ -236,4 +236,18 @@ public class ArgumentParserTest {
 		}
 	}
 	
+	@Test
+	public void testShortName()
+	{
+		ArgumentParser tester = new ArgumentParser();
+		tester.addOptArg("--type", 1, "String", "The shape the user defines", "Box");
+		tester.addShortOpt("--type", "-t");
+		assertEquals("-t", tester.getShortOpt("--type"));
+		try {
+			tester.parse("VolCalc -t shape");
+		} catch (Exception e) {
+			assertTrue(false);
+		}
+	}
+	
 }

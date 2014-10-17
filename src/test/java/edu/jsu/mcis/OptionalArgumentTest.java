@@ -8,7 +8,7 @@ public class OptionalArgumentTest
 	@Test
 	public void testSetOptionalArgument()
 	{
-		OptionalArgument tester = new OptionalArgument("--type", 0);
+		OptionalArgument tester = new OptionalArgument("--type");
 		assertEquals("--type", tester.getTitle());
 	}
 	
@@ -21,5 +21,13 @@ public class OptionalArgumentTest
 		assertEquals("String", tester.getType());
 		assertEquals("Shape of Volume", tester.getDescription());
 		assertEquals("Box", tester.getDefaultValue());
+	}
+	
+	@Test
+	public void testShortName()
+	{
+		OptionalArgument tester = new OptionalArgument("--type");
+		tester.setShort("-t");
+		assertEquals("-t", tester.getShort());
 	}
 }
