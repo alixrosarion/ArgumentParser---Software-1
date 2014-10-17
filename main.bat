@@ -1,0 +1,1 @@
+call java -jar build\libs\GroupA-1.0.jar

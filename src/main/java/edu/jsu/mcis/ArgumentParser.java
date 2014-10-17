@@ -10,7 +10,6 @@ public class ArgumentParser
 	private String help;
 	private String program;
 	private String programDescription;
-	private String optionalValue;
 	
 	public ArgumentParser()
 	{
@@ -208,20 +207,5 @@ public class ArgumentParser
 		help = "usage: java " + program + " " + argumentTitles + "\n" + programDescription +"\nPositional Arguments:\n" + description;
 		
 		return help;
-	}
-	
-	public static void main(String [] args) 
-	{
-		String input = "";
-		for(String arg: args){
-			input += arg + " ";
-		}
-		ArgumentParser parser = new ArgumentParser();
-		parser.addArgument("length");
-		parser.addArgument("width");
-		parser.addArgument("height");
-		try{
-			parser.parse(input);
-		}catch(TooManyArgValuesException | NotEnoughArgValuesException e){e.printStackTrace();		}
 	}
 }
