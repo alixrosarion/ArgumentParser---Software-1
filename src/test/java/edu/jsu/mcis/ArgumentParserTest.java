@@ -245,6 +245,8 @@ public class ArgumentParserTest {
 		assertEquals("-t", tester.getShortOpt("--type"));
 		try {
 			tester.parse("VolCalc -t shape");
+			assertEquals("The shape the user defines", tester.getDescription("-t"));
+			assertEquals("The shape the user defines", tester.getDescription("--type"));
 		} catch (Exception e) {
 			assertTrue(false);
 		}

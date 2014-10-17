@@ -30,4 +30,13 @@ public class OptionalArgumentTest
 		tester.setShort("-t");
 		assertEquals("-t", tester.getShort());
 	}
+	
+	@Test
+	public void testEquals()
+	{
+		OptionalArgument tester = new OptionalArgument("--type");
+		OptionalArgument tester1 = new OptionalArgument("--type");
+		tester.setShort("-t");
+		assertEquals(tester, tester1);
+	}
 }

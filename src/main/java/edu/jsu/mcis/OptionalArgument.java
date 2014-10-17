@@ -93,10 +93,9 @@ public class OptionalArgument{
 		boolean result = false;
 		if(this.title.equals(arg.getTitle()))
 			result = true;
-		if(!this.shortName.equals(""))
+		if(!arg.getShort().equals("") && this.title.equals(arg.getShort()))
 		{
-			if(this.shortName.equals(arg.getShort()))
-				result = true;
+			result = true;
 		}
 		return result;
 		//return (this.title.equals(arg.getTitle()));
