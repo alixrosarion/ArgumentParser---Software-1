@@ -147,6 +147,7 @@ public class ArgumentParser
 		program = scan.next();
 		int countArgValues = 0;
 		unmatched = "unrecognised arguments: ";
+		float volume = 1;
 		while(scan.hasNext())
 		{
 			String extra  = scan.next();
@@ -175,6 +176,9 @@ public class ArgumentParser
 				if(countArgValues <argumentList.size())
 				{
 					addArgumentValue(extra, countArgValues);
+					try{
+						volume = volume * Float.parseFloat(extra);
+					}catch(NumberFormatException e){}
 				}
 				else
 				{
@@ -202,7 +206,10 @@ public class ArgumentParser
 		else if (argumentList.size() < countArgValues){
 			
 				throw new TooManyArgValuesException(unmatched);
-		}		
+		}
+		else{
+			System.out.println(volume);
+		}
 	}
 	public String getHelpText()
 	{
