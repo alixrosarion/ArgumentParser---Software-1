@@ -26,7 +26,7 @@ public class ArgumentParserTest {
 		tester.parse("VolCalc 7 2");
 			assertEquals("7", tester.getArgumentValue("length"));
 			assertEquals("2", tester.getArgumentValue("width"));
-		}catch(NotEnoughArgValuesException  | TooManyArgValuesException e){}
+		}catch(NotEnoughArgValuesException  | TooManyArgValuesException | IncorrectTypeException e){}
 		
 	}
 	
@@ -39,7 +39,7 @@ public class ArgumentParserTest {
 		try
 		{
 			tester.parse("VolCalc 7 5 2");
-		}catch(NotEnoughArgValuesException  | TooManyArgValuesException e){
+		}catch(NotEnoughArgValuesException  | TooManyArgValuesException | IncorrectTypeException e){
 			assertTrue(false);
 		}
 		assertEquals("7", tester.getArgumentValue("length"));
@@ -57,7 +57,7 @@ public class ArgumentParserTest {
 		{
 			tester.parse("VolCalc 7 5 2 10 2");
 			assertTrue(false);
-		}catch(TooManyArgValuesException | NotEnoughArgValuesException e){
+		}catch(TooManyArgValuesException | NotEnoughArgValuesException | IncorrectTypeException e){
 			assertEquals("unrecognised arguments: 10 2", tester.getUnmatched());
 		}
 	}
@@ -72,7 +72,7 @@ public class ArgumentParserTest {
 		{
 			tester.parse("VolCalc 7");
 			assertTrue(false);
-		}catch(NotEnoughArgValuesException  | TooManyArgValuesException e){
+		}catch(NotEnoughArgValuesException  | TooManyArgValuesException | IncorrectTypeException e){
 			assertEquals("the following arguments are required: width height", tester.getUnmatched());
 		}
 	}
@@ -110,7 +110,7 @@ public class ArgumentParserTest {
 		try
 		{
 			tester.parse("VolCalc 7 5 2 -h");
-		}catch(NotEnoughArgValuesException  | TooManyArgValuesException e){
+		}catch(NotEnoughArgValuesException  | TooManyArgValuesException | IncorrectTypeException e){
 			assertTrue(false);}
 		assertEquals("usage: java VolCalc length width height \nCalculate the volume of a box\nPositional Arguments:\nlength\t\tthe length of the box\nwidth\t\tthe width of the box\nheight\t\tthe height of the box\n", tester.getHelpText());
 	}
@@ -126,7 +126,7 @@ public class ArgumentParserTest {
 		try
 		{
 			tester.parse("VolCalc 7 5.2 true someString");
-		}catch(NotEnoughArgValuesException  | TooManyArgValuesException e){
+		}catch(NotEnoughArgValuesException  | TooManyArgValuesException | IncorrectTypeException e){
 			assertTrue(false);
 		}
 		assertEquals(7, tester.getArgumentValue("length"));
@@ -145,7 +145,7 @@ public class ArgumentParserTest {
 		try
 		{
 			tester.parse("VolCalc 7 --type sphere");
-		}catch(NotEnoughArgValuesException  | TooManyArgValuesException e){
+		}catch(NotEnoughArgValuesException  | TooManyArgValuesException | IncorrectTypeException e){
 			assertTrue(false);
 		}
 	}
@@ -160,7 +160,7 @@ public class ArgumentParserTest {
 		try
 		{
 			tester.parse("VolCalc 7 --type sphere 5 2");
-		}catch(NotEnoughArgValuesException  | TooManyArgValuesException e){
+		}catch(NotEnoughArgValuesException  | TooManyArgValuesException | IncorrectTypeException e){
 			assertTrue(false);
 		}
 		assertEquals("sphere", tester.getOptionalValue("--type"));
@@ -178,7 +178,7 @@ public class ArgumentParserTest {
 		try
 		{
 			tester.parse("VolCalc 7 --type sphere 5 -h 2 --actor will smith");
-		}catch(NotEnoughArgValuesException  | TooManyArgValuesException e){
+		}catch(NotEnoughArgValuesException  | TooManyArgValuesException | IncorrectTypeException e){
 			assertTrue(false);
 		}
 	}
@@ -194,7 +194,7 @@ public class ArgumentParserTest {
 		{
 			tester.parse("VolCalc 7 5 2");
 			assertEquals("Box", tester.getOptionalValue("--type"));
-		}catch(NotEnoughArgValuesException  | TooManyArgValuesException e){
+		}catch(NotEnoughArgValuesException  | TooManyArgValuesException | IncorrectTypeException e){
 			assertTrue(false);
 		}
 	}

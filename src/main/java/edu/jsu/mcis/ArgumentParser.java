@@ -10,12 +10,14 @@ public class ArgumentParser
 	private String help;
 	private String program;
 	private String programDescription;
+	private String incorrectType;
 	
 	public ArgumentParser()
 	{
 		argumentList = new ArrayList<Argument>();
 		optionalList = new ArrayList<OptionalArgument>();
 		unmatched ="";
+		incorrectType= "";
 	}
 	
 	public int getSize()
@@ -72,21 +74,36 @@ public class ArgumentParser
 			optionalList.get(optionalList.indexOf(new OptionalArgument(title))).setDefaultValue(defaultValue);
 		}
 		
-	public void addArgumentValue(Object o, int index)
+	public void addArgumentValue(Object o, int index) throws IncorrectTypeException
 	{
-		if(argumentList.get(index).getType().equals("Integer"))
-			try{
-				o =Integer.parseInt(o.toString());
-			}catch (Exception a){}
-		else if(argumentList.get(index).getType().equals("Boolean"))
-			try{
-				o =Boolean.parseBoolean(o.toString());
-			}catch (Exception b){}
-		else if(argumentList.get(index).getType().equals("Float"))
-			try{
-				o =Float.parseFloat(o.toString());
-			}catch (Exception c){}
-			
+		incorrectType = program + ".java: error: argument ";
+			if(argumentList.get(index).getType().equals("Integer"))
+			{
+				try{
+					o =Integer.parseInt(o.toString());
+				} catch (NumberFormatException e) {
+					incorrectType = incorrectType + argumentList.get(index).getTitle() + " invalid integer value: " + o; 
+					throw new IncorrectTypeException(incorrectType);
+				}
+			}
+			else if(argumentList.get(index).getType().equals("Boolean"))
+			{
+				try{
+					o =Boolean.parseBoolean(o.toString());
+				} catch (NumberFormatException e) {
+					incorrectType = incorrectType + argumentList.get(index).getTitle() + " invalid boolean value: " + o; 
+					throw new IncorrectTypeException(incorrectType);
+				}
+			}
+			else if(argumentList.get(index).getType().equals("Float"))
+			{
+				try{												o =Float.parseFloat(o.toString());
+				} catch (NumberFormatException e) {
+					incorrectType = incorrectType + argumentList.get(index).getTitle() + " invalid float value: " + o; 
+					throw new IncorrectTypeException(incorrectType);
+				}
+			}
+
 		argumentList.get(index).addValue(o);
 	}
 	
@@ -140,7 +157,7 @@ public class ArgumentParser
 		return unmatched;
 	}
 	
-	public void parse(String str) throws NotEnoughArgValuesException, TooManyArgValuesException
+	public void parse(String str) throws NotEnoughArgValuesException, TooManyArgValuesException, IncorrectTypeException
 	{
 		
 		Scanner scan = new Scanner(str);
@@ -206,10 +223,10 @@ public class ArgumentParser
 		else if (argumentList.size() < countArgValues){
 			
 				throw new TooManyArgValuesException(unmatched);
-		}
+		}	
 		else{
 			System.out.println(volume);
-		}
+		}	
 	}
 	public String getHelpText()
 	{
