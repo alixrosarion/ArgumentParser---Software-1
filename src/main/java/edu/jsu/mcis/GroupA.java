@@ -18,11 +18,15 @@ public class GroupA
 				parser.addArgument("width","Float","the width of the box");
 				parser.addArgument("height","Integer","the height of the box");
 				parser.addOptArg("-h",0);
+				parser.addOptArg("--type", 1, "Integer", "whatever", 42);
 				try{
 					parser.parse(input);
 					System.out.println("Your String was well parsed");
+					System.out.println((Integer)parser.getArgumentValue("length") * (Integer)parser.getArgumentValue("height") * (Float)parser.getArgumentValue("width"));
+					System.out.println(parser.getOptionalValue("--type"));
 					System.exit(1);
-				}catch(TooManyArgValuesException | NotEnoughArgValuesException | IncorrectTypeException e){e.printStackTrace();}
+				}
+				catch(Exception e) { e.printStackTrace(); }
 				if(input.contains("-h"))
 				{
 					System.out.println();
