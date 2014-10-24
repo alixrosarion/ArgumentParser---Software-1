@@ -1,19 +1,18 @@
 package edu.jsu.mcis;
 
-public class OptionalArgument extends Argument{
+public class OptionalArgument extends CommandLineArgument{
 	
 	private int numValues;
 	private String shortName;
 	
 	public OptionalArgument(String title)
 	{
-		super(title);
+		this.title = title;
 		shortName = "";
 	}
 	
 	public OptionalArgument(String title, int numValues)
 	{
-		super();
 		this.title = title;
 		this.numValues = numValues;
 		shortName = "";
@@ -21,7 +20,9 @@ public class OptionalArgument extends Argument{
 	
 	public OptionalArgument(String title, int numValues, String type, String description, Object value)
 	{
-		super(title, type, description);
+		this.title = title;
+		this.type = type;
+		this.description = description;
 		this.numValues = numValues;
 		this.value = value;
 		shortName = "";
@@ -47,21 +48,28 @@ public class OptionalArgument extends Argument{
 		return numValues;
 	}
 	
-	public void setValue(Object obj)
+	public void addValue(Object obj)
 	{
 		value = obj;
 	}
-	
+	public Object getValue()
+	{
+		return value;
+	}
 	
 	public boolean equals(Object o)
-	{	
-		OptionalArgument arg = (OptionalArgument) o;
+	{
 		boolean result = false;
-		if(this.title.equals(arg.getTitle()))
-			result = true;
-		if(!arg.getShort().equals("") && this.title.equals(arg.getShort()))
+		if(o instanceof OptionalArgument)
 		{
-			result = true;
+			OptionalArgument arg = (OptionalArgument) o;
+			
+			if(this.title.equals(arg.getTitle()))
+				result = true;
+			if(!arg.getShort().equals("") && this.title.equals(arg.getShort()))
+			{
+				result = true;
+			}
 		}
 		return result;
 	}

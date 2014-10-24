@@ -1,18 +1,17 @@
 package edu.jsu.mcis;
 
-public class Argument
+public class Argument extends CommandLineArgument
 {
-	protected String title;
-	protected Object value;
-	protected String type;
-	protected String description;
+	private int numValues;
+	private String shortTitle;
 	
-	public Argument(){}
 	public Argument(String title)
 	{
 		this.title = title;
 		type = "";
 		description = "";
+		numValues = 0;
+		shortTitle = "";
 	}
 	
 	public Argument(String title, String type, String description)
@@ -20,30 +19,13 @@ public class Argument
 		this.title = title;
 		this.type = type;
 		this.description = description;
+		numValues = 0;
+		shortTitle ="";
 	}
 	
-	public void setDescription(String d)
-	{
-		description = d;
-	}
 	public void addValue(Object v)
 	{
 		value = v;
-	}
-	
-	public void setType(String t)
-	{
-		type = t;
-	}
-	public String getType()
-	{
-		return type;
-	}
-	
-	
-	public String getDescription()
-	{
-		return description;
 	}
 	
 	public Object getValue()
@@ -71,18 +53,31 @@ public class Argument
 			
 		return result;
 	}
-	
+	public int getNumValues()
+	{
+		return numValues;
+	}
+	public String getShort()
+	{
+		return shortTitle;
+	}
+
 	public boolean equals(Object o)
-	{	
-		Argument arg = (Argument) o;
-		return this.title.equals(arg.getTitle());
+	{
+		if(o instanceof Argument)
+		{
+			Argument arg = (Argument) o;
+			return this.title.equals(arg.getTitle());
+		}
+		return false;	
 	}
 	
 	public int hashCode() {
         int result = 17;
-		
 		result = 31 * title.hashCode();
-		return result;
-		
+		return result;	
     }
+	
+	public void setShort(String s){}
+	public void setNumValues(int num){}
 }

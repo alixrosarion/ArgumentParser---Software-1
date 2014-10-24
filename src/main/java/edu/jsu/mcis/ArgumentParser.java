@@ -4,21 +4,20 @@ import java.util.*;
 
 public class ArgumentParser
 {
-	private List <OptionalArgument> argumentList;
-	//private List <OptionalArgument> argumentList;
+	private List <CommandLineArgument> argumentList;
 	private String unmatched;
 	private String help;
 	private String program;
 	private String programDescription;
 	private String incorrectType;
-	public int countt =0;
+	public int countOptionalArguments;
 	
 	public ArgumentParser()
 	{
-		argumentList = new ArrayList<OptionalArgument>();
-		//argumentList = new ArrayList<OptionalArgument>();
+		argumentList = new ArrayList<CommandLineArgument>();
 		unmatched ="";
 		incorrectType= "";
+		countOptionalArguments = 0;
 	}
 	
 	public int getSize()
@@ -33,19 +32,19 @@ public class ArgumentParser
 	
 	public void addArgument(String str)
 	{
-		argumentList.add(new OptionalArgument(str));
+		argumentList.add(new Argument(str));
 
 	}
 	
 	public void addArgument(String title, String type)
 	{
-		argumentList.add(new OptionalArgument(title));
+		argumentList.add(new Argument(title));
 		argumentList.get(argumentList.indexOf(new Argument(title))).setType(type);
 	}
 	
 	public void addArgument(String title, String type, String description)
 	{
-		argumentList.add(new OptionalArgument(title));
+		argumentList.add(new Argument(title));
 		argumentList.get(argumentList.indexOf(new Argument(title))).setType(type);
 		argumentList.get(argumentList.indexOf(new Argument(title))).setDescription(description);
 	}
@@ -65,17 +64,17 @@ public class ArgumentParser
 	{
 		argumentList.add(new OptionalArgument(title));
 		argumentList.get(argumentList.indexOf(new OptionalArgument(title))).setNumValues(numValues);
-		countt++;
+		countOptionalArguments++;
 	}
 	
 	public void addOptArg(String title, int numValues, String type, String description, Object defaultValue)
 		{
-			countt++;
+			countOptionalArguments++;
 			argumentList.add(new OptionalArgument(title));
 			argumentList.get(argumentList.indexOf(new OptionalArgument(title))).setNumValues(numValues);
 			argumentList.get(argumentList.indexOf(new OptionalArgument(title))).setType(type);
 			argumentList.get(argumentList.indexOf(new OptionalArgument(title))).setDescription(description);
-			argumentList.get(argumentList.indexOf(new OptionalArgument(title))).setValue(defaultValue);
+			argumentList.get(argumentList.indexOf(new OptionalArgument(title))).addValue(defaultValue);
 		}
 		
 	public void addArgumentValue(Object o, int index) throws IncorrectTypeException
@@ -138,12 +137,12 @@ public class ArgumentParser
 	
 	public void addOptionalFlag(String title) 
 	{
-		argumentList.get(argumentList.indexOf(new OptionalArgument(title))).setValue(true);
+		argumentList.get(argumentList.indexOf(new OptionalArgument(title))).addValue(true);
 	}
 	
 	public void addOptionalValue(String title, String value) 
 	{
-		argumentList.get(argumentList.indexOf(new OptionalArgument(title))).setValue(value);
+		argumentList.get(argumentList.indexOf(new OptionalArgument(title))).addValue(value);
 	}
 	
 	public Object getDescription(String title)
@@ -194,7 +193,7 @@ public class ArgumentParser
 			
 			else
 			{	
-				if(countArgValues <argumentList.size() - countt)
+				if(countArgValues <argumentList.size() - countOptionalArguments)
 				{
 					addArgumentValue(extra, countArgValues);
 				}
@@ -209,7 +208,7 @@ public class ArgumentParser
 		if (unmatched != "")
 			unmatched = unmatched.substring(0, unmatched.length() -1);
 			
-		if(argumentList.size() > countArgValues + countt){
+		if(argumentList.size() > countArgValues + countOptionalArguments){
 			unmatched = "the following arguments are required: ";
 			for(int k = countArgValues; k< argumentList.size(); k++)
 			{
@@ -221,7 +220,7 @@ public class ArgumentParser
 			throw new NotEnoughArgValuesException(unmatched);
 		}
 		
-		else if (argumentList.size() - countt < countArgValues)
+		else if (argumentList.size() - countOptionalArguments < countArgValues)
 		{	
 				throw new TooManyArgValuesException(unmatched);
 		}	
@@ -230,7 +229,7 @@ public class ArgumentParser
 	{
 		String argumentTitles = "";
 		String description = "";
-		for (Argument a : argumentList)
+		for (CommandLineArgument a : argumentList)
 		{	
 			if (!a.getTitle().contains("-"))
 			{
