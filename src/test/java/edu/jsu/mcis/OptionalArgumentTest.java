@@ -20,7 +20,7 @@ public class OptionalArgumentTest
 		assertEquals(1, tester.getNumValues());
 		assertEquals("String", tester.getType());
 		assertEquals("Shape of Volume", tester.getDescription());
-		assertEquals("Box", tester.getDefaultValue());
+		assertEquals("Box", tester.getValue());
 	}
 	
 	@Test

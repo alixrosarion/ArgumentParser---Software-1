@@ -1,40 +1,30 @@
 package edu.jsu.mcis;
 
-public class OptionalArgument{
+public class OptionalArgument extends Argument{
 	
-	private String title;
 	private int numValues;
-	private String type;
-	private String description;
-	private Object defaultValue;
 	private String shortName;
 	
 	public OptionalArgument(String title)
 	{
-		this.title = title;
+		super(title);
 		shortName = "";
 	}
 	
 	public OptionalArgument(String title, int numValues)
 	{
+		super();
 		this.title = title;
 		this.numValues = numValues;
 		shortName = "";
 	}
 	
-	public OptionalArgument(String title, int numValues, String type, String description, Object defaultValue)
+	public OptionalArgument(String title, int numValues, String type, String description, Object value)
 	{
-		this.title = title;
+		super(title, type, description);
 		this.numValues = numValues;
-		this.type = type;
-		this.description = description;
-		this.defaultValue = defaultValue;
+		this.value = value;
 		shortName = "";
-	}
-	
-	public String getTitle()
-	{
-		return title;
 	}
 	
 	public void setShort(String str)
@@ -57,35 +47,11 @@ public class OptionalArgument{
 		return numValues;
 	}
 	
-	public void setType(String type)
+	public void setValue(Object obj)
 	{
-		type = type;
+		value = obj;
 	}
 	
-	public String getType()
-	{
-		return type;
-	}
-	
-	public void setDescription(String desc)
-	{
-		description = desc;
-	}
-	
-	public String getDescription()
-	{
-		return description;
-	}
-	
-	public void setDefaultValue(Object obj)
-	{
-		defaultValue = obj;
-	}
-	
-	public Object getDefaultValue()
-	{
-		return defaultValue;
-	}
 	
 	public boolean equals(Object o)
 	{	
@@ -98,13 +64,5 @@ public class OptionalArgument{
 			result = true;
 		}
 		return result;
-		//return (this.title.equals(arg.getTitle()));
 	}
-	
-	public int hashCode() {
-        int result = 17;
-		
-		result = 31 * title.hashCode();
-		return result;
-    }
 }

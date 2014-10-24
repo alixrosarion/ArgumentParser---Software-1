@@ -4,18 +4,19 @@ import java.util.*;
 
 public class ArgumentParser
 {
-	private List <Argument> argumentList;
-	private List <OptionalArgument> optionalList;
+	private List <OptionalArgument> argumentList;
+	//private List <OptionalArgument> argumentList;
 	private String unmatched;
 	private String help;
 	private String program;
 	private String programDescription;
 	private String incorrectType;
+	public int countt =0;
 	
 	public ArgumentParser()
 	{
-		argumentList = new ArrayList<Argument>();
-		optionalList = new ArrayList<OptionalArgument>();
+		argumentList = new ArrayList<OptionalArgument>();
+		//argumentList = new ArrayList<OptionalArgument>();
 		unmatched ="";
 		incorrectType= "";
 	}
@@ -32,46 +33,49 @@ public class ArgumentParser
 	
 	public void addArgument(String str)
 	{
-		argumentList.add(new Argument(str));
+		argumentList.add(new OptionalArgument(str));
 
 	}
 	
 	public void addArgument(String title, String type)
 	{
-		argumentList.add(new Argument(title));
+		argumentList.add(new OptionalArgument(title));
 		argumentList.get(argumentList.indexOf(new Argument(title))).setType(type);
 	}
 	
 	public void addArgument(String title, String type, String description)
 	{
-		argumentList.add(new Argument(title));
+		argumentList.add(new OptionalArgument(title));
 		argumentList.get(argumentList.indexOf(new Argument(title))).setType(type);
 		argumentList.get(argumentList.indexOf(new Argument(title))).setDescription(description);
 	}
 	
 	public void addShortOpt(String title, String str)
 	{
-		optionalList.get(optionalList.indexOf(new OptionalArgument(title))).setShort(str);
+		OptionalArgument arg = new OptionalArgument(title);
+		argumentList.get(argumentList.indexOf(arg)).setShort(str);
 	}
 	
 	public String getShortOpt(String title)
 	{
-		return optionalList.get(optionalList.indexOf(new OptionalArgument(title))).getShort();
+		return argumentList.get(argumentList.indexOf(new OptionalArgument(title))).getShort();
 	}
 	
 	public void addOptArg(String title, int numValues)
 	{
-		optionalList.add(new OptionalArgument(title));
-		optionalList.get(optionalList.indexOf(new OptionalArgument(title))).setNumValues(numValues);
+		argumentList.add(new OptionalArgument(title));
+		argumentList.get(argumentList.indexOf(new OptionalArgument(title))).setNumValues(numValues);
+		countt++;
 	}
 	
 	public void addOptArg(String title, int numValues, String type, String description, Object defaultValue)
 		{
-			optionalList.add(new OptionalArgument(title));
-			optionalList.get(optionalList.indexOf(new OptionalArgument(title))).setNumValues(numValues);
-			optionalList.get(optionalList.indexOf(new OptionalArgument(title))).setType(type);
-			optionalList.get(optionalList.indexOf(new OptionalArgument(title))).setDescription(description);
-			optionalList.get(optionalList.indexOf(new OptionalArgument(title))).setDefaultValue(defaultValue);
+			countt++;
+			argumentList.add(new OptionalArgument(title));
+			argumentList.get(argumentList.indexOf(new OptionalArgument(title))).setNumValues(numValues);
+			argumentList.get(argumentList.indexOf(new OptionalArgument(title))).setType(type);
+			argumentList.get(argumentList.indexOf(new OptionalArgument(title))).setDescription(description);
+			argumentList.get(argumentList.indexOf(new OptionalArgument(title))).setValue(defaultValue);
 		}
 		
 	public void addArgumentValue(Object o, int index) throws IncorrectTypeException
@@ -129,27 +133,27 @@ public class ArgumentParser
 	
 	public String getOptArg(String title, int numValues)
 	{
-		return optionalList.get(optionalList.indexOf(new OptionalArgument(title, numValues))).getTitle();
+		return argumentList.get(argumentList.indexOf(new OptionalArgument(title, numValues))).getTitle();
 	}
 	
 	public void addOptionalFlag(String title) 
 	{
-		optionalList.get(optionalList.indexOf(new OptionalArgument(title))).setDefaultValue(true);
+		argumentList.get(argumentList.indexOf(new OptionalArgument(title))).setValue(true);
 	}
 	
 	public void addOptionalValue(String title, String value) 
 	{
-		optionalList.get(optionalList.indexOf(new OptionalArgument(title))).setDefaultValue(value);
+		argumentList.get(argumentList.indexOf(new OptionalArgument(title))).setValue(value);
 	}
 	
 	public Object getDescription(String title)
 	{
-		return optionalList.get(optionalList.indexOf(new OptionalArgument(title))).getDescription();
+		return argumentList.get(argumentList.indexOf(new OptionalArgument(title))).getDescription();
 	}
 		
 	public Object getOptionalValue(String title)
 	{
-		return optionalList.get(optionalList.indexOf(new OptionalArgument(title))).getDefaultValue();
+		return argumentList.get(argumentList.indexOf(new OptionalArgument(title))).getValue();
 	}
 	
 	public String getUnmatched()
@@ -164,23 +168,23 @@ public class ArgumentParser
 		program = scan.next();
 		int countArgValues = 0;
 		unmatched = "unrecognised arguments: ";
-		float volume = 1;
+		int numberValues = 0;
 		while(scan.hasNext())
 		{
 			String extra  = scan.next();
-			if (optionalList.contains(new OptionalArgument(extra)))
+			if (argumentList.contains(new OptionalArgument(extra)))
 			{
 				if (extra.equals("-h"))
 				{
 					getHelpText();
 				}
-				else if(optionalList.get(optionalList.indexOf(new OptionalArgument(extra))).getNumValues() == 0)
+				else if(argumentList.get(argumentList.indexOf(new OptionalArgument(extra))).getNumValues() == 0)
 				{
 					addOptionalFlag(extra);
 				}
 				else
 				{
-					int numberValues = optionalList.get(optionalList.indexOf(new OptionalArgument(extra))).getNumValues();
+					numberValues = argumentList.get(argumentList.indexOf(new OptionalArgument(extra))).getNumValues();
 					for (int i = 0; i<numberValues; i++)
 					{
 						addOptionalValue(extra, scan.next());
@@ -190,12 +194,9 @@ public class ArgumentParser
 			
 			else
 			{	
-				if(countArgValues <argumentList.size())
+				if(countArgValues <argumentList.size() - countt)
 				{
 					addArgumentValue(extra, countArgValues);
-					try{
-						volume = volume * Float.parseFloat(extra);
-					}catch(NumberFormatException e){}
 				}
 				else
 				{
@@ -208,7 +209,7 @@ public class ArgumentParser
 		if (unmatched != "")
 			unmatched = unmatched.substring(0, unmatched.length() -1);
 			
-		if(argumentList.size() > countArgValues){
+		if(argumentList.size() > countArgValues + countt){
 			unmatched = "the following arguments are required: ";
 			for(int k = countArgValues; k< argumentList.size(); k++)
 			{
@@ -220,12 +221,9 @@ public class ArgumentParser
 			throw new NotEnoughArgValuesException(unmatched);
 		}
 		
-		else if (argumentList.size() < countArgValues){
-			
+		else if (argumentList.size() - countt < countArgValues)
+		{	
 				throw new TooManyArgValuesException(unmatched);
-		}	
-		else{
-			System.out.println(volume);
 		}	
 	}
 	public String getHelpText()
@@ -233,10 +231,12 @@ public class ArgumentParser
 		String argumentTitles = "";
 		String description = "";
 		for (Argument a : argumentList)
-		{
-			argumentTitles += a.getTitle() + " ";
-			description += a.getTitle() + "\t\t"+a.getDescription() + "\n";
-			
+		{	
+			if (!a.getTitle().contains("-"))
+			{
+				argumentTitles += a.getTitle() + " ";
+				description += a.getTitle() + "\t\t"+a.getDescription() + "\n";
+			}
 		}
 		help = "usage: java " + program + " " + argumentTitles + "\n" + programDescription +"\nPositional Arguments:\n" + description;
 		

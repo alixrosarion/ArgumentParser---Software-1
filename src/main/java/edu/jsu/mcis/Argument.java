@@ -2,11 +2,12 @@ package edu.jsu.mcis;
 
 public class Argument
 {
-	private String title;
-	private Object value;
-	private String type;
-	private String description;
+	protected String title;
+	protected Object value;
+	protected String type;
+	protected String description;
 	
+	public Argument(){}
 	public Argument(String title)
 	{
 		this.title = title;

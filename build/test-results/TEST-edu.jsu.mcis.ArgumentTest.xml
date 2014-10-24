@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="edu.jsu.mcis.ArgumentTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2014-10-21T18:07:47" hostname="ALIX" time="0.0">
+<testsuite name="edu.jsu.mcis.ArgumentTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2014-10-24T01:39:42" hostname="ALIX" time="0.0">
   <properties/>
   <testcase name="testToString" classname="edu.jsu.mcis.ArgumentTest" time="0.0"/>
   <testcase name="testToStringWithOverloadedConstructor" classname="edu.jsu.mcis.ArgumentTest" time="0.0"/>
