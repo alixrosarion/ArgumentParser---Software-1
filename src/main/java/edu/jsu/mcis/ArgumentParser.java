@@ -25,7 +25,7 @@ public class ArgumentParser
 		return argumentList.size();
 	}
 	
-	public void addProgram(String program, String description)
+	public void addProgram(String description)
 	{
 		programDescription = description;
 	}
@@ -175,7 +175,8 @@ public class ArgumentParser
 			{
 				if (extra.equals("-h"))
 				{
-					getHelpText();
+					System.out.println(getHelpText());
+					System.exit(0);
 				}
 				else if(argumentList.get(argumentList.indexOf(new OptionalArgument(extra))).getNumValues() == 0)
 				{

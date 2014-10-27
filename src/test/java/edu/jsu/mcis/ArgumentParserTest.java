@@ -99,7 +99,7 @@ public class ArgumentParserTest {
 	@Test
 	public void testOptionText(){
 		ArgumentParser tester = new ArgumentParser();
-		tester.addProgram("Volcalc", "Calculate the volume of a box");
+		tester.addProgram("Calculate the volume of a box");
 		tester.addArgument("length");
 		tester.addArgument("width");
 		tester.addArgument("height");
