@@ -1,17 +1,12 @@
 package edu.jsu.mcis;
 
 public class Argument extends CommandLineArgument
-{
-	private int numValues;
-	private String shortTitle;
-	
+{	
 	public Argument(String title)
 	{
 		this.title = title;
 		type = "";
 		description = "";
-		numValues = 0;
-		shortTitle = "";
 	}
 	
 	public Argument(String title, String type, String description)
@@ -19,8 +14,6 @@ public class Argument extends CommandLineArgument
 		this.title = title;
 		this.type = type;
 		this.description = description;
-		numValues = 0;
-		shortTitle ="";
 	}
 	
 	public void addValue(Object v)
@@ -55,11 +48,11 @@ public class Argument extends CommandLineArgument
 	}
 	public int getNumValues()
 	{
-		return numValues;
+		return 0;
 	}
 	public String getShort()
 	{
-		return shortTitle;
+		return "";
 	}
 
 	public boolean equals(Object o)
