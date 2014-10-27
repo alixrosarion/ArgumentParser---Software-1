@@ -13,7 +13,7 @@ public class GroupA
 			if( input.length() > 0)
 			{				
 				ArgumentParser parser = new ArgumentParser();
-				parser.addProgram("Volcalc", "Calculates the volume of a box");
+				parser.addProgram("Calculates the volume of a box");
 				parser.addArgument("length", "Integer","the length of the box");
 				parser.addArgument("width","Float","the width of the box");
 				parser.addArgument("height","Integer","the height of the box");
@@ -26,11 +26,8 @@ public class GroupA
 					System.out.println(parser.getOptionalValue("--type"));
 					System.exit(1);
 				}
-				catch(Exception e) { e.printStackTrace(); }
-				if(input.contains("-h"))
-				{
-					System.out.println();
-					System.out.println(parser.getHelpText());
+				catch(Exception e) { 
+					e.printStackTrace();
 				}
 			}
 			else System.exit(1);
