@@ -1,4 +1,4 @@
-package edu.jsu.mcis;
+/*package edu.jsu.mcis;
 
 import java.util.*;
 
@@ -33,4 +33,34 @@ public class GroupA
 			else System.exit(1);
 		}catch(NoSuchElementException e){}
 	}
+}*/
+package edu.jsu.mcis;
+
+import java.util.*;
+
+public class GroupA
+{
+	public static void main(String [] args) 
+	{
+		ArgumentParser parser = new ArgumentParser();
+		String read = "";
+		for(String arg:args){
+			read += arg + " ";
+		}
+		
+		parser.addArgument("length", "Integer", "the length of the box");
+		parser.addArgument("width", "Float", "the width of the box");
+		parser.addArgument("height", "Integer", "the height of the box");
+		parser.addOptArg("-h", 0);
+		
+		try{
+			parser.parse(read);
+			System.out.println("Volume: " + (Integer)parser.getArgumentValue("length") * (Float)parser.getArgumentValue("width") * (Integer)parser.getArgumentValue("height"));
+			System.exit(1);
+		}
+		catch(Exception e) { e.printStackTrace(); }
+		
+		
+	}
 }
+
