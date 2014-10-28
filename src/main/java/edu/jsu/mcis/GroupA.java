@@ -22,7 +22,10 @@ public class GroupA
 				try{
 					parser.parse(input);
 					System.out.println("Your String was well parsed");
-					System.out.println(parser.getArgumentValue("length") * parser.getArgumentValue("height") * parser.getArgumentValue("width"));
+					int length = parser.getArgumentValue("length");
+					int height = parser.getArgumentValue("length");
+					float width = parser.getArgumentValue("length");
+					System.out.println(length * width * height);
 					System.out.println(parser.getOptionalValue("--type"));
 					System.exit(1);
 				}
@@ -34,7 +37,6 @@ public class GroupA
 		}catch(NoSuchElementException e){}
 	}
 }
-
 /*
 package edu.jsu.mcis;
 
@@ -50,9 +52,9 @@ public class GroupA
 			read += arg + " ";
 		}
 		
-		parser.addArgument("length", CommandLineArgument.Type.Integer, "the length of the box");
-		parser.addArgument("width", CommandLineArgument.Type.Float, "the width of the box");
-		parser.addArgument("height", CommandLineArgument.Type.Integer, "the height of the box");
+		parser.addArgument("length", "Integer", "the length of the box");
+		parser.addArgument("width", "Float", "the width of the box");
+		parser.addArgument("height", "Integer", "the height of the box");
 		parser.addOptArg("-h", 0);
 		
 		try{

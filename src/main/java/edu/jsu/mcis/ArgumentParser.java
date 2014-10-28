@@ -120,31 +120,10 @@ public class ArgumentParser
 		return argumentList.get(argumentList.indexOf(new Argument(title))).getDescription();
 	}
 	
-	public <T extends Comparable<T>> T getArgumentValue(String title)
+	public <T> T getArgumentValue(String title)
 	{
-		T value;
-		if(CommandLineArgument.Type.Integer == getArgumentType(title)) {
-			Class<T> intCast = (Class<T>) Integer.class;
-			value = intCast.cast(argumentList.get(argumentList.indexOf(new Argument(title))).getValue());
-			return value;
-		}
 		
-		else if(CommandLineArgument.Type.Float == getArgumentType(title)) {
-			Class<T> floatCast = (Class<T>) Float.class;
-			value = floatCast.cast(argumentList.get(argumentList.indexOf(new Argument(title))).getValue());
-			return value;
-		}
-		else if(CommandLineArgument.Type.Boolean == getArgumentType(title)) {
-			Class<T> booleanCast = (Class<T>) Boolean.class;
-			value = booleanCast.cast(argumentList.get(argumentList.indexOf(new Argument(title))).getValue());
-			return value;
-		}
-		else {
-			Class<T> stringCast = (Class<T>) String.class;
-			value = stringCast.cast(argumentList.get(argumentList.indexOf(new Argument(title))).getValue());
-			return value;
-		}
-		
+		return (T)argumentList.get(argumentList.indexOf(new Argument(title))).getValue();
 	}
 	
 	public CommandLineArgument.Type getArgumentType(String title)
