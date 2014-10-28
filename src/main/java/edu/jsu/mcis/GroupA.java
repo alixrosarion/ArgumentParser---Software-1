@@ -14,11 +14,11 @@ public class GroupA
 			{				
 				ArgumentParser parser = new ArgumentParser();
 				parser.addProgram("Calculates the volume of a box");
-				parser.addArgument("length", "Integer","the length of the box");
-				parser.addArgument("width","Float","the width of the box");
-				parser.addArgument("height","Integer","the height of the box");
+				parser.addArgument("length", CommandLineArgument.Type.Integer,"the length of the box");
+				parser.addArgument("width",CommandLineArgument.Type.Float,"the width of the box");
+				parser.addArgument("height",CommandLineArgument.Type.Integer,"the height of the box");
 				parser.addOptArg("-h",0);
-				parser.addOptArg("--type", 1, "Integer", "whatever", 42);
+				parser.addOptArg("--type", 1, CommandLineArgument.Type.Integer, "whatever", 42);
 				try{
 					parser.parse(input);
 					System.out.println("Your String was well parsed");

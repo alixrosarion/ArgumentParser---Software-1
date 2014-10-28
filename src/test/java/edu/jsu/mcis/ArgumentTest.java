@@ -14,16 +14,16 @@ public class ArgumentTest
 	@Test
 	public void testToStringWithOverloadedConstructor()
 	{
-		Argument tester = new Argument("length","Integer","The length of the box");
+		Argument tester = new Argument("length",CommandLineArgument.Type.Integer,"The length of the box");
 		assertEquals("length Integer The length of the box", tester.toString());	
 	}
 	
 	@Test
 	public void testOverloadedConstructor()
 	{
-		Argument tester = new Argument("length", "Integer", "the height of the box");
+		Argument tester = new Argument("length", CommandLineArgument.Type.Integer, "the height of the box");
 		assertEquals("length", tester.getTitle());
-		assertEquals("Integer", tester.getType());
+		assertEquals(CommandLineArgument.Type.Integer, tester.getType());
 		assertEquals("the height of the box", tester.getDescription());
 	}
 	

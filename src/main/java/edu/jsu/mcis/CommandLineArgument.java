@@ -2,9 +2,10 @@ package edu.jsu.mcis;
 
 public abstract class CommandLineArgument {
 	protected String title;
-	protected String type;
 	protected Object value;
 	protected String description;
+	public enum Type {Integer, Float, String, Boolean, Unknown};
+	protected Type type;
 	
 	public String getTitle() {
 		return title;
@@ -13,7 +14,7 @@ public abstract class CommandLineArgument {
 	{
 		description = d;
 	}
-	public void setType(String t)
+	public void setType(Type t)
 	{
 		type = t;
 	}
@@ -21,7 +22,7 @@ public abstract class CommandLineArgument {
 	{
 		return description;
 	}
-	public String getType()
+	public Type getType()
 	{
 		return type;
 	}

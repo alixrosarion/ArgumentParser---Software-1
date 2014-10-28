@@ -15,10 +15,10 @@ public class OptionalArgumentTest
 	@Test
 	public void testTypeSingleValue()
 	{
-		OptionalArgument tester = new OptionalArgument("--type", 1, "String", "Shape of Volume", "Box");
+		OptionalArgument tester = new OptionalArgument("--type", 1, CommandLineArgument.Type.String, "Shape of Volume", "Box");
 		assertEquals("--type", tester.getTitle());
 		assertEquals(1, tester.getNumValues());
-		assertEquals("String", tester.getType());
+		assertEquals(CommandLineArgument.Type.String, tester.getType());
 		assertEquals("Shape of Volume", tester.getDescription());
 		assertEquals("Box", tester.getValue());
 	}

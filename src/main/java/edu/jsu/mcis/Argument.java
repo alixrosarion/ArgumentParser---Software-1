@@ -5,11 +5,11 @@ public class Argument extends CommandLineArgument
 	public Argument(String title)
 	{
 		this.title = title;
-		type = "";
+		type =	CommandLineArgument.Type.Unknown;
 		description = "";
 	}
 	
-	public Argument(String title, String type, String description)
+	public Argument(String title, Type type, String description)
 	{
 		this.title = title;
 		this.type = type;
@@ -35,7 +35,7 @@ public class Argument extends CommandLineArgument
 		String result;
 		
 		result = title;
-		if( type != "")
+		if( type != CommandLineArgument.Type.Unknown)
 			result += " " +type;
 		else
 			result = result;

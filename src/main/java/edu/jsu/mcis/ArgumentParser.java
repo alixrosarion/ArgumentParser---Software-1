@@ -36,13 +36,13 @@ public class ArgumentParser
 
 	}
 	
-	public void addArgument(String title, String type)
+	public void addArgument(String title, CommandLineArgument.Type type)
 	{
 		argumentList.add(new Argument(title));
 		argumentList.get(argumentList.indexOf(new Argument(title))).setType(type);
 	}
 	
-	public void addArgument(String title, String type, String description)
+	public void addArgument(String title, CommandLineArgument.Type type, String description)
 	{
 		argumentList.add(new Argument(title));
 		argumentList.get(argumentList.indexOf(new Argument(title))).setType(type);
@@ -67,7 +67,7 @@ public class ArgumentParser
 		countOptionalArguments++;
 	}
 	
-	public void addOptArg(String title, int numValues, String type, String description, Object defaultValue)
+	public void addOptArg(String title, int numValues, CommandLineArgument.Type type, String description, Object defaultValue)
 		{
 			countOptionalArguments++;
 			argumentList.add(new OptionalArgument(title));
@@ -80,7 +80,7 @@ public class ArgumentParser
 	public void addArgumentValue(Object o, int index) throws IncorrectTypeException
 	{
 		incorrectType = program + ".java: error: argument ";
-			if(argumentList.get(index).getType().equals("Integer"))
+			if(argumentList.get(index).getType() == CommandLineArgument.Type.Integer)
 			{
 				try{
 					o =Integer.parseInt(o.toString());
@@ -89,7 +89,7 @@ public class ArgumentParser
 					throw new IncorrectTypeException(incorrectType);
 				}
 			}
-			else if(argumentList.get(index).getType().equals("Boolean"))
+			else if(argumentList.get(index).getType() == CommandLineArgument.Type.Boolean)
 			{
 				try{
 					o =Boolean.parseBoolean(o.toString());
@@ -98,7 +98,7 @@ public class ArgumentParser
 					throw new IncorrectTypeException(incorrectType);
 				}
 			}
-			else if(argumentList.get(index).getType().equals("Float"))
+			else if(argumentList.get(index).getType() == CommandLineArgument.Type.Float)
 			{
 				try{												o =Float.parseFloat(o.toString());
 				} catch (NumberFormatException e) {
@@ -125,7 +125,7 @@ public class ArgumentParser
 		return argumentList.get(argumentList.indexOf(new Argument(title))).getValue();
 	}
 	
-	public String getArgumentType(String title)
+	public CommandLineArgument.Type getArgumentType(String title)
 	{
 		return argumentList.get(argumentList.indexOf(new Argument(title))).getType();
 	}

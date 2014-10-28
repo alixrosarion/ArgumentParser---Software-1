@@ -81,18 +81,18 @@ public class ArgumentParserTest {
 	public void testAddArgTypes()
 	{
 		ArgumentParser tester = new ArgumentParser();
-		tester.addArgument("length", "Integer");
-		tester.addArgument("width", "Float");
-		assertEquals("Integer", tester.getArgumentType("length"));
-		assertEquals("Float", tester.getArgumentType("width"));
+		tester.addArgument("length", CommandLineArgument.Type.Integer);
+		tester.addArgument("width", CommandLineArgument.Type.Float);
+		assertEquals(CommandLineArgument.Type.Integer, tester.getArgumentType("length"));
+		assertEquals(CommandLineArgument.Type.Float, tester.getArgumentType("width"));
 	}
 	
 	@Test
 	public void testAddArgDescriptions()
 	{
 		ArgumentParser tester = new ArgumentParser();
-		tester.addArgument("length", "Integer","the length of the box");
-		tester.addArgument("width", "Float","the width of the box");
+		tester.addArgument("length", CommandLineArgument.Type.Integer,"the length of the box");
+		tester.addArgument("width", CommandLineArgument.Type.Float,"the width of the box");
 		assertEquals("the length of the box", tester.getArgumentDescription("length"));
 		assertEquals("the width of the box", tester.getArgumentDescription("width"));
 	}
@@ -119,10 +119,10 @@ public class ArgumentParserTest {
 	public void testTypeParsing()
 	{
 		ArgumentParser tester = new ArgumentParser();
-		tester.addArgument("length", "Integer");
-		tester.addArgument("width","Float");
-		tester.addArgument("rainy","Boolean");
-		tester.addArgument("dog","String");
+		tester.addArgument("length", CommandLineArgument.Type.Integer);
+		tester.addArgument("width",CommandLineArgument.Type.Float);
+		tester.addArgument("rainy", CommandLineArgument.Type.Boolean);
+		tester.addArgument("dog", CommandLineArgument.Type.String);
 		try
 		{
 			tester.parse("VolCalc 7 5.2 true someString");
@@ -139,7 +139,7 @@ public class ArgumentParserTest {
 	public void testReadingOptionalArgumentAtEnd ()
 	{
 		ArgumentParser tester = new ArgumentParser();
-		tester.addArgument("length", "Integer");
+		tester.addArgument("length", CommandLineArgument.Type.Integer);
 		tester.addOptArg("--type", 1);
 		assertEquals("--type", tester.getOptArg("--type", 1));
 		try
@@ -189,7 +189,7 @@ public class ArgumentParserTest {
 		tester.addArgument("length");
 		tester.addArgument("width");
 		tester.addArgument("height");
-		tester.addOptArg("--type", 1, "String", "Type of shape", "Box");
+		tester.addOptArg("--type", 1, CommandLineArgument.Type.String, "Type of shape", "Box");
 		try
 		{
 			tester.parse("VolCalc 7 5 2");
@@ -227,7 +227,7 @@ public class ArgumentParserTest {
 	@Test
 	public void testOptionalArgumentDescription() {
 		ArgumentParser tester = new ArgumentParser();
-		tester.addOptArg("--type", 1, "String", "The shape the user defines", "Box");
+		tester.addOptArg("--type", 1, CommandLineArgument.Type.String, "The shape the user defines", "Box");
 		try {
 			tester.parse("VolCalc --type shape");
 			assertEquals("The shape the user defines", tester.getDescription("--type"));
@@ -240,7 +240,7 @@ public class ArgumentParserTest {
 	public void testShortName()
 	{
 		ArgumentParser tester = new ArgumentParser();
-		tester.addOptArg("--type", 1, "String", "The shape the user defines", "Box");
+		tester.addOptArg("--type", 1, CommandLineArgument.Type.String, "The shape the user defines", "Box");
 		tester.addShortOpt("--type", "-t");
 		assertEquals("-t", tester.getShortOpt("--type"));
 		try {

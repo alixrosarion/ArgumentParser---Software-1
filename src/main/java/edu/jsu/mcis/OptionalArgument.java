@@ -18,7 +18,7 @@ public class OptionalArgument extends CommandLineArgument{
 		shortName = "";
 	}
 	
-	public OptionalArgument(String title, int numValues, String type, String description, Object value)
+	public OptionalArgument(String title, int numValues, Type type, String description, Object value)
 	{
 		this.title = title;
 		this.type = type;
