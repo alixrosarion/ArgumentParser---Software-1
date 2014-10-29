@@ -165,7 +165,7 @@ public class ArgumentParser
 	{
 		
 		Scanner scan = new Scanner(str);
-		program = scan.next();
+		//program = scan.next();
 		int countArgValues = 0;
 		unmatched = "unrecognised arguments: ";
 		int numberValues = 0;

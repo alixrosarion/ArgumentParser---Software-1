@@ -23,7 +23,7 @@ public class ArgumentParserTest {
 		tester.addArgument("width");
 		try
 		{
-		tester.parse("VolCalc 7 2");
+		tester.parse("7 2");
 			assertEquals("7", tester.getArgumentValue("length"));
 			assertEquals("2", tester.getArgumentValue("width"));
 		}catch(NotEnoughArgValuesException  | TooManyArgValuesException | IncorrectTypeException e){}
@@ -38,7 +38,7 @@ public class ArgumentParserTest {
 		tester.addArgument("height");
 		try
 		{
-			tester.parse("VolCalc 7 5 2");
+			tester.parse("7 5 2");
 		}catch(NotEnoughArgValuesException  | TooManyArgValuesException | IncorrectTypeException e){
 			assertTrue(false);
 		}
@@ -55,7 +55,7 @@ public class ArgumentParserTest {
 		tester.addArgument("height");
 		try
 		{
-			tester.parse("VolCalc 7 5 2 10 2");
+			tester.parse("7 5 2 10 2");
 			assertTrue(false);
 		}catch(TooManyArgValuesException | NotEnoughArgValuesException | IncorrectTypeException e){
 			assertEquals("unrecognised arguments: 10 2", tester.getUnmatched());
@@ -70,7 +70,7 @@ public class ArgumentParserTest {
 		tester.addArgument("height");
 		try
 		{
-			tester.parse("VolCalc 7");
+			tester.parse("7");
 			assertTrue(false);
 		}catch(NotEnoughArgValuesException  | TooManyArgValuesException | IncorrectTypeException e){
 			assertEquals("the following arguments are required: width height", tester.getUnmatched());
@@ -109,7 +109,7 @@ public class ArgumentParserTest {
 		tester.addOptArg("-h", 0);
 		try
 		{
-			tester.parse("VolCalc 7 5 2 -h");
+			tester.parse("7 5 2 -h");
 		}catch(NotEnoughArgValuesException  | TooManyArgValuesException | IncorrectTypeException e){
 			assertTrue(false);}
 		assertEquals("usage: java VolCalc length width height \nCalculate the volume of a box\nPositional Arguments:\nlength\t\tthe length of the box\nwidth\t\tthe width of the box\nheight\t\tthe height of the box\n", tester.getHelpText());
@@ -125,7 +125,7 @@ public class ArgumentParserTest {
 		tester.addArgument("dog", CommandLineArgument.Type.String);
 		try
 		{
-			tester.parse("VolCalc 7 5.2 true someString");
+			tester.parse("7 5.2 true someString");
 		}catch(NotEnoughArgValuesException  | TooManyArgValuesException | IncorrectTypeException e){
 			assertTrue(false);
 		}
@@ -144,7 +144,7 @@ public class ArgumentParserTest {
 		assertEquals("--type", tester.getOptArg("--type", 1));
 		try
 		{
-			tester.parse("VolCalc 7 --type sphere");
+			tester.parse("7 --type sphere");
 		}catch(NotEnoughArgValuesException  | TooManyArgValuesException | IncorrectTypeException e){
 			assertTrue(false);
 		}
@@ -159,7 +159,7 @@ public class ArgumentParserTest {
 		tester.addOptArg("--type", 1);
 		try
 		{
-			tester.parse("VolCalc 7 --type sphere 5 2");
+			tester.parse("7 --type sphere 5 2");
 		}catch(NotEnoughArgValuesException  | TooManyArgValuesException | IncorrectTypeException e){
 			assertTrue(false);
 		}
@@ -177,7 +177,7 @@ public class ArgumentParserTest {
 		tester.addOptArg("--actor", 2);
 		try
 		{
-			tester.parse("VolCalc 7 --type sphere 5 -h 2 --actor will smith");
+			tester.parse("7 --type sphere 5 -h 2 --actor will smith");
 		}catch(NotEnoughArgValuesException  | TooManyArgValuesException | IncorrectTypeException e){
 			assertTrue(false);
 		}
@@ -192,7 +192,7 @@ public class ArgumentParserTest {
 		tester.addOptArg("--type", 1, CommandLineArgument.Type.String, "Type of shape", "Box");
 		try
 		{
-			tester.parse("VolCalc 7 5 2");
+			tester.parse("7 5 2");
 			assertEquals("Box", tester.getOptionalValue("--type"));
 		}catch(NotEnoughArgValuesException  | TooManyArgValuesException | IncorrectTypeException e){
 			assertTrue(false);
@@ -205,7 +205,7 @@ public class ArgumentParserTest {
 		tester.addOptArg("--type", 0);
 		boolean flag = true;
 		try {
-			tester.parse("VolCalc --type");
+			tester.parse("--type");
 			assertEquals(true, tester.getOptionalValue("--type"));
 		} catch (Exception e) {
 			assertTrue(false);
@@ -217,7 +217,7 @@ public class ArgumentParserTest {
 		ArgumentParser tester = new ArgumentParser();
 		tester.addOptArg("--type", 1);
 		try {
-			tester.parse("VolCalc --type shape");
+			tester.parse("--type shape");
 			assertEquals("shape", tester.getOptionalValue("--type"));
 		} catch (Exception e) {
 			assertTrue(false);
@@ -229,7 +229,7 @@ public class ArgumentParserTest {
 		ArgumentParser tester = new ArgumentParser();
 		tester.addOptArg("--type", 1, CommandLineArgument.Type.String, "The shape the user defines", "Box");
 		try {
-			tester.parse("VolCalc --type shape");
+			tester.parse("--type shape");
 			assertEquals("The shape the user defines", tester.getDescription("--type"));
 		} catch (Exception e) {
 			assertTrue(false);
@@ -244,7 +244,7 @@ public class ArgumentParserTest {
 		tester.addShortOpt("--type", "-t");
 		assertEquals("-t", tester.getShortOpt("--type"));
 		try {
-			tester.parse("VolCalc -t shape");
+			tester.parse("-t shape");
 			assertEquals("The shape the user defines", tester.getDescription("-t"));
 			assertEquals("The shape the user defines", tester.getDescription("--type"));
 		} catch (Exception e) {
