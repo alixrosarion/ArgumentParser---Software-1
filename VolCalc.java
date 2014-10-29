@@ -56,7 +56,10 @@ public class VolCalc
 		
 		try{
 			parser.parse(read);
-			System.out.println("Volume: " + (Integer)parser.getArgumentValue("length") * (Float)parser.getArgumentValue("width") * (Integer)parser.getArgumentValue("height"));
+			int length = parser.getArgumentValue("length");
+			int height = parser.getArgumentValue("height");
+			float width = parser.getArgumentValue("width");
+			System.out.println("Volume is " +length * width * height);
 			System.exit(1);
 		}
 		catch(Exception e) { e.printStackTrace(); }
