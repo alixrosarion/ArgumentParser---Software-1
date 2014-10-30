@@ -5,24 +5,21 @@ Library           Feature1Keywords
 *** Test Cases ***
 Test Case 1
 	Start Program 	7 	5 	2
-	${length}= 	Get Length
+	${length}= 	Get 	Length
 	Should Be Equal 	${length}	7
-	${width}= 	Get Width
-	Should Be Equal 	5 	${width}
-	${height}= 	Get Height
+	${width}= 	Get 	Width
+	Should Be Equal 	${width} 	5
+	${height}= 	Get 	Height
 	Should Be Equal 	2 	${height}
 	
 Test Case 2
 	Start Program 	dog 	2 	true 	3.5
-	${pet}= 	Get Pet
+	${pet}= 	Get 	Pet
 	Should Be Equal 	${pet}		dog
-	${number}= 	Get Number
+	${number}= 	Get 	Number
 	Should Be Equal 	${number}	2
-	${rainy}= 	Get Rainy
+	${rainy}= 	Get 	Rainy
 	Should Be Equal 	${rainy}	true
-	${bathrooms}= 	Get Bathrooms
+	${bathrooms}= 	Get 	Bathrooms
 	Should Be Equal 	${bathrooms}	3.5
-	
-	
-	
 	

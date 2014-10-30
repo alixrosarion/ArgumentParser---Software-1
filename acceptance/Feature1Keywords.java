@@ -7,7 +7,6 @@ public class Feature1Keywords
 	public void startProgram (String s, String s1, String s2)
 	{
 		parser = new ArgumentParser();
-		
 		String se = s + " " +s1 + " "+s2;
 		parser.addArgument("length");
 		parser.addArgument("width");
@@ -39,36 +38,9 @@ public class Feature1Keywords
 		}catch(TooManyArgValuesException | NotEnoughArgValuesException e){}
 	}
 	
-	public String getArgumentValue(String args)
+
+	public String get(String s)
 	{
-		return parser.getArgumentValue(args).toString();
-	}
-	public String getLength()
-	{
-		return parser.getArgumentValue("length").toString();
-	}
-	public String getWidth()
-	{
-		return parser.getArgumentValue("width").toString();
-	}
-	public String getHeight()
-	{
-		return parser.getArgumentValue("height").toString();
-	}
-	public String getPet()
-	{
-		return parser.getArgumentValue("pet").toString();
-	}
-	public String getNumber()
-	{
-		return parser.getArgumentValue("number").toString();
-	}
-	public String getRainy()
-	{
-		return parser.getArgumentValue("rainy").toString();
-	}
-	public String getBathrooms()
-	{
-		return parser.getArgumentValue("bathrooms").toString();
+		return parser.getArgumentValue(s.toLowerCase()).toString();
 	}
 }
