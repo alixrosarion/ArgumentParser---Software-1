@@ -122,8 +122,10 @@ public class ArgumentParser
 	
 	public <T> T getArgumentValue(String title)
 	{
-		
-		return (T)argumentList.get(argumentList.indexOf(new Argument(title))).getValue();
+		if(argumentList.contains(new Argument(title)))
+			return (T)argumentList.get(argumentList.indexOf(new Argument(title))).getValue();
+		else
+			return (T)argumentList.get(argumentList.indexOf(new OptionalArgument(title))).getValue();
 	}
 	
 	public CommandLineArgument.Type getArgumentType(String title)

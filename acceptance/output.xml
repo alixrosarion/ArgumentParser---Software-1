@@ -1,161 +1,180 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 2.8.5 (Jython 2.5.3 on java1.7.0_40)" generated="20141029 18:31:00.617">
-<suite source="C:\Users\Kris\GroupA\acceptance\Feature1Tests.txt" id="s1" name="Feature1Tests">
-<test id="s1-t1" name="Start Program With Arguments 7 5 2">
+<robot generator="Robot 2.8.5 (Jython 2.5.3 on java1.8.0_25)" generated="20141029 20:49:48.472">
+<suite source="C:\Users\Alix\Documents\jsu-mcis-cs310\GroupA\acceptance\Feature1Tests.txt" name="Feature1Tests" id="s1">
+<test name="Test Case 1" id="s1-t1">
 <kw type="kw" name="Feature1Keywords.Start Program">
 <doc></doc>
-<arguments>
-</arguments>
-<status status="PASS" endtime="20141029 18:31:01.460" starttime="20141029 18:31:01.460"></status>
-</kw>
-<kw type="kw" name="Feature1Keywords.Add Argument">
-<doc></doc>
-<arguments>
-<arg>length</arg>
-</arguments>
-<status status="PASS" endtime="20141029 18:31:01.475" starttime="20141029 18:31:01.460"></status>
-</kw>
-<kw type="kw" name="Feature1Keywords.Add Argument">
-<doc></doc>
-<arguments>
-<arg>width</arg>
-</arguments>
-<status status="PASS" endtime="20141029 18:31:01.475" starttime="20141029 18:31:01.475"></status>
-</kw>
-<kw type="kw" name="Feature1Keywords.Add Argument">
-<doc></doc>
-<arguments>
-<arg>height</arg>
-</arguments>
-<status status="PASS" endtime="20141029 18:31:01.491" starttime="20141029 18:31:01.491"></status>
-</kw>
-<kw type="kw" name="Feature1Keywords.Add Values">
-<doc></doc>
-<arguments>
-<arg>VolCalc 7 5 2</arg>
-</arguments>
-<status status="PASS" endtime="20141029 18:31:01.507" starttime="20141029 18:31:01.491"></status>
-</kw>
-<kw type="kw" name="${length} = Get Length">
-<doc></doc>
-<arguments>
-</arguments>
-<kw type="kw" name="${length} = Feature1Keywords.Get Argument Value">
-<doc></doc>
-<arguments>
-<arg>length</arg>
-</arguments>
-<msg timestamp="20141029 18:31:01.522" level="INFO">${length} = VolCalc</msg>
-<status status="PASS" endtime="20141029 18:31:01.522" starttime="20141029 18:31:01.522"></status>
-</kw>
-<kw type="kw" name="BuiltIn.Should Be Equal">
-<doc>Fails if the given objects are unequal.</doc>
 <arguments>
 <arg>7</arg>
-<arg>${length}</arg>
+<arg>5</arg>
+<arg>2</arg>
 </arguments>
-<msg timestamp="20141029 18:31:01.538" level="INFO">Argument types are:
-&lt;type 'unicode'&gt;
-&lt;type 'unicode'&gt;</msg>
-<msg timestamp="20141029 18:31:01.553" level="FAIL">7 != VolCalc</msg>
-<status status="FAIL" endtime="20141029 18:31:01.553" starttime="20141029 18:31:01.522"></status>
+<status endtime="20141029 20:49:48.675" starttime="20141029 20:49:48.660" status="PASS"></status>
 </kw>
-<status status="FAIL" endtime="20141029 18:31:01.553" starttime="20141029 18:31:01.507"></status>
-</kw>
-<doc></doc>
-<tags>
-</tags>
-<status status="FAIL" critical="yes" endtime="20141029 18:31:01.553" starttime="20141029 18:31:01.444">7 != VolCalc</status>
-</test>
-<test id="s1-t2" name="Start Program With Arguments dog 2 true 3.5">
-<kw type="kw" name="Feature1Keywords.Start Program">
+<kw type="kw" name="${length} = Feature1Keywords.Get Length">
 <doc></doc>
 <arguments>
 </arguments>
-<status status="PASS" endtime="20141029 18:31:01.585" starttime="20141029 18:31:01.569"></status>
-</kw>
-<kw type="kw" name="Feature1Keywords.Add Argument">
-<doc></doc>
-<arguments>
-<arg>pet</arg>
-</arguments>
-<status status="PASS" endtime="20141029 18:31:01.585" starttime="20141029 18:31:01.585"></status>
-</kw>
-<kw type="kw" name="Feature1Keywords.Add Argument">
-<doc></doc>
-<arguments>
-<arg>number</arg>
-</arguments>
-<status status="PASS" endtime="20141029 18:31:01.585" starttime="20141029 18:31:01.585"></status>
-</kw>
-<kw type="kw" name="Feature1Keywords.Add Argument">
-<doc></doc>
-<arguments>
-<arg>rainy</arg>
-</arguments>
-<status status="PASS" endtime="20141029 18:31:01.585" starttime="20141029 18:31:01.585"></status>
-</kw>
-<kw type="kw" name="Feature1Keywords.Add Argument">
-<doc></doc>
-<arguments>
-<arg>bathrooms</arg>
-</arguments>
-<status status="PASS" endtime="20141029 18:31:01.600" starttime="20141029 18:31:01.600"></status>
-</kw>
-<kw type="kw" name="Feature1Keywords.Add Values">
-<doc></doc>
-<arguments>
-<arg>VolCalc dog 2 true 3.5</arg>
-</arguments>
-<status status="PASS" endtime="20141029 18:31:01.600" starttime="20141029 18:31:01.600"></status>
-</kw>
-<kw type="kw" name="${pet} = Get Pet">
-<doc></doc>
-<arguments>
-</arguments>
-<kw type="kw" name="${pet} = Feature1Keywords.Get Argument Value">
-<doc></doc>
-<arguments>
-<arg>pet</arg>
-</arguments>
-<msg timestamp="20141029 18:31:01.616" level="INFO">${pet} = VolCalc</msg>
-<status status="PASS" endtime="20141029 18:31:01.616" starttime="20141029 18:31:01.616"></status>
+<msg level="INFO" timestamp="20141029 20:49:48.675">${length} = 7</msg>
+<status endtime="20141029 20:49:48.675" starttime="20141029 20:49:48.675" status="PASS"></status>
 </kw>
 <kw type="kw" name="BuiltIn.Should Be Equal">
 <doc>Fails if the given objects are unequal.</doc>
 <arguments>
-<arg>dog</arg>
-<arg>${pet}</arg>
+<arg>${length}</arg>
+<arg>7</arg>
 </arguments>
-<msg timestamp="20141029 18:31:01.616" level="INFO">Argument types are:
+<msg level="INFO" timestamp="20141029 20:49:48.691">Argument types are:
 &lt;type 'unicode'&gt;
 &lt;type 'unicode'&gt;</msg>
-<msg timestamp="20141029 18:31:01.631" level="FAIL">dog != VolCalc</msg>
-<status status="FAIL" endtime="20141029 18:31:01.631" starttime="20141029 18:31:01.616"></status>
+<status endtime="20141029 20:49:48.691" starttime="20141029 20:49:48.691" status="PASS"></status>
 </kw>
-<status status="FAIL" endtime="20141029 18:31:01.631" starttime="20141029 18:31:01.600"></status>
+<kw type="kw" name="${width} = Feature1Keywords.Get Width">
+<doc></doc>
+<arguments>
+</arguments>
+<msg level="INFO" timestamp="20141029 20:49:48.691">${width} = 5</msg>
+<status endtime="20141029 20:49:48.691" starttime="20141029 20:49:48.691" status="PASS"></status>
+</kw>
+<kw type="kw" name="BuiltIn.Should Be Equal">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>5</arg>
+<arg>${width}</arg>
+</arguments>
+<msg level="INFO" timestamp="20141029 20:49:48.691">Argument types are:
+&lt;type 'unicode'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status endtime="20141029 20:49:48.691" starttime="20141029 20:49:48.691" status="PASS"></status>
+</kw>
+<kw type="kw" name="${height} = Feature1Keywords.Get Height">
+<doc></doc>
+<arguments>
+</arguments>
+<msg level="INFO" timestamp="20141029 20:49:48.706">${height} = 2</msg>
+<status endtime="20141029 20:49:48.706" starttime="20141029 20:49:48.706" status="PASS"></status>
+</kw>
+<kw type="kw" name="BuiltIn.Should Be Equal">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>2</arg>
+<arg>${height}</arg>
+</arguments>
+<msg level="INFO" timestamp="20141029 20:49:48.706">Argument types are:
+&lt;type 'unicode'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status endtime="20141029 20:49:48.706" starttime="20141029 20:49:48.706" status="PASS"></status>
 </kw>
 <doc></doc>
 <tags>
 </tags>
-<status status="FAIL" critical="yes" endtime="20141029 18:31:01.631" starttime="20141029 18:31:01.569">dog != VolCalc</status>
+<status critical="yes" endtime="20141029 20:49:48.706" starttime="20141029 20:49:48.660" status="PASS"></status>
+</test>
+<test name="Test Case 2" id="s1-t2">
+<kw type="kw" name="Feature1Keywords.Start Program">
+<doc></doc>
+<arguments>
+<arg>dog</arg>
+<arg>2</arg>
+<arg>true</arg>
+<arg>3.5</arg>
+</arguments>
+<status endtime="20141029 20:49:48.706" starttime="20141029 20:49:48.706" status="PASS"></status>
+</kw>
+<kw type="kw" name="${pet} = Feature1Keywords.Get Pet">
+<doc></doc>
+<arguments>
+</arguments>
+<msg level="INFO" timestamp="20141029 20:49:48.722">${pet} = dog</msg>
+<status endtime="20141029 20:49:48.722" starttime="20141029 20:49:48.722" status="PASS"></status>
+</kw>
+<kw type="kw" name="BuiltIn.Should Be Equal">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${pet}</arg>
+<arg>dog</arg>
+</arguments>
+<msg level="INFO" timestamp="20141029 20:49:48.722">Argument types are:
+&lt;type 'unicode'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status endtime="20141029 20:49:48.722" starttime="20141029 20:49:48.722" status="PASS"></status>
+</kw>
+<kw type="kw" name="${number} = Feature1Keywords.Get Number">
+<doc></doc>
+<arguments>
+</arguments>
+<msg level="INFO" timestamp="20141029 20:49:48.722">${number} = 2</msg>
+<status endtime="20141029 20:49:48.722" starttime="20141029 20:49:48.722" status="PASS"></status>
+</kw>
+<kw type="kw" name="BuiltIn.Should Be Equal">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${number}</arg>
+<arg>2</arg>
+</arguments>
+<msg level="INFO" timestamp="20141029 20:49:48.722">Argument types are:
+&lt;type 'unicode'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status endtime="20141029 20:49:48.722" starttime="20141029 20:49:48.722" status="PASS"></status>
+</kw>
+<kw type="kw" name="${rainy} = Feature1Keywords.Get Rainy">
+<doc></doc>
+<arguments>
+</arguments>
+<msg level="INFO" timestamp="20141029 20:49:48.722">${rainy} = true</msg>
+<status endtime="20141029 20:49:48.722" starttime="20141029 20:49:48.722" status="PASS"></status>
+</kw>
+<kw type="kw" name="BuiltIn.Should Be Equal">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${rainy}</arg>
+<arg>true</arg>
+</arguments>
+<msg level="INFO" timestamp="20141029 20:49:48.722">Argument types are:
+&lt;type 'unicode'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status endtime="20141029 20:49:48.722" starttime="20141029 20:49:48.722" status="PASS"></status>
+</kw>
+<kw type="kw" name="${bathrooms} = Feature1Keywords.Get Bathrooms">
+<doc></doc>
+<arguments>
+</arguments>
+<msg level="INFO" timestamp="20141029 20:49:48.738">${bathrooms} = 3.5</msg>
+<status endtime="20141029 20:49:48.738" starttime="20141029 20:49:48.738" status="PASS"></status>
+</kw>
+<kw type="kw" name="BuiltIn.Should Be Equal">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${bathrooms}</arg>
+<arg>3.5</arg>
+</arguments>
+<msg level="INFO" timestamp="20141029 20:49:48.738">Argument types are:
+&lt;type 'unicode'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status endtime="20141029 20:49:48.738" starttime="20141029 20:49:48.738" status="PASS"></status>
+</kw>
+<doc></doc>
+<tags>
+</tags>
+<status critical="yes" endtime="20141029 20:49:48.738" starttime="20141029 20:49:48.706" status="PASS"></status>
 </test>
 <doc></doc>
 <metadata>
 </metadata>
-<status status="FAIL" endtime="20141029 18:31:01.647" starttime="20141029 18:31:00.617"></status>
+<status endtime="20141029 20:49:48.738" starttime="20141029 20:49:48.472" status="PASS"></status>
 </suite>
 <statistics>
 <total>
-<stat pass="0" fail="2">Critical Tests</stat>
-<stat pass="0" fail="2">All Tests</stat>
+<stat pass="2" fail="0">Critical Tests</stat>
+<stat pass="2" fail="0">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat pass="0" id="s1" fail="2" name="Feature1Tests">Feature1Tests</stat>
+<stat pass="2" fail="0" name="Feature1Tests" id="s1">Feature1Tests</stat>
 </suite>
 </statistics>
 <errors>
+<msg level="WARN" timestamp="20141029 20:49:48.675">Keyword 'Get Length' found both from a user created test library 'Feature1Keywords' and Robot Framework standard library 'BuiltIn'. The user created keyword is used. To select explicitly, and to get rid of this warning, use either 'Feature1Keywords.Get Length' or 'BuiltIn.Get Length'.</msg>
 </errors>
 </robot>

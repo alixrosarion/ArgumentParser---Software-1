@@ -1,59 +1,27 @@
 *** Settings ***
 Library           Feature1Keywords
 
-*** User Keywords ***
-Get Length
-    ${length}=		Get Argument Value		length
-	Should Be Equal		7		${length}
-	
-Get Width
-    ${width}=		Get Argument Value		width
-	Should Be Equal		5		${width}
-	
-Get Height
-    ${height}=		Get Argument Value		height
-	Should Be Equal		2		${height}
-	
-Get Pet
-    ${pet}=		Get Argument Value		pet
-	Should Be Equal		dog		${pet}
-	
-Get Number
-    ${number}=		Get Argument Value		number
-	Should Be Equal		2		${number}
-	
-Get Rainy
-    ${rainy}=		Get Argument Value		rainy
-	Should Be Equal		true		${rainy}
-	
-Get Bathrooms
-    ${bathrooms}=		Get Argument Value		bathrooms
-	Should Be Equal		3.5		${bathrooms}
-
 	
 *** Test Cases ***
-Start Program With Arguments 7 5 2
-	Start Program
-	Add Argument		length
-	Add Argument		width
-	Add Argument		height
-	Add Values		VolCalc 7 5 2
-	${length}=   Get Length
-	${width}=   Get Width
-	${height}=   Get Height
+Test Case 1
+	Start Program 	7 	5 	2
+	${length}= 	Get Length
+	Should Be Equal 	${length}	7
+	${width}= 	Get Width
+	Should Be Equal 	5 	${width}
+	${height}= 	Get Height
+	Should Be Equal 	2 	${height}
 	
-Start Program With Arguments dog 2 true 3.5
-	Start Program
-	Add Argument		pet
-	Add Argument		number
-	Add Argument		rainy
-	Add Argument		bathrooms
-	Add Values		VolCalc dog 2 true 3.5
-	${pet}=   Get Pet
-	${number}=   Get Number
-	${rainy}=   Get Rainy
-	${bathrooms}=   Get Bathrooms
-	
+Test Case 2
+	Start Program 	dog 	2 	true 	3.5
+	${pet}= 	Get Pet
+	Should Be Equal 	${pet}		dog
+	${number}= 	Get Number
+	Should Be Equal 	${number}	2
+	${rainy}= 	Get Rainy
+	Should Be Equal 	${rainy}	true
+	${bathrooms}= 	Get Bathrooms
+	Should Be Equal 	${bathrooms}	3.5
 	
 	
 	
