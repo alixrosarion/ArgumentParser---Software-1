@@ -1,6 +1,6 @@
-import edu.jsu.mcis.*;
+//import edu.jsu.mcis.*;
 
-import java.util.*;
+//import java.util.*;
 /*
 public class GroupA
 {
@@ -61,7 +61,7 @@ public class VolCalc
 			int height = parser.getArgumentValue("height");
 			float width = parser.getArgumentValue("width");
 			System.out.println("Volume is " +length * width * height);
-			//System.out.println(parser.getArgumentValue("type"));
+
 			System.exit(1);
 		}
 		catch(Exception e) { e.printStackTrace(); }
