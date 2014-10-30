@@ -251,5 +251,16 @@ public class ArgumentParserTest {
 			assertTrue(false);
 		}
 	}
+
+	@Test
+	public void testXMLParsing()
+	{
+		ArgumentParser tester = new ArgumentParser("arguments.xml");
+		try {
+			tester.parse("VolCalc 7 5 2");
+		} catch (Exception e) {
+			assertTrue(false);
+		}
+	}
 	
 }
