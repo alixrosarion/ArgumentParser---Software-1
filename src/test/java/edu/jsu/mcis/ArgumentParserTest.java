@@ -163,7 +163,7 @@ public class ArgumentParserTest {
 		}catch(NotEnoughArgValuesException  | TooManyArgValuesException | IncorrectTypeException e){
 			assertTrue(false);
 		}
-		assertEquals("sphere", tester.getOptionalValue("--type"));
+		assertEquals("sphere", tester.getArgumentValue("--type"));
 	}
 	
 	@Test
@@ -193,7 +193,7 @@ public class ArgumentParserTest {
 		try
 		{
 			tester.parse("7 5 2");
-			assertEquals("Box", tester.getOptionalValue("--type"));
+			assertEquals("Box", tester.getArgumentValue("--type"));
 		}catch(NotEnoughArgValuesException  | TooManyArgValuesException | IncorrectTypeException e){
 			assertTrue(false);
 		}
@@ -206,7 +206,7 @@ public class ArgumentParserTest {
 		boolean flag = true;
 		try {
 			tester.parse("--type");
-			assertEquals(true, tester.getOptionalValue("--type"));
+			assertEquals(true, tester.getArgumentValue("--type"));
 		} catch (Exception e) {
 			assertTrue(false);
 		}
@@ -218,7 +218,7 @@ public class ArgumentParserTest {
 		tester.addOptArg("--type", 1);
 		try {
 			tester.parse("--type shape");
-			assertEquals("shape", tester.getOptionalValue("--type"));
+			assertEquals("shape", tester.getArgumentValue("--type"));
 		} catch (Exception e) {
 			assertTrue(false);
 		}

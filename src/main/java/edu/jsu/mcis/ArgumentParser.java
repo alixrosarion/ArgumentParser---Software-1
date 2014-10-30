@@ -151,10 +151,10 @@ public class ArgumentParser
 		return argumentList.get(argumentList.indexOf(new OptionalArgument(title))).getDescription();
 	}
 		
-	public Object getOptionalValue(String title)
+	/*public Object getOptionalValue(String title)
 	{
 		return argumentList.get(argumentList.indexOf(new OptionalArgument(title))).getValue();
-	}
+	}*/
 	
 	public String getUnmatched()
 	{
@@ -165,7 +165,7 @@ public class ArgumentParser
 	{
 		
 		Scanner scan = new Scanner(str);
-		//program = scan.next();
+		
 		int countArgValues = 0;
 		unmatched = "unrecognised arguments: ";
 		int numberValues = 0;

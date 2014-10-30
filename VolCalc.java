@@ -48,11 +48,12 @@ public class VolCalc
 		for(String arg:args){
 			read += arg + " ";
 		}
-		System.out.println(read);
+		
 		parser.addArgument("length", CommandLineArgument.Type.Integer, "the length of the box");
 		parser.addArgument("width", CommandLineArgument.Type.Float, "the width of the box");
 		parser.addArgument("height", CommandLineArgument.Type.Integer, "the height of the box");
 		parser.addOptArg("-h", 0);
+		parser.addOptArg("--type", 1, CommandLineArgument.Type.String, "Shape of object to be calculated", "Box");
 		
 		try{
 			parser.parse(read);
@@ -60,6 +61,7 @@ public class VolCalc
 			int height = parser.getArgumentValue("height");
 			float width = parser.getArgumentValue("width");
 			System.out.println("Volume is " +length * width * height);
+			//System.out.println(parser.getArgumentValue("type"));
 			System.exit(1);
 		}
 		catch(Exception e) { e.printStackTrace(); }
