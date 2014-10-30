@@ -1,8 +1,19 @@
 package edu.jsu.mcis;
 
 import java.util.*;
+import java.io.IOException;
+import java.text.ParseException;
 
-public class ArgumentParser
+
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
+
+import org.xml.sax.Attributes;
+import org.xml.sax.SAXException;
+import org.xml.sax.helpers.DefaultHandler;
+
+public class ArgumentParser extends DefaultHandler
 {
 	private List <CommandLineArgument> argumentList;
 	private String unmatched;
@@ -11,6 +22,10 @@ public class ArgumentParser
 	private String programDescription;
 	private String incorrectType;
 	public int countOptionalArguments;
+	private String tmpValue;
+	private String tmpName;
+	private boolean argCheck;
+	private int optArgXML;
 	
 	public ArgumentParser()
 	{
@@ -19,6 +34,105 @@ public class ArgumentParser
 		incorrectType= "";
 		countOptionalArguments = 0;
 	}
+	
+	public ArgumentParser(String file) 
+	{
+		argumentList = new ArrayList<CommandLineArgument>();
+		unmatched ="";
+		incorrectType= "";
+		countOptionalArguments = 0;
+		parseFile(file);
+	}
+	
+	public void parseFile(String filename)
+	{
+		SAXParserFactory factory = SAXParserFactory.newInstance();
+		try{
+			SAXParser parser = factory.newSAXParser();
+			parser.parse(filename, this);
+		}catch (ParserConfigurationException e) {
+            System.out.println("ParserConfig error");
+        } catch (SAXException e) {
+            System.out.println("SAXException : xml not well formed");
+        } catch (IOException e) {
+            System.out.println("IO error");
+        }
+		
+	}
+	
+	public void startElement(String s, String s1, String elementName, Attributes attributes) throws SAXException {
+        if (elementName.equalsIgnoreCase("argument")) argCheck = true;
+		else if (elementName.equalsIgnoreCase("optionalArgument")) argCheck = false;
+    }
+	
+	@Override
+    public void endElement(String s, String s1, String element) throws SAXException {
+		if (argCheck)
+		{
+			if (element.equalsIgnoreCase("name")) {
+				addArgument(tmpValue);
+				tmpName = tmpValue;
+			}
+			if (element.equalsIgnoreCase("type")) {
+				if(tmpValue.equals("Integer")) argumentList.get(argumentList.indexOf(new Argument(tmpName))).setType(CommandLineArgument.Type.Integer);
+				
+				else if(tmpValue.equalsIgnoreCase("String")) argumentList.get(argumentList.indexOf(new Argument(tmpName))).setType(CommandLineArgument.Type.String);
+				
+				else if(tmpValue.equalsIgnoreCase("Float")) argumentList.get(argumentList.indexOf(new Argument(tmpName))).setType(CommandLineArgument.Type.Float);
+				
+				else if(tmpValue.equalsIgnoreCase("Boolean")) argumentList.get(argumentList.indexOf(new Argument(tmpName))).setType(CommandLineArgument.Type.Boolean);
+				
+				else argumentList.get(argumentList.indexOf(new Argument(tmpName))).setType(CommandLineArgument.Type.Unknown); 
+			
+			}
+			if(element.equalsIgnoreCase("description")){
+			   addDescription(tmpName, tmpValue);
+			}
+		}
+		else
+		{
+			if (element.equalsIgnoreCase("name")) {
+				addOptArg(tmpValue, 0);
+				tmpName = tmpValue;
+
+			}
+			if (element.equalsIgnoreCase("numValues")) {
+				optArgXML = Integer.parseInt(tmpValue);
+				argumentList.get(argumentList.indexOf(new OptionalArgument(tmpName, optArgXML))).setNumValues(optArgXML);
+			}
+			if (element.equalsIgnoreCase("description"))
+			{
+				argumentList.get(argumentList.indexOf(new OptionalArgument(tmpName, optArgXML))).setDescription(tmpValue);
+			}
+			if (optArgXML > 0 )
+			{
+				if (element.equalsIgnoreCase("type")) {
+					if(tmpValue.equals("Integer")) argumentList.get(argumentList.indexOf(new OptionalArgument(tmpName, optArgXML))).setType(CommandLineArgument.Type.Integer);
+					
+					else if(tmpValue.equalsIgnoreCase("String")) argumentList.get(argumentList.indexOf(new OptionalArgument(tmpName, optArgXML))).setType(CommandLineArgument.Type.String);
+					
+					else if(tmpValue.equalsIgnoreCase("Float")) argumentList.get(argumentList.indexOf(new OptionalArgument(tmpName, optArgXML))).setType(CommandLineArgument.Type.Float);
+					
+					else if(tmpValue.equalsIgnoreCase("Boolean")) argumentList.get(argumentList.indexOf(new OptionalArgument(tmpName, optArgXML))).setType(CommandLineArgument.Type.Boolean);
+					
+					else argumentList.get(argumentList.indexOf(new OptionalArgument(tmpName, optArgXML))).setType(CommandLineArgument.Type.Unknown); 
+				}
+				
+				if (element.equalsIgnoreCase("value")) {
+					argumentList.get(argumentList.indexOf(new OptionalArgument(tmpName, optArgXML))).addValue(tmpValue);
+				}
+				
+				if (element.equalsIgnoreCase("shortName")) {
+					argumentList.get(argumentList.indexOf(new OptionalArgument(tmpName, optArgXML))).setShort(tmpValue);
+				}
+			}
+		}
+    }
+	
+	@Override
+    public void characters(char[] ac, int i, int j) throws SAXException {
+        tmpValue = new String(ac, i, j);
+    }
 	
 	public int getSize()
 	{
