@@ -23,3 +23,7 @@ Test Case 2
 	${bathrooms}= 	Get 	Bathrooms
 	Should Be Equal 	${bathrooms}	3.5
 	
+Test Case 3
+	Start Program With Optionals   7 --type box 5 2
+	${type}= 	Get   --Type
+	Should Be Equal   ${type}   box

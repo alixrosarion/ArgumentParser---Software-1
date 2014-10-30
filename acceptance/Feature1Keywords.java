@@ -25,6 +25,15 @@ public class Feature1Keywords
 		parser.addArgument("bathrooms");
 		addValues(se);
 	}
+	
+	public void startProgramWithOptionals(String args) {
+		parser = new ArgumentParser();
+		parser.addArgument("length");
+		parser.addArgument("width");
+		parser.addArgument("height");
+		parser.addOptArg("--type", 1);
+		addValues(args);
+	}
 
 	public void addArgument(String arg)
 	{
@@ -41,6 +50,7 @@ public class Feature1Keywords
 
 	public String get(String s)
 	{
+		
 		return parser.getArgumentValue(s.toLowerCase()).toString();
 	}
 }
