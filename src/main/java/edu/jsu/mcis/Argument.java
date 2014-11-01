@@ -9,7 +9,7 @@ public class Argument extends CommandLineArgument
 		description = "";
 	}
 	
-	public Argument(String title, Type type, String description)
+	public Argument(String title, CommandLineArgument.Type type, String description)
 	{
 		this.title = title;
 		this.type = type;
@@ -30,6 +30,7 @@ public class Argument extends CommandLineArgument
 	{
 		return title;
 	}
+	
 	public String toString()
 	{
 		String result;
@@ -46,10 +47,12 @@ public class Argument extends CommandLineArgument
 			
 		return result;
 	}
+	
 	public int getNumValues()
 	{
 		return 0;
 	}
+	
 	public String getShort()
 	{
 		return "";

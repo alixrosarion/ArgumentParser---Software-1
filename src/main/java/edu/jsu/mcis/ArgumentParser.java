@@ -18,8 +18,8 @@ public class ArgumentParser extends DefaultHandler
 	private List <CommandLineArgument> argumentList;
 	private String unmatched;
 	private String help;
-	private String program;
-	private String programDescription;
+	public String program;
+	public String programDescription;
 	private String incorrectType;
 	public int countOptionalArguments;
 	private String tmpValue;
@@ -139,8 +139,9 @@ public class ArgumentParser extends DefaultHandler
 		return argumentList.size();
 	}
 	
-	public void addProgram(String description)
+	public void addProgram(String name, String description)
 	{
+		program = name;
 		programDescription = description;
 	}
 	
@@ -266,11 +267,6 @@ public class ArgumentParser extends DefaultHandler
 	{
 		return argumentList.get(argumentList.indexOf(new OptionalArgument(title))).getDescription();
 	}
-		
-	/*public Object getOptionalValue(String title)
-	{
-		return argumentList.get(argumentList.indexOf(new OptionalArgument(title))).getValue();
-	}*/
 	
 	public String getUnmatched()
 	{
@@ -293,7 +289,6 @@ public class ArgumentParser extends DefaultHandler
 				if (extra.equals("-h"))
 				{
 					System.out.println(getHelpText());
-					System.exit(0);
 				}
 				else if(argumentList.get(argumentList.indexOf(new OptionalArgument(extra))).getNumValues() == 0)
 				{
@@ -343,6 +338,7 @@ public class ArgumentParser extends DefaultHandler
 				throw new TooManyArgValuesException(unmatched);
 		}	
 	}
+	
 	public String getHelpText()
 	{
 		String argumentTitles = "";
