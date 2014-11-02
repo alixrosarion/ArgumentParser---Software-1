@@ -21,27 +21,30 @@ public class XMLParser extends DefaultHandler
 	private int optArgXML;
 	private String tmpValue;
 	private ArgumentParser argPars;
+	private List <CommandLineArgument> argumentList; //Make this one keep an ArgumentList as well.
+
 
 	public XMLParser()
 	{
-		argPars = new ArgumentParser();
+		argPars = new ArgumentParser();	
 	}
 
 	public void parseFile(String filename)
-		{
-			SAXParserFactory factory = SAXParserFactory.newInstance();
-			try{
-				SAXParser parser = factory.newSAXParser();
-				parser.parse(filename, this);
-			}catch (ParserConfigurationException e) {
-				System.out.println("ParserConfig error");
-			} catch (SAXException e) {
-				System.out.println("SAXException : xml not well formed");
-			} catch (IOException e) {
-				System.out.println("IO error");
-			}
-			
+	{
+		SAXParserFactory factory = SAXParserFactory.newInstance();
+		try{
+			SAXParser parser = factory.newSAXParser();
+			parser.parse(filename, this);
+		}catch (ParserConfigurationException e) {
+			System.out.println("ParserConfig error");
+		} catch (SAXException e) {
+			System.out.println("SAXException : xml not well formed");
+		} catch (IOException e) {
+			System.out.println("IO error");
 		}
+		//Get the argumentList from the argPars you created in the constructor and put it in the local copy
+		argumentList = argPars.getArgumentList(); // this is a temporary fix, I don't have brighter ideas now.
+	}
 	
 	public void startElement(String s, String s1, String elementName, Attributes attributes) throws SAXException {
         if (elementName.equalsIgnoreCase("argument")) argCheck = true;
@@ -116,4 +119,8 @@ public class XMLParser extends DefaultHandler
     public void characters(char[] ac, int i, int j) throws SAXException {
         tmpValue = new String(ac, i, j);
     }
+	public List getArgumentList()
+	{
+		return argumentList;
+	}
 }

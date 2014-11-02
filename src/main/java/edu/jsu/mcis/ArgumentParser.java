@@ -7,10 +7,10 @@ public class ArgumentParser
 	public List <CommandLineArgument> argumentList;
 	private String unmatched;
 	private String help;
-	public String program;
-	public String programDescription;
+	private String program;
+	private String programDescription;
 	private String incorrectType;
-	public int countOptionalArguments;
+	private int countOptionalArguments;
 	private XMLParser xml;
 	
 	
@@ -31,6 +31,7 @@ public class ArgumentParser
 		countOptionalArguments = 0;
 		xml = new XMLParser();
 		xml.parseFile(file);
+		argumentList = xml.getArgumentList();
 	}
 	
 	public int getSize()
@@ -130,7 +131,7 @@ public class ArgumentParser
 		argumentList.get(argumentList.indexOf(new Argument(title))).setDescription(description);
 	}
 	
-	public Object getArgumentDescription(String title)
+	public String getArgumentDescription(String title)
 	{
 		return argumentList.get(argumentList.indexOf(new Argument(title))).getDescription();
 	}
@@ -163,7 +164,7 @@ public class ArgumentParser
 		argumentList.get(argumentList.indexOf(new OptionalArgument(title))).addValue(value);
 	}
 	
-	public Object getDescription(String title)
+	public String getDescription(String title)
 	{
 		return argumentList.get(argumentList.indexOf(new OptionalArgument(title))).getDescription();
 	}
@@ -172,7 +173,18 @@ public class ArgumentParser
 	{
 		return unmatched;
 	}
-	
+	public String getProgramName()
+	{
+		return program;
+	}
+	public String getProgramDescription()
+	{
+		return programDescription;
+	}
+	public List getArgumentList()
+	{
+		return argumentList;
+	}
 	public void parse(String str) throws NotEnoughArgValuesException, TooManyArgValuesException, IncorrectTypeException
 	{
 		
