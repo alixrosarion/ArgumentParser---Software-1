@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 2.8.5 (Jython 2.5.3 on java1.7.0_51)" generated="20141031 21:19:11.031">
-<suite source="/Users/Nikki/github/GroupA/acceptance/Feature1Tests.txt" id="s1" name="Feature1Tests">
+<robot generator="Robot 2.8.5 (Jython 2.5.3 on java1.7.0_71)" generated="20141101 19:04:46.581">
+<suite source="C:\Users\Sari\Documents\GitHub\GroupA\acceptance\Feature1Tests.txt" id="s1" name="Feature1Tests">
 <test id="s1-t1" name="Test Case 1">
 <kw type="kw" name="Feature1Keywords.Start Program">
 <doc></doc>
@@ -9,15 +9,15 @@
 <arg>5</arg>
 <arg>2</arg>
 </arguments>
-<status status="PASS" endtime="20141031 21:19:11.777" starttime="20141031 21:19:11.757"></status>
+<status status="PASS" endtime="20141101 19:04:48.407" starttime="20141101 19:04:46.945"></status>
 </kw>
 <kw type="kw" name="${length} = Feature1Keywords.Get">
 <doc></doc>
 <arguments>
 <arg>Length</arg>
 </arguments>
-<msg timestamp="20141031 21:19:11.789" level="INFO">${length} = 7</msg>
-<status status="PASS" endtime="20141031 21:19:11.787" starttime="20141031 21:19:11.781"></status>
+<msg timestamp="20141101 19:04:48.438" level="INFO">${length} = 7</msg>
+<status status="PASS" endtime="20141101 19:04:48.438" starttime="20141101 19:04:48.438"></status>
 </kw>
 <kw type="kw" name="BuiltIn.Should Be Equal">
 <doc>Fails if the given objects are unequal.</doc>
@@ -25,18 +25,18 @@
 <arg>${length}</arg>
 <arg>7</arg>
 </arguments>
-<msg timestamp="20141031 21:19:11.800" level="INFO">Argument types are:
+<msg timestamp="20141101 19:04:48.438" level="INFO">Argument types are:
 &lt;type 'unicode'&gt;
 &lt;type 'unicode'&gt;</msg>
-<status status="PASS" endtime="20141031 21:19:11.802" starttime="20141031 21:19:11.793"></status>
+<status status="PASS" endtime="20141101 19:04:48.438" starttime="20141101 19:04:48.438"></status>
 </kw>
 <kw type="kw" name="${width} = Feature1Keywords.Get">
 <doc></doc>
 <arguments>
 <arg>Width</arg>
 </arguments>
-<msg timestamp="20141031 21:19:11.810" level="INFO">${width} = 5</msg>
-<status status="PASS" endtime="20141031 21:19:11.808" starttime="20141031 21:19:11.805"></status>
+<msg timestamp="20141101 19:04:48.454" level="INFO">${width} = 5</msg>
+<status status="PASS" endtime="20141101 19:04:48.454" starttime="20141101 19:04:48.454"></status>
 </kw>
 <kw type="kw" name="BuiltIn.Should Be Equal">
 <doc>Fails if the given objects are unequal.</doc>
@@ -44,18 +44,18 @@
 <arg>${width}</arg>
 <arg>5</arg>
 </arguments>
-<msg timestamp="20141031 21:19:11.820" level="INFO">Argument types are:
+<msg timestamp="20141101 19:04:48.454" level="INFO">Argument types are:
 &lt;type 'unicode'&gt;
 &lt;type 'unicode'&gt;</msg>
-<status status="PASS" endtime="20141031 21:19:11.824" starttime="20141031 21:19:11.814"></status>
+<status status="PASS" endtime="20141101 19:04:48.454" starttime="20141101 19:04:48.454"></status>
 </kw>
 <kw type="kw" name="${height} = Feature1Keywords.Get">
 <doc></doc>
 <arguments>
 <arg>Height</arg>
 </arguments>
-<msg timestamp="20141031 21:19:11.834" level="INFO">${height} = 2</msg>
-<status status="PASS" endtime="20141031 21:19:11.833" starttime="20141031 21:19:11.828"></status>
+<msg timestamp="20141101 19:04:48.454" level="INFO">${height} = 2</msg>
+<status status="PASS" endtime="20141101 19:04:48.454" starttime="20141101 19:04:48.454"></status>
 </kw>
 <kw type="kw" name="BuiltIn.Should Be Equal">
 <doc>Fails if the given objects are unequal.</doc>
@@ -63,15 +63,15 @@
 <arg>2</arg>
 <arg>${height}</arg>
 </arguments>
-<msg timestamp="20141031 21:19:11.846" level="INFO">Argument types are:
+<msg timestamp="20141101 19:04:48.454" level="INFO">Argument types are:
 &lt;type 'unicode'&gt;
 &lt;type 'unicode'&gt;</msg>
-<status status="PASS" endtime="20141031 21:19:11.849" starttime="20141031 21:19:11.839"></status>
+<status status="PASS" endtime="20141101 19:04:48.454" starttime="20141101 19:04:48.454"></status>
 </kw>
 <doc></doc>
 <tags>
 </tags>
-<status status="PASS" critical="yes" endtime="20141031 21:19:11.853" starttime="20141031 21:19:11.747"></status>
+<status status="PASS" critical="yes" endtime="20141101 19:04:48.454" starttime="20141101 19:04:46.940"></status>
 </test>
 <test id="s1-t2" name="Test Case 2">
 <kw type="kw" name="Feature1Keywords.Start Program">
@@ -82,15 +82,15 @@
 <arg>true</arg>
 <arg>3.5</arg>
 </arguments>
-<status status="PASS" endtime="20141031 21:19:11.878" starttime="20141031 21:19:11.870"></status>
+<status status="PASS" endtime="20141101 19:04:48.470" starttime="20141101 19:04:48.470"></status>
 </kw>
 <kw type="kw" name="${pet} = Feature1Keywords.Get">
 <doc></doc>
 <arguments>
 <arg>Pet</arg>
 </arguments>
-<msg timestamp="20141031 21:19:11.889" level="INFO">${pet} = dog</msg>
-<status status="PASS" endtime="20141031 21:19:11.887" starttime="20141031 21:19:11.882"></status>
+<msg timestamp="20141101 19:04:48.470" level="INFO">${pet} = dog</msg>
+<status status="PASS" endtime="20141101 19:04:48.470" starttime="20141101 19:04:48.470"></status>
 </kw>
 <kw type="kw" name="BuiltIn.Should Be Equal">
 <doc>Fails if the given objects are unequal.</doc>
@@ -98,18 +98,18 @@
 <arg>${pet}</arg>
 <arg>dog</arg>
 </arguments>
-<msg timestamp="20141031 21:19:11.901" level="INFO">Argument types are:
+<msg timestamp="20141101 19:04:48.470" level="INFO">Argument types are:
 &lt;type 'unicode'&gt;
 &lt;type 'unicode'&gt;</msg>
-<status status="PASS" endtime="20141031 21:19:11.904" starttime="20141031 21:19:11.894"></status>
+<status status="PASS" endtime="20141101 19:04:48.470" starttime="20141101 19:04:48.470"></status>
 </kw>
 <kw type="kw" name="${number} = Feature1Keywords.Get">
 <doc></doc>
 <arguments>
 <arg>Number</arg>
 </arguments>
-<msg timestamp="20141031 21:19:11.913" level="INFO">${number} = 2</msg>
-<status status="PASS" endtime="20141031 21:19:11.912" starttime="20141031 21:19:11.907"></status>
+<msg timestamp="20141101 19:04:48.485" level="INFO">${number} = 2</msg>
+<status status="PASS" endtime="20141101 19:04:48.485" starttime="20141101 19:04:48.485"></status>
 </kw>
 <kw type="kw" name="BuiltIn.Should Be Equal">
 <doc>Fails if the given objects are unequal.</doc>
@@ -117,18 +117,18 @@
 <arg>${number}</arg>
 <arg>2</arg>
 </arguments>
-<msg timestamp="20141031 21:19:11.922" level="INFO">Argument types are:
+<msg timestamp="20141101 19:04:48.485" level="INFO">Argument types are:
 &lt;type 'unicode'&gt;
 &lt;type 'unicode'&gt;</msg>
-<status status="PASS" endtime="20141031 21:19:11.926" starttime="20141031 21:19:11.916"></status>
+<status status="PASS" endtime="20141101 19:04:48.485" starttime="20141101 19:04:48.485"></status>
 </kw>
 <kw type="kw" name="${rainy} = Feature1Keywords.Get">
 <doc></doc>
 <arguments>
 <arg>Rainy</arg>
 </arguments>
-<msg timestamp="20141031 21:19:11.936" level="INFO">${rainy} = true</msg>
-<status status="PASS" endtime="20141031 21:19:11.934" starttime="20141031 21:19:11.929"></status>
+<msg timestamp="20141101 19:04:48.485" level="INFO">${rainy} = true</msg>
+<status status="PASS" endtime="20141101 19:04:48.485" starttime="20141101 19:04:48.485"></status>
 </kw>
 <kw type="kw" name="BuiltIn.Should Be Equal">
 <doc>Fails if the given objects are unequal.</doc>
@@ -136,18 +136,18 @@
 <arg>${rainy}</arg>
 <arg>true</arg>
 </arguments>
-<msg timestamp="20141031 21:19:11.948" level="INFO">Argument types are:
+<msg timestamp="20141101 19:04:48.485" level="INFO">Argument types are:
 &lt;type 'unicode'&gt;
 &lt;type 'unicode'&gt;</msg>
-<status status="PASS" endtime="20141031 21:19:11.951" starttime="20141031 21:19:11.941"></status>
+<status status="PASS" endtime="20141101 19:04:48.485" starttime="20141101 19:04:48.485"></status>
 </kw>
 <kw type="kw" name="${bathrooms} = Feature1Keywords.Get">
 <doc></doc>
 <arguments>
 <arg>Bathrooms</arg>
 </arguments>
-<msg timestamp="20141031 21:19:11.960" level="INFO">${bathrooms} = 3.5</msg>
-<status status="PASS" endtime="20141031 21:19:11.959" starttime="20141031 21:19:11.954"></status>
+<msg timestamp="20141101 19:04:48.501" level="INFO">${bathrooms} = 3.5</msg>
+<status status="PASS" endtime="20141101 19:04:48.501" starttime="20141101 19:04:48.485"></status>
 </kw>
 <kw type="kw" name="BuiltIn.Should Be Equal">
 <doc>Fails if the given objects are unequal.</doc>
@@ -155,15 +155,15 @@
 <arg>${bathrooms}</arg>
 <arg>3.5</arg>
 </arguments>
-<msg timestamp="20141031 21:19:11.970" level="INFO">Argument types are:
+<msg timestamp="20141101 19:04:48.501" level="INFO">Argument types are:
 &lt;type 'unicode'&gt;
 &lt;type 'unicode'&gt;</msg>
-<status status="PASS" endtime="20141031 21:19:11.974" starttime="20141031 21:19:11.964"></status>
+<status status="PASS" endtime="20141101 19:04:48.501" starttime="20141101 19:04:48.501"></status>
 </kw>
 <doc></doc>
 <tags>
 </tags>
-<status status="PASS" critical="yes" endtime="20141031 21:19:11.978" starttime="20141031 21:19:11.858"></status>
+<status status="PASS" critical="yes" endtime="20141101 19:04:48.501" starttime="20141101 19:04:48.470"></status>
 </test>
 <test id="s1-t3" name="Test Case 3">
 <kw type="kw" name="Feature1Keywords.Start Program With Optionals">
@@ -171,15 +171,15 @@
 <arguments>
 <arg>7 --type box 5 2</arg>
 </arguments>
-<status status="PASS" endtime="20141031 21:19:12.003" starttime="20141031 21:19:11.997"></status>
+<status status="PASS" endtime="20141101 19:04:48.501" starttime="20141101 19:04:48.501"></status>
 </kw>
 <kw type="kw" name="${type} = Feature1Keywords.Get">
 <doc></doc>
 <arguments>
 <arg>--Type</arg>
 </arguments>
-<msg timestamp="20141031 21:19:12.016" level="INFO">${type} = box</msg>
-<status status="PASS" endtime="20141031 21:19:12.015" starttime="20141031 21:19:12.010"></status>
+<msg timestamp="20141101 19:04:48.516" level="INFO">${type} = box</msg>
+<status status="PASS" endtime="20141101 19:04:48.516" starttime="20141101 19:04:48.501"></status>
 </kw>
 <kw type="kw" name="BuiltIn.Should Be Equal">
 <doc>Fails if the given objects are unequal.</doc>
@@ -187,20 +187,20 @@
 <arg>${type}</arg>
 <arg>box</arg>
 </arguments>
-<msg timestamp="20141031 21:19:12.027" level="INFO">Argument types are:
+<msg timestamp="20141101 19:04:48.516" level="INFO">Argument types are:
 &lt;type 'unicode'&gt;
 &lt;type 'unicode'&gt;</msg>
-<status status="PASS" endtime="20141031 21:19:12.031" starttime="20141031 21:19:12.020"></status>
+<status status="PASS" endtime="20141101 19:04:48.516" starttime="20141101 19:04:48.516"></status>
 </kw>
 <doc></doc>
 <tags>
 </tags>
-<status status="PASS" critical="yes" endtime="20141031 21:19:12.035" starttime="20141031 21:19:11.984"></status>
+<status status="PASS" critical="yes" endtime="20141101 19:04:48.516" starttime="20141101 19:04:48.501"></status>
 </test>
 <doc></doc>
 <metadata>
 </metadata>
-<status status="PASS" endtime="20141031 21:19:12.049" starttime="20141031 21:19:11.040"></status>
+<status status="PASS" endtime="20141101 19:04:48.516" starttime="20141101 19:04:46.596"></status>
 </suite>
 <statistics>
 <total>

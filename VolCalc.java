@@ -1,4 +1,4 @@
-import edu.jsu.mcis.*;
+/*import edu.jsu.mcis.*;
 
 import java.util.*;
 
@@ -34,7 +34,7 @@ public class GroupA
 		}catch(NoSuchElementException e){}
 	}
 }
-/*
+*/
 import edu.jsu.mcis.*;
 
 import java.util.*;
@@ -49,17 +49,17 @@ public class VolCalc
 			read += arg + " ";
 		}
 		
-		parser.addArgument("length", CommandLineArgument.Type.Integer, "the length of the box");
+/*		parser.addArgument("length", CommandLineArgument.Type.Integer, "the length of the box");
 		parser.addArgument("width", CommandLineArgument.Type.Float, "the width of the box");
 		parser.addArgument("height", CommandLineArgument.Type.Integer, "the height of the box");
 		parser.addOptArg("-h", 0);
-		parser.addOptArg("--type", 1, CommandLineArgument.Type.String, "Shape of object to be calculated", "Box");
+		parser.addOptArg("--type", 1, CommandLineArgument.Type.String, "Shape of object to be calculated", "Box");*/
 		
 		try{
 			parser.parse(read);
-            int length = parser.getArgumentValue("length");
+/*            int length = parser.getArgumentValue("length");
 			int height = parser.getArgumentValue("height");
-			float width = parser.getArgumentValue("width");
+			float width = parser.getArgumentValue("width");*/
 			System.out.println("Volume is " +length * width * height);
 
 			System.exit(1);
@@ -69,4 +69,4 @@ public class VolCalc
 		
 	}
 }
-*/
+

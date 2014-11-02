@@ -253,15 +253,15 @@ public class ArgumentParserTest {
 		assertEquals("Calculates volume of an object", tester.programDescription);
 	}
 
-/*	@Test
+//	@Test	THIS ONE IS NOOOOOOT WORKING ALIX!
 	public void testXMLParsing()
 	{
-		ArgumentParser tester2 = new ArgumentParser("arguments.xml");
+		ArgumentParser tester = new ArgumentParser("arguments.xml");
+		assertEquals(2, tester.getSize());
 		try {
-			tester.parse("VolCalc 7 5 2");
+			tester.parse("7 5 2");
 		} catch (Exception e) {
 			assertTrue(false);
 		}
-	}
-*/	
+	}	
 }
