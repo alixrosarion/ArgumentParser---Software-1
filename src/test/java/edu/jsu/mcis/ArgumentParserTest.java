@@ -253,15 +253,14 @@ public class ArgumentParserTest {
 		assertEquals("Calculates volume of an object", tester.getProgramDescription());
 	}
 
-	@Test	//Passes now but the exception is being caught because you are not passing in enough ArgumentValues
+	@Test
 	public void testXMLParsing()
 	{
-		ArgumentParser tester = new ArgumentParser("arguments.xml");
-		assertEquals(5, tester.getSize());
+		XMLParser tester = new XMLParser("arguments.xml");
 		try {
-			tester.parse("7 5 2");
+			tester.argParsReturn().parse("7.0f true 2 asd 123");
 		} catch (Exception e) {
-			//assertTrue(false);
+			assertTrue(false);
 		}
 	}	
 }

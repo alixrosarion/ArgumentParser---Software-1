@@ -15,20 +15,25 @@ import org.xml.sax.helpers.DefaultHandler;
 
 public class XMLParser extends DefaultHandler
 {
-
 	private String tmpName;
 	private boolean argCheck;
 	private int optArgXML;
 	private String tmpValue;
 	private ArgumentParser argPars;
 	private List <CommandLineArgument> argumentList; //Make this one keep an ArgumentList as well.
+	private int optCount;
 
-
-	public XMLParser()
+	public XMLParser(String file)
 	{
 		argPars = new ArgumentParser();	
+		parseFile(file);
 	}
 
+	public ArgumentParser argParsReturn()
+	{
+		return argPars;
+	}
+	
 	public void parseFile(String filename)
 	{
 		SAXParserFactory factory = SAXParserFactory.newInstance();
@@ -80,7 +85,6 @@ public class XMLParser extends DefaultHandler
 			if (element.equalsIgnoreCase("name")) {
 				argPars.addOptArg(tmpValue, 0);
 				tmpName = tmpValue;
-
 			}
 			if (element.equalsIgnoreCase("numValues")) {
 				optArgXML = Integer.parseInt(tmpValue);
@@ -119,8 +123,4 @@ public class XMLParser extends DefaultHandler
     public void characters(char[] ac, int i, int j) throws SAXException {
         tmpValue = new String(ac, i, j);
     }
-	public List getArgumentList()
-	{
-		return argumentList;
-	}
 }

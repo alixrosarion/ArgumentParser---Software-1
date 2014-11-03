@@ -10,8 +10,7 @@ public class ArgumentParser
 	private String program;
 	private String programDescription;
 	private String incorrectType;
-	private int countOptionalArguments;
-	private XMLParser xml;
+	private int countOptionalArguments = 0;
 	
 	
 	
@@ -20,22 +19,10 @@ public class ArgumentParser
 		argumentList = new ArrayList<CommandLineArgument>();
 		unmatched ="";
 		incorrectType= "";
-		countOptionalArguments = 0;
-	}
-	
-	public ArgumentParser(String file) 
-	{
-		argumentList = new ArrayList<CommandLineArgument>();
-		unmatched ="";
-		incorrectType= "";
-		countOptionalArguments = 0;
-		xml = new XMLParser();
-		xml.parseFile(file);
-		argumentList = xml.getArgumentList();
 	}
 	
 	public int getSize()
-	{
+	{	
 		return argumentList.size();
 	}
 	
@@ -189,7 +176,6 @@ public class ArgumentParser
 	{
 		
 		Scanner scan = new Scanner(str);
-		
 		int countArgValues = 0;
 		unmatched = "unrecognised arguments: ";
 		int numberValues = 0;
