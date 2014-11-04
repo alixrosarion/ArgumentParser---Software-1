@@ -22,10 +22,10 @@ public class VolCalc
 		try{
 			parser.parse(read);
 			try{
-            //int length = parser.getArgumentValue("length");
-			//int height = parser.getArgumentValue("height");
-			//float width = parser.getArgumentValue("width");
-			System.out.println("Volume is " + /*parser.getArgumentValue("length") * parser.getArgumentValue("width") **/ CommandLineArgument.getValue("height"));
+            int length = parser.getArgumentValue("length");
+			int height = parser.getArgumentValue("height");
+			float width = parser.getArgumentValue("width");
+			System.out.println("Volume is " + height * width * length);
 			
 			}
 			catch(NullPointerException e){}

@@ -23,7 +23,7 @@ length float		length of the box
 width float		width of the box
 height float		height of the box
 
-Ëusage: java VolCalc length width height 
+Ëusage: java VolCalc length width height 
 Calculate the volume of a box
 Positional Arguments:
 length integer		the length of the box

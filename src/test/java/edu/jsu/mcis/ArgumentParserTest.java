@@ -133,7 +133,16 @@ public class ArgumentParserTest {
 		assertEquals(true, tester.getArgumentValue("rainy"));
 		assertEquals("someString", tester.getArgumentValue("dog"));
 	}
-	
+	@Test
+	public void testCatchWrongTypeForInteger()
+	{
+		tester.addArgument("length", CommandLineArgument.Type.Integer);
+		try
+		{
+			tester.parse("something");
+		}catch(NotEnoughArgValuesException  | TooManyArgValuesException | IncorrectTypeException e){
+		}
+	}
 	@Test
 	public void testReadingOptionalArgumentAtEnd ()
 	{
@@ -258,7 +267,7 @@ public class ArgumentParserTest {
 	{
 		XMLParser tester = new XMLParser("arguments.xml");
 		try {
-			tester.argParsReturn().parse("2 2 2");
+			tester.getArgumentParser().parse("2 2 2");
 		} catch (Exception e) {
 			assertTrue(false);
 		}
@@ -269,7 +278,7 @@ public class ArgumentParserTest {
 	{
 		XMLParser tester = new XMLParser("arguments.xml");
 		try {
-			tester.argParsReturn().parse("2 2 2 -h -t sphere");
+			tester.getArgumentParser().parse("2 2 2 -h -t sphere");
 		} catch (Exception e) {
 			assertTrue(false);
 		}
@@ -280,7 +289,7 @@ public class ArgumentParserTest {
 	{
 		XMLParser tester = new XMLParser("argumentsType.xml");
 		try {
-			tester.argParsReturn().parse("2 2 asd true");
+			tester.getArgumentParser().parse("2 2 asd true");
 		} catch (Exception e) {
 			assertTrue(false);
 		}
@@ -292,7 +301,7 @@ public class ArgumentParserTest {
 	{
 		XMLParser tester = new XMLParser("argumentsType.xml");
 		try {
-			tester.argParsReturn().parse("2 2 asd true -h --type STRING --int 8 --float 2");
+			tester.getArgumentParser().parse("2 2 asd true -h --type STRING --int 8 --float 2");
 		} catch (Exception e) {
 			assertTrue(false);
 		}

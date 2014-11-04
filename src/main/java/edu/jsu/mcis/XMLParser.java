@@ -19,7 +19,7 @@ public class XMLParser extends DefaultHandler
 	private boolean argCheck;
 	private int optArgXML;
 	private String tmpValue;
-	public ArgumentParser argPars;
+	private ArgumentParser argPars;
 	private List <CommandLineArgument> argumentList;
 	private int optCount;
 
@@ -29,11 +29,10 @@ public class XMLParser extends DefaultHandler
 		parseFile(file);
 	}
 
-	public ArgumentParser argParsReturn()
+	public ArgumentParser getArgumentParser()
 	{
 		return argPars;
 	}
-	
 	public void parseFile(String filename)
 	{
 		SAXParserFactory factory = SAXParserFactory.newInstance();
