@@ -19,7 +19,7 @@ public class XMLParser extends DefaultHandler
 	private boolean argCheck;
 	private int optArgXML;
 	private String tmpValue;
-	private ArgumentParser argPars;
+	public ArgumentParser argPars;
 	private List <CommandLineArgument> argumentList; //Make this one keep an ArgumentList as well.
 	private int optCount;
 

@@ -258,7 +258,7 @@ public class ArgumentParserTest {
 	{
 		XMLParser tester = new XMLParser("arguments.xml");
 		try {
-			tester.argParsReturn().parse("7.0f true 2 asd 123");
+			tester.argParsReturn().parse("2 2 2");
 		} catch (Exception e) {
 			assertTrue(false);
 		}

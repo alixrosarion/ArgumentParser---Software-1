@@ -43,7 +43,7 @@ public class VolCalc
 {
 	public static void main(String [] args) 
 	{
-		ArgumentParser parser = new ArgumentParser("arguments.xml");
+		XMLParser parser = new XMLParser("arguments.xml");
 		String read = "";
 		for(String arg:args){
 			read += arg + " ";
@@ -56,11 +56,11 @@ public class VolCalc
 		parser.addOptArg("--type", 1, CommandLineArgument.Type.String, "Shape of object to be calculated", "Box");*/
 		
 		try{
-			parser.parse(read);
-/*            int length = parser.getArgumentValue("length");
-			int height = parser.getArgumentValue("height");
-			float width = parser.getArgumentValue("width");*/
-			System.out.println("Volume is " +length * width * height);
+			parser.argPars.parse(read);
+            float length = parser.argPars.getArgumentValue("length");
+			float height = parser.argPars.getArgumentValue("height");
+			float width = parser.argPars.getArgumentValue("width");
+			System.out.println("Volume is " + length * width * height);
 
 			System.exit(1);
 		}

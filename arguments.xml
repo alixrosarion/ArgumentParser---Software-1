@@ -8,28 +8,14 @@
 	
 	<argument>
 		<name>width</name>
-		<type>boolean</type>
+		<type>float</type>
 		<required/>
 		<description>width of the box</description>
 	</argument>
 	
 	<argument>
 		<name>height</name>
-		<type>Integer</type>
-		<required/>
-		<description>height of the box</description>
-	</argument>
-	
-	<argument>
-		<name>height</name>
-		<type>string</type>
-		<required/>
-		<description>height of the box</description>
-	</argument>
-	
-	<argument>
-		<name>height</name>
-		<type>adqwe</type>
+		<type>float</type>
 		<required/>
 		<description>height of the box</description>
 	</argument>
