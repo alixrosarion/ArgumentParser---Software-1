@@ -97,22 +97,22 @@ public class ArgumentParserTest {
 		assertEquals("the width of the box", tester.getArgumentDescription("width"));
 	}
 	
-	//@Test
+	@Test
 	public void testOptionText(){
-		tester.addProgram("Volcalc","Calculate the volume of a box");
-		tester.addArgument("length");
-		tester.addArgument("width");
-		tester.addArgument("height");
+		tester.addProgram("VolCalc","Calculate the volume of a box");
+		tester.addArgument("length", CommandLineArgument.Type.Integer);
+		tester.addArgument("width",CommandLineArgument.Type.Float);
+		tester.addArgument("height",CommandLineArgument.Type.Float);
 		tester.addDescription("length", "the length of the box");
 		tester.addDescription("width", "the width of the box");
 		tester.addDescription("height","the height of the box");
 		tester.addOptArg("-h", 0);
 		try
 		{
-			tester.parse("7 5 2 -h");
+			tester.parse("-h");
 		}catch(NotEnoughArgValuesException  | TooManyArgValuesException | IncorrectTypeException e){
 			assertTrue(false);}
-		assertEquals("usage: java VolCalc length width height \nCalculate the volume of a box\nPositional Arguments:\nlength\t\tthe length of the box\nwidth\t\tthe width of the box\nheight\t\tthe height of the box\n", tester.getHelpText());
+		assertEquals("usage: java VolCalc length width height \nCalculate the volume of a box\nPositional Arguments:\nlength integer\t\tthe length of the box\nwidth float\t\tthe width of the box\nheight float\t\tthe height of the box\n", tester.getHelpText());
 	}
 	
 	@Test

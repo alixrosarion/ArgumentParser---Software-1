@@ -11,9 +11,7 @@ public class ArgumentParser
 	private String programDescription;
 	private String incorrectType;
 	private int countOptionalArguments = 0;
-	
-	
-	
+		
 	public ArgumentParser()
 	{
 		argumentList = new ArrayList<CommandLineArgument>();
@@ -187,6 +185,8 @@ public class ArgumentParser
 				if (extra.equals("-h"))
 				{
 					System.out.println(getHelpText());
+					return;
+					//System.out.println(getHelpText());
 				}
 				else if(argumentList.get(argumentList.indexOf(new OptionalArgument(extra))).getNumValues() == 0)
 				{
@@ -246,7 +246,7 @@ public class ArgumentParser
 			if (!a.getTitle().contains("-"))
 			{
 				argumentTitles += a.getTitle() + " ";
-				description += a.getTitle() + "\t\t"+a.getDescription() + "\n";
+				description += a.getTitle() +" "+ a.getType().toString().toLowerCase()+"\t\t"+a.getDescription() + "\n";
 			}
 		}
 		help = "usage: java " + program + " " + argumentTitles + "\n" + programDescription +"\nPositional Arguments:\n" + description;

@@ -1,50 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="edu.jsu.mcis.ArgumentParserTest" tests="21" skipped="0" failures="0" errors="0" timestamp="2014-11-04T01:07:06" hostname="Kris-PC" time="0.188">
+<testsuite name="edu.jsu.mcis.ArgumentParserTest" tests="22" skipped="0" failures="0" errors="0" timestamp="2014-11-04T02:00:29" hostname="ALIX" time="0.125">
   <properties/>
   <testcase name="testAddMultipleArguments" classname="edu.jsu.mcis.ArgumentParserTest" time="0.016"/>
   <testcase name="testAddArgDescriptions" classname="edu.jsu.mcis.ArgumentParserTest" time="0.0"/>
   <testcase name="testShortName" classname="edu.jsu.mcis.ArgumentParserTest" time="0.0"/>
   <testcase name="testOptionalArgumentAsFlag" classname="edu.jsu.mcis.ArgumentParserTest" time="0.0"/>
-  <testcase name="testXMLParsingArguments" classname="edu.jsu.mcis.ArgumentParserTest" time="0.047"/>
+  <testcase name="testXMLParsingArguments" classname="edu.jsu.mcis.ArgumentParserTest" time="0.046"/>
   <testcase name="testTypeParsing" classname="edu.jsu.mcis.ArgumentParserTest" time="0.0"/>
   <testcase name="testOptionalArgumentValues" classname="edu.jsu.mcis.ArgumentParserTest" time="0.0"/>
   <testcase name="testTooManyArgumentValues" classname="edu.jsu.mcis.ArgumentParserTest" time="0.0"/>
   <testcase name="testReadingOptionalArgumentAtEnd" classname="edu.jsu.mcis.ArgumentParserTest" time="0.0"/>
   <testcase name="testOptionalArgumentsWithDefaults" classname="edu.jsu.mcis.ArgumentParserTest" time="0.0"/>
-  <testcase name="testReadingMoreOptionalArguments" classname="edu.jsu.mcis.ArgumentParserTest" time="0.047"/>
+  <testcase name="testReadingMoreOptionalArguments" classname="edu.jsu.mcis.ArgumentParserTest" time="0.032"/>
   <testcase name="testParseVolCalc" classname="edu.jsu.mcis.ArgumentParserTest" time="0.0"/>
-  <testcase name="testXMLParserOptionalTypes" classname="edu.jsu.mcis.ArgumentParserTest" time="0.046"/>
-  <testcase name="testXMLParsingOptional" classname="edu.jsu.mcis.ArgumentParserTest" time="0.016"/>
+  <testcase name="testXMLParserOptionalTypes" classname="edu.jsu.mcis.ArgumentParserTest" time="0.031"/>
+  <testcase name="testXMLParsingOptional" classname="edu.jsu.mcis.ArgumentParserTest" time="0.0"/>
   <testcase name="testXMLParserTypes" classname="edu.jsu.mcis.ArgumentParserTest" time="0.0"/>
+  <testcase name="testOptionText" classname="edu.jsu.mcis.ArgumentParserTest" time="0.0"/>
   <testcase name="testAddProgram" classname="edu.jsu.mcis.ArgumentParserTest" time="0.0"/>
   <testcase name="testParseSingleArgument" classname="edu.jsu.mcis.ArgumentParserTest" time="0.0"/>
   <testcase name="testAddArgTypes" classname="edu.jsu.mcis.ArgumentParserTest" time="0.0"/>
-  <testcase name="testOptionalArgumentDescription" classname="edu.jsu.mcis.ArgumentParserTest" time="0.016"/>
+  <testcase name="testOptionalArgumentDescription" classname="edu.jsu.mcis.ArgumentParserTest" time="0.0"/>
   <testcase name="testOptionalArgumentOverrideDefaultValue" classname="edu.jsu.mcis.ArgumentParserTest" time="0.0"/>
   <testcase name="testNotEnoughArgumentValues" classname="edu.jsu.mcis.ArgumentParserTest" time="0.0"/>
   <system-out><![CDATA[usage: java null length width height 
 null
 Positional Arguments:
-length		
-width		
-height		
+length unknown		
+width unknown		
+height unknown		
 
 usage: java null length width height booleanTest 
 null
 Positional Arguments:
-length		length of the box
-width		width of the box
-height		height of the box
-booleanTest		height of the box
+length float		length of the box
+width string		width of the box
+height string		height of the box
+booleanTest boolean		height of the box
 
 SAXException : xml not well formed
 IO error
 usage: java null length width height 
 null
 Positional Arguments:
-length		length of the box
-width		width of the box
-height		height of the box
+length float		length of the box
+width float		width of the box
+height float		height of the box
+
+usage: java VolCalc length width height 
+Calculate the volume of a box
+Positional Arguments:
+length integer		the length of the box
+width float		the width of the box
+height float		the height of the box
 
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
