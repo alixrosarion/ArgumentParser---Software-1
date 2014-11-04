@@ -14,9 +14,9 @@ public class VolCalcXML
 		}try{
 			parser.getArgumentParser().parse(read);
 			try{
-            float length = parser.getArgumentParser().getArgumentValue("length");
-			float height = parser.getArgumentParser().getArgumentValue("height");
-			float width = parser.getArgumentParser().getArgumentValue("width");
+            float length = parser.getArgumentValue("length");
+			float height = parser.getArgumentValue("height");
+			float width = parser.getArgumentValue("width");
 			System.out.println("Volume is " + length * width * height);
 			} catch(NullPointerException e){}
 			System.exit(1);

@@ -33,6 +33,10 @@ public class XMLParser extends DefaultHandler
 	{
 		return argPars;
 	}
+	public <T> T getArgumentValue(String s)
+	{
+		return argPars.getArgumentValue(s);
+	}
 	public void parseFile(String filename)
 	{
 		SAXParserFactory factory = SAXParserFactory.newInstance();
