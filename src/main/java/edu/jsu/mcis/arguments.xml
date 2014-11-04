@@ -21,12 +21,12 @@
 	</argument>
 	
 	<optionalArgument>
-		<name>-h</name>
+		<name>--help</name>
 		<numValues>0</numValues>
 		<type></type>
 		<description>help center</description>
 		<value></value>
-		<shortName></shortName>
+		<shortName>-h</shortName>
 	</optionalArgument>
 	
 	<optionalArgument>

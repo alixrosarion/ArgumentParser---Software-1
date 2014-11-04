@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="edu.jsu.mcis.XMLParserTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2014-11-04T20:41:11" hostname="Sari" time="0.047">
+  <properties/>
+  <testcase name="testXMLParsingArguments" classname="edu.jsu.mcis.XMLParserTest" time="0.031"/>
+  <testcase name="testXMLParserOptionalTypes" classname="edu.jsu.mcis.XMLParserTest" time="0.016"/>
+  <testcase name="testXMLParsingOptional" classname="edu.jsu.mcis.XMLParserTest" time="0.0"/>
+  <testcase name="testXMLParserTypes" classname="edu.jsu.mcis.XMLParserTest" time="0.0"/>
+  <system-out><![CDATA[usage: java null length width height booleanTest 
+null
+Positional Arguments:
+length float		length of the box
+width string		width of the box
+height string		height of the box
+booleanTest boolean		height of the box
+
+SAXException : xml not well formed
+IO error
+usage: java null length width height 
+null
+Positional Arguments:
+length float		length of the box
+width float		width of the box
+height float		height of the box
+
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

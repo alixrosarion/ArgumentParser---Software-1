@@ -91,9 +91,9 @@ public class ArgumentParser
 			}
 			else if(argumentList.get(index).getType() == CommandLineArgument.Type.Boolean)
 			{
-				try{
+				if(Boolean.parseBoolean(o.toString())){
 					o =Boolean.parseBoolean(o.toString());
-				} catch (NumberFormatException e) {
+				} else{
 					incorrectType = incorrectType + argumentList.get(index).getTitle() + " invalid boolean value: " + o; 
 					throw new IncorrectTypeException(incorrectType);
 				}

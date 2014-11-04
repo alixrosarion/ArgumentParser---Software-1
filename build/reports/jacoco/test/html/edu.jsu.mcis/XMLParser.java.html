@@ -33,97 +33,99 @@ public class XMLParser extends DefaultHandler
 	{
 <span class="fc" id="L34">		return argPars;</span>
 	}
+
 	public &lt;T&gt; T getArgumentValue(String s)
 	{
-<span class="nc" id="L38">		return argPars.getArgumentValue(s);</span>
+<span class="fc" id="L39">		return argPars.getArgumentValue(s);</span>
 	}
+
 	public void parseFile(String filename)
 	{
-<span class="fc" id="L42">		SAXParserFactory factory = SAXParserFactory.newInstance();</span>
+<span class="fc" id="L44">		SAXParserFactory factory = SAXParserFactory.newInstance();</span>
 		try{
-<span class="fc" id="L44">			SAXParser parser = factory.newSAXParser();</span>
-<span class="fc" id="L45">			parser.parse(filename, this);</span>
-<span class="nc" id="L46">		}catch (ParserConfigurationException e) {</span>
-<span class="nc" id="L47">			System.out.println(&quot;ParserConfig error&quot;);</span>
-<span class="fc" id="L48">		} catch (SAXException e) {</span>
-<span class="fc" id="L49">			System.out.println(&quot;SAXException : xml not well formed&quot;);</span>
-<span class="fc" id="L50">		} catch (IOException e) {</span>
-<span class="fc" id="L51">			System.out.println(&quot;IO error&quot;);</span>
-<span class="pc" id="L52">		}</span>
-<span class="fc" id="L53">		argumentList = argPars.getArgumentList(); </span>
-<span class="fc" id="L54">	}</span>
+<span class="fc" id="L46">			SAXParser parser = factory.newSAXParser();</span>
+<span class="fc" id="L47">			parser.parse(filename, this);</span>
+<span class="nc" id="L48">		}catch (ParserConfigurationException e) {</span>
+<span class="nc" id="L49">			System.out.println(&quot;ParserConfig error&quot;);</span>
+<span class="fc" id="L50">		} catch (SAXException e) {</span>
+<span class="fc" id="L51">			System.out.println(&quot;SAXException : xml not well formed&quot;);</span>
+<span class="fc" id="L52">		} catch (IOException e) {</span>
+<span class="fc" id="L53">			System.out.println(&quot;IO error&quot;);</span>
+<span class="pc" id="L54">		}</span>
+<span class="fc" id="L55">		argumentList = argPars.getArgumentList(); </span>
+<span class="fc" id="L56">	}</span>
 	
 	public void startElement(String s, String s1, String elementName, Attributes attributes) throws SAXException {
-<span class="fc bfc" id="L57" title="All 2 branches covered.">        if (elementName.equalsIgnoreCase(&quot;argument&quot;)) argCheck = true;</span>
-<span class="fc bfc" id="L58" title="All 2 branches covered.">		else if (elementName.equalsIgnoreCase(&quot;optionalArgument&quot;)) argCheck = false;</span>
-<span class="fc" id="L59">    }</span>
+<span class="fc bfc" id="L59" title="All 2 branches covered.">        if (elementName.equalsIgnoreCase(&quot;argument&quot;)) argCheck = true;</span>
+<span class="fc bfc" id="L60" title="All 2 branches covered.">		else if (elementName.equalsIgnoreCase(&quot;optionalArgument&quot;)) argCheck = false;</span>
+<span class="fc" id="L61">    }</span>
 	
 	@Override
     public void endElement(String s, String s1, String element) throws SAXException {
-<span class="fc bfc" id="L63" title="All 2 branches covered.">		if (argCheck)</span>
+<span class="fc bfc" id="L65" title="All 2 branches covered.">		if (argCheck)</span>
 		{
-<span class="fc bfc" id="L65" title="All 2 branches covered.">			if (element.equalsIgnoreCase(&quot;name&quot;)) {</span>
-<span class="fc" id="L66">				argPars.addArgument(tmpValue);</span>
-<span class="fc" id="L67">				tmpName = tmpValue;</span>
+<span class="fc bfc" id="L67" title="All 2 branches covered.">			if (element.equalsIgnoreCase(&quot;name&quot;)) {</span>
+<span class="fc" id="L68">				argPars.addArgument(tmpValue);</span>
+<span class="fc" id="L69">				tmpName = tmpValue;</span>
 			}
-<span class="fc bfc" id="L69" title="All 2 branches covered.">			if (element.equalsIgnoreCase(&quot;type&quot;)) {</span>
-<span class="pc bpc" id="L70" title="1 of 2 branches missed.">				if(tmpValue.equals(&quot;Integer&quot;)) argPars.argumentList.get(argPars.argumentList.indexOf(new Argument(tmpName))).setType(CommandLineArgument.Type.Integer);</span>
+<span class="fc bfc" id="L71" title="All 2 branches covered.">			if (element.equalsIgnoreCase(&quot;type&quot;)) {</span>
+<span class="pc bpc" id="L72" title="1 of 2 branches missed.">				if(tmpValue.equals(&quot;Integer&quot;)) argPars.argumentList.get(argPars.argumentList.indexOf(new Argument(tmpName))).setType(CommandLineArgument.Type.Integer);</span>
 				
-<span class="fc bfc" id="L72" title="All 2 branches covered.">				else if(tmpValue.equalsIgnoreCase(&quot;String&quot;)) argPars.argumentList.get(argPars.argumentList.indexOf(new Argument(tmpName))).setType(CommandLineArgument.Type.String);</span>
+<span class="fc bfc" id="L74" title="All 2 branches covered.">				else if(tmpValue.equalsIgnoreCase(&quot;String&quot;)) argPars.argumentList.get(argPars.argumentList.indexOf(new Argument(tmpName))).setType(CommandLineArgument.Type.String);</span>
 				
-<span class="fc bfc" id="L74" title="All 2 branches covered.">				else if(tmpValue.equalsIgnoreCase(&quot;Float&quot;)) argPars.argumentList.get(argPars.argumentList.indexOf(new Argument(tmpName))).setType(CommandLineArgument.Type.Float);</span>
+<span class="fc bfc" id="L76" title="All 2 branches covered.">				else if(tmpValue.equalsIgnoreCase(&quot;Float&quot;)) argPars.argumentList.get(argPars.argumentList.indexOf(new Argument(tmpName))).setType(CommandLineArgument.Type.Float);</span>
 				
-<span class="fc bfc" id="L76" title="All 2 branches covered.">				else if(tmpValue.equalsIgnoreCase(&quot;Boolean&quot;)) argPars.argumentList.get(argPars.argumentList.indexOf(new Argument(tmpName))).setType(CommandLineArgument.Type.Boolean);</span>
+<span class="fc bfc" id="L78" title="All 2 branches covered.">				else if(tmpValue.equalsIgnoreCase(&quot;Boolean&quot;)) argPars.argumentList.get(argPars.argumentList.indexOf(new Argument(tmpName))).setType(CommandLineArgument.Type.Boolean);</span>
 				
-<span class="fc" id="L78">				else argPars.argumentList.get(argPars.argumentList.indexOf(new Argument(tmpName))).setType(CommandLineArgument.Type.String);</span>
+<span class="fc" id="L80">				else argPars.argumentList.get(argPars.argumentList.indexOf(new Argument(tmpName))).setType(CommandLineArgument.Type.String);</span>
 				
 			}
-<span class="fc bfc" id="L81" title="All 2 branches covered.">			if(element.equalsIgnoreCase(&quot;description&quot;)){</span>
-<span class="fc" id="L82">			   argPars.addDescription(tmpName, tmpValue);</span>
+<span class="fc bfc" id="L83" title="All 2 branches covered.">			if(element.equalsIgnoreCase(&quot;description&quot;)){</span>
+<span class="fc" id="L84">			   argPars.addDescription(tmpName, tmpValue);</span>
 			}
 		}
 		else
 		{
-<span class="fc bfc" id="L87" title="All 2 branches covered.">			if (element.equalsIgnoreCase(&quot;name&quot;)) {</span>
-<span class="fc" id="L88">				argPars.addOptArg(tmpValue, 0);</span>
-<span class="fc" id="L89">				tmpName = tmpValue;</span>
+<span class="fc bfc" id="L89" title="All 2 branches covered.">			if (element.equalsIgnoreCase(&quot;name&quot;)) {</span>
+<span class="fc" id="L90">				argPars.addOptArg(tmpValue, 0);</span>
+<span class="fc" id="L91">				tmpName = tmpValue;</span>
 			}
-<span class="fc bfc" id="L91" title="All 2 branches covered.">			if (element.equalsIgnoreCase(&quot;numValues&quot;)) {</span>
-<span class="fc" id="L92">				optArgXML = Integer.parseInt(tmpValue);</span>
-<span class="fc" id="L93">				argPars.argumentList.get(argPars.argumentList.indexOf(new OptionalArgument(tmpName, optArgXML))).setNumValues(optArgXML);</span>
+<span class="fc bfc" id="L93" title="All 2 branches covered.">			if (element.equalsIgnoreCase(&quot;numValues&quot;)) {</span>
+<span class="fc" id="L94">				optArgXML = Integer.parseInt(tmpValue);</span>
+<span class="fc" id="L95">				argPars.argumentList.get(argPars.argumentList.indexOf(new OptionalArgument(tmpName, optArgXML))).setNumValues(optArgXML);</span>
 			}
-<span class="fc bfc" id="L95" title="All 2 branches covered.">			if (element.equalsIgnoreCase(&quot;description&quot;))</span>
+<span class="fc bfc" id="L97" title="All 2 branches covered.">			if (element.equalsIgnoreCase(&quot;description&quot;))</span>
 			{
-<span class="fc" id="L97">				argPars.argumentList.get(argPars.argumentList.indexOf(new OptionalArgument(tmpName, optArgXML))).setDescription(tmpValue);</span>
+<span class="fc" id="L99">				argPars.argumentList.get(argPars.argumentList.indexOf(new OptionalArgument(tmpName, optArgXML))).setDescription(tmpValue);</span>
 			}
-<span class="fc bfc" id="L99" title="All 2 branches covered.">			if (optArgXML &gt; 0 )</span>
+<span class="fc bfc" id="L101" title="All 2 branches covered.">			if (optArgXML &gt; 0 )</span>
 			{
-<span class="fc bfc" id="L101" title="All 2 branches covered.">				if (element.equalsIgnoreCase(&quot;type&quot;)) {</span>
-<span class="pc bpc" id="L102" title="1 of 2 branches missed.">					if(tmpValue.equals(&quot;Integer&quot;)) argPars.argumentList.get(argPars.argumentList.indexOf(new OptionalArgument(tmpName, optArgXML))).setType(CommandLineArgument.Type.Integer);</span>
+<span class="fc bfc" id="L103" title="All 2 branches covered.">				if (element.equalsIgnoreCase(&quot;type&quot;)) {</span>
+<span class="pc bpc" id="L104" title="1 of 2 branches missed.">					if(tmpValue.equals(&quot;Integer&quot;)) argPars.argumentList.get(argPars.argumentList.indexOf(new OptionalArgument(tmpName, optArgXML))).setType(CommandLineArgument.Type.Integer);</span>
 					
-<span class="fc bfc" id="L104" title="All 2 branches covered.">					else if(tmpValue.equalsIgnoreCase(&quot;Float&quot;)) argPars.argumentList.get(argPars.argumentList.indexOf(new OptionalArgument(tmpName, optArgXML))).setType(CommandLineArgument.Type.Float);</span>
+<span class="fc bfc" id="L106" title="All 2 branches covered.">					else if(tmpValue.equalsIgnoreCase(&quot;Float&quot;)) argPars.argumentList.get(argPars.argumentList.indexOf(new OptionalArgument(tmpName, optArgXML))).setType(CommandLineArgument.Type.Float);</span>
 					
-<span class="fc" id="L106">					else argPars.argumentList.get(argPars.argumentList.indexOf(new OptionalArgument(tmpName, optArgXML))).setType(CommandLineArgument.Type.String);</span>
+<span class="fc" id="L108">					else argPars.argumentList.get(argPars.argumentList.indexOf(new OptionalArgument(tmpName, optArgXML))).setType(CommandLineArgument.Type.String);</span>
 					
 				}
 				
-<span class="fc bfc" id="L110" title="All 2 branches covered.">				if (element.equalsIgnoreCase(&quot;value&quot;)) {</span>
-<span class="fc" id="L111">					argPars.argumentList.get(argPars.argumentList.indexOf(new OptionalArgument(tmpName, optArgXML))).addValue(tmpValue);</span>
+<span class="fc bfc" id="L112" title="All 2 branches covered.">				if (element.equalsIgnoreCase(&quot;value&quot;)) {</span>
+<span class="fc" id="L113">					argPars.argumentList.get(argPars.argumentList.indexOf(new OptionalArgument(tmpName, optArgXML))).addValue(tmpValue);</span>
 				}
 			}
 			else
 			{	
-<span class="fc" id="L116">				argPars.argumentList.get(argPars.argumentList.indexOf(new OptionalArgument(tmpName, optArgXML))).setType(CommandLineArgument.Type.Boolean);</span>
+<span class="fc" id="L118">				argPars.argumentList.get(argPars.argumentList.indexOf(new OptionalArgument(tmpName, optArgXML))).setType(CommandLineArgument.Type.Boolean);</span>
 			}
-<span class="fc bfc" id="L118" title="All 2 branches covered.">			if (element.equalsIgnoreCase(&quot;shortName&quot;)) {</span>
-<span class="fc" id="L119">				argPars.argumentList.get(argPars.argumentList.indexOf(new OptionalArgument(tmpName, optArgXML))).setShort(tmpValue);</span>
+<span class="fc bfc" id="L120" title="All 2 branches covered.">			if (element.equalsIgnoreCase(&quot;shortName&quot;)) {</span>
+<span class="fc" id="L121">				argPars.argumentList.get(argPars.argumentList.indexOf(new OptionalArgument(tmpName, optArgXML))).setShort(tmpValue);</span>
 			}
 		}
-<span class="fc" id="L122">    }</span>
+<span class="fc" id="L124">    }</span>
 	
 	@Override
     public void characters(char[] ac, int i, int j) throws SAXException {
-<span class="fc" id="L126">        tmpValue = new String(ac, i, j);</span>
-<span class="fc" id="L127">    }</span>
+<span class="fc" id="L128">        tmpValue = new String(ac, i, j);</span>
+<span class="fc" id="L129">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>
