@@ -133,6 +133,7 @@ public class ArgumentParserTest {
 		assertEquals(true, tester.getArgumentValue("rainy"));
 		assertEquals("someString", tester.getArgumentValue("dog"));
 	}
+	
 	@Test
 	public void testCatchWrongTypeForInteger()
 	{
@@ -143,6 +144,18 @@ public class ArgumentParserTest {
 		}catch(NotEnoughArgValuesException  | TooManyArgValuesException | IncorrectTypeException e){
 		}
 	}
+	
+	@Test
+	public void testCatchWrongTypeForFloat()
+	{
+		tester.addArgument("length", CommandLineArgument.Type.Float);
+		try
+		{
+			tester.parse("something");
+		}catch(NotEnoughArgValuesException  | TooManyArgValuesException | IncorrectTypeException e){
+		}
+	}
+	
 	@Test
 	public void testReadingOptionalArgumentAtEnd ()
 	{
