@@ -20,7 +20,9 @@ public class IncomeTaxCalc
 		try{
 			parser.parse(read);
 			try{
-            int taxesPaid = parser.getArumentValue("rate") * parser.getArgumentValue("income");
+			float rate = parser.getArgumentValue("rate");
+			float income = parser.getArgumentValue("income");
+            float taxesPaid = rate * income;
 			System.out.println("Income taxes paid: $" + taxesPaid);
 			}
 			catch(NullPointerException e){}
