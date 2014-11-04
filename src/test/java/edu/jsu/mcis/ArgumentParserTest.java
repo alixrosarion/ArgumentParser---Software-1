@@ -254,7 +254,7 @@ public class ArgumentParserTest {
 	}
 
 	@Test
-	public void testXMLParsing()
+	public void testXMLParsingArguments()
 	{
 		XMLParser tester = new XMLParser("arguments.xml");
 		try {
@@ -262,5 +262,45 @@ public class ArgumentParserTest {
 		} catch (Exception e) {
 			assertTrue(false);
 		}
-	}	
+	}
+
+	@Test
+	public void testXMLParsingOptional()
+	{
+		XMLParser tester = new XMLParser("arguments.xml");
+		try {
+			tester.argParsReturn().parse("2 2 2 -h -t sphere");
+		} catch (Exception e) {
+			assertTrue(false);
+		}
+	}
+	
+	@Test
+	public void testXMLParserTypes()
+	{
+		XMLParser tester = new XMLParser("argumentsType.xml");
+		try {
+			tester.argParsReturn().parse("2 2 asd true");
+		} catch (Exception e) {
+			assertTrue(false);
+		}
+	}
+	
+	
+	@Test
+	public void testXMLParserOptionalTypes()
+	{
+		XMLParser tester = new XMLParser("argumentsType.xml");
+		try {
+			tester.argParsReturn().parse("2 2 asd true -h --type STRING --int 8 --float 2");
+		} catch (Exception e) {
+			assertTrue(false);
+		}
+		
+		XMLParser testBad = new XMLParser("badFormatXML.xml");
+		XMLParser testNo = new XMLParser("nonono.xml");
+		
+		
+	}
+	
 }

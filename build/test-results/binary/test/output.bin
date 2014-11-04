@@ -1,7 +1,25 @@
-]usage: java null length width height 
+]usage: java null length width height 
 null
 Positional Arguments:
 length		
 width		
 height		
+
+∫usage: java null length width height booleanTest 
+null
+Positional Arguments:
+length		length of the box
+width		width of the box
+height		height of the box
+booleanTest		height of the box
+
+$SAXException : xml not well formed
+
+IO error
+èusage: java null length width height 
+null
+Positional Arguments:
+length		length of the box
+width		width of the box
+height		height of the box
 

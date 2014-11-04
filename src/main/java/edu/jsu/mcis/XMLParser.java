@@ -20,7 +20,7 @@ public class XMLParser extends DefaultHandler
 	private int optArgXML;
 	private String tmpValue;
 	public ArgumentParser argPars;
-	private List <CommandLineArgument> argumentList; //Make this one keep an ArgumentList as well.
+	private List <CommandLineArgument> argumentList;
 	private int optCount;
 
 	public XMLParser(String file)
@@ -47,8 +47,7 @@ public class XMLParser extends DefaultHandler
 		} catch (IOException e) {
 			System.out.println("IO error");
 		}
-		//Get the argumentList from the argPars you created in the constructor and put it in the local copy
-		argumentList = argPars.getArgumentList(); // this is a temporary fix, I don't have brighter ideas now.
+		argumentList = argPars.getArgumentList(); 
 	}
 	
 	public void startElement(String s, String s1, String elementName, Attributes attributes) throws SAXException {
@@ -73,8 +72,8 @@ public class XMLParser extends DefaultHandler
 				
 				else if(tmpValue.equalsIgnoreCase("Boolean")) argPars.argumentList.get(argPars.argumentList.indexOf(new Argument(tmpName))).setType(CommandLineArgument.Type.Boolean);
 				
-				else argPars.argumentList.get(argPars.argumentList.indexOf(new Argument(tmpName))).setType(CommandLineArgument.Type.Unknown); 
-			
+				else argPars.argumentList.get(argPars.argumentList.indexOf(new Argument(tmpName))).setType(CommandLineArgument.Type.String);
+				
 			}
 			if(element.equalsIgnoreCase("description")){
 			   argPars.addDescription(tmpName, tmpValue);
@@ -99,22 +98,22 @@ public class XMLParser extends DefaultHandler
 				if (element.equalsIgnoreCase("type")) {
 					if(tmpValue.equals("Integer")) argPars.argumentList.get(argPars.argumentList.indexOf(new OptionalArgument(tmpName, optArgXML))).setType(CommandLineArgument.Type.Integer);
 					
-					else if(tmpValue.equalsIgnoreCase("String")) argPars.argumentList.get(argPars.argumentList.indexOf(new OptionalArgument(tmpName, optArgXML))).setType(CommandLineArgument.Type.String);
-					
 					else if(tmpValue.equalsIgnoreCase("Float")) argPars.argumentList.get(argPars.argumentList.indexOf(new OptionalArgument(tmpName, optArgXML))).setType(CommandLineArgument.Type.Float);
 					
-					else if(tmpValue.equalsIgnoreCase("Boolean")) argPars.argumentList.get(argPars.argumentList.indexOf(new OptionalArgument(tmpName, optArgXML))).setType(CommandLineArgument.Type.Boolean);
+					else argPars.argumentList.get(argPars.argumentList.indexOf(new OptionalArgument(tmpName, optArgXML))).setType(CommandLineArgument.Type.String);
 					
-					else argPars.argumentList.get(argPars.argumentList.indexOf(new OptionalArgument(tmpName, optArgXML))).setType(CommandLineArgument.Type.Unknown); 
 				}
 				
 				if (element.equalsIgnoreCase("value")) {
 					argPars.argumentList.get(argPars.argumentList.indexOf(new OptionalArgument(tmpName, optArgXML))).addValue(tmpValue);
 				}
-				
-				if (element.equalsIgnoreCase("shortName")) {
-					argPars.argumentList.get(argPars.argumentList.indexOf(new OptionalArgument(tmpName, optArgXML))).setShort(tmpValue);
-				}
+			}
+			else
+			{	
+				argPars.argumentList.get(argPars.argumentList.indexOf(new OptionalArgument(tmpName, optArgXML))).setType(CommandLineArgument.Type.Boolean);
+			}
+			if (element.equalsIgnoreCase("shortName")) {
+				argPars.argumentList.get(argPars.argumentList.indexOf(new OptionalArgument(tmpName, optArgXML))).setShort(tmpValue);
 			}
 		}
     }
