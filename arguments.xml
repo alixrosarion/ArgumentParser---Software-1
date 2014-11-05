@@ -18,12 +18,12 @@
 	</argument>
 	
 	<optionalArgument>
-		<name>-h</name>
+		<name>--help</name>
 		<numValues>0</numValues>
 		<type></type>
 		<description>help center</description>
 		<value></value>
-		<shortName></shortName>
+		<shortName>-h</shortName>
 	</optionalArgument>
 	
 	<optionalArgument>
@@ -32,7 +32,7 @@
 		<type>string</type>
 		<description>Type of shape</description>
 		<value>box</value>
-		<shortName>-t</shortName>
+		<shortName>-a</shortName>
 	</optionalArgument>
 	
 </arguments>

@@ -23,10 +23,10 @@ public class XMLParser extends DefaultHandler
 	private List <CommandLineArgument> argumentList;
 	private int optCount;
 
-	public XMLParser(String file)
+	public XMLParser()//String file)
 	{
 		argPars = new ArgumentParser();	
-		parseFile(file);
+		//parseFile(file);
 	}
 
 	public ArgumentParser getArgumentParser()
@@ -52,7 +52,7 @@ public class XMLParser extends DefaultHandler
 		} catch (IOException e) {
 			System.out.println("IO error");
 		}
-		argumentList = argPars.getArgumentList(); 
+		//argumentList = argPars.getArgumentList(); 
 	}
 	
 	public void startElement(String s, String s1, String elementName, Attributes attributes) throws SAXException {

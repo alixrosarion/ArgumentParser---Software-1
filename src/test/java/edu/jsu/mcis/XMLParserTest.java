@@ -17,7 +17,18 @@ public class XMLParserTest
 		}
 		assertEquals(2.0f, tester.getArgumentValue("length"));
 	}
-
+	
+	@Test
+	public void testXMLHelp()
+	{
+		XMLParser tester = new XMLParser("arguments.xml");
+		try {
+			tester.getArgumentParser().parse("--help");
+		} catch (Exception e) {
+			assertTrue(false);
+		}
+	}
+		
 	@Test
 	public void testXMLParsingOptional()
 	{
@@ -53,5 +64,13 @@ public class XMLParserTest
 		
 		XMLParser testBad = new XMLParser("badFormatXML.xml");
 		XMLParser testNo = new XMLParser("nonono.xml");
+	}
+	
+	public void testStartElementType() {
+		XMLParser tester = new XMLParser();
+		tester.startElement("", "", "type", null);
+		tester.characters("int", 0, 10);
+		tester.endElement("", "", "type");
+		assertEquals("int", tester.argPars.getArgumentValue("type"));
 	}
 }

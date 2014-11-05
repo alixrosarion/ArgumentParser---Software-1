@@ -182,11 +182,10 @@ public class ArgumentParser
 			String extra  = scan.next();
 			if (argumentList.contains(new OptionalArgument(extra)))
 			{
-				if (extra.equals("-h"))
+				if (extra.equals("-h") || extra.equals("--help"))
 				{
 					System.out.println(getHelpText());
 					return;
-					//System.out.println(getHelpText());
 				}
 				else if(argumentList.get(argumentList.indexOf(new OptionalArgument(extra))).getNumValues() == 0)
 				{

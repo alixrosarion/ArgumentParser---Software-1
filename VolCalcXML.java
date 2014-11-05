@@ -6,8 +6,9 @@ public class VolCalcXML
 {
 	public static void main(String [] args) 
 	{
-		XMLParser parser = new XMLParser("arguments.xml");
-		parser.getArgumentParser().addProgram("VolCalc","Calculates the volume of an object");
+		ArgumentParser parser = XMLParser.createArgumentParser("arguments.xml");
+		//XMLParser parser = new XMLParser("arguments.xml");
+		parser.addProgram("VolCalc","Calculates the volume of an object");
 		String read = "";
 		for(String arg:args){
 			read += arg + " ";
