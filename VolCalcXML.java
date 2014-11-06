@@ -7,13 +7,12 @@ public class VolCalcXML
 	public static void main(String [] args) 
 	{
 		ArgumentParser parser = XMLParser.createArgumentParser("arguments.xml");
-		//XMLParser parser = new XMLParser("arguments.xml");
 		parser.addProgram("VolCalc","Calculates the volume of an object");
 		String read = "";
 		for(String arg:args){
 			read += arg + " ";
 		}try{
-			parser.getArgumentParser().parse(read);
+			parser.parse(read);
 			try{
             float length = parser.getArgumentValue("length");
 			float height = parser.getArgumentValue("height");

@@ -9,9 +9,9 @@ public class XMLParserTest
 	@Test
 	public void testXMLParsingArguments()
 	{
-		XMLParser tester = new XMLParser("arguments.xml");
+		ArgumentParser tester = XMLParser.createArgumentParser("arguments.xml");
 		try {
-			tester.getArgumentParser().parse("2 2 2");
+			tester.parse("2 2 2");
 		} catch (Exception e) {
 			assertTrue(false);
 		}
@@ -21,9 +21,9 @@ public class XMLParserTest
 	@Test
 	public void testXMLHelp()
 	{
-		XMLParser tester = new XMLParser("arguments.xml");
+		ArgumentParser tester = XMLParser.createArgumentParser("arguments.xml");
 		try {
-			tester.getArgumentParser().parse("--help");
+			tester.parse("--help");
 		} catch (Exception e) {
 			assertTrue(false);
 		}
@@ -32,9 +32,9 @@ public class XMLParserTest
 	@Test
 	public void testXMLParsingOptional()
 	{
-		XMLParser tester = new XMLParser("arguments.xml");
+		ArgumentParser tester = XMLParser.createArgumentParser("arguments.xml");
 		try {
-			tester.getArgumentParser().parse("2 2 2 -h -t sphere");
+			tester.parse("2 2 2 -h -t sphere");
 		} catch (Exception e) {
 			assertTrue(false);
 		}
@@ -43,34 +43,26 @@ public class XMLParserTest
 	@Test
 	public void testXMLParserTypes()
 	{
-		XMLParser tester = new XMLParser("argumentsType.xml");
+		ArgumentParser tester = XMLParser.createArgumentParser("argumentsType.xml");
 		try {
-			tester.getArgumentParser().parse("2 2 asd true");
+			tester.parse("2 2 asd true");
 		} catch (Exception e) {
 			assertTrue(false);
 		}
 	}
-	
 	
 	@Test
 	public void testXMLParserOptionalTypes()
 	{
-		XMLParser tester = new XMLParser("argumentsType.xml");
+		ArgumentParser tester = XMLParser.createArgumentParser("argumentsType.xml");
 		try {
-			tester.getArgumentParser().parse("2 2 asd true -h --type STRING --int 8 --float 2");
+			tester.parse("2 2 asd true -h --type STRING --int 8 --float 2");
 		} catch (Exception e) {
 			assertTrue(false);
 		}
 		
-		XMLParser testBad = new XMLParser("badFormatXML.xml");
-		XMLParser testNo = new XMLParser("nonono.xml");
+		ArgumentParser testBad = XMLParser.createArgumentParser("badFormatXML.xml");
+		ArgumentParser testNo = XMLParser.createArgumentParser("nonono.xml");
 	}
 	
-	public void testStartElementType() {
-		XMLParser tester = new XMLParser();
-		tester.startElement("", "", "type", null);
-		tester.characters("int", 0, 10);
-		tester.endElement("", "", "type");
-		assertEquals("int", tester.argPars.getArgumentValue("type"));
-	}
 }

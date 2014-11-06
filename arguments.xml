@@ -32,7 +32,7 @@
 		<type>string</type>
 		<description>Type of shape</description>
 		<value>box</value>
-		<shortName>-a</shortName>
+		<shortName>-t</shortName>
 	</optionalArgument>
 	
 </arguments>

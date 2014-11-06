@@ -22,25 +22,16 @@ public class XMLParser extends DefaultHandler
 	private ArgumentParser argPars;
 	private List <CommandLineArgument> argumentList;
 	private int optCount;
+	
+	public static ArgumentParser createArgumentParser(String file)
+	{
+		XMLParser p = new XMLParser(file);
+		return p.getArgumentParser();
+	}
 
-	public XMLParser()//String file)
+	private XMLParser(String filename)
 	{
 		argPars = new ArgumentParser();	
-		//parseFile(file);
-	}
-
-	public ArgumentParser getArgumentParser()
-	{
-		return argPars;
-	}
-
-	public <T> T getArgumentValue(String s)
-	{
-		return argPars.getArgumentValue(s);
-	}
-
-	public void parseFile(String filename)
-	{
 		SAXParserFactory factory = SAXParserFactory.newInstance();
 		try{
 			SAXParser parser = factory.newSAXParser();
@@ -52,8 +43,13 @@ public class XMLParser extends DefaultHandler
 		} catch (IOException e) {
 			System.out.println("IO error");
 		}
-		//argumentList = argPars.getArgumentList(); 
 	}
+
+	private ArgumentParser getArgumentParser()
+	{
+		return argPars;
+	}
+
 	
 	public void startElement(String s, String s1, String elementName, Attributes attributes) throws SAXException {
         if (elementName.equalsIgnoreCase("argument")) argCheck = true;

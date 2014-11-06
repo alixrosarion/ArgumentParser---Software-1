@@ -32,7 +32,7 @@ public class Argument extends CommandLineArgument
 	}
 	
 	public String toString()
-	{
+	{	
 		String result;
 		
 		result = title;

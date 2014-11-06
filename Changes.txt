@@ -1,0 +1,3 @@
+Sari:
+	edited the instances creationg from XMLParser = new XMLParser("xml"); to creating a new ArgumentParser created through a static method in XMLParser
+	Edited the unit tests and the main to work around the new method and made them pass.
