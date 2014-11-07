@@ -5,18 +5,12 @@ import static org.junit.Assert.*;
 
 public class ArgumentTest
 {
+
 	@Test
-	public void testToString()
+	public void testArgumentToString()
 	{
-		Argument tester = new Argument("length");
-		assertEquals("length", tester.toString());
-	}
-	
-	@Test
-	public void testToStringWithOverloadedConstructor()
-	{
-		Argument tester = new Argument("length",CommandLineArgument.Type.Integer,"The length of the box");
-		assertEquals("length Integer The length of the box", tester.toString());
+		Argument tester = new Argument("length", CommandLineArgument.Type.Integer, "the length of the box");
+		assertEquals("\n\t<argument>\n\t\t<name>length</name>\n\t\t<type>Integer</type>\n\t\t<description>the length of the box</description>\n\t</argument>", tester.toString());
 	}
 	
 	@Test

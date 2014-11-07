@@ -33,7 +33,12 @@ public class Argument extends CommandLineArgument
 	
 	public String toString()
 	{	
-		String result;
+		String output = "";
+		output += "\n\t<argument>\n\t\t<name>" + title + "</name>";
+		output += "\n\t\t<type>" + type + "</type>";
+		output += "\n\t\t<description>" + description + "</description>\n\t</argument>";
+		
+	/*	String result;
 		
 		result = title;
 		if( type != CommandLineArgument.Type.Unknown)
@@ -44,8 +49,8 @@ public class Argument extends CommandLineArgument
 			result += " " +description;
 		else
 			result = result;
-			
-		return result;
+			*/
+		return output;
 	}
 	
 	public int getNumValues()

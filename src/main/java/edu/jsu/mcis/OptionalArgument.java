@@ -57,6 +57,18 @@ public class OptionalArgument extends CommandLineArgument{
 		return value;
 	}
 	
+	public String toString()
+	{
+		String output = "";
+		output += "\n\t<optionalArgument>\n\t\t<name>" + title + "</name>";
+		output += "\n\t\t<numValues>" + numValues + "</numValues>";
+		output += "\n\t\t<type>" + type + "</type>";
+		output += "\n\t\t<description>" + description + "</description>";	
+		output += "<value>" + value + "</value>";
+		output += "<shortName>" + shortName + "</shortName>\n\t</optionalArgument>";
+		return output;
+	}
+	
 	public boolean equals(Object o)
 	{
 		boolean result = false;

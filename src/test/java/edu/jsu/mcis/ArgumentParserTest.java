@@ -289,5 +289,15 @@ public class ArgumentParserTest {
 		assertEquals("Calculates volume of an object", tester.getProgramDescription());
 	}
 	
+	@Test
+	public void testOutputXML()
+	{
+		tester.addArgument("length", CommandLineArgument.Type.Integer);
+		tester.addDescription("length", "the length of the box");
+		tester.addOptArg("--type", 0);
+		assertEquals("<?xml version=\"1.0\" encoding=\""+ "UTF-8" + "\"?>\n<arguments>\n\t<argument>\n\t\t<name>length</name>\n\t\t<type>Integer</type>\n\t\t<description>the length of the box</description>\n\t</argument>\n\t<optionalArgument>\n\t\t<name>--type</name>\n\t\t<numValues>0</numValues>\n\t\t<type>" + null + "</type>\n\t\t<description>" + null + "</description>"+	
+		"<value>" + null + "</value><shortName></shortName>\n\t</optionalArgument>\n</arguments>",tester.getOutput());
+	}
+	
 	
 }

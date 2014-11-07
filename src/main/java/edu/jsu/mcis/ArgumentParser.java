@@ -11,12 +11,25 @@ public class ArgumentParser
 	private String programDescription;
 	private String incorrectType;
 	private int countOptionalArguments = 0;
+	private String output;
 		
 	public ArgumentParser()
 	{
 		argumentList = new ArrayList<CommandLineArgument>();
 		unmatched ="";
 		incorrectType= "";
+	}
+	
+	public String getOutput()
+	{
+		output = "<?xml version=\"1.0\" encoding=\""+ "UTF-8" + "\"?>\n<arguments>";
+		for (int i = 0; i<getSize(); i++)
+		{
+			output += argumentList.get(i).toString();
+		}
+		output += "\n</arguments>";
+		System.out.println(output);
+		return output;
 	}
 	
 	public int getSize()
@@ -32,8 +45,7 @@ public class ArgumentParser
 	
 	public void addArgument(String str)
 	{
-		argumentList.add(new Argument(str));
-
+		argumentList.add(new Argument(str));		
 	}
 	
 	public void addArgument(String title, CommandLineArgument.Type type)
