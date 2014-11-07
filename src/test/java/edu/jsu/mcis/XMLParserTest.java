@@ -64,5 +64,5 @@ public class XMLParserTest
 		ArgumentParser testBad = XMLParser.createArgumentParser("badFormatXML.xml");
 		ArgumentParser testNo = XMLParser.createArgumentParser("nonono.xml");
 	}
-	
+
 }

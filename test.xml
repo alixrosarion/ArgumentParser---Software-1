@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<arguments>
+	<argument>
+		<name>length</name>
+		<type>Integer</type>
+		<description>the length of the box</description>
+	</argument>
+	<optionalArgument>
+		<name>--type</name>
+		<numValues>0</numValues>
+		<type></type>
+		<description></description>
+		<value>null</value>
+		<shortName></shortName>
+	</optionalArgument>
+</arguments>

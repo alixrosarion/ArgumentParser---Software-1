@@ -10,7 +10,7 @@ public class ArgumentTest
 	public void testArgumentToString()
 	{
 		Argument tester = new Argument("length", CommandLineArgument.Type.Integer, "the length of the box");
-		assertEquals("\n\t<argument>\n\t\t<name>length</name>\n\t\t<type>Integer</type>\n\t\t<description>the length of the box</description>\n\t</argument>", tester.toString());
+		assertEquals("\r\n\t<argument>\r\n\t\t<name>length</name>\r\n\t\t<type>Integer</type>\r\n\t\t<description>the length of the box</description>\r\n\t</argument>", tester.toString());
 	}
 	
 	@Test

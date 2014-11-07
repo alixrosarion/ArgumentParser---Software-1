@@ -1,6 +1,7 @@
 package edu.jsu.mcis;
 
 import java.util.*;
+import java.io.*;
 
 public class ArgumentParser 
 {
@@ -10,7 +11,7 @@ public class ArgumentParser
 	private String program;
 	private String programDescription;
 	private String incorrectType;
-	private int countOptionalArguments = 0;
+	private int countOptionalArguments;
 	private String output;
 		
 	public ArgumentParser()
@@ -18,18 +19,6 @@ public class ArgumentParser
 		argumentList = new ArrayList<CommandLineArgument>();
 		unmatched ="";
 		incorrectType= "";
-	}
-	
-	public String getOutput()
-	{
-		output = "<?xml version=\"1.0\" encoding=\""+ "UTF-8" + "\"?>\n<arguments>";
-		for (int i = 0; i<getSize(); i++)
-		{
-			output += argumentList.get(i).toString();
-		}
-		output += "\n</arguments>";
-		System.out.println(output);
-		return output;
 	}
 	
 	public int getSize()
@@ -212,7 +201,6 @@ public class ArgumentParser
 					}	
 				}
 			}
-			
 			else
 			{	
 				if(countArgValues <argumentList.size() - countOptionalArguments)
@@ -257,11 +245,30 @@ public class ArgumentParser
 			if (!a.getTitle().contains("-"))
 			{
 				argumentTitles += a.getTitle() + " ";
-				description += a.getTitle() +" "+ a.getType().toString().toLowerCase()+"\t\t"+a.getDescription() + "\n";
+				description += a.getTitle() +" "+ a.getType().toString().toLowerCase()+"\t\t"+a.getDescription() + "\r\n";
 			}
 		}
-		help = "usage: java " + program + " " + argumentTitles + "\n" + programDescription +"\nPositional Arguments:\n" + description;
-		
+		help = "usage: java " + program + " " + argumentTitles + "\r\n" + programDescription +"\r\nPositional Arguments:\r\n" + description;
 		return help;
+	}
+	public String getOutput()
+	{
+		output = "<?xml version=\"1.0\" encoding=\""+ "UTF-8" + "\"?>"+"\r\n<arguments>";
+		for (int i = 0; i<getSize(); i++)
+		{
+			output += argumentList.get(i).toString();
+		}
+		output += "\r\n</arguments>";
+		System.out.println(output);
+		return output;
+	}
+	public void writeToXMLFile(String filename)
+	{
+		try
+		{
+			PrintWriter file = new PrintWriter(filename);
+			file.write(getOutput());
+			file.close();
+		}catch(FileNotFoundException e){e.printStackTrace();}
 	}
 }

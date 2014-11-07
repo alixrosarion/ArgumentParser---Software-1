@@ -10,8 +10,8 @@ public class OptionalArgumentTest
 	public void testOptionalArgumentToString()
 	{
 		OptionalArgument tester = new OptionalArgument("--type");
-		assertEquals("\n\t<optionalArgument>\n\t\t<name>--type</name>\n\t\t<numValues>0</numValues>\n\t\t<type>" + null + "</type>\n\t\t<description>" + null + "</description>"+	
-		"<value>" + null + "</value><shortName></shortName>\n\t</optionalArgument>", tester.toString());
+		assertEquals("\r\n\t<optionalArgument>\r\n\t\t<name>--type</name>\r\n\t\t<numValues>0</numValues>\r\n\t\t<type></type>\r\n\t\t<description></description>"+	
+		"\r\n\t\t<value>" + null + "</value>\r\n\t\t<shortName></shortName>\r\n\t</optionalArgument>", tester.toString());
 	}
 
 	@Test

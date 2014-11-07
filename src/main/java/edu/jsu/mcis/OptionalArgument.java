@@ -9,6 +9,8 @@ public class OptionalArgument extends CommandLineArgument{
 	{
 		this.title = title;
 		shortName = "";
+		description = "";
+		type =	CommandLineArgument.Type.Unknown;
 	}
 	
 	public OptionalArgument(String title, int numValues)
@@ -16,9 +18,11 @@ public class OptionalArgument extends CommandLineArgument{
 		this.title = title;
 		this.numValues = numValues;
 		shortName = "";
+		description = "";
+		type =	CommandLineArgument.Type.Unknown;
 	}
 	
-	public OptionalArgument(String title, int numValues, Type type, String description, Object value)
+	public OptionalArgument(String title, int numValues, CommandLineArgument.Type type, String description, Object value)
 	{
 		this.title = title;
 		this.type = type;
@@ -60,12 +64,12 @@ public class OptionalArgument extends CommandLineArgument{
 	public String toString()
 	{
 		String output = "";
-		output += "\n\t<optionalArgument>\n\t\t<name>" + title + "</name>";
-		output += "\n\t\t<numValues>" + numValues + "</numValues>";
-		output += "\n\t\t<type>" + type + "</type>";
-		output += "\n\t\t<description>" + description + "</description>";	
-		output += "<value>" + value + "</value>";
-		output += "<shortName>" + shortName + "</shortName>\n\t</optionalArgument>";
+		output += "\r\n\t<optionalArgument>\r\n\t\t<name>" + title + "</name>";
+		output += "\r\n\t\t<numValues>" + numValues + "</numValues>";
+		output += "\r\n\t\t<type>" + type + "</type>";
+		output += "\r\n\t\t<description>" + description + "</description>";	
+		output += "\r\n\t\t<value>" + value + "</value>";
+		output += "\r\n\t\t<shortName>" + shortName + "</shortName>\r\n\t</optionalArgument>";
 		return output;
 	}
 	
@@ -85,4 +89,8 @@ public class OptionalArgument extends CommandLineArgument{
 		}
 		return result;
 	}
+	public int hashCode() {
+		int result = 17 * title.hashCode();
+		return result;	
+    }
 }

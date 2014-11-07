@@ -34,22 +34,10 @@ public class Argument extends CommandLineArgument
 	public String toString()
 	{	
 		String output = "";
-		output += "\n\t<argument>\n\t\t<name>" + title + "</name>";
-		output += "\n\t\t<type>" + type + "</type>";
-		output += "\n\t\t<description>" + description + "</description>\n\t</argument>";
+		output += "\r\n\t<argument>\r\n\t\t<name>" + title + "</name>";
+		output += "\r\n\t\t<type>" + type + "</type>";
+		output += "\r\n\t\t<description>" + description + "</description>\r\n\t</argument>";
 		
-	/*	String result;
-		
-		result = title;
-		if( type != CommandLineArgument.Type.Unknown)
-			result += " " +type;
-		else
-			result = result;
-		if(description != "")
-			result += " " +description;
-		else
-			result = result;
-			*/
 		return output;
 	}
 	
@@ -74,8 +62,7 @@ public class Argument extends CommandLineArgument
 	}
 	
 	public int hashCode() {
-        int result = 17;
-		result = 31 * title.hashCode();
+		int result = 31 * title.hashCode();
 		return result;	
     }
 	
