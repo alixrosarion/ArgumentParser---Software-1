@@ -2,21 +2,11 @@
 <arguments>
 	<argument>
 		<name>length</name>
-		<type>Float</type>
+		<type>Integer</type>
 		<description>the length of the box</description>
 	</argument>
-	<argument>
-		<name>width</name>
-		<type>Float</type>
-		<description>the width of the box</description>
-	</argument>
-	<argument>
-		<name>height</name>
-		<type>Float</type>
-		<description>the height of the box</description>
-	</argument>
 	<optionalArgument>
-		<name>-h</name>
+		<name>--type</name>
 		<numValues>0</numValues>
 		<type></type>
 		<description></description>

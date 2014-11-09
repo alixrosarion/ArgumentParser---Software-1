@@ -2,7 +2,7 @@ import edu.jsu.mcis.*;
 
 import java.util.*;
 @SuppressWarnings("unchecked")
-public class VolCalcLoadXML
+public class VolCalcSaveXML
 {
 	public static void main(String [] args) 
 	{
