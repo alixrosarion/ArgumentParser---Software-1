@@ -15,7 +15,7 @@ public class IncomeTaxCalc
 		parser.addArgument("rate", CommandLineArgument.Type.Float, "the income tax rate");
 		parser.addArgument("income", CommandLineArgument.Type.Float, "the annual salary");
 		parser.addProgram("IncomeTaxCalc","Calculates income tax");
-		parser.addOptArg("-h", 0);
+		parser.addOptionalArgument("-h", 0);
 		
 		try{
 			parser.parse(read);

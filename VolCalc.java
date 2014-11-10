@@ -16,8 +16,8 @@ public class VolCalc
 		parser.addArgument("width", CommandLineArgument.Type.Float, "the width of the box");
 		parser.addArgument("height", CommandLineArgument.Type.Integer, "the height of the box");
 		parser.addProgram("VolCalc","Calculates the volume of an object");
-		parser.addOptArg("-h", 0);
-		parser.addOptArg("--type", 1, CommandLineArgument.Type.String, "Shape of object to be calculated", "Box");
+		parser.addOptionalArgument("-h", 0);
+		parser.addOptionalArgument("--type", 1, CommandLineArgument.Type.String, "Shape of object to be calculated", "Box");
 		
 		try{
 			parser.parse(read);

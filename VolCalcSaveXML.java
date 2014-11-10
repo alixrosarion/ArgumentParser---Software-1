@@ -13,7 +13,7 @@ public class VolCalcSaveXML
 		parser.addArgument("width", CommandLineArgument.Type.Float, "the width of the box");
 		parser.addArgument("height", CommandLineArgument.Type.Float, "the height of the box");
 		parser.addProgram("VolCalc","Calculates the volume of an object");
-		parser.addOptArg("-h", 0);
+		parser.addOptionalArgument("-h", 0);
 		
 		for(String arg:args){
 			if(!arg.contains(".xml")) read += arg + " ";
