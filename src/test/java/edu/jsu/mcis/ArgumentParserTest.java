@@ -107,7 +107,7 @@ public class ArgumentParserTest {
 		tester.addDescription("length", "the length of the box");
 		tester.addDescription("width", "the width of the box");
 		tester.addDescription("height","the height of the box");
-		tester.addOptArg("-h", 0);
+		tester.addOptionalArgument("-h", 0);
 		try
 		{
 			tester.parse("-h");
@@ -175,8 +175,8 @@ public class ArgumentParserTest {
 	public void testReadingOptionalArgumentAtEnd ()
 	{
 		tester.addArgument("length", CommandLineArgument.Type.Integer);
-		tester.addOptArg("--type", 1);
-		assertEquals("--type", tester.getOptArg("--type", 1));
+		tester.addOptionalArgument("--type", 1);
+		assertEquals("--type", tester.getOptionalArgument("--type", 1));
 		try
 		{
 			tester.parse("7 --type sphere");
@@ -190,7 +190,7 @@ public class ArgumentParserTest {
 		tester.addArgument("length");
 		tester.addArgument("width");
 		tester.addArgument("height");
-		tester.addOptArg("--type", 1);
+		tester.addOptionalArgument("--type", 1);
 		try
 		{
 			tester.parse("7 --type sphere 5 2");
@@ -205,9 +205,9 @@ public class ArgumentParserTest {
 		tester.addArgument("length");
 		tester.addArgument("width");
 		tester.addArgument("height");
-		tester.addOptArg("--type", 1);
-		tester.addOptArg("-h", 0);
-		tester.addOptArg("--actor", 2);
+		tester.addOptionalArgument("--type", 1);
+		tester.addOptionalArgument("-h", 0);
+		tester.addOptionalArgument("--actor", 2);
 		try
 		{
 			tester.parse("7 --type sphere 5 -h 2 --actor will smith");
@@ -221,7 +221,7 @@ public class ArgumentParserTest {
 		tester.addArgument("length");
 		tester.addArgument("width");
 		tester.addArgument("height");
-		tester.addOptArg("--type", 1, CommandLineArgument.Type.String, "Type of shape", "Box");
+		tester.addOptionalArgument("--type", 1, CommandLineArgument.Type.String, "Type of shape", "Box");
 		try
 		{
 			tester.parse("7 5 2");
@@ -233,7 +233,7 @@ public class ArgumentParserTest {
 	
 	@Test
 	public void testOptionalArgumentAsFlag() {
-		tester.addOptArg("--type", 0);
+		tester.addOptionalArgument("--type", 0);
 		boolean flag = true;
 		try {
 			tester.parse("--type");
@@ -245,7 +245,7 @@ public class ArgumentParserTest {
 	
 	@Test
 	public void testOptionalArgumentOverrideDefaultValue() {
-		tester.addOptArg("--type", 1);
+		tester.addOptionalArgument("--type", 1);
 		try {
 			tester.parse("--type shape");
 			assertEquals("shape", tester.getArgumentValue("--type"));
@@ -257,7 +257,7 @@ public class ArgumentParserTest {
 	
 	@Test
 	public void testOptionalArgumentDescription() {
-		tester.addOptArg("--type", 1, CommandLineArgument.Type.String, "The shape the user defines", "Box");
+		tester.addOptionalArgument("--type", 1, CommandLineArgument.Type.String, "The shape the user defines", "Box");
 		try {
 			tester.parse("--type shape");
 			assertEquals("The shape the user defines", tester.getDescription("--type"));
@@ -269,9 +269,9 @@ public class ArgumentParserTest {
 	@Test
 	public void testShortName()
 	{
-		tester.addOptArg("--type", 1, CommandLineArgument.Type.String, "The shape the user defines", "Box");
-		tester.addShortOpt("--type", "-t");
-		assertEquals("-t", tester.getShortOpt("--type"));
+		tester.addOptionalArgument("--type", 1, CommandLineArgument.Type.String, "The shape the user defines", "Box");
+		tester.addShortOption("--type", "-t");
+		assertEquals("-t", tester.getShortOption("--type"));
 		try {
 			tester.parse("-t shape");
 			assertEquals("The shape the user defines", tester.getDescription("-t"));
@@ -295,7 +295,7 @@ public class ArgumentParserTest {
 	{
 		tester.addArgument("length", CommandLineArgument.Type.Integer);
 		tester.addDescription("length", "the length of the box");
-		tester.addOptArg("--type", 0);
+		tester.addOptionalArgument("--type", 0);
 		assertEquals("<?xml version=\"1.0\" encoding=\""+ "UTF-8" + "\"?>\r\n<arguments>\r\n\t<argument>\r\n\t\t<name>length</name>"+
 		"\r\n\t\t<type>Integer</type>\r\n\t\t<description>the length of the box</description>\r\n\t</argument>\r\n\t<optionalArgument>\r\n\t\t"+
 		"<name>--type</name>\r\n\t\t<numValues>0</numValues>\r\n\t\t<type></type>\r\n\t\t<description></description>"+	
@@ -307,7 +307,7 @@ public class ArgumentParserTest {
 	{
 		tester.addArgument("length", CommandLineArgument.Type.Integer);
 		tester.addDescription("length", "the length of the box");
-		tester.addOptArg("--type", 0);
+		tester.addOptionalArgument("--type", 0);
 		tester.writeToXMLFile("test.xml");
 		assertTrue(new File("test.xml").exists());
 		

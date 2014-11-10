@@ -50,29 +50,29 @@ public class ArgumentParser
 		argumentList.get(argumentList.indexOf(new Argument(title))).setDescription(description);
 	}
 	
-	public void addShortOpt(String title, String str)
+	public void addShortOption(String title, String str)
 	{
 		OptionalArgument arg = new OptionalArgument(title);
 		argumentList.get(argumentList.indexOf(arg)).setShort(str);
 	}
 	
-	public String getShortOpt(String title)
+	public String getShortOption(String title)
 	{
 		return argumentList.get(argumentList.indexOf(new OptionalArgument(title))).getShort();
 	}
 	
-	public void addOptArg(String title, int numValues)
+	public void addOptionalArgument(String title, int numValues)
 	{
 		argumentList.add(new OptionalArgument(title));
-		argumentList.get(argumentList.indexOf(new OptionalArgument(title))).setNumValues(numValues);
+		argumentList.get(argumentList.indexOf(new OptionalArgument(title))).setNumberValues(numValues);
 		countOptionalArguments++;
 	}
 	
-	public void addOptArg(String title, int numValues, CommandLineArgument.Type type, String description, Object defaultValue)
+	public void addOptionalArgument(String title, int numValues, CommandLineArgument.Type type, String description, Object defaultValue)
 		{
 			countOptionalArguments++;
 			argumentList.add(new OptionalArgument(title));
-			argumentList.get(argumentList.indexOf(new OptionalArgument(title))).setNumValues(numValues);
+			argumentList.get(argumentList.indexOf(new OptionalArgument(title))).setNumberValues(numValues);
 			argumentList.get(argumentList.indexOf(new OptionalArgument(title))).setType(type);
 			argumentList.get(argumentList.indexOf(new OptionalArgument(title))).setDescription(description);
 			argumentList.get(argumentList.indexOf(new OptionalArgument(title))).addValue(defaultValue);
@@ -135,7 +135,7 @@ public class ArgumentParser
 		return argumentList.get(argumentList.indexOf(new Argument(title))).getType();
 	}
 	
-	public String getOptArg(String title, int numValues)
+	public String getOptionalArgument(String title, int numValues)
 	{
 		return argumentList.get(argumentList.indexOf(new OptionalArgument(title, numValues))).getTitle();
 	}
@@ -188,13 +188,13 @@ public class ArgumentParser
 					System.out.println(getHelpText());
 					return;
 				}
-				else if(argumentList.get(argumentList.indexOf(new OptionalArgument(extra))).getNumValues() == 0)
+				else if(argumentList.get(argumentList.indexOf(new OptionalArgument(extra))).getNumberValues() == 0)
 				{
 					addOptionalFlag(extra);
 				}
 				else
 				{
-					numberValues = argumentList.get(argumentList.indexOf(new OptionalArgument(extra))).getNumValues();
+					numberValues = argumentList.get(argumentList.indexOf(new OptionalArgument(extra))).getNumberValues();
 					for (int i = 0; i<numberValues; i++)
 					{
 						addOptionalValue(extra, scan.next());
@@ -215,6 +215,7 @@ public class ArgumentParser
 				countArgValues++;
 			}
 		}
+		
 		if (unmatched != "")
 			unmatched = unmatched.substring(0, unmatched.length() -1);
 			
@@ -240,6 +241,7 @@ public class ArgumentParser
 	{
 		String argumentTitles = "";
 		String description = "";
+		String description2 = "";
 		for (CommandLineArgument a : argumentList)
 		{	
 			if (!a.getTitle().contains("-"))
@@ -247,8 +249,12 @@ public class ArgumentParser
 				argumentTitles += a.getTitle() + " ";
 				description += a.getTitle() +" "+ a.getType().toString().toLowerCase()+"\t\t"+a.getDescription() + "\r\n";
 			}
+			/*else {
+				argumentTitles += a.getTitle() + " ";
+				description += a.getTitle() +" "+ a.getType().toString().toLowerCase()+"\t\t"+a.getDescription() + "\r\n";
+			}*/
 		}
-		help = "usage: java " + program + " " + argumentTitles + "\r\n" + programDescription +"\r\nPositional Arguments:\r\n" + description;
+		help = "usage: java " + program + " " + argumentTitles + "\r\n" + programDescription +"\r\nPositional Arguments:\r\n" + description /*+ "\r\nOptional Arguments:\r\n" + description2*/;
 		return help;
 	}
 	public String getOutput()

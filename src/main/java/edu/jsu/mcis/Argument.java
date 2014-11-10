@@ -41,7 +41,7 @@ public class Argument extends CommandLineArgument
 		return output;
 	}
 	
-	public int getNumValues()
+	public int getNumberValues()
 	{
 		return 0;
 	}
@@ -67,5 +67,5 @@ public class Argument extends CommandLineArgument
     }
 	
 	public void setShort(String s){}
-	public void setNumValues(int num){}
+	public void setNumberValues(int num){}
 }

@@ -82,12 +82,12 @@ public class XMLParser extends DefaultHandler
 		else
 		{
 			if (element.equalsIgnoreCase("name")) {
-				argPars.addOptArg(tmpValue, 0);
+				argPars.addOptionalArgument(tmpValue, 0);
 				tmpName = tmpValue;
 			}
 			if (element.equalsIgnoreCase("numValues")) {
 				optArgXML = Integer.parseInt(tmpValue);
-				argPars.argumentList.get(argPars.argumentList.indexOf(new OptionalArgument(tmpName, optArgXML))).setNumValues(optArgXML);
+				argPars.argumentList.get(argPars.argumentList.indexOf(new OptionalArgument(tmpName, optArgXML))).setNumberValues(optArgXML);
 			}
 			if (element.equalsIgnoreCase("description"))
 			{

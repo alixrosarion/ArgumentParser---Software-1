@@ -2,7 +2,7 @@ package edu.jsu.mcis;
 
 public class OptionalArgument extends CommandLineArgument{
 	
-	private int numValues;
+	private int numberValues;
 	private String shortName;
 	
 	public OptionalArgument(String title)
@@ -13,21 +13,21 @@ public class OptionalArgument extends CommandLineArgument{
 		type =	CommandLineArgument.Type.Unknown;
 	}
 	
-	public OptionalArgument(String title, int numValues)
+	public OptionalArgument(String title, int numberValues)
 	{
 		this.title = title;
-		this.numValues = numValues;
+		this.numberValues = numberValues;
 		shortName = "";
 		description = "";
 		type =	CommandLineArgument.Type.Unknown;
 	}
 	
-	public OptionalArgument(String title, int numValues, CommandLineArgument.Type type, String description, Object value)
+	public OptionalArgument(String title, int numberValues, CommandLineArgument.Type type, String description, Object value)
 	{
 		this.title = title;
 		this.type = type;
 		this.description = description;
-		this.numValues = numValues;
+		this.numberValues = numberValues;
 		this.value = value;
 		shortName = "";
 	}
@@ -42,19 +42,19 @@ public class OptionalArgument extends CommandLineArgument{
 		return shortName;
 	}
 	
-	public void setNumValues(int num)
+	public void setNumberValues(int number)
 	{
-		numValues = num;
+		numberValues = number;
 	}
 	
-	public int getNumValues()
+	public int getNumberValues()
 	{
-		return numValues;
+		return numberValues;
 	}
 	
-	public void addValue(Object obj)
+	public void addValue(Object object)
 	{
-		value = obj;
+		value = object;
 	}
 	public Object getValue()
 	{
@@ -65,7 +65,7 @@ public class OptionalArgument extends CommandLineArgument{
 	{
 		String output = "";
 		output += "\r\n\t<optionalArgument>\r\n\t\t<name>" + title + "</name>";
-		output += "\r\n\t\t<numValues>" + numValues + "</numValues>";
+		output += "\r\n\t\t<numValues>" + numberValues + "</numValues>";
 		output += "\r\n\t\t<type>" + type + "</type>";
 		output += "\r\n\t\t<description>" + description + "</description>";	
 		output += "\r\n\t\t<value>" + value + "</value>";

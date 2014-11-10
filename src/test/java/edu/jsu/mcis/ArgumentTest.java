@@ -49,6 +49,6 @@ public class ArgumentTest
 	public void testGetNumValues()
 	{
 		Argument tester = new Argument("length");
-		assertEquals(0, tester.getNumValues());
+		assertEquals(0, tester.getNumberValues());
 	}
 }

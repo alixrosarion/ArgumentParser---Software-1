@@ -26,7 +26,7 @@ public class OptionalArgumentTest
 	{
 		OptionalArgument tester = new OptionalArgument("--type", 1, CommandLineArgument.Type.String, "Shape of Volume", "Box");
 		assertEquals("--type", tester.getTitle());
-		assertEquals(1, tester.getNumValues());
+		assertEquals(1, tester.getNumberValues());
 		assertEquals(CommandLineArgument.Type.String, tester.getType());
 		assertEquals("Shape of Volume", tester.getDescription());
 		assertEquals("Box", tester.getValue());
