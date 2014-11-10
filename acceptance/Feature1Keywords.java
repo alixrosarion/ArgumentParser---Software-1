@@ -32,6 +32,17 @@ public class Feature1Keywords
 		parser.addOptionalArgument("--type", 1);
 		addValues(args);
 	}
+	
+	public void startProgramWithShort(String args)
+	{
+		parser = new ArgumentParser();
+		parser.addArgument("length");
+		parser.addArgument("width");
+		parser.addArgument("height");
+		parser.addOptionalArgument("-type", 1);
+		parser.addShortOption("--type", "-t");
+		addValues(args);
+	}
 
 	public void addArgument(String arg)
 	{

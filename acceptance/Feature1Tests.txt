@@ -27,3 +27,8 @@ Test Case 3
 	Start Program With Optionals   7 --type box 5 2
 	${type}= 	Get   --Type
 	Should Be Equal   ${type}   box
+	
+Test case 4
+	Start Program With Short  7 -t box 5 2
+	$(t)=  Get  -t
+	Should Be Equal  $(t)  box
