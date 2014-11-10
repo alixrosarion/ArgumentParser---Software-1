@@ -1,67 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<<<<<<< Updated upstream
-<robot generator="Robot 2.8.5 (Jython 2.5.3 on java1.7.0_71)" generated="20141106 17:26:35.355">
-<suite source="C:\Users\Sari\Documents\GitHub\GroupA\acceptance\Feature1Tests.txt" id="s1" name="Feature1Tests">
+<robot generator="Robot 2.8.5 (Jython 2.5.3 on java1.7.0_40)" generated="20141110 12:04:05.848">
+<suite source="C:\Users\Kris\GroupA\acceptance\Feature1Tests.txt" id="s1" name="Feature1Tests">
 <test id="s1-t1" name="Test Case 1">
-=======
-<<<<<<< Updated upstream
-<robot generator="Robot 2.8.5 (Jython 2.5.3 on java1.8.0_25)" generated="20141104 13:24:55.250">
-<suite source="C:\Users\Alix\Documents\jsu-mcis-cs310\GroupA\acceptance\Feature1Tests.txt" name="Feature1Tests" id="s1">
-<test name="Test Case 1" id="s1-t1">
-=======
-<<<<<<< Updated upstream
-<robot generator="Robot 2.8.5 (Jython 2.5.3 on java1.7.0_71)" generated="20141104 12:41:21.045">
-<suite source="C:\Users\Sari\Documents\GitHub\GroupA\acceptance\Feature1Tests.txt" id="s1" name="Feature1Tests">
-=======
-<robot generator="Robot 2.8.5 (Jython 2.5.3 on java1.7.0_51)" generated="20141104 09:45:30.618">
-<suite source="/Users/Nikki/github/GroupA/acceptance/Feature1Tests.txt" id="s1" name="Feature1Tests">
->>>>>>> Stashed changes
-<test id="s1-t1" name="Test Case 1">
->>>>>>> Stashed changes
->>>>>>> Stashed changes
 <kw type="kw" name="Feature1Keywords.Start Program">
 <doc></doc>
 <arguments>
-<arg>7</arg>
-<arg>5</arg>
-<arg>2</arg>
+<arg>7 5 2</arg>
 </arguments>
-<<<<<<< Updated upstream
-<status status="PASS" endtime="20141106 17:26:35.840" starttime="20141106 17:26:35.791"></status>
-=======
-<<<<<<< Updated upstream
-<status endtime="20141104 13:24:55.453" starttime="20141104 13:24:55.437" status="PASS"></status>
-=======
-<<<<<<< Updated upstream
-<status status="PASS" endtime="20141104 12:41:21.596" starttime="20141104 12:41:21.580"></status>
-=======
-<status status="PASS" endtime="20141104 09:45:31.369" starttime="20141104 09:45:31.353"></status>
->>>>>>> Stashed changes
->>>>>>> Stashed changes
->>>>>>> Stashed changes
+<status status="PASS" endtime="20141110 12:04:06.650" starttime="20141110 12:04:06.619"></status>
 </kw>
 <kw type="kw" name="${length} = Feature1Keywords.Get">
 <doc></doc>
 <arguments>
 <arg>Length</arg>
 </arguments>
-<<<<<<< Updated upstream
-<msg timestamp="20141106 17:26:35.845" level="INFO">${length} = 7</msg>
-<status status="PASS" endtime="20141106 17:26:35.844" starttime="20141106 17:26:35.842"></status>
-=======
-<<<<<<< Updated upstream
-<msg level="INFO" timestamp="20141104 13:24:55.469">${length} = 7</msg>
-<status endtime="20141104 13:24:55.453" starttime="20141104 13:24:55.453" status="PASS"></status>
-=======
-<<<<<<< Updated upstream
-<msg timestamp="20141104 12:41:21.596" level="INFO">${length} = 7</msg>
-<status status="PASS" endtime="20141104 12:41:21.596" starttime="20141104 12:41:21.596"></status>
-=======
-<msg timestamp="20141104 09:45:31.381" level="INFO">${length} = 7</msg>
-<status status="PASS" endtime="20141104 09:45:31.379" starttime="20141104 09:45:31.373"></status>
->>>>>>> Stashed changes
->>>>>>> Stashed changes
->>>>>>> Stashed changes
+<msg timestamp="20141110 12:04:06.660" level="INFO">${length} = 7</msg>
+<status status="PASS" endtime="20141110 12:04:06.658" starttime="20141110 12:04:06.653"></status>
 </kw>
 <kw type="kw" name="BuiltIn.Should Be Equal">
 <doc>Fails if the given objects are unequal.</doc>
@@ -69,54 +23,18 @@
 <arg>${length}</arg>
 <arg>7</arg>
 </arguments>
-<<<<<<< Updated upstream
-<msg timestamp="20141106 17:26:35.851" level="INFO">Argument types are:
+<msg timestamp="20141110 12:04:06.668" level="INFO">Argument types are:
 &lt;type 'unicode'&gt;
 &lt;type 'unicode'&gt;</msg>
-<status status="PASS" endtime="20141106 17:26:35.852" starttime="20141106 17:26:35.848"></status>
-=======
-<<<<<<< Updated upstream
-<msg level="INFO" timestamp="20141104 13:24:55.469">Argument types are:
-&lt;type 'unicode'&gt;
-&lt;type 'unicode'&gt;</msg>
-<status endtime="20141104 13:24:55.469" starttime="20141104 13:24:55.469" status="PASS"></status>
-=======
-<<<<<<< Updated upstream
-<msg timestamp="20141104 12:41:21.618" level="INFO">Argument types are:
-&lt;type 'unicode'&gt;
-&lt;type 'unicode'&gt;</msg>
-<status status="PASS" endtime="20141104 12:41:21.621" starttime="20141104 12:41:21.612"></status>
-=======
-<msg timestamp="20141104 09:45:31.393" level="INFO">Argument types are:
-&lt;type 'unicode'&gt;
-&lt;type 'unicode'&gt;</msg>
-<status status="PASS" endtime="20141104 09:45:31.396" starttime="20141104 09:45:31.387"></status>
->>>>>>> Stashed changes
->>>>>>> Stashed changes
->>>>>>> Stashed changes
+<status status="PASS" endtime="20141110 12:04:06.670" starttime="20141110 12:04:06.663"></status>
 </kw>
 <kw type="kw" name="${width} = Feature1Keywords.Get">
 <doc></doc>
 <arguments>
 <arg>Width</arg>
 </arguments>
-<<<<<<< Updated upstream
-<msg timestamp="20141106 17:26:35.856" level="INFO">${width} = 5</msg>
-<status status="PASS" endtime="20141106 17:26:35.855" starttime="20141106 17:26:35.853"></status>
-=======
-<<<<<<< Updated upstream
-<msg level="INFO" timestamp="20141104 13:24:55.469">${width} = 5</msg>
-<status endtime="20141104 13:24:55.469" starttime="20141104 13:24:55.469" status="PASS"></status>
-=======
-<<<<<<< Updated upstream
-<msg timestamp="20141104 12:41:21.627" level="INFO">${width} = 5</msg>
-<status status="PASS" endtime="20141104 12:41:21.626" starttime="20141104 12:41:21.623"></status>
-=======
-<msg timestamp="20141104 09:45:31.406" level="INFO">${width} = 5</msg>
-<status status="PASS" endtime="20141104 09:45:31.405" starttime="20141104 09:45:31.399"></status>
->>>>>>> Stashed changes
->>>>>>> Stashed changes
->>>>>>> Stashed changes
+<msg timestamp="20141110 12:04:06.679" level="INFO">${width} = 5</msg>
+<status status="PASS" endtime="20141110 12:04:06.678" starttime="20141110 12:04:06.672"></status>
 </kw>
 <kw type="kw" name="BuiltIn.Should Be Equal">
 <doc>Fails if the given objects are unequal.</doc>
@@ -124,54 +42,18 @@
 <arg>${width}</arg>
 <arg>5</arg>
 </arguments>
-<<<<<<< Updated upstream
-<msg timestamp="20141106 17:26:35.860" level="INFO">Argument types are:
+<msg timestamp="20141110 12:04:06.687" level="INFO">Argument types are:
 &lt;type 'unicode'&gt;
 &lt;type 'unicode'&gt;</msg>
-<status status="PASS" endtime="20141106 17:26:35.860" starttime="20141106 17:26:35.857"></status>
-=======
-<<<<<<< Updated upstream
-<msg level="INFO" timestamp="20141104 13:24:55.469">Argument types are:
-&lt;type 'unicode'&gt;
-&lt;type 'unicode'&gt;</msg>
-<status endtime="20141104 13:24:55.469" starttime="20141104 13:24:55.469" status="PASS"></status>
-=======
-<<<<<<< Updated upstream
-<msg timestamp="20141104 12:41:21.634" level="INFO">Argument types are:
-&lt;type 'unicode'&gt;
-&lt;type 'unicode'&gt;</msg>
-<status status="PASS" endtime="20141104 12:41:21.635" starttime="20141104 12:41:21.630"></status>
-=======
-<msg timestamp="20141104 09:45:31.415" level="INFO">Argument types are:
-&lt;type 'unicode'&gt;
-&lt;type 'unicode'&gt;</msg>
-<status status="PASS" endtime="20141104 09:45:31.417" starttime="20141104 09:45:31.410"></status>
->>>>>>> Stashed changes
->>>>>>> Stashed changes
->>>>>>> Stashed changes
+<status status="PASS" endtime="20141110 12:04:06.688" starttime="20141110 12:04:06.682"></status>
 </kw>
 <kw type="kw" name="${height} = Feature1Keywords.Get">
 <doc></doc>
 <arguments>
 <arg>Height</arg>
 </arguments>
-<<<<<<< Updated upstream
-<msg timestamp="20141106 17:26:35.864" level="INFO">${height} = 2</msg>
-<status status="PASS" endtime="20141106 17:26:35.864" starttime="20141106 17:26:35.862"></status>
-=======
-<<<<<<< Updated upstream
-<msg level="INFO" timestamp="20141104 13:24:55.469">${height} = 2</msg>
-<status endtime="20141104 13:24:55.469" starttime="20141104 13:24:55.469" status="PASS"></status>
-=======
-<<<<<<< Updated upstream
-<msg timestamp="20141104 12:41:21.636" level="INFO">${height} = 2</msg>
-<status status="PASS" endtime="20141104 12:41:21.636" starttime="20141104 12:41:21.636"></status>
-=======
-<msg timestamp="20141104 09:45:31.428" level="INFO">${height} = 2</msg>
-<status status="PASS" endtime="20141104 09:45:31.427" starttime="20141104 09:45:31.421"></status>
->>>>>>> Stashed changes
->>>>>>> Stashed changes
->>>>>>> Stashed changes
+<msg timestamp="20141110 12:04:06.697" level="INFO">${height} = 2</msg>
+<status status="PASS" endtime="20141110 12:04:06.696" starttime="20141110 12:04:06.692"></status>
 </kw>
 <kw type="kw" name="BuiltIn.Should Be Equal">
 <doc>Fails if the given objects are unequal.</doc>
@@ -179,94 +61,31 @@
 <arg>2</arg>
 <arg>${height}</arg>
 </arguments>
-<<<<<<< Updated upstream
-<msg timestamp="20141106 17:26:35.868" level="INFO">Argument types are:
+<msg timestamp="20141110 12:04:06.704" level="INFO">Argument types are:
 &lt;type 'unicode'&gt;
 &lt;type 'unicode'&gt;</msg>
-<status status="PASS" endtime="20141106 17:26:35.869" starttime="20141106 17:26:35.866"></status>
-=======
-<<<<<<< Updated upstream
-<msg level="INFO" timestamp="20141104 13:24:55.469">Argument types are:
-&lt;type 'unicode'&gt;
-&lt;type 'unicode'&gt;</msg>
-<status endtime="20141104 13:24:55.469" starttime="20141104 13:24:55.469" status="PASS"></status>
-=======
-<<<<<<< Updated upstream
-<msg timestamp="20141104 12:41:21.636" level="INFO">Argument types are:
-&lt;type 'unicode'&gt;
-&lt;type 'unicode'&gt;</msg>
-<status status="PASS" endtime="20141104 12:41:21.636" starttime="20141104 12:41:21.636"></status>
-=======
-<msg timestamp="20141104 09:45:31.441" level="INFO">Argument types are:
-&lt;type 'unicode'&gt;
-&lt;type 'unicode'&gt;</msg>
-<status status="PASS" endtime="20141104 09:45:31.445" starttime="20141104 09:45:31.434"></status>
->>>>>>> Stashed changes
->>>>>>> Stashed changes
->>>>>>> Stashed changes
+<status status="PASS" endtime="20141110 12:04:06.705" starttime="20141110 12:04:06.700"></status>
 </kw>
 <doc></doc>
 <tags>
 </tags>
-<<<<<<< Updated upstream
-<status status="PASS" critical="yes" endtime="20141106 17:26:35.871" starttime="20141106 17:26:35.784"></status>
-=======
-<<<<<<< Updated upstream
-<status critical="yes" endtime="20141104 13:24:55.469" starttime="20141104 13:24:55.437" status="PASS"></status>
-=======
-<<<<<<< Updated upstream
-<status status="PASS" critical="yes" endtime="20141104 12:41:21.636" starttime="20141104 12:41:21.565"></status>
-=======
-<status status="PASS" critical="yes" endtime="20141104 09:45:31.449" starttime="20141104 09:45:31.340"></status>
->>>>>>> Stashed changes
->>>>>>> Stashed changes
->>>>>>> Stashed changes
+<status status="PASS" critical="yes" endtime="20141110 12:04:06.711" starttime="20141110 12:04:06.610"></status>
 </test>
 <test id="s1-t2" name="Test Case 2">
-<kw type="kw" name="Feature1Keywords.Start Program">
+<kw type="kw" name="Feature1Keywords.Start Program Mixed">
 <doc></doc>
 <arguments>
-<arg>dog</arg>
-<arg>2</arg>
-<arg>true</arg>
-<arg>3.5</arg>
+<arg>dog 2 true 3.5</arg>
 </arguments>
-<<<<<<< Updated upstream
-<status status="PASS" endtime="20141106 17:26:35.880" starttime="20141106 17:26:35.877"></status>
-=======
-<<<<<<< Updated upstream
-<status endtime="20141104 13:24:55.484" starttime="20141104 13:24:55.484" status="PASS"></status>
-=======
-<<<<<<< Updated upstream
-<status status="PASS" endtime="20141104 12:41:21.668" starttime="20141104 12:41:21.663"></status>
-=======
-<status status="PASS" endtime="20141104 09:45:31.474" starttime="20141104 09:45:31.467"></status>
->>>>>>> Stashed changes
->>>>>>> Stashed changes
->>>>>>> Stashed changes
+<status status="PASS" endtime="20141110 12:04:06.718" starttime="20141110 12:04:06.718"></status>
 </kw>
 <kw type="kw" name="${pet} = Feature1Keywords.Get">
 <doc></doc>
 <arguments>
 <arg>Pet</arg>
 </arguments>
-<<<<<<< Updated upstream
-<msg timestamp="20141106 17:26:35.884" level="INFO">${pet} = dog</msg>
-<status status="PASS" endtime="20141106 17:26:35.884" starttime="20141106 17:26:35.882"></status>
-=======
-<<<<<<< Updated upstream
-<msg level="INFO" timestamp="20141104 13:24:55.484">${pet} = dog</msg>
-<status endtime="20141104 13:24:55.484" starttime="20141104 13:24:55.484" status="PASS"></status>
-=======
-<<<<<<< Updated upstream
-<msg timestamp="20141104 12:41:21.675" level="INFO">${pet} = dog</msg>
-<status status="PASS" endtime="20141104 12:41:21.674" starttime="20141104 12:41:21.670"></status>
-=======
-<msg timestamp="20141104 09:45:31.482" level="INFO">${pet} = dog</msg>
-<status status="PASS" endtime="20141104 09:45:31.480" starttime="20141104 09:45:31.477"></status>
->>>>>>> Stashed changes
->>>>>>> Stashed changes
->>>>>>> Stashed changes
+<msg timestamp="20141110 12:04:06.728" level="INFO">${pet} = dog</msg>
+<status status="PASS" endtime="20141110 12:04:06.728" starttime="20141110 12:04:06.728"></status>
 </kw>
 <kw type="kw" name="BuiltIn.Should Be Equal">
 <doc>Fails if the given objects are unequal.</doc>
@@ -274,54 +93,18 @@
 <arg>${pet}</arg>
 <arg>dog</arg>
 </arguments>
-<<<<<<< Updated upstream
-<msg timestamp="20141106 17:26:35.888" level="INFO">Argument types are:
+<msg timestamp="20141110 12:04:06.738" level="INFO">Argument types are:
 &lt;type 'unicode'&gt;
 &lt;type 'unicode'&gt;</msg>
-<status status="PASS" endtime="20141106 17:26:35.889" starttime="20141106 17:26:35.886"></status>
-=======
-<<<<<<< Updated upstream
-<msg level="INFO" timestamp="20141104 13:24:55.484">Argument types are:
-&lt;type 'unicode'&gt;
-&lt;type 'unicode'&gt;</msg>
-<status endtime="20141104 13:24:55.484" starttime="20141104 13:24:55.484" status="PASS"></status>
-=======
-<<<<<<< Updated upstream
-<msg timestamp="20141104 12:41:21.684" level="INFO">Argument types are:
-&lt;type 'unicode'&gt;
-&lt;type 'unicode'&gt;</msg>
-<status status="PASS" endtime="20141104 12:41:21.687" starttime="20141104 12:41:21.679"></status>
-=======
-<msg timestamp="20141104 09:45:31.495" level="INFO">Argument types are:
-&lt;type 'unicode'&gt;
-&lt;type 'unicode'&gt;</msg>
-<status status="PASS" endtime="20141104 09:45:31.498" starttime="20141104 09:45:31.487"></status>
->>>>>>> Stashed changes
->>>>>>> Stashed changes
->>>>>>> Stashed changes
+<status status="PASS" endtime="20141110 12:04:06.738" starttime="20141110 12:04:06.728"></status>
 </kw>
 <kw type="kw" name="${number} = Feature1Keywords.Get">
 <doc></doc>
 <arguments>
 <arg>Number</arg>
 </arguments>
-<<<<<<< Updated upstream
-<msg timestamp="20141106 17:26:35.893" level="INFO">${number} = 2</msg>
-<status status="PASS" endtime="20141106 17:26:35.893" starttime="20141106 17:26:35.891"></status>
-=======
-<<<<<<< Updated upstream
-<msg level="INFO" timestamp="20141104 13:24:55.484">${number} = 2</msg>
-<status endtime="20141104 13:24:55.484" starttime="20141104 13:24:55.484" status="PASS"></status>
-=======
-<<<<<<< Updated upstream
-<msg timestamp="20141104 12:41:21.701" level="INFO">${number} = 2</msg>
-<status status="PASS" endtime="20141104 12:41:21.696" starttime="20141104 12:41:21.691"></status>
-=======
-<msg timestamp="20141104 09:45:31.508" level="INFO">${number} = 2</msg>
-<status status="PASS" endtime="20141104 09:45:31.506" starttime="20141104 09:45:31.502"></status>
->>>>>>> Stashed changes
->>>>>>> Stashed changes
->>>>>>> Stashed changes
+<msg timestamp="20141110 12:04:06.738" level="INFO">${number} = 2</msg>
+<status status="PASS" endtime="20141110 12:04:06.738" starttime="20141110 12:04:06.738"></status>
 </kw>
 <kw type="kw" name="BuiltIn.Should Be Equal">
 <doc>Fails if the given objects are unequal.</doc>
@@ -329,54 +112,18 @@
 <arg>${number}</arg>
 <arg>2</arg>
 </arguments>
-<<<<<<< Updated upstream
-<msg timestamp="20141106 17:26:35.897" level="INFO">Argument types are:
+<msg timestamp="20141110 12:04:06.748" level="INFO">Argument types are:
 &lt;type 'unicode'&gt;
 &lt;type 'unicode'&gt;</msg>
-<status status="PASS" endtime="20141106 17:26:35.898" starttime="20141106 17:26:35.895"></status>
-=======
-<<<<<<< Updated upstream
-<msg level="INFO" timestamp="20141104 13:24:55.484">Argument types are:
-&lt;type 'unicode'&gt;
-&lt;type 'unicode'&gt;</msg>
-<status endtime="20141104 13:24:55.500" starttime="20141104 13:24:55.484" status="PASS"></status>
-=======
-<<<<<<< Updated upstream
-<msg timestamp="20141104 12:41:21.713" level="INFO">Argument types are:
-&lt;type 'unicode'&gt;
-&lt;type 'unicode'&gt;</msg>
-<status status="PASS" endtime="20141104 12:41:21.715" starttime="20141104 12:41:21.706"></status>
-=======
-<msg timestamp="20141104 09:45:31.517" level="INFO">Argument types are:
-&lt;type 'unicode'&gt;
-&lt;type 'unicode'&gt;</msg>
-<status status="PASS" endtime="20141104 09:45:31.521" starttime="20141104 09:45:31.512"></status>
->>>>>>> Stashed changes
->>>>>>> Stashed changes
->>>>>>> Stashed changes
+<status status="PASS" endtime="20141110 12:04:06.748" starttime="20141110 12:04:06.748"></status>
 </kw>
 <kw type="kw" name="${rainy} = Feature1Keywords.Get">
 <doc></doc>
 <arguments>
 <arg>Rainy</arg>
 </arguments>
-<<<<<<< Updated upstream
-<msg timestamp="20141106 17:26:35.901" level="INFO">${rainy} = true</msg>
-<status status="PASS" endtime="20141106 17:26:35.901" starttime="20141106 17:26:35.899"></status>
-=======
-<<<<<<< Updated upstream
-<msg level="INFO" timestamp="20141104 13:24:55.500">${rainy} = true</msg>
-<status endtime="20141104 13:24:55.500" starttime="20141104 13:24:55.500" status="PASS"></status>
-=======
-<<<<<<< Updated upstream
-<msg timestamp="20141104 12:41:21.725" level="INFO">${rainy} = true</msg>
-<status status="PASS" endtime="20141104 12:41:21.724" starttime="20141104 12:41:21.719"></status>
-=======
-<msg timestamp="20141104 09:45:31.531" level="INFO">${rainy} = true</msg>
-<status status="PASS" endtime="20141104 09:45:31.529" starttime="20141104 09:45:31.525"></status>
->>>>>>> Stashed changes
->>>>>>> Stashed changes
->>>>>>> Stashed changes
+<msg timestamp="20141110 12:04:06.758" level="INFO">${rainy} = true</msg>
+<status status="PASS" endtime="20141110 12:04:06.758" starttime="20141110 12:04:06.758"></status>
 </kw>
 <kw type="kw" name="BuiltIn.Should Be Equal">
 <doc>Fails if the given objects are unequal.</doc>
@@ -384,54 +131,18 @@
 <arg>${rainy}</arg>
 <arg>true</arg>
 </arguments>
-<<<<<<< Updated upstream
-<msg timestamp="20141106 17:26:35.905" level="INFO">Argument types are:
+<msg timestamp="20141110 12:04:06.768" level="INFO">Argument types are:
 &lt;type 'unicode'&gt;
 &lt;type 'unicode'&gt;</msg>
-<status status="PASS" endtime="20141106 17:26:35.906" starttime="20141106 17:26:35.903"></status>
-=======
-<<<<<<< Updated upstream
-<msg level="INFO" timestamp="20141104 13:24:55.500">Argument types are:
-&lt;type 'unicode'&gt;
-&lt;type 'unicode'&gt;</msg>
-<status endtime="20141104 13:24:55.500" starttime="20141104 13:24:55.500" status="PASS"></status>
-=======
-<<<<<<< Updated upstream
-<msg timestamp="20141104 12:41:21.735" level="INFO">Argument types are:
-&lt;type 'unicode'&gt;
-&lt;type 'unicode'&gt;</msg>
-<status status="PASS" endtime="20141104 12:41:21.739" starttime="20141104 12:41:21.729"></status>
-=======
-<msg timestamp="20141104 09:45:31.543" level="INFO">Argument types are:
-&lt;type 'unicode'&gt;
-&lt;type 'unicode'&gt;</msg>
-<status status="PASS" endtime="20141104 09:45:31.547" starttime="20141104 09:45:31.537"></status>
->>>>>>> Stashed changes
->>>>>>> Stashed changes
->>>>>>> Stashed changes
+<status status="PASS" endtime="20141110 12:04:06.768" starttime="20141110 12:04:06.758"></status>
 </kw>
 <kw type="kw" name="${bathrooms} = Feature1Keywords.Get">
 <doc></doc>
 <arguments>
 <arg>Bathrooms</arg>
 </arguments>
-<<<<<<< Updated upstream
-<msg timestamp="20141106 17:26:35.910" level="INFO">${bathrooms} = 3.5</msg>
-<status status="PASS" endtime="20141106 17:26:35.909" starttime="20141106 17:26:35.907"></status>
-=======
-<<<<<<< Updated upstream
-<msg level="INFO" timestamp="20141104 13:24:55.500">${bathrooms} = 3.5</msg>
-<status endtime="20141104 13:24:55.500" starttime="20141104 13:24:55.500" status="PASS"></status>
-=======
-<<<<<<< Updated upstream
-<msg timestamp="20141104 12:41:21.746" level="INFO">${bathrooms} = 3.5</msg>
-<status status="PASS" endtime="20141104 12:41:21.744" starttime="20141104 12:41:21.741"></status>
-=======
-<msg timestamp="20141104 09:45:31.557" level="INFO">${bathrooms} = 3.5</msg>
-<status status="PASS" endtime="20141104 09:45:31.556" starttime="20141104 09:45:31.551"></status>
->>>>>>> Stashed changes
->>>>>>> Stashed changes
->>>>>>> Stashed changes
+<msg timestamp="20141110 12:04:06.796" level="INFO">${bathrooms} = 3.5</msg>
+<status status="PASS" endtime="20141110 12:04:06.795" starttime="20141110 12:04:06.792"></status>
 </kw>
 <kw type="kw" name="BuiltIn.Should Be Equal">
 <doc>Fails if the given objects are unequal.</doc>
@@ -439,48 +150,15 @@
 <arg>${bathrooms}</arg>
 <arg>3.5</arg>
 </arguments>
-<<<<<<< Updated upstream
-<msg timestamp="20141106 17:26:35.913" level="INFO">Argument types are:
+<msg timestamp="20141110 12:04:06.803" level="INFO">Argument types are:
 &lt;type 'unicode'&gt;
 &lt;type 'unicode'&gt;</msg>
-<status status="PASS" endtime="20141106 17:26:35.914" starttime="20141106 17:26:35.911"></status>
-=======
-<<<<<<< Updated upstream
-<msg level="INFO" timestamp="20141104 13:24:55.516">Argument types are:
-&lt;type 'unicode'&gt;
-&lt;type 'unicode'&gt;</msg>
-<status endtime="20141104 13:24:55.516" starttime="20141104 13:24:55.500" status="PASS"></status>
-=======
-<<<<<<< Updated upstream
-<msg timestamp="20141104 12:41:21.755" level="INFO">Argument types are:
-&lt;type 'unicode'&gt;
-&lt;type 'unicode'&gt;</msg>
-<status status="PASS" endtime="20141104 12:41:21.756" starttime="20141104 12:41:21.749"></status>
-=======
-<msg timestamp="20141104 09:45:31.567" level="INFO">Argument types are:
-&lt;type 'unicode'&gt;
-&lt;type 'unicode'&gt;</msg>
-<status status="PASS" endtime="20141104 09:45:31.570" starttime="20141104 09:45:31.561"></status>
->>>>>>> Stashed changes
->>>>>>> Stashed changes
->>>>>>> Stashed changes
+<status status="PASS" endtime="20141110 12:04:06.804" starttime="20141110 12:04:06.799"></status>
 </kw>
 <doc></doc>
 <tags>
 </tags>
-<<<<<<< Updated upstream
-<status status="PASS" critical="yes" endtime="20141106 17:26:35.916" starttime="20141106 17:26:35.873"></status>
-=======
-<<<<<<< Updated upstream
-<status critical="yes" endtime="20141104 13:24:55.516" starttime="20141104 13:24:55.484" status="PASS"></status>
-=======
-<<<<<<< Updated upstream
-<status status="PASS" critical="yes" endtime="20141104 12:41:21.760" starttime="20141104 12:41:21.656"></status>
-=======
-<status status="PASS" critical="yes" endtime="20141104 09:45:31.573" starttime="20141104 09:45:31.455"></status>
->>>>>>> Stashed changes
->>>>>>> Stashed changes
->>>>>>> Stashed changes
+<status status="PASS" critical="yes" endtime="20141110 12:04:06.807" starttime="20141110 12:04:06.715"></status>
 </test>
 <test id="s1-t3" name="Test Case 3">
 <kw type="kw" name="Feature1Keywords.Start Program With Optionals">
@@ -488,42 +166,15 @@
 <arguments>
 <arg>7 --type box 5 2</arg>
 </arguments>
-<<<<<<< Updated upstream
-<status status="PASS" endtime="20141106 17:26:35.925" starttime="20141106 17:26:35.922"></status>
-=======
-<<<<<<< Updated upstream
-<status endtime="20141104 13:24:55.516" starttime="20141104 13:24:55.516" status="PASS"></status>
-=======
-<<<<<<< Updated upstream
-<status status="PASS" endtime="20141104 12:41:21.779" starttime="20141104 12:41:21.772"></status>
-=======
-<status status="PASS" endtime="20141104 09:45:31.596" starttime="20141104 09:45:31.591"></status>
->>>>>>> Stashed changes
->>>>>>> Stashed changes
->>>>>>> Stashed changes
+<status status="PASS" endtime="20141110 12:04:06.820" starttime="20141110 12:04:06.810"></status>
 </kw>
 <kw type="kw" name="${type} = Feature1Keywords.Get">
 <doc></doc>
 <arguments>
 <arg>--Type</arg>
 </arguments>
-<<<<<<< Updated upstream
-<msg timestamp="20141106 17:26:35.928" level="INFO">${type} = box</msg>
-<status status="PASS" endtime="20141106 17:26:35.928" starttime="20141106 17:26:35.926"></status>
-=======
-<<<<<<< Updated upstream
-<msg level="INFO" timestamp="20141104 13:24:55.516">${type} = box</msg>
-<status endtime="20141104 13:24:55.516" starttime="20141104 13:24:55.516" status="PASS"></status>
-=======
-<<<<<<< Updated upstream
-<msg timestamp="20141104 12:41:21.787" level="INFO">${type} = box</msg>
-<status status="PASS" endtime="20141104 12:41:21.786" starttime="20141104 12:41:21.782"></status>
-=======
-<msg timestamp="20141104 09:45:31.607" level="INFO">${type} = box</msg>
-<status status="PASS" endtime="20141104 09:45:31.605" starttime="20141104 09:45:31.600"></status>
->>>>>>> Stashed changes
->>>>>>> Stashed changes
->>>>>>> Stashed changes
+<msg timestamp="20141110 12:04:06.820" level="INFO">${type} = box</msg>
+<status status="PASS" endtime="20141110 12:04:06.820" starttime="20141110 12:04:06.820"></status>
 </kw>
 <kw type="kw" name="BuiltIn.Should Be Equal">
 <doc>Fails if the given objects are unequal.</doc>
@@ -531,65 +182,20 @@
 <arg>${type}</arg>
 <arg>box</arg>
 </arguments>
-<<<<<<< Updated upstream
-<msg timestamp="20141106 17:26:35.933" level="INFO">Argument types are:
+<msg timestamp="20141110 12:04:06.830" level="INFO">Argument types are:
 &lt;type 'unicode'&gt;
 &lt;type 'unicode'&gt;</msg>
-<status status="PASS" endtime="20141106 17:26:35.933" starttime="20141106 17:26:35.930"></status>
-=======
-<<<<<<< Updated upstream
-<msg level="INFO" timestamp="20141104 13:24:55.516">Argument types are:
-&lt;type 'unicode'&gt;
-&lt;type 'unicode'&gt;</msg>
-<status endtime="20141104 13:24:55.516" starttime="20141104 13:24:55.516" status="PASS"></status>
-=======
-<<<<<<< Updated upstream
-<msg timestamp="20141104 12:41:21.792" level="INFO">Argument types are:
-&lt;type 'unicode'&gt;
-&lt;type 'unicode'&gt;</msg>
-<status status="PASS" endtime="20141104 12:41:21.794" starttime="20141104 12:41:21.789"></status>
-=======
-<msg timestamp="20141104 09:45:31.618" level="INFO">Argument types are:
-&lt;type 'unicode'&gt;
-&lt;type 'unicode'&gt;</msg>
-<status status="PASS" endtime="20141104 09:45:31.621" starttime="20141104 09:45:31.611"></status>
->>>>>>> Stashed changes
->>>>>>> Stashed changes
->>>>>>> Stashed changes
+<status status="PASS" endtime="20141110 12:04:06.830" starttime="20141110 12:04:06.830"></status>
 </kw>
 <doc></doc>
 <tags>
 </tags>
-<<<<<<< Updated upstream
-<status status="PASS" critical="yes" endtime="20141106 17:26:35.935" starttime="20141106 17:26:35.918"></status>
-=======
-<<<<<<< Updated upstream
-<status critical="yes" endtime="20141104 13:24:55.516" starttime="20141104 13:24:55.516" status="PASS"></status>
-=======
-<<<<<<< Updated upstream
-<status status="PASS" critical="yes" endtime="20141104 12:41:21.796" starttime="20141104 12:41:21.765"></status>
-=======
-<status status="PASS" critical="yes" endtime="20141104 09:45:31.625" starttime="20141104 09:45:31.578"></status>
->>>>>>> Stashed changes
->>>>>>> Stashed changes
->>>>>>> Stashed changes
+<status status="PASS" critical="yes" endtime="20141110 12:04:06.830" starttime="20141110 12:04:06.810"></status>
 </test>
 <doc></doc>
 <metadata>
 </metadata>
-<<<<<<< Updated upstream
-<status status="PASS" endtime="20141106 17:26:35.938" starttime="20141106 17:26:35.361"></status>
-=======
-<<<<<<< Updated upstream
-<status endtime="20141104 13:24:55.516" starttime="20141104 13:24:55.250" status="PASS"></status>
-=======
-<<<<<<< Updated upstream
-<status status="PASS" endtime="20141104 12:41:21.802" starttime="20141104 12:41:21.045"></status>
-=======
-<status status="PASS" endtime="20141104 09:45:31.635" starttime="20141104 09:45:30.627"></status>
->>>>>>> Stashed changes
->>>>>>> Stashed changes
->>>>>>> Stashed changes
+<status status="PASS" endtime="20141110 12:04:06.840" starttime="20141110 12:04:05.858"></status>
 </suite>
 <statistics>
 <total>

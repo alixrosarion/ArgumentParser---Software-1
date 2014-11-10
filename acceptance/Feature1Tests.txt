@@ -4,7 +4,7 @@ Library           Feature1Keywords
 	
 *** Test Cases ***
 Test Case 1
-	Start Program 	7 	5 	2
+	Start Program 	7 5 2
 	${length}= 	Get 	Length
 	Should Be Equal 	${length}	7
 	${width}= 	Get 	Width
@@ -13,7 +13,7 @@ Test Case 1
 	Should Be Equal 	2 	${height}
 	
 Test Case 2
-	Start Program 	dog 	2 	true 	3.5
+	Start Program Mixed  dog 2 true 3.5
 	${pet}= 	Get 	Pet
 	Should Be Equal 	${pet}		dog
 	${number}= 	Get 	Number

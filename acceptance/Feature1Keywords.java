@@ -4,26 +4,24 @@ public class Feature1Keywords
 {
 	private ArgumentParser parser;
 	
-	public void startProgram (String s, String s1, String s2)
+	public void startProgram (String args)
 	{
 		parser = new ArgumentParser();
-		String se = s + " " +s1 + " "+s2;
 		parser.addArgument("length");
 		parser.addArgument("width");
 		parser.addArgument("height");
-		addValues(se);
+		addValues(args);
 	}
 	
-	public void startProgram (String s, String s1, String s2, String s3)
+	public void startProgramMixed(String args)
 	{
 		parser = new ArgumentParser();
 		
-		String se = s + " " +s1 + " "+s2+ " " + s3;
 		parser.addArgument("pet");
 		parser.addArgument("number");
 		parser.addArgument("rainy");
 		parser.addArgument("bathrooms");
-		addValues(se);
+		addValues(args);
 	}
 	
 	public void startProgramWithOptionals(String args) {
@@ -31,7 +29,7 @@ public class Feature1Keywords
 		parser.addArgument("length");
 		parser.addArgument("width");
 		parser.addArgument("height");
-		parser.addOptArg("--type", 1);
+		parser.addOptionalArgument("--type", 1);
 		addValues(args);
 	}
 
