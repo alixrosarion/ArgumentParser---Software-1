@@ -1,118 +1,0 @@
- Running the test for Shortname
- Running the test for Shortname
--t is in the list
-We're inside the else
- Running the test for Shortname
--t is in the list
-We're inside the else if
-	 Running the test for Shortname
-	 Running the test for Shortname
-	-t is in the list
-	We're inside the else
-	 Running the test for Shortname
-	 Running the test for Shortname
-
- Running the test for Shortname
-
- Running the test for Shortname
-
- Running the test for Shortname
-
- Running the test for Shortname
-
- Running the test for Shortname
- Running the test for Shortname
- Running the test for Shortname
--t is in the list
-We're inside the else
- Running the test for Shortname
- Running the test for Shortname
- Running the test for Shortname
- Running the test for Shortname
- Running the test for Shortname
--t is in the list
-We're inside the else if
- Running the test for Shortname
- Running the test for Shortname
- Running the test for Shortname
--t is in the list
-'usage: java null length width height 
-null
-Positional Arguments:
-length 		
-
-width 		
-height 		
-
- Running the test for Shortname
- Running the test for Shortname
- Running the test for Shortname
- Running the test for Shortname
- Running the test for Shortname
- Running the test for Shortname
- Running the test for Shortname
- Running the test for Shortname
- Running the test for Shortname
--t is in the list
-*usage: java VolCalc length width height 
-Calculate the volume of a box
-Positional Arguments:
-'length integer		the length of the box
-#width float		the width of the box
-%height float		the height of the box
-
- Running the test for Shortname
- Running the test for Shortname
- Running the test for Shortname
--t is in the list
-We're inside the else
- Running the test for Shortname
- Running the test for Shortname
--t is in the list
-We're inside the else
- Running the test for Shortname
-(' Running the test for Shortname
-(' Running the test for Shortname
-(' Running the test for Shortname
-() Running the test for Shortname
-() Running the test for Shortname
-() Running the test for Shortname
-() Running the test for Shortname
-() Running the test for Shortname
-()-t is in the list
-()3usage: java null length width height booleanTest 
-()null
-()Positional Arguments:
-()!length float		length of the box
-() width string		width of the box
-()"height string		height of the box
-()(booleanTest boolean		height of the box
-()
-()$SAXException : xml not well formed
-()
-IO error
-(* Running the test for Shortname
-(* Running the test for Shortname
-(* Running the test for Shortname
-(* Running the test for Shortname
-(*-t is in the list
-(*'usage: java null length width height 
-(*null
-(*Positional Arguments:
-(*!length float		length of the box
-(*width float		width of the box
-(*!height float		height of the box
-(*
-(+ Running the test for Shortname
-(+ Running the test for Shortname
-(+ Running the test for Shortname
-(+ Running the test for Shortname
-(, Running the test for Shortname
-(,-t is in the list
-(,'usage: java null length width height 
-(,null
-(,Positional Arguments:
-(,!length float		length of the box
-(,width float		width of the box
-(,!height float		height of the box
-(,

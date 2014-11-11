@@ -176,11 +176,9 @@ public class ArgumentParser
 		int numberValues = 0;
 		while(scan.hasNext())
 		{
-			System.out.println("Running the test for Shortname");
 			String extra  = scan.next();
 			if (argumentList.contains(new OptionalArgument(extra)))
 			{
-				System.out.println("-t is in the list");
 				if (extra.equals("-h") || extra.equals("--help"))
 				{
 					System.out.println(getHelpText());
@@ -188,7 +186,6 @@ public class ArgumentParser
 				}
 				else if(argumentList.get(argumentList.indexOf(new OptionalArgument(extra))).getNumberValues() == 0)
 				{
-					System.out.println("We're inside the else if");
 					addOptionalFlag(extra);
 				}
 				else
@@ -197,7 +194,6 @@ public class ArgumentParser
 					for (int i = 0; i<numberValues; i++)
 					{
 						addOptionalValue(extra, scan.next());
-						System.out.println("We're inside the else");
 					}	
 				}
 			}
@@ -240,6 +236,7 @@ public class ArgumentParser
 	public String getHelpText()
 	{
 		String argumentTitles = "";
+		String optionalArgumentTitles = "";
 		String description = "";
 		String description2 = "";
 		for (CommandLineArgument a : argumentList)
@@ -249,12 +246,12 @@ public class ArgumentParser
 				argumentTitles += a.getTitle() + " ";
 				description += a.getTitle() +" "+ a.getDataType().toString().toLowerCase()+"\t\t"+a.getDescription() + "\r\n";
 			}
-			/*else {
-				argumentTitles += a.getTitle() + " ";
-				description += a.getTitle() +" "+ a.getDataType().toString().toLowerCase()+"\t\t"+a.getDescription() + "\r\n";
-			}*/
+			else {
+				optionalArgumentTitles += a.getTitle() + " ";
+				description2 += a.getTitle() +" "+ a.getDataType().toString().toLowerCase()+"\t\t"+a.getDescription() + "\r\n";
+			}
 		}
-		help = "usage: java " + program + " " + argumentTitles + "\r\n" + programDescription +"\r\nPositional Arguments:\r\n" + description /*+ "\r\nOptional Arguments:\r\n" + description2*/;
+		help = "usage: java " + program + " " + argumentTitles + "\r\n" + programDescription +"\r\nPositional Arguments:\r\n" + description + "\r\nOptional Arguments:\r\n" + description2;
 		return help;
 	}
 	
