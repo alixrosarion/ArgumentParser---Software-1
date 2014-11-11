@@ -124,6 +124,7 @@ public class ArgumentParser
 			return (T)argumentList.get(argumentList.indexOf(new OptionalArgument(title))).getValue();
 	}
 	
+<<<<<<< HEAD
 	public void setDataType(String title, CommandLineArgument.DataType type)
 	{
 		if(argumentList.contains(new Argument(title)))
@@ -138,6 +139,11 @@ public class ArgumentParser
 			return argumentList.get(argumentList.indexOf(new Argument(title))).getDataType();
 		else 
 			return argumentList.get(argumentList.indexOf(new OptionalArgument(title))).getDataType();
+=======
+	public CommandLineArgument.DataType getArgumentDataType(String title)
+	{
+		return argumentList.get(argumentList.indexOf(new Argument(title))).getDataType();
+>>>>>>> FETCH_HEAD
 	}
 	
 	public String getOptionalArgument(String title)

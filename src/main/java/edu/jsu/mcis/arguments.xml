@@ -31,7 +31,6 @@
 	
 	<optionalArgument>
 		<name>--type</name>
-		<numValues>1</numValues>
 		<type>string</type>
 		<description>Type of shape</description>
 		<value>box</value>

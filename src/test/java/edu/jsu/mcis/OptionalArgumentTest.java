@@ -30,7 +30,11 @@ public class OptionalArgumentTest
 		tester.addValue("Box");
 		assertEquals("--type", tester.getTitle());
 		assertEquals(1, tester.getNumberValues());
+<<<<<<< HEAD
 		assertEquals(CommandLineArgument.DataType.String, tester.getType());
+=======
+		assertEquals(CommandLineArgument.DataType.String, tester.getDataType());
+>>>>>>> FETCH_HEAD
 		assertEquals("Shape of Volume", tester.getDescription());
 		assertEquals("Box", tester.getValue());
 	}

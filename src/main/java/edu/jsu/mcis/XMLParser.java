@@ -85,9 +85,30 @@ public class XMLParser extends DefaultHandler
 				argPars.addOptionalArgument(tmpValue);
 				tmpName = tmpValue;
 			}
+<<<<<<< HEAD
 			if (element.equalsIgnoreCase("numberValues")) {
 				optArgXML = Integer.parseInt(tmpValue);
 				argPars.argumentList.get(argPars.argumentList.indexOf(new OptionalArgument(tmpName))).setNumberValues(optArgXML);
+=======
+			if (element.equalsIgnoreCase("type")) {
+					if(tmpValue.equals("Integer")) {
+						optArgXML = CommandLineArgument.DataType.Integer;
+						argPars.argumentList.get(argPars.argumentList.indexOf(new OptionalArgument(tmpName, optArgXML))).setDataType(CommandLineArgument.DataType.Integer);
+					}
+					
+					else if(tmpValue.equalsIgnoreCase("Float")) {
+						optArgXML = CommandLineArgument.DataType.Integer;
+						argPars.argumentList.get(argPars.argumentList.indexOf(new OptionalArgument(tmpName, optArgXML))).setDataType(CommandLineArgument.DataType.Float);
+					}
+					else if(tmpValue.equalsIgnoreCase("Boolean")) {
+						optArgXML = CommandLineArgument.DataType.Boolean;
+						argPars.argumentList.get(argPars.argumentList.indexOf(new OptionalArgument(tmpName, optArgXML))).setDataType(CommandLineArgument.DataType.Boolean);
+					}
+					else {
+						optArgXML = CommandLineArgument.DataType.String;
+						argPars.argumentList.get(argPars.argumentList.indexOf(new OptionalArgument(tmpName, optArgXML))).setDataType(CommandLineArgument.DataType.String);
+					}
+>>>>>>> FETCH_HEAD
 			}
 			if (element.equalsIgnoreCase("type")) {
 				if(tmpValue.equals("Integer")) {
