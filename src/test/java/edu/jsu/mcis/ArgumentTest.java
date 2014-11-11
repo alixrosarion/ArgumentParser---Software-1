@@ -20,11 +20,7 @@ public class ArgumentTest
 		Argument tester = new Argument("length", CommandLineArgument.DataType.Integer);
 		tester.setDescription("the height of the box");
 		assertEquals("length", tester.getTitle());
-<<<<<<< HEAD
-		assertEquals(CommandLineArgument.DataType.Integer, tester.getType());
-=======
 		assertEquals(CommandLineArgument.DataType.Integer, tester.getDataType());
->>>>>>> FETCH_HEAD
 		assertEquals("the height of the box", tester.getDescription());
 	}
 	

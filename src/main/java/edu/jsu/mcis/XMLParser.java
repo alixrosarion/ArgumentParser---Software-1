@@ -85,11 +85,10 @@ public class XMLParser extends DefaultHandler
 				argPars.addOptionalArgument(tmpValue);
 				tmpName = tmpValue;
 			}
-<<<<<<< HEAD
 			if (element.equalsIgnoreCase("numberValues")) {
-				optArgXML = Integer.parseInt(tmpValue);
-				argPars.argumentList.get(argPars.argumentList.indexOf(new OptionalArgument(tmpName))).setNumberValues(optArgXML);
-=======
+				argPars.argumentList.get(argPars.argumentList.indexOf(new OptionalArgument(tmpName))).setNumberValues(Integer.parseInt(tmpValue));
+			}	
+			
 			if (element.equalsIgnoreCase("type")) {
 					if(tmpValue.equals("Integer")) {
 						optArgXML = CommandLineArgument.DataType.Integer;
@@ -108,7 +107,6 @@ public class XMLParser extends DefaultHandler
 						optArgXML = CommandLineArgument.DataType.String;
 						argPars.argumentList.get(argPars.argumentList.indexOf(new OptionalArgument(tmpName, optArgXML))).setDataType(CommandLineArgument.DataType.String);
 					}
->>>>>>> FETCH_HEAD
 			}
 			if (element.equalsIgnoreCase("type")) {
 				if(tmpValue.equals("Integer")) {
