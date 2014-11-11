@@ -34,7 +34,7 @@ public class ArgumentParser
 	
 	public void addArgument(String str)
 	{
-		argumentList.add(new Argument(str));		
+		argumentList.add(new Argument(str));	
 	}
 	
 	public void addArgument(String title, CommandLineArgument.Type type)
@@ -61,22 +61,18 @@ public class ArgumentParser
 		return argumentList.get(argumentList.indexOf(new OptionalArgument(title))).getShort();
 	}
 	
-	public void addOptionalArgument(String title, int numValues)
+	public void addOptionalArgument(String title, CommandLineArgument.Type type)
 	{
 		argumentList.add(new OptionalArgument(title));
-		argumentList.get(argumentList.indexOf(new OptionalArgument(title))).setNumberValues(numValues);
+		argumentList.get(argumentList.indexOf(new OptionalArgument(title))).setType(type);
 		countOptionalArguments++;
 	}
-	
-	public void addOptionalArgument(String title, int numValues, CommandLineArgument.Type type, String description, Object defaultValue)
-		{
-			countOptionalArguments++;
-			argumentList.add(new OptionalArgument(title));
-			argumentList.get(argumentList.indexOf(new OptionalArgument(title))).setNumberValues(numValues);
-			argumentList.get(argumentList.indexOf(new OptionalArgument(title))).setType(type);
-			argumentList.get(argumentList.indexOf(new OptionalArgument(title))).setDescription(description);
-			argumentList.get(argumentList.indexOf(new OptionalArgument(title))).addValue(defaultValue);
-		}
+		
+	public void addOptionalArgument(String title)
+	{
+		argumentList.add(new OptionalArgument(title));
+		countOptionalArguments++;
+	}
 		
 	public void addArgumentValue(Object o, int index) throws IncorrectTypeException
 	{
@@ -135,9 +131,9 @@ public class ArgumentParser
 		return argumentList.get(argumentList.indexOf(new Argument(title))).getType();
 	}
 	
-	public String getOptionalArgument(String title, int numValues)
+	public String getOptionalArgument(String title)
 	{
-		return argumentList.get(argumentList.indexOf(new OptionalArgument(title, numValues))).getTitle();
+		return argumentList.get(argumentList.indexOf(new OptionalArgument(title))).getTitle();
 	}
 	
 	public void addOptionalFlag(String title) 

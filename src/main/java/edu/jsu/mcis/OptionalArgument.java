@@ -4,6 +4,7 @@ public class OptionalArgument extends CommandLineArgument{
 	
 	private int numberValues;
 	private String shortName;
+	private boolean required;
 	
 	public OptionalArgument(String title)
 	{
@@ -11,30 +12,21 @@ public class OptionalArgument extends CommandLineArgument{
 		shortName = "";
 		description = "";
 		type =	CommandLineArgument.Type.Unknown;
+		required = false;
 	}
 	
-	public OptionalArgument(String title, int numberValues)
-	{
-		this.title = title;
-		this.numberValues = numberValues;
-		shortName = "";
-		description = "";
-		type =	CommandLineArgument.Type.Unknown;
-	}
-	
-	public OptionalArgument(String title, int numberValues, CommandLineArgument.Type type, String description, Object value)
+	public OptionalArgument(String title, CommandLineArgument.Type type)
 	{
 		this.title = title;
 		this.type = type;
-		this.description = description;
-		this.numberValues = numberValues;
-		this.value = value;
+		description = "";
 		shortName = "";
+		required = false;
 	}
 	
-	public void setShort(String str)
+	public void setShort(String string)
 	{
-		shortName = str;
+		shortName = string;
 	}
 	
 	public String getShort()
@@ -59,6 +51,16 @@ public class OptionalArgument extends CommandLineArgument{
 	public Object getValue()
 	{
 		return value;
+	}
+	
+	public void setRequired() 
+	{
+		required = true;
+	}
+	
+	public boolean getRequired()
+	{
+		return required;
 	}
 	
 	public String toString()

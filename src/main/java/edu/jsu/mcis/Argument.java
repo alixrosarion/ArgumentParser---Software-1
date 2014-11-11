@@ -9,11 +9,11 @@ public class Argument extends CommandLineArgument
 		description = "";
 	}
 	
-	public Argument(String title, CommandLineArgument.Type type, String description)
+	public Argument(String title, CommandLineArgument.Type type)
 	{
 		this.title = title;
 		this.type = type;
-		this.description = description;
+		description = "";
 	}
 	
 	public void addValue(Object v)

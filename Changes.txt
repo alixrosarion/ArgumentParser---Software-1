@@ -4,3 +4,4 @@ Sari:
 
 Nikki:
 	removed shorthand
+	refactored argument/optional argument constructors

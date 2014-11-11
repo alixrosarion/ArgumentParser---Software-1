@@ -16,7 +16,6 @@ public abstract class CommandLineArgument {
 			else return "";
 		}
 	};
-
 	
 	public String getTitle() {
 		return title;

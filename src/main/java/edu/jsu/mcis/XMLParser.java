@@ -82,38 +82,38 @@ public class XMLParser extends DefaultHandler
 		else
 		{
 			if (element.equalsIgnoreCase("name")) {
-				argPars.addOptionalArgument(tmpValue, 0);
+				argPars.addOptionalArgument(tmpValue);
 				tmpName = tmpValue;
 			}
 			if (element.equalsIgnoreCase("numValues")) {
 				optArgXML = Integer.parseInt(tmpValue);
-				argPars.argumentList.get(argPars.argumentList.indexOf(new OptionalArgument(tmpName, optArgXML))).setNumberValues(optArgXML);
+				argPars.argumentList.get(argPars.argumentList.indexOf(new OptionalArgument(tmpName))).setNumberValues(optArgXML);
 			}
 			if (element.equalsIgnoreCase("description"))
 			{
-				argPars.argumentList.get(argPars.argumentList.indexOf(new OptionalArgument(tmpName, optArgXML))).setDescription(tmpValue);
+				argPars.argumentList.get(argPars.argumentList.indexOf(new OptionalArgument(tmpName))).setDescription(tmpValue);
 			}
 			if (optArgXML > 0 )
 			{
 				if (element.equalsIgnoreCase("type")) {
-					if(tmpValue.equals("Integer")) argPars.argumentList.get(argPars.argumentList.indexOf(new OptionalArgument(tmpName, optArgXML))).setType(CommandLineArgument.Type.Integer);
+					if(tmpValue.equals("Integer")) argPars.argumentList.get(argPars.argumentList.indexOf(new OptionalArgument(tmpName))).setType(CommandLineArgument.Type.Integer);
 					
-					else if(tmpValue.equalsIgnoreCase("Float")) argPars.argumentList.get(argPars.argumentList.indexOf(new OptionalArgument(tmpName, optArgXML))).setType(CommandLineArgument.Type.Float);
+					else if(tmpValue.equalsIgnoreCase("Float")) argPars.argumentList.get(argPars.argumentList.indexOf(new OptionalArgument(tmpName))).setType(CommandLineArgument.Type.Float);
 					
-					else argPars.argumentList.get(argPars.argumentList.indexOf(new OptionalArgument(tmpName, optArgXML))).setType(CommandLineArgument.Type.String);
+					else argPars.argumentList.get(argPars.argumentList.indexOf(new OptionalArgument(tmpName))).setType(CommandLineArgument.Type.String);
 					
 				}
 				
 				if (element.equalsIgnoreCase("value")) {
-					argPars.argumentList.get(argPars.argumentList.indexOf(new OptionalArgument(tmpName, optArgXML))).addValue(tmpValue);
+					argPars.argumentList.get(argPars.argumentList.indexOf(new OptionalArgument(tmpName))).addValue(tmpValue);
 				}
 			}
 			else
 			{	
-				argPars.argumentList.get(argPars.argumentList.indexOf(new OptionalArgument(tmpName, optArgXML))).setType(CommandLineArgument.Type.Boolean);
+				argPars.argumentList.get(argPars.argumentList.indexOf(new OptionalArgument(tmpName))).setType(CommandLineArgument.Type.Boolean);
 			}
 			if (element.equalsIgnoreCase("shortName")) {
-				argPars.argumentList.get(argPars.argumentList.indexOf(new OptionalArgument(tmpName, optArgXML))).setShort(tmpValue);
+				argPars.argumentList.get(argPars.argumentList.indexOf(new OptionalArgument(tmpName))).setShort(tmpValue);
 			}
 		}
     }

@@ -8,7 +8,7 @@
 	<optionalArgument>
 		<name>--type</name>
 		<numValues>0</numValues>
-		<type></type>
+		<type>String</type>
 		<description></description>
 		<value>null</value>
 		<shortName></shortName>
