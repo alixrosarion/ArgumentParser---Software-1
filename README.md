@@ -1,3 +1,5 @@
-Tic Tac Toe
+Command-Line Argument Parser
 ===========
-This project allows players to play the game Tic Tac Toe.
+User-friendly command-line argument parser that generates help and 
+usage information when requested or when the program is given 
+invalid arguments.

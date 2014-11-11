@@ -36,9 +36,10 @@ public abstract class CommandLineArgument {
 	{
 		return type;
 	}
+	
 	abstract public String getShort();
 	abstract public int getNumberValues();
-	abstract public Object getValue();
+	abstract public <T> T getValue();
 	abstract public void setNumberValues(int i);
 	abstract public void setShort(String s);
 	abstract public void addValue(Object v);	

@@ -69,35 +69,13 @@ public class ArgumentParser
 	public void setValue(Object o, int index) throws IncorrectTypeException
 	{
 		incorrectType = program + ".java: error: argument ";
-			if(argumentList.get(index).getDataType() == CommandLineArgument.DataType.Integer)
-			{
-				try{
-					o =Integer.parseInt(o.toString());
-				} catch (NumberFormatException e) {
-					incorrectType = incorrectType + argumentList.get(index).getTitle() + " invalid integer value: " + o; 
-					throw new IncorrectTypeException(incorrectType);
-				}
-			}
-			else if(argumentList.get(index).getDataType() == CommandLineArgument.DataType.Boolean)
-			{
-				if(Boolean.parseBoolean(o.toString())){
-					o =Boolean.parseBoolean(o.toString());
-				} else{
-					incorrectType = incorrectType + argumentList.get(index).getTitle() + " invalid boolean value: " + o; 
-					throw new IncorrectTypeException(incorrectType);
-				}
-			}
-			else if(argumentList.get(index).getDataType() == CommandLineArgument.DataType.Float)
-			{
-				try{
-					o =Float.parseFloat(o.toString());
-				} catch (NumberFormatException e) {
-					incorrectType = incorrectType + argumentList.get(index).getTitle() + " invalid float value: " + o; 
-					throw new IncorrectTypeException(incorrectType);
-				}
-			}
-
-		argumentList.get(index).addValue(o);
+		try{
+			argumentList.get(index).addValue(o);
+		} catch (NumberFormatException e) {
+			incorrectType = incorrectType + argumentList.get(index).getTitle() + 
+			" invalid "+argumentList.get(index).getDataType().toString().toLowerCase() +" value: " + o; 
+			throw new IncorrectTypeException(incorrectType);
+		}
 	}
 	
 	public void setDescription(String title, String description)

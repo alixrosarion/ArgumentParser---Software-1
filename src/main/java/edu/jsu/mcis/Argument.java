@@ -16,14 +16,26 @@ public class Argument extends CommandLineArgument
 		description = "";
 	}
 	
-	public void addValue(Object v)
+	public void addValue(Object o) throws NumberFormatException
 	{
-		value = v;
+			if(type == CommandLineArgument.DataType.Integer)
+					value =Integer.parseInt(o.toString());
+			else if(type == CommandLineArgument.DataType.Boolean)
+			{
+				if((o.toString().equals("true")) || o.toString().equals("false"))
+					value =Boolean.parseBoolean(o.toString());
+			    else 
+					throw new NumberFormatException();
+			}
+			else if( type == CommandLineArgument.DataType.Float)
+				value =Float.parseFloat(o.toString());
+			else
+				value = o.toString();
 	}
 	
-	public Object getValue()
+	public <T> T getValue()
 	{
-		return value;
+		return (T) value;
 	}
 	
 	public String getTitle()
