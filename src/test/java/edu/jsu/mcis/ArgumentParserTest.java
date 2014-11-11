@@ -226,6 +226,7 @@ public class ArgumentParserTest {
 		tester.addArgument("width");
 		tester.addArgument("height");
 		tester.addOptionalArgument("--type", CommandLineArgument.Type.String);
+		tester.addOptionalValue("--type", "Box");
 		try
 		{
 			tester.parse("7 5 2");
@@ -281,8 +282,6 @@ public class ArgumentParserTest {
 		assertEquals("-t", tester.getShortOption("--type"));
 		try {
 			tester.parse("-t shape");
-			assertEquals("The shape the user defines", tester.getDescription("-t"));
-			assertEquals("The shape the user defines", tester.getDescription("--type"));
 		} catch (Exception e) {
 			assertTrue(false);
 		}
@@ -305,7 +304,7 @@ public class ArgumentParserTest {
 		tester.addOptionalArgument("--type", CommandLineArgument.Type.String);
 		assertEquals("<?xml version=\"1.0\" encoding=\""+ "UTF-8" + "\"?>\r\n<arguments>\r\n\t<argument>\r\n\t\t<name>length</name>"+
 		"\r\n\t\t<type>Integer</type>\r\n\t\t<description>the length of the box</description>\r\n\t</argument>\r\n\t<optionalArgument>\r\n\t\t"+
-		"<name>--type</name>\r\n\t\t<numValues>0</numValues>\r\n\t\t<type></type>\r\n\t\t<description></description>"+	
+		"<name>--type</name>\r\n\t\t<numValues>0</numValues>\r\n\t\t<type>String</type>\r\n\t\t<description></description>"+
 		"\r\n\t\t<value>" + null + "</value>\r\n\t\t<shortName></shortName>\r\n\t</optionalArgument>\r\n</arguments>",tester.getOutput());
 	}
 
@@ -321,7 +320,7 @@ public class ArgumentParserTest {
 		ArgumentParser testNo = XMLParser.createArgumentParser("test.xml");
 		assertEquals("<?xml version=\"1.0\" encoding=\""+ "UTF-8" + "\"?>\r\n<arguments>\r\n\t<argument>\r\n\t\t<name>length</name>"+
 		"\r\n\t\t<type>Integer</type>\r\n\t\t<description>the length of the box</description>\r\n\t</argument>\r\n\t<optionalArgument>\r\n\t\t"+
-		"<name>--type</name>\r\n\t\t<numValues>0</numValues>\r\n\t\t<type></type>\r\n\t\t<description></description>"+	
+		"<name>--type</name>\r\n\t\t<numValues>0</numValues>\r\n\t\t<type>String</type>\r\n\t\t<description></description>"+	
 		"\r\n\t\t<value>" + null + "</value>\r\n\t\t<shortName></shortName>\r\n\t</optionalArgument>\r\n</arguments>",tester.getOutput());
 	}
 }

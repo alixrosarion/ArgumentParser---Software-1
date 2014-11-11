@@ -40,7 +40,9 @@ public class OptionalArgumentTest
 	{
 		OptionalArgument tester = new OptionalArgument("--type");
 		tester.setShort("-t");
+		tester.addValue("Box");
 		assertEquals("-t", tester.getShort());
+		assertEquals("--type", new OptionalArgument("-t"));
 	}
 	
 	@Test
@@ -59,4 +61,5 @@ public class OptionalArgumentTest
 		tester.setRequired();
 		assertTrue(tester.getRequired());
 	}
+
 }

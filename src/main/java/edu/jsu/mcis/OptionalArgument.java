@@ -92,7 +92,7 @@ public class OptionalArgument extends CommandLineArgument{
 		return result;
 	}
 	public int hashCode() {
-		int result = 17 * title.hashCode();
-		return result;	
+		//int result = 17 * title.hashCode();
+		return 34;	
     }
 }
