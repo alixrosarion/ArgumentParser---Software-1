@@ -11,11 +11,11 @@ public class OptionalArgument extends CommandLineArgument{
 		this.title = title;
 		shortName = "";
 		description = "";
-		type =	CommandLineArgument.Type.Unknown;
+		type =	CommandLineArgument.DataType.Unknown;
 		required = false;
 	}
 	
-	public OptionalArgument(String title, CommandLineArgument.Type type)
+	public OptionalArgument(String title, CommandLineArgument.DataType type)
 	{
 		this.title = title;
 		this.type = type;

@@ -37,13 +37,13 @@ public class ArgumentParser
 		argumentList.add(new Argument(str));	
 	}
 	
-	public void addArgument(String title, CommandLineArgument.Type type)
+	public void addArgument(String title, CommandLineArgument.DataType type)
 	{
 		argumentList.add(new Argument(title));
-		argumentList.get(argumentList.indexOf(new Argument(title))).setType(type);
+		argumentList.get(argumentList.indexOf(new Argument(title))).setDataType(type);
 	}
 	
-	public void addShortOption(String title, String str)
+	public void setShortOption(String title, String str)
 	{
 		argumentList.get(argumentList.indexOf(new OptionalArgument(title))).setShort(str);
 	}
@@ -53,10 +53,10 @@ public class ArgumentParser
 		return argumentList.get(argumentList.indexOf(new OptionalArgument(title))).getShort();
 	}
 	
-	public void addOptionalArgument(String title, CommandLineArgument.Type type)
+	public void addOptionalArgument(String title, CommandLineArgument.DataType type)
 	{
 		argumentList.add(new OptionalArgument(title));
-		argumentList.get(argumentList.indexOf(new OptionalArgument(title))).setType(type);
+		argumentList.get(argumentList.indexOf(new OptionalArgument(title))).setDataType(type);
 		countOptionalArguments++;
 	}
 		
@@ -66,10 +66,10 @@ public class ArgumentParser
 		countOptionalArguments++;
 	}
 		
-	public void addArgumentValue(Object o, int index) throws IncorrectTypeException
+	public void setValue(Object o, int index) throws IncorrectTypeException
 	{
 		incorrectType = program + ".java: error: argument ";
-			if(argumentList.get(index).getType() == CommandLineArgument.Type.Integer)
+			if(argumentList.get(index).getDataType() == CommandLineArgument.DataType.Integer)
 			{
 				try{
 					o =Integer.parseInt(o.toString());
@@ -78,7 +78,7 @@ public class ArgumentParser
 					throw new IncorrectTypeException(incorrectType);
 				}
 			}
-			else if(argumentList.get(index).getType() == CommandLineArgument.Type.Boolean)
+			else if(argumentList.get(index).getDataType() == CommandLineArgument.DataType.Boolean)
 			{
 				if(Boolean.parseBoolean(o.toString())){
 					o =Boolean.parseBoolean(o.toString());
@@ -87,7 +87,7 @@ public class ArgumentParser
 					throw new IncorrectTypeException(incorrectType);
 				}
 			}
-			else if(argumentList.get(index).getType() == CommandLineArgument.Type.Float)
+			else if(argumentList.get(index).getDataType() == CommandLineArgument.DataType.Float)
 			{
 				try{
 					o =Float.parseFloat(o.toString());
@@ -100,7 +100,7 @@ public class ArgumentParser
 		argumentList.get(index).addValue(o);
 	}
 	
-	public void addDescription(String title, String description)
+	public void setDescription(String title, String description)
 	{
 		if(argumentList.contains(new Argument(title)))
 			argumentList.get(argumentList.indexOf(new Argument(title))).setDescription(description);
@@ -108,12 +108,15 @@ public class ArgumentParser
 			argumentList.get(argumentList.indexOf(new OptionalArgument(title))).setDescription(description);
 	}
 	
-	public String getArgumentDescription(String title)
+	public String getDescription(String title)
 	{
-		return argumentList.get(argumentList.indexOf(new Argument(title))).getDescription();
+		if(argumentList.contains(new Argument(title)))
+			return argumentList.get(argumentList.indexOf(new Argument(title))).getDescription();
+		else
+			return argumentList.get(argumentList.indexOf(new OptionalArgument(title))).getDescription();
 	}
 	
-	public <T> T getArgumentValue(String title)
+	public <T> T getValue(String title)
 	{
 		if(argumentList.contains(new Argument(title)))
 			return (T)argumentList.get(argumentList.indexOf(new Argument(title))).getValue();
@@ -121,9 +124,20 @@ public class ArgumentParser
 			return (T)argumentList.get(argumentList.indexOf(new OptionalArgument(title))).getValue();
 	}
 	
-	public CommandLineArgument.Type getArgumentType(String title)
+	public void setDataType(String title, CommandLineArgument.DataType type)
 	{
-		return argumentList.get(argumentList.indexOf(new Argument(title))).getType();
+		if(argumentList.contains(new Argument(title)))
+			argumentList.get(argumentList.indexOf(new Argument(title))).setDataType(type);
+		else if(argumentList.contains(new OptionalArgument(title)))
+			argumentList.get(argumentList.indexOf(new OptionalArgument(title))).setDataType(type);
+	}
+	
+	public CommandLineArgument.DataType getDataType(String title)
+	{
+		if(argumentList.contains(new Argument(title)))
+			return argumentList.get(argumentList.indexOf(new Argument(title))).getDataType();
+		else 
+			return argumentList.get(argumentList.indexOf(new OptionalArgument(title))).getDataType();
 	}
 	
 	public String getOptionalArgument(String title)
@@ -141,14 +155,14 @@ public class ArgumentParser
 		argumentList.get(argumentList.indexOf(new OptionalArgument(title))).addValue(value);
 	}
 	
-	public String getDescription(String title)
-	{
-		return argumentList.get(argumentList.indexOf(new OptionalArgument(title))).getDescription();
-	}
-	
-	public void addNumberValues(String title, int number)
+	public void setNumberValues(String title, int number)
 	{
 		argumentList.get(argumentList.indexOf(new OptionalArgument(title))).setNumberValues(number);
+	}
+	
+	public int getNumberValues(String title)
+	{
+		return argumentList.get(argumentList.indexOf(new OptionalArgument(title))).getNumberValues();
 	}
 	
 	public String getUnmatched()
@@ -176,11 +190,9 @@ public class ArgumentParser
 		int numberValues = 0;
 		while(scan.hasNext())
 		{
-			System.out.println("Running the test for Shortname");
 			String extra  = scan.next();
 			if (argumentList.contains(new OptionalArgument(extra)))
 			{
-				System.out.println("-t is in the list");
 				if (extra.equals("-h") || extra.equals("--help"))
 				{
 					System.out.println(getHelpText());
@@ -188,7 +200,6 @@ public class ArgumentParser
 				}
 				else if(argumentList.get(argumentList.indexOf(new OptionalArgument(extra))).getNumberValues() == 0)
 				{
-					System.out.println("We're inside the else if");
 					addOptionalFlag(extra);
 				}
 				else
@@ -197,7 +208,6 @@ public class ArgumentParser
 					for (int i = 0; i<numberValues; i++)
 					{
 						addOptionalValue(extra, scan.next());
-						System.out.println("We're inside the else");
 					}	
 				}
 			}
@@ -205,7 +215,7 @@ public class ArgumentParser
 			{	
 				if(countArgValues <argumentList.size() - countOptionalArguments)
 				{
-					addArgumentValue(extra, countArgValues);
+					setValue(extra, countArgValues);
 				}
 				else
 				{
@@ -240,6 +250,7 @@ public class ArgumentParser
 	public String getHelpText()
 	{
 		String argumentTitles = "";
+		String optionalArgumentTitles = "";
 		String description = "";
 		String description2 = "";
 		for (CommandLineArgument a : argumentList)
@@ -247,14 +258,14 @@ public class ArgumentParser
 			if (!a.getTitle().contains("-"))
 			{
 				argumentTitles += a.getTitle() + " ";
-				description += a.getTitle() +" "+ a.getType().toString().toLowerCase()+"\t\t"+a.getDescription() + "\r\n";
+				description += a.getTitle() +" "+ a.getDataType().toString().toLowerCase()+"\t\t"+a.getDescription() + "\r\n";
 			}
-			/*else {
-				argumentTitles += a.getTitle() + " ";
-				description += a.getTitle() +" "+ a.getType().toString().toLowerCase()+"\t\t"+a.getDescription() + "\r\n";
-			}*/
+			else {
+				optionalArgumentTitles += a.getTitle() + " ";
+				description2 += a.getTitle() +" "+ a.getDataType().toString().toLowerCase()+"\t\t"+a.getDescription() + "\r\n";
+			}
 		}
-		help = "usage: java " + program + " " + argumentTitles + "\r\n" + programDescription +"\r\nPositional Arguments:\r\n" + description /*+ "\r\nOptional Arguments:\r\n" + description2*/;
+		help = "usage: java " + program + " " + argumentTitles + "\r\n" + programDescription +"\r\nPositional Arguments:\r\n" + description + "\r\nOptional Arguments:\r\n" + description2;
 		return help;
 	}
 	

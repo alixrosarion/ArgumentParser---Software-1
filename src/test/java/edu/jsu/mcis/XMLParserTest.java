@@ -15,7 +15,7 @@ public class XMLParserTest
 		} catch (Exception e) {
 			assertTrue(false);
 		}
-		assertEquals(2.0f, tester.getArgumentValue("length"));
+		assertEquals(2.0f, tester.getValue("length"));
 	}
 	
 	@Test

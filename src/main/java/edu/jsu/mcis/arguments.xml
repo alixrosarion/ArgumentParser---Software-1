@@ -23,7 +23,7 @@
 	<optionalArgument>
 		<name>--help</name>
 		<numValues>0</numValues>
-		<type></type>
+		<type>boolean</type>
 		<description>help center</description>
 		<value></value>
 		<shortName>-h</shortName>
