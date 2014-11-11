@@ -103,7 +103,10 @@ public class ArgumentParser
 	
 	public void addDescription(String title, String description)
 	{
-		argumentList.get(argumentList.indexOf(new Argument(title))).setDescription(description);
+		if(argumentList.contains(new Argument(title)))
+			argumentList.get(argumentList.indexOf(new Argument(title))).setDescription(description);
+		else if(argumentList.contains(new OptionalArgument(title)))
+			argumentList.get(argumentList.indexOf(new OptionalArgument(title))).setDescription(description);
 	}
 	
 	public String getArgumentDescription(String title)

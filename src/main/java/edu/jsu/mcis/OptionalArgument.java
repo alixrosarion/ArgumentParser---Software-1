@@ -74,9 +74,10 @@ public class OptionalArgument extends CommandLineArgument{
 		output += "\r\n\t\t<shortName>" + shortName + "</shortName>\r\n\t</optionalArgument>";
 		return output;
 	}
-	
+	@Override
 	public boolean equals(Object o)
 	{
+	//"this" keyword refers to the one in the list
 		boolean result = false;
 		if(o instanceof OptionalArgument)
 		{
@@ -84,7 +85,7 @@ public class OptionalArgument extends CommandLineArgument{
 			
 			if(this.title.equals(arg.getTitle()))
 				result = true;
-			if(!arg.getShort().equals("") && this.title.equals(arg.getShort()))
+			else if(this.getShort().equals(arg.getTitle()))
 			{
 				result = true;
 			}
@@ -92,7 +93,6 @@ public class OptionalArgument extends CommandLineArgument{
 		return result;
 	}
 	public int hashCode() {
-		//int result = 17 * title.hashCode();
-		return 34;	
+		return 17;	
     }
 }
