@@ -94,6 +94,8 @@ public class ArgumentParserTest {
 	{
 		tester.addArgument("length", CommandLineArgument.Type.Integer);
 		tester.addArgument("width", CommandLineArgument.Type.Float);
+		tester.addDescription("length", "the length of the box");
+		tester.addDescription("width", "the width of the box");
 		assertEquals("the length of the box", tester.getArgumentDescription("length"));
 		assertEquals("the width of the box", tester.getArgumentDescription("width"));
 	}
@@ -177,6 +179,7 @@ public class ArgumentParserTest {
 		tester.addArgument("length", CommandLineArgument.Type.Integer);
 		tester.addOptionalArgument("--type", CommandLineArgument.Type.String);
 		assertEquals("--type", tester.getOptionalArgument("--type"));
+		tester.addNumberValues("--type", 1);
 		try
 		{
 			tester.parse("7 --type sphere");
@@ -191,6 +194,7 @@ public class ArgumentParserTest {
 		tester.addArgument("width");
 		tester.addArgument("height");
 		tester.addOptionalArgument("--type", CommandLineArgument.Type.String);
+		tester.addNumberValues("--type", 1);
 		try
 		{
 			tester.parse("7 --type sphere 5 2");
@@ -246,7 +250,7 @@ public class ArgumentParserTest {
 	@Test
 	public void testOptionalArgumentOverrideDefaultValue() {
 		tester.addOptionalArgument("--type", CommandLineArgument.Type.String);
-		//tester.setNumberValues(1);
+		tester.addNumberValues("--type", 1);
 		try {
 			tester.parse("--type shape");
 			assertEquals("shape", tester.getArgumentValue("--type"));
@@ -259,6 +263,8 @@ public class ArgumentParserTest {
 	@Test
 	public void testOptionalArgumentDescription() {
 		tester.addOptionalArgument("--type", CommandLineArgument.Type.String);
+		tester.addNumberValues("--type", 1);
+		tester.addDescription("--type", "The shape the user defines");
 		try {
 			tester.parse("--type shape");
 			assertEquals("The shape the user defines", tester.getDescription("--type"));

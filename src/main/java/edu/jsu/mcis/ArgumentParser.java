@@ -144,6 +144,11 @@ public class ArgumentParser
 		return argumentList.get(argumentList.indexOf(new OptionalArgument(title))).getDescription();
 	}
 	
+	public void addNumberValues(String title, int number)
+	{
+		argumentList.get(argumentList.indexOf(new OptionalArgument(title))).setNumberValues(number);
+	}
+	
 	public String getUnmatched()
 	{
 		return unmatched;
