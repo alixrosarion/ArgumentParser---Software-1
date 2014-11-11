@@ -45,8 +45,7 @@ public class ArgumentParser
 	
 	public void addShortOption(String title, String str)
 	{
-		OptionalArgument arg = new OptionalArgument(title);
-		argumentList.get(argumentList.indexOf(arg)).setShort(str);
+		argumentList.get(argumentList.indexOf(new OptionalArgument(title))).setShort(str);
 	}
 	
 	public String getShortOption(String title)
@@ -177,9 +176,11 @@ public class ArgumentParser
 		int numberValues = 0;
 		while(scan.hasNext())
 		{
+			System.out.println("Running the test for Shortname");
 			String extra  = scan.next();
 			if (argumentList.contains(new OptionalArgument(extra)))
 			{
+				System.out.println("-t is in the list");
 				if (extra.equals("-h") || extra.equals("--help"))
 				{
 					System.out.println(getHelpText());
@@ -187,6 +188,7 @@ public class ArgumentParser
 				}
 				else if(argumentList.get(argumentList.indexOf(new OptionalArgument(extra))).getNumberValues() == 0)
 				{
+					System.out.println("We're inside the else if");
 					addOptionalFlag(extra);
 				}
 				else
@@ -195,6 +197,7 @@ public class ArgumentParser
 					for (int i = 0; i<numberValues; i++)
 					{
 						addOptionalValue(extra, scan.next());
+						System.out.println("We're inside the else");
 					}	
 				}
 			}
@@ -263,7 +266,6 @@ public class ArgumentParser
 			output += argumentList.get(i).toString();
 		}
 		output += "\r\n</arguments>";
-		System.out.println(output);
 		return output;
 	}
 	

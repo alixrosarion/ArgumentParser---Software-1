@@ -278,11 +278,15 @@ public class ArgumentParserTest {
 	public void testShortName()
 	{
 		tester.addOptionalArgument("--type", CommandLineArgument.Type.String);
+		tester.addNumberValues("--type", 1);
 		tester.addShortOption("--type", "-t");
 		assertEquals("-t", tester.getShortOption("--type"));
+		assertTrue(tester.getArgumentList().contains(new OptionalArgument("-t")));
+		assertEquals(0, tester.getArgumentList().indexOf((new OptionalArgument("-t"))));
 		try {
 			tester.parse("-t shape");
-		} catch (Exception e) {
+		} catch (NotEnoughArgValuesException  | TooManyArgValuesException | IncorrectTypeException e) {
+			e.printStackTrace();
 			assertTrue(false);
 		}
 

@@ -74,7 +74,7 @@ public class OptionalArgument extends CommandLineArgument{
 		output += "\r\n\t\t<shortName>" + shortName + "</shortName>\r\n\t</optionalArgument>";
 		return output;
 	}
-	@Override
+
 	public boolean equals(Object o)
 	{
 	//"this" keyword refers to the one in the list
@@ -83,12 +83,10 @@ public class OptionalArgument extends CommandLineArgument{
 		{
 			OptionalArgument arg = (OptionalArgument) o;
 			
-			if(this.title.equals(arg.getTitle()))
+			if(this.title.equals(arg.getTitle()) || this.getShort().equals(arg.getTitle()))
 				result = true;
-			else if(this.getShort().equals(arg.getTitle()))
-			{
+			if(this.title.equals(arg.getShort())) //Reflexivity needed by list.contains(Object o)
 				result = true;
-			}
 		}
 		return result;
 	}
