@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="edu.jsu.mcis.OptionalArgumentTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2014-11-11T17:41:20" hostname="ALIX" time="0.0">
+<testsuite name="edu.jsu.mcis.OptionalArgumentTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2014-11-11T19:16:59" hostname="AH259-06" time="0.012">
   <properties/>
-  <testcase name="testShortName" classname="edu.jsu.mcis.OptionalArgumentTest" time="0.0"/>
-  <testcase name="testTypeSingleValue" classname="edu.jsu.mcis.OptionalArgumentTest" time="0.0"/>
-  <testcase name="testOptionalArgumentToString" classname="edu.jsu.mcis.OptionalArgumentTest" time="0.0"/>
-  <testcase name="testRequired" classname="edu.jsu.mcis.OptionalArgumentTest" time="0.0"/>
+  <testcase name="testShortName" classname="edu.jsu.mcis.OptionalArgumentTest" time="0.001"/>
+  <testcase name="testDataTypeSingleValue" classname="edu.jsu.mcis.OptionalArgumentTest" time="0.0"/>
+  <testcase name="testOptionalArgumentToString" classname="edu.jsu.mcis.OptionalArgumentTest" time="0.001"/>
+  <testcase name="testRequired" classname="edu.jsu.mcis.OptionalArgumentTest" time="0.001"/>
   <testcase name="testSetOptionalArgument" classname="edu.jsu.mcis.OptionalArgumentTest" time="0.0"/>
-  <testcase name="testEquals" classname="edu.jsu.mcis.OptionalArgumentTest" time="0.0"/>
+  <testcase name="testEquals" classname="edu.jsu.mcis.OptionalArgumentTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

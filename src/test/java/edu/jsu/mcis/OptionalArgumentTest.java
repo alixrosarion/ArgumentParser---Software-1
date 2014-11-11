@@ -22,15 +22,15 @@ public class OptionalArgumentTest
 	}
 	
 	@Test
-	public void testTypeSingleValue()
+	public void testDataTypeSingleValue()
 	{
-		OptionalArgument tester = new OptionalArgument("--type", CommandLineArgument.Type.String);
+		OptionalArgument tester = new OptionalArgument("--type", CommandLineArgument.DataType.String);
 		tester.setNumberValues(1);
 		tester.setDescription("Shape of Volume");
 		tester.addValue("Box");
 		assertEquals("--type", tester.getTitle());
 		assertEquals(1, tester.getNumberValues());
-		assertEquals(CommandLineArgument.Type.String, tester.getType());
+		assertEquals(CommandLineArgument.DataType.String, tester.getDataType());
 		assertEquals("Shape of Volume", tester.getDescription());
 		assertEquals("Box", tester.getValue());
 	}

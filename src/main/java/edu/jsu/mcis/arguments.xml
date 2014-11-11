@@ -22,8 +22,7 @@
 	
 	<optionalArgument>
 		<name>--help</name>
-		<numValues>0</numValues>
-		<type></type>
+		<type>boolean</type>
 		<description>help center</description>
 		<value></value>
 		<shortName>-h</shortName>
@@ -31,7 +30,6 @@
 	
 	<optionalArgument>
 		<name>--type</name>
-		<numValues>1</numValues>
 		<type>string</type>
 		<description>Type of shape</description>
 		<value>box</value>

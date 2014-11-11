@@ -4,8 +4,8 @@ public abstract class CommandLineArgument {
 	protected String title;
 	protected Object value;
 	protected String description;
-	protected Type type;
-	public enum Type {
+	protected DataType type;
+	public enum DataType {
 		Integer, Float, String, Boolean, Unknown;
 		public String toString()
 		{
@@ -24,7 +24,7 @@ public abstract class CommandLineArgument {
 	{
 		description = d;
 	}
-	public void setType(Type t)
+	public void setDataType(DataType t)
 	{
 		type = t;
 	}
@@ -32,7 +32,7 @@ public abstract class CommandLineArgument {
 	{
 		return description;
 	}
-	public Type getType()
+	public DataType getDataType()
 	{
 		return type;
 	}

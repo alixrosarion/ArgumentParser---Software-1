@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="edu.jsu.mcis.XMLParserTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2014-11-11T17:41:20" hostname="ALIX" time="0.078">
+<testsuite name="edu.jsu.mcis.XMLParserTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2014-11-11T19:16:59" hostname="AH259-06" time="0.097">
   <properties/>
-  <testcase name="testXMLParsingArguments" classname="edu.jsu.mcis.XMLParserTest" time="0.032"/>
-  <testcase name="testXMLParserOptionalTypes" classname="edu.jsu.mcis.XMLParserTest" time="0.031"/>
-  <testcase name="testXMLParsingOptional" classname="edu.jsu.mcis.XMLParserTest" time="0.015"/>
-  <testcase name="testXMLParserTypes" classname="edu.jsu.mcis.XMLParserTest" time="0.0"/>
-  <testcase name="testXMLHelp" classname="edu.jsu.mcis.XMLParserTest" time="0.0"/>
+  <testcase name="testXMLParsingArguments" classname="edu.jsu.mcis.XMLParserTest" time="0.018"/>
+  <testcase name="testXMLParserOptionalTypes" classname="edu.jsu.mcis.XMLParserTest" time="0.046"/>
+  <testcase name="testXMLParsingOptional" classname="edu.jsu.mcis.XMLParserTest" time="0.007"/>
+  <testcase name="testXMLParserTypes" classname="edu.jsu.mcis.XMLParserTest" time="0.013"/>
+  <testcase name="testXMLHelp" classname="edu.jsu.mcis.XMLParserTest" time="0.008"/>
   <system-out><![CDATA[Running the test for Shortname
 Running the test for Shortname
 Running the test for Shortname

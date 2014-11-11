@@ -1,4 +1,4 @@
- Running the test for Shortname
+ Running the test for Shortname
  Running the test for Shortname
 -t is in the list
 We're inside the else
@@ -7,6 +7,8 @@
 We're inside the else if
 	 Running the test for Shortname
 	 Running the test for Shortname
+	-t is in the list
+	We're inside the else
 	 Running the test for Shortname
 	 Running the test for Shortname
 
@@ -14,41 +16,38 @@
 
  Running the test for Shortname
 
--t is in the list
-
-We're inside the else
+ Running the test for Shortname
 
  Running the test for Shortname
 
  Running the test for Shortname
  Running the test for Shortname
  Running the test for Shortname
- Running the test for Shortname
- Running the test for Shortname
- Running the test for Shortname
+-t is in the list
+We're inside the else
  Running the test for Shortname
  Running the test for Shortname
--t is in the list
-We're inside the else
+ Running the test for Shortname
+ Running the test for Shortname
+ Running the test for Shortname
+-t is in the list
+We're inside the else if
  Running the test for Shortname
  Running the test for Shortname
  Running the test for Shortname
- Running the test for Shortname
- Running the test for Shortname
--t is in the list
-We're inside the else if
- Running the test for Shortname
- Running the test for Shortname
- Running the test for Shortname
--t is in the list
-'usage: java null length width height 
-null
-Positional Arguments:
-length 		
-
+-t is in the list
+'usage: java null length width height 
+null
+Positional Arguments:
+length 		
+
 width 		
-height 		
-
+height 		
+
+ Running the test for Shortname
+ Running the test for Shortname
+ Running the test for Shortname
+ Running the test for Shortname
  Running the test for Shortname
  Running the test for Shortname
  Running the test for Shortname
@@ -64,9 +63,9 @@ width
 
  Running the test for Shortname
  Running the test for Shortname
- Running the test for Shortname
--t is in the list
-We're inside the else
+ Running the test for Shortname
+-t is in the list
+We're inside the else
  Running the test for Shortname
  Running the test for Shortname
 -t is in the list
