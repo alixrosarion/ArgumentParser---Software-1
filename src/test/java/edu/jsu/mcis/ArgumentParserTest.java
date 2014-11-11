@@ -92,8 +92,8 @@ public class ArgumentParserTest {
 	@Test
 	public void testAddArgDescriptions()
 	{
-		tester.addArgument("length", CommandLineArgument.Type.Integer,"the length of the box");
-		tester.addArgument("width", CommandLineArgument.Type.Float,"the width of the box");
+		tester.addArgument("length", CommandLineArgument.Type.Integer);
+		tester.addArgument("width", CommandLineArgument.Type.Float);
 		assertEquals("the length of the box", tester.getArgumentDescription("length"));
 		assertEquals("the width of the box", tester.getArgumentDescription("width"));
 	}

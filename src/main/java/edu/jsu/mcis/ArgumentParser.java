@@ -43,13 +43,6 @@ public class ArgumentParser
 		argumentList.get(argumentList.indexOf(new Argument(title))).setType(type);
 	}
 	
-	public void addArgument(String title, CommandLineArgument.Type type, String description)
-	{
-		argumentList.add(new Argument(title));
-		argumentList.get(argumentList.indexOf(new Argument(title))).setType(type);
-		argumentList.get(argumentList.indexOf(new Argument(title))).setDescription(description);
-	}
-	
 	public void addShortOption(String title, String str)
 	{
 		OptionalArgument arg = new OptionalArgument(title);
@@ -167,9 +160,9 @@ public class ArgumentParser
 	{
 		return argumentList;
 	}
+	
 	public void parse(String str) throws NotEnoughArgValuesException, TooManyArgValuesException, IncorrectTypeException
 	{
-		
 		Scanner scan = new Scanner(str);
 		int countArgValues = 0;
 		unmatched = "unrecognised arguments: ";
@@ -253,6 +246,7 @@ public class ArgumentParser
 		help = "usage: java " + program + " " + argumentTitles + "\r\n" + programDescription +"\r\nPositional Arguments:\r\n" + description /*+ "\r\nOptional Arguments:\r\n" + description2*/;
 		return help;
 	}
+	
 	public String getOutput()
 	{
 		output = "<?xml version=\"1.0\" encoding=\""+ "UTF-8" + "\"?>"+"\r\n<arguments>";
@@ -264,6 +258,7 @@ public class ArgumentParser
 		System.out.println(output);
 		return output;
 	}
+	
 	public void writeToXMLFile(String filename)
 	{
 		try
