@@ -33,7 +33,7 @@ public class VolCalcSaveXML
 		
 		try{
 			parser.parse(read);
-			parser.writeToXMLFile("krisTest.xml");
+			parser.writeToXMLFile("writeTest.xml");
 		
 			try{
             int length = parser.getValue("length");
