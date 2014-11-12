@@ -16,7 +16,7 @@ public class Argument extends CommandLineArgument
 		description = "";
 	}
 	
-	public void addValue(Object o) throws NumberFormatException
+	public void setValue(Object o) throws NumberFormatException
 	{
 			if(type == CommandLineArgument.DataType.Integer)
 					value =Integer.parseInt(o.toString());

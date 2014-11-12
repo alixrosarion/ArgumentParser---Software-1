@@ -66,18 +66,25 @@ public class ArgumentParser
         countOptionalArguments++;
     }
     
-    //see if we can change this to allow opt arg to use as well
     public void setValue(Object o, int index) throws IncorrectTypeException
     {
         incorrectType = program + ".java: error: argument ";
         try{
-            argumentList.get(index).addValue(o);
+            argumentList.get(index).setValue(o);
         } catch (NumberFormatException e) {
             incorrectType = incorrectType + argumentList.get(index).getTitle() +
             " invalid "+argumentList.get(index).getDataType().toString().toLowerCase() +" value: " + o;
             throw new IncorrectTypeException(incorrectType);
         }
     }
+	
+	public void setValue(String ... args)
+	{
+		if(args.length ==1)
+			argumentList.get(argumentList.indexOf(new OptionalArgument(args[0]))).setValue(true);
+		else if (args.length ==2)
+			argumentList.get(argumentList.indexOf(new OptionalArgument(args[0]))).setValue(args[1]);
+	}
     
     public void setDescription(String title, String description)
     {
@@ -103,7 +110,7 @@ public class ArgumentParser
             return (T)argumentList.get(argumentList.indexOf(new OptionalArgument(title))).getValue();
     }
     
-    public CommandLineArgument.DataType getDataType(String title)
+    public CommandLineArgument.DataType getArgumentDataType(String title)
     {
         if(argumentList.contains(new Argument(title)))
             return argumentList.get(argumentList.indexOf(new Argument(title))).getDataType();
@@ -114,18 +121,6 @@ public class ArgumentParser
     public String getOptionalArgument(String title)
     {
         return argumentList.get(argumentList.indexOf(new OptionalArgument(title))).getTitle();
-    }
-    
-    //try to combine w/ setValue
-    public void addOptionalFlag(String title)
-    {
-        argumentList.get(argumentList.indexOf(new OptionalArgument(title))).addValue(true);
-    }
-    
-    //see if we can combine this w/ setValue
-    public void setOptionalValue(String title, String value)
-    {
-        argumentList.get(argumentList.indexOf(new OptionalArgument(title))).addValue(value);
     }
     
     public void setNumberValues(String title, int number)
@@ -173,14 +168,14 @@ public class ArgumentParser
                 }
                 else if(argumentList.get(argumentList.indexOf(new OptionalArgument(extra))).getNumberValues() == 0)
                 {
-                    addOptionalFlag(extra);
+                    setValue(extra);
                 }
                 else
                 {
                     numberValues = argumentList.get(argumentList.indexOf(new OptionalArgument(extra))).getNumberValues();
                     for (int i = 0; i<numberValues; i++)
                     {
-                        setOptionalValue(extra, scan.next());
+                        setValue(extra, scan.next());
                     }
                 }
             }

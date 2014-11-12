@@ -27,7 +27,7 @@ public class OptionalArgumentTest
 		OptionalArgument tester = new OptionalArgument("--type", CommandLineArgument.DataType.String);
 		tester.setNumberValues(1);
 		tester.setDescription("Shape of Volume");
-		tester.addValue("Box");
+		tester.setValue("Box");
 		assertEquals("--type", tester.getTitle());
 		assertEquals(1, tester.getNumberValues());
 		assertEquals(CommandLineArgument.DataType.String, tester.getDataType());
@@ -40,7 +40,7 @@ public class OptionalArgumentTest
 	{
 		OptionalArgument tester = new OptionalArgument("--type");
 		tester.setShort("-t");
-		tester.addValue("Box");
+		tester.setValue("Box");
 		assertEquals("-t", tester.getShort());
 		assertEquals(tester, new OptionalArgument("-t"));
 

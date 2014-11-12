@@ -229,7 +229,7 @@ public class ArgumentParserTest {
 		tester.addArgument("width");
 		tester.addArgument("height");
 		tester.addOptionalArgument("--type", CommandLineArgument.DataType.String);
-		tester.addOptionalValue("--type", "Box");
+		tester.setValue("--type", "Box");
 		try
 		{
 			tester.parse("7 5 2");
@@ -344,6 +344,6 @@ public class ArgumentParserTest {
     public void testGetOptionalArgumentDataType()
     {
         tester.addOptionalArgument("type", CommandLineArgument.DataType.String);
-        assertEquals(CommandLineArgument.DataType.String, tester.getDataType("type"));
+        assertEquals(CommandLineArgument.DataType.String, tester.getArgumentDataType("type"));
     }
 }

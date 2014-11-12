@@ -134,7 +134,7 @@ public class XMLParser extends DefaultHandler
 			if (optArgXML != CommandLineArgument.DataType.Boolean)
 			{
 				if (element.equalsIgnoreCase("value")) {
-					argPars.argumentList.get(argPars.argumentList.indexOf(new OptionalArgument(tmpName))).addValue(tmpValue);
+					argPars.argumentList.get(argPars.argumentList.indexOf(new OptionalArgument(tmpName))).setValue(tmpValue);
 				}
 			}
 			else

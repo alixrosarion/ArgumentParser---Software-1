@@ -44,7 +44,7 @@ public class OptionalArgument extends CommandLineArgument{
 		return numberValues;
 	}
 	
-	public void addValue(Object object)
+	public void setValue(Object object)
 	{
 		value = object;
 	}
