@@ -28,7 +28,19 @@ Test Case 3
 	${type}= 	Get   --Type
 	Should Be Equal   ${type}   box
 	
-Test case 4
-	Start Program With Short  7 -t box 5 2
-	$(t)=  Get  -t
-	Should Be Equal  $(t)  box
+
+Test Case 4
+	Start Program With Short   7 -t box 5 2
+	${type}= 	Get   --Type
+	Should Be Equal   ${type}   box
+	
+Test Case 5
+	Start Program With Xml		7 5 2
+	${length}= 	Get 	Length
+	Should Be Equal 	${length}	7.0
+	${width}= 	Get 	Width
+	Should Be Equal 	${width} 	5.0
+	${height}= 	Get 	Height
+	Should Be Equal 	${height}	2.0 	
+	
+	

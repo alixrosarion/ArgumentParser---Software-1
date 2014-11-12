@@ -7,12 +7,10 @@ public class VolCalcLoadXML
 	public static void main(String [] args) 
 	{
 		String read = "";
-		String filename = args[0];
 		for(String arg:args){
-			if(!arg.contains(".xml"))
-				read += arg + " ";
+			read += arg + " ";
 		}try{
-			ArgumentParser parser = XMLParser.createArgumentParser(filename);
+			ArgumentParser parser = XMLParser.createArgumentParser("arguments.xml");
 			parser.addProgram("VolCalc","Calculates the volume of an object");
 		
 			parser.parse(read);

@@ -29,7 +29,8 @@ public class Feature1Keywords
 		parser.addArgument("length");
 		parser.addArgument("width");
 		parser.addArgument("height");
-		parser.addOptionalArgument("--type", 1);
+		parser.addOptionalArgument("--type", CommandLineArgument.DataType.String);
+		parser.setNumberValues("--type", 1);
 		addValues(args);
 	}
 	
@@ -39,8 +40,15 @@ public class Feature1Keywords
 		parser.addArgument("length");
 		parser.addArgument("width");
 		parser.addArgument("height");
-		parser.addOptionalArgument("-type", 1);
-		parser.addShortOption("--type", "-t");
+		parser.addOptionalArgument("--type", CommandLineArgument.DataType.String);
+		parser.setNumberValues("--type", 1);
+		parser.setShortOption("--type", "-t");
+		addValues(args);
+	}
+	
+	public void startProgramWithXml(String args)
+	{
+		parser = XMLParser.createArgumentParser("arguments.xml");
 		addValues(args);
 	}
 
@@ -58,8 +66,7 @@ public class Feature1Keywords
 	
 
 	public String get(String s)
-	{
-		
-		return parser.getArgumentValue(s.toLowerCase()).toString();
+	{	
+		return parser.getValue(s.toLowerCase()).toString();
 	}
 }

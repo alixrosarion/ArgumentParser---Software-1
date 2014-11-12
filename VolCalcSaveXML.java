@@ -8,7 +8,6 @@ public class VolCalcSaveXML
 	{
 		ArgumentParser parser = new ArgumentParser();
 		String read = "";
-		String filename = args[0];
 		parser.addArgument("length", CommandLineArgument.Type.Float, "the length of the box");
 		parser.addArgument("width", CommandLineArgument.Type.Float, "the width of the box");
 		parser.addArgument("height", CommandLineArgument.Type.Float, "the height of the box");
@@ -16,11 +15,10 @@ public class VolCalcSaveXML
 		parser.addOptionalArgument("-h", 0);
 		
 		for(String arg:args){
-			if(!arg.contains(".xml")) read += arg + " ";
-			
+			read += arg + " ";
 		}try{
 			parser.parse(read);
-			parser.writeToXMLFile(filename);
+			parser.writeToXMLFile("test.xml");
 			try{
             float length = parser.getArgumentValue("length");
 			float height = parser.getArgumentValue("height");
