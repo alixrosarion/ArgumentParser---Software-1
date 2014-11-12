@@ -1,7 +1,7 @@
 import edu.jsu.mcis.*;
 
 import java.util.*;
-@SuppressWarnings("unchecked")
+//@SuppressWarnings("unchecked")
 public class VolCalc
 {
 	public static void main(String [] args) 
@@ -12,19 +12,31 @@ public class VolCalc
 			read += arg + " ";
 		}
 		
-		parser.addArgument("length", CommandLineArgument.Type.Integer, "the length of the box");
-		parser.addArgument("width", CommandLineArgument.Type.Float, "the width of the box");
-		parser.addArgument("height", CommandLineArgument.Type.Integer, "the height of the box");
 		parser.addProgram("VolCalc","Calculates the volume of an object");
-		parser.addOptionalArgument("-h", 0);
-		parser.addOptionalArgument("--type", 1, CommandLineArgument.Type.String, "Shape of object to be calculated", "Box");
+		
+		parser.addArgument("length", CommandLineArgument.DataType.Integer);
+		parser.setDescription("length", "the length of the box");
+		
+		parser.addArgument("width", CommandLineArgument.DataType.Float);
+		parser.setDescription("width", "the width of the box");
+		
+		parser.addArgument("height", CommandLineArgument.DataType.Integer);
+		parser.setDescription("height", "the height of the box");
+		
+		parser.addOptionalArgument("-h",CommandLineArgument.DataType.String);
+		parser.setNumberValues("-h", 0);
+		
+		parser.addOptionalArgument("--type", CommandLineArgument.DataType.String);
+		parser.setNumberValues("--type", 1);		
+		parser.setDescription("--type", "Shape of object to be calculated");
+		parser.setShortOption("--type", "-t");
 		
 		try{
 			parser.parse(read);
 			try{
-            int length = parser.getArgumentValue("length");
-			int height = parser.getArgumentValue("height");
-			float width = parser.getArgumentValue("width");
+            int length = parser.getValue("length");
+			int height = parser.getValue("height");
+			float width = parser.getValue("width");
 			System.out.println("Volume is " + height * width * length);
 			
 			}
