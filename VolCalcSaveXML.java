@@ -1,13 +1,12 @@
 import edu.jsu.mcis.*;
 
 import java.util.*;
-//@SuppressWarnings("unchecked")
+
 public class VolCalcSaveXML
 {
 	public static void main(String [] args) 
 	{
 		ArgumentParser parser = new ArgumentParser();
-		
 		String read = "";
 		for(String arg:args){
 		read += arg + " ";}
