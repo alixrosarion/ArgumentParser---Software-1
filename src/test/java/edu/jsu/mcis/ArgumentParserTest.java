@@ -331,4 +331,19 @@ public class ArgumentParserTest {
 		"<name>--type</name>\r\n\t\t<numValues>0</numValues>\r\n\t\t<type>String</type>\r\n\t\t<description></description>"+	
 		"\r\n\t\t<value>" + null + "</value>\r\n\t\t<shortName></shortName>\r\n\t</optionalArgument>\r\n</arguments>",tester.getOutput());
 	}
+    
+    @Test
+    public void testGetNumberValues()
+    {
+        tester.addOptionalArgument("type");
+        tester.setNumberValues("type", 5);
+        assertEquals(5, tester.getNumberValues("type"));
+    }
+    
+    @Test
+    public void testGetOptionalArgumentDataType()
+    {
+        tester.addOptionalArgument("type", CommandLineArgument.DataType.String);
+        assertEquals(CommandLineArgument.DataType.String, tester.getDataType("type"));
+    }
 }

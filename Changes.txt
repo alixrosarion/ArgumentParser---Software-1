@@ -5,3 +5,4 @@ Sari:
 Nikki:
 	removed shorthand
 	refactored argument/optional argument constructors
+	added get/set methods to ArgumentParser, removed some unnecessary methods
