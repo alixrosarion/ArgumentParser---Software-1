@@ -26,10 +26,10 @@ public class VolCalc
 		parser.addOptionalArgument("-h",CommandLineArgument.DataType.String);
 		parser.setNumberValues("-h", 0);
 		
-		parser.addOptionalArgument("--type", CommandLineArgument.DataType.String);
-		parser.setNumberValues("--type", 1);		
-		parser.setDescription("--type", "Shape of object to be calculated");
-		parser.setShortOption("--type", "-t");
+		parser.addOptionalArgument("type", CommandLineArgument.DataType.String);
+		parser.setNumberValues("type", 1);		
+		parser.setDescription("type", "Shape of object to be calculated");
+		parser.setShortOption("type", "t");
 		
 		try{
 			parser.parse(read);
