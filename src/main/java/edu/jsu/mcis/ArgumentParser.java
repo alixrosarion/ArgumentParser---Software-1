@@ -21,6 +21,7 @@ public class ArgumentParser
         requiredOptionals = new ArrayList<CommandLineArgument>();
         unmatched ="";
         incorrectType= "";
+		addOptionalArgument("h", CommandLineArgument.DataType.Boolean);
     }
     
     public int getSize()
@@ -57,8 +58,9 @@ public class ArgumentParser
     
     public void addOptionalArgument(String title, CommandLineArgument.DataType type)
     {
-        argumentList.add(new OptionalArgument(title));
-        argumentList.get(argumentList.indexOf(new OptionalArgument(title))).setDataType(type);
+		OptionalArgument arg = new OptionalArgument(title);
+		arg.setDataType(type);
+        argumentList.add(arg);
         countOptionalArguments++;
     }
     
@@ -72,7 +74,19 @@ public class ArgumentParser
     {
         incorrectType = program + ".java: error: argument ";
         try{
-            argumentList.get(index).setValue(o);
+            //argumentList.get(index).setValue(o);
+			int myCount = 0;
+			System.out.println();
+			for(CommandLineArgument a : argumentList) {
+				if(a instanceof Argument) {
+					if(myCount == index) {
+						a.setValue(o);
+						return;
+					}
+					myCount++;
+				}
+				else myCount++;
+			}
         } catch (NumberFormatException e) {
             incorrectType = incorrectType + argumentList.get(index).getTitle() +
             " invalid "+argumentList.get(index).getDataType().toString().toLowerCase() +" value: " + o;
@@ -82,9 +96,9 @@ public class ArgumentParser
 	
 	public void setValue(String ... args)
 	{
-		if(args.length ==1)
+		if(args.length == 1)
 			argumentList.get(argumentList.indexOf(new OptionalArgument(args[0]))).setValue(true);
-		else if (args.length ==2)
+		else if (args.length == 2)
 			argumentList.get(argumentList.indexOf(new OptionalArgument(args[0]))).setValue(args[1]);
 	}
     
@@ -175,22 +189,25 @@ public class ArgumentParser
         {
             String extra  = scan.next();
 			tempLine += extra;
-			if (extra.equals("-h") || extra.equals("--help"))
-	        {
-	                System.out.println(getHelpText());
-	            	return;
-	       	}
-            else if (extra.contains("-"))
+			
+            if (extra.startsWith("-"))
             {
 				for(int i =0; i < extra.length(); i++)
 				{
 					if (extra.charAt(i) != '-') tempOpt += extra.charAt(i);
 				}
+					
+				
 				if (argumentList.contains(new OptionalArgument(tempOpt)))
-				{
+				{			
 	                if(argumentList.get(argumentList.indexOf(new OptionalArgument(tempOpt))).getNumberValues() == 0)
 	                {
-	                    setValue(tempOpt);
+						 if (tempOpt.equals("h") || tempOpt.equals("help"))
+						 {	
+							 System.out.println(getHelpText());
+							 return;
+					   	 }
+						else setValue(tempOpt);
 	                }
 	                else
 	                {
@@ -221,6 +238,7 @@ public class ArgumentParser
 		{
 			if(!tempLine.contains(requiredOptionals.get(i).getTitle()))
 			{
+				System.out.println("AaaAAAAAAAAAA");
 				unmatched = "the following arguments are required: ";
 				for(int k = 0; k< requiredOptionals.size(); k++)
 				{

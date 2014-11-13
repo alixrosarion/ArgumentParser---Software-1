@@ -71,6 +71,7 @@ public class ArgumentParserTest {
 		tester.addArgument("length");
 		tester.addArgument("width");
 		tester.addArgument("height");
+		System.out.println(tester.getOutput());
 		try
 		{
 			tester.parse("7");
@@ -111,8 +112,6 @@ public class ArgumentParserTest {
 		tester.setDescription("length", "the length of the box");
 		tester.setDescription("width", "the width of the box");
 		tester.setDescription("height","the height of the box");
-
-		tester.addOptionalArgument("-h", CommandLineArgument.DataType.Boolean);
 		try
 		{
 			tester.parse("-h");
@@ -213,7 +212,6 @@ public class ArgumentParserTest {
 		tester.addArgument("width");
 		tester.addArgument("height");
 		tester.addOptionalArgument("type", CommandLineArgument.DataType.String);
-		tester.addOptionalArgument("h", CommandLineArgument.DataType.Boolean);
 		tester.addOptionalArgument("actor", CommandLineArgument.DataType.String);
 		try
 		{

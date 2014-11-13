@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <arguments>
+	<optionalArgument>
+		<name>h</name>
+		<numValues>0</numValues>
+		<type>Boolean</type>
+		<description></description>
+		<value>null</value>
+		<shortName></shortName>
+	</optionalArgument>
 	<argument>
 		<name>length</name>
 		<type>Integer</type>

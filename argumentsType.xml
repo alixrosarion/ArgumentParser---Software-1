@@ -24,39 +24,39 @@
 	</argument>
 	
 	<optionalArgument>
-		<name>--help</name>
+		<name>help</name>
 		<numValues>0</numValues>
 		<type></type>
 		<description>help center</description>
 		<value></value>
-		<shortName>-h</shortName>
+		<shortName>h</shortName>
 	</optionalArgument>
 	
 	<optionalArgument>
-		<name>--type</name>
+		<name>type</name>
 		<numValues>1</numValues>
 		<type>string</type>
 		<description>Type of shape</description>
 		<value>box</value>
-		<shortName>-t</shortName>
+		<shortName>t</shortName>
 	</optionalArgument>
 	
 	<optionalArgument>
-		<name>--int</name>
+		<name>int</name>
 		<numValues>1</numValues>
 		<type>integer</type>
 		<description>Type of shape</description>
 		<value>box</value>
-		<shortName>-t</shortName>
+		<shortName>t</shortName>
 	</optionalArgument>
 	
 	<optionalArgument>
-		<name>--float</name>
+		<name>float</name>
 		<numValues>1</numValues>
 		<type>float</type>
 		<description>Type of shape</description>
 		<value>box</value>
-		<shortName>-t</shortName>
+		<shortName>t</shortName>
 	</optionalArgument>
 	
 </arguments>
