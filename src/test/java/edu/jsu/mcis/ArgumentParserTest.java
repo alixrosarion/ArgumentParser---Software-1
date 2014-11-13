@@ -180,9 +180,9 @@ public class ArgumentParserTest {
 	public void testReadingOptionalArgumentAtEnd ()
 	{
 		tester.addArgument("length", CommandLineArgument.DataType.Integer);
-		tester.addOptionalArgument("--type", CommandLineArgument.DataType.String);
-		assertEquals("--type", tester.getOptionalArgument("--type"));
-		tester.setNumberValues("--type", 1);
+		tester.addOptionalArgument("type", CommandLineArgument.DataType.String);
+		assertEquals("type", tester.getOptionalArgument("type"));
+		tester.setNumberValues("type", 1);
 		try
 		{
 			tester.parse("7 --type sphere");
@@ -196,15 +196,15 @@ public class ArgumentParserTest {
 		tester.addArgument("length");
 		tester.addArgument("width");
 		tester.addArgument("height");
-		tester.addOptionalArgument("--type", CommandLineArgument.DataType.String);
-		tester.setNumberValues("--type", 1);
+		tester.addOptionalArgument("type", CommandLineArgument.DataType.String);
+		tester.setNumberValues("type", 1);
 		try
 		{
 			tester.parse("7 --type sphere 5 2");
 		}catch(NotEnoughArgValuesException  | TooManyArgValuesException | IncorrectTypeException e){
 			assertTrue(false);
 		}
-		assertEquals("sphere", tester.getValue("--type"));
+		assertEquals("sphere", tester.getValue("type"));
 	}
 	
 	@Test
@@ -212,9 +212,9 @@ public class ArgumentParserTest {
 		tester.addArgument("length");
 		tester.addArgument("width");
 		tester.addArgument("height");
-		tester.addOptionalArgument("--type", CommandLineArgument.DataType.String);
-		tester.addOptionalArgument("-h", CommandLineArgument.DataType.Boolean);
-		tester.addOptionalArgument("--actor", CommandLineArgument.DataType.String);
+		tester.addOptionalArgument("type", CommandLineArgument.DataType.String);
+		tester.addOptionalArgument("h", CommandLineArgument.DataType.Boolean);
+		tester.addOptionalArgument("actor", CommandLineArgument.DataType.String);
 		try
 		{
 			tester.parse("7 --type sphere 5 -h 2 --actor will smith");
@@ -228,12 +228,12 @@ public class ArgumentParserTest {
 		tester.addArgument("length");
 		tester.addArgument("width");
 		tester.addArgument("height");
-		tester.addOptionalArgument("--type", CommandLineArgument.DataType.String);
-		tester.setValue("--type", "Box");
+		tester.addOptionalArgument("type", CommandLineArgument.DataType.String);
+		tester.setValue("type", "Box");
 		try
 		{
 			tester.parse("7 5 2");
-			assertEquals("Box", tester.getValue("--type"));
+			assertEquals("Box", tester.getValue("type"));
 		}catch(NotEnoughArgValuesException  | TooManyArgValuesException | IncorrectTypeException e){
 			assertTrue(false);
 		}
@@ -241,11 +241,11 @@ public class ArgumentParserTest {
 	
 	@Test
 	public void testOptionalArgumentAsFlag() {
-		tester.addOptionalArgument("--type", CommandLineArgument.DataType.String);
+		tester.addOptionalArgument("type", CommandLineArgument.DataType.String);
 		boolean flag = true;
 		try {
 			tester.parse("--type");
-			assertEquals(true, tester.getValue("--type"));
+			assertEquals(true, tester.getValue("type"));
 		} catch (Exception e) {
 			assertTrue(false);
 		}
@@ -253,11 +253,11 @@ public class ArgumentParserTest {
 	
 	@Test
 	public void testOptionalArgumentOverrideDefaultValue() {
-		tester.addOptionalArgument("--type", CommandLineArgument.DataType.String);
-		tester.setNumberValues("--type", 1);
+		tester.addOptionalArgument("type", CommandLineArgument.DataType.String);
+		tester.setNumberValues("type", 1);
 		try {
 			tester.parse("--type shape");
-			assertEquals("shape", tester.getValue("--type"));
+			assertEquals("shape", tester.getValue("type"));
 		} catch (Exception e) {
 			assertTrue(false);
 		}
@@ -266,12 +266,12 @@ public class ArgumentParserTest {
 	
 	@Test
 	public void testOptionalArgumentDescription() {
-		tester.addOptionalArgument("--type", CommandLineArgument.DataType.String);
-		tester.setNumberValues("--type", 1);
-		tester.setDescription("--type", "The shape the user defines");
+		tester.addOptionalArgument("type", CommandLineArgument.DataType.String);
+		tester.setNumberValues("type", 1);
+		tester.setDescription("type", "The shape the user defines");
 		try {
 			tester.parse("--type shape");
-			assertEquals("The shape the user defines", tester.getDescription("--type"));
+			assertEquals("The shape the user defines", tester.getDescription("type"));
 		} catch (Exception e) {
 			assertTrue(false);
 		}
@@ -280,13 +280,13 @@ public class ArgumentParserTest {
 	@Test
 	public void testShortName()
 	{
-		tester.addOptionalArgument("--type", CommandLineArgument.DataType.String);
+		tester.addOptionalArgument("type", CommandLineArgument.DataType.String);
 
-		tester.setNumberValues("--type", 1);
-		tester.setShortOption("--type", "-t");
-		assertEquals("-t", tester.getShortOption("--type"));
-		assertTrue(tester.getArgumentList().contains(new OptionalArgument("-t")));
-		assertEquals(0, tester.getArgumentList().indexOf((new OptionalArgument("-t"))));
+		tester.setNumberValues("type", 1);
+		tester.setShortOption("type", "t");
+		assertEquals("t", tester.getShortOption("type"));
+		assertTrue(tester.getArgumentList().contains(new OptionalArgument("t")));
+		assertEquals(0, tester.getArgumentList().indexOf((new OptionalArgument("t"))));
 		try {
 			tester.parse("-t shape");
 		} catch (NotEnoughArgValuesException  | TooManyArgValuesException | IncorrectTypeException e) {
@@ -309,10 +309,10 @@ public class ArgumentParserTest {
 	{
 		tester.addArgument("length", CommandLineArgument.DataType.Integer);
 		tester.setDescription("length", "the length of the box");
-		tester.addOptionalArgument("--type", CommandLineArgument.DataType.String);
+		tester.addOptionalArgument("type", CommandLineArgument.DataType.String);
 		assertEquals("<?xml version=\"1.0\" encoding=\""+ "UTF-8" + "\"?>\r\n<arguments>\r\n\t<argument>\r\n\t\t<name>length</name>"+
 		"\r\n\t\t<type>Integer</type>\r\n\t\t<description>the length of the box</description>\r\n\t</argument>\r\n\t<optionalArgument>\r\n\t\t"+
-		"<name>--type</name>\r\n\t\t<numValues>0</numValues>\r\n\t\t<type>String</type>\r\n\t\t<description></description>"+
+		"<name>type</name>\r\n\t\t<numValues>0</numValues>\r\n\t\t<type>String</type>\r\n\t\t<description></description>"+
 		"\r\n\t\t<value>" + null + "</value>\r\n\t\t<shortName></shortName>\r\n\t</optionalArgument>\r\n</arguments>",tester.getOutput());
 	}
 
@@ -321,14 +321,14 @@ public class ArgumentParserTest {
 	{
 		tester.addArgument("length", CommandLineArgument.DataType.Integer);
 		tester.setDescription("length", "the length of the box");
-		tester.addOptionalArgument("--type", CommandLineArgument.DataType.String);
+		tester.addOptionalArgument("type", CommandLineArgument.DataType.String);
 		tester.writeToXMLFile("test.xml");
 		assertTrue(new File("test.xml").exists());
 		
 		ArgumentParser testNo = XMLParser.createArgumentParser("test.xml");
 		assertEquals("<?xml version=\"1.0\" encoding=\""+ "UTF-8" + "\"?>\r\n<arguments>\r\n\t<argument>\r\n\t\t<name>length</name>"+
 		"\r\n\t\t<type>Integer</type>\r\n\t\t<description>the length of the box</description>\r\n\t</argument>\r\n\t<optionalArgument>\r\n\t\t"+
-		"<name>--type</name>\r\n\t\t<numValues>0</numValues>\r\n\t\t<type>String</type>\r\n\t\t<description></description>"+	
+		"<name>type</name>\r\n\t\t<numValues>0</numValues>\r\n\t\t<type>String</type>\r\n\t\t<description></description>"+	
 		"\r\n\t\t<value>" + null + "</value>\r\n\t\t<shortName></shortName>\r\n\t</optionalArgument>\r\n</arguments>",tester.getOutput());
 	}
     

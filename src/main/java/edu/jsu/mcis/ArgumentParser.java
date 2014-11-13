@@ -153,31 +153,39 @@ public class ArgumentParser
     public void parse(String str) throws NotEnoughArgValuesException, TooManyArgValuesException, IncorrectTypeException
     {
         Scanner scan = new Scanner(str);
+		String tempOpt = "";
         int countArgValues = 0;
         unmatched = "unrecognised arguments: ";
         int numberValues = 0;
         while(scan.hasNext())
         {
             String extra  = scan.next();
-            if (argumentList.contains(new OptionalArgument(extra)))
+			if (extra.equals("-h") || extra.equals("--help"))
+	        {
+	                System.out.println(getHelpText());
+	            	return;
+	       	}
+            else if (extra.contains("-"))
             {
-                if (extra.equals("-h") || extra.equals("--help"))
-                {
-                    System.out.println(getHelpText());
-                    return;
-                }
-                else if(argumentList.get(argumentList.indexOf(new OptionalArgument(extra))).getNumberValues() == 0)
-                {
-                    setValue(extra);
-                }
-                else
-                {
-                    numberValues = argumentList.get(argumentList.indexOf(new OptionalArgument(extra))).getNumberValues();
-                    for (int i = 0; i<numberValues; i++)
-                    {
-                        setValue(extra, scan.next());
-                    }
-                }
+				for(int i =0; i < extra.length(); i++)
+				{
+					if (extra.charAt(i) != '-') tempOpt += extra.charAt(i);
+				}
+				if (argumentList.contains(new OptionalArgument(tempOpt)))
+				{
+	                if(argumentList.get(argumentList.indexOf(new OptionalArgument(tempOpt))).getNumberValues() == 0)
+	                {
+	                    setValue(tempOpt);
+	                }
+	                else
+	                {
+	                    numberValues = argumentList.get(argumentList.indexOf(new OptionalArgument(tempOpt))).getNumberValues();
+	                    for (int i = 0; i<numberValues; i++)
+	                    {
+	                        setValue(tempOpt, scan.next());
+	                    }
+	                }
+				}
             }
             else
             {

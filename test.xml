@@ -6,7 +6,7 @@
 		<description>the length of the box</description>
 	</argument>
 	<optionalArgument>
-		<name>--type</name>
+		<name>type</name>
 		<numValues>0</numValues>
 		<type>String</type>
 		<description></description>
