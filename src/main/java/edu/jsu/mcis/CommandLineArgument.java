@@ -42,5 +42,7 @@ public abstract class CommandLineArgument {
 	abstract public <T> T getValue();
 	abstract public void setNumberValues(int i);
 	abstract public void setShort(String s);
-	abstract public void setValue(Object v);	
+	abstract public void setValue(Object v);
+	abstract public void setRequired();
+	abstract public boolean getRequired();	
 }

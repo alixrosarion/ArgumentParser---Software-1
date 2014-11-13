@@ -77,7 +77,13 @@ public class Argument extends CommandLineArgument
 		int result = 31 * title.hashCode();
 		return result;	
     }
+
+	public boolean getRequired()
+	{
+		return true;
+	}
 	
 	public void setShort(String s){}
 	public void setNumberValues(int num){}
+	public void setRequired(){}
 }

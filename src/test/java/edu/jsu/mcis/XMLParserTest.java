@@ -64,5 +64,17 @@ public class XMLParserTest
 		ArgumentParser testBad = XMLParser.createArgumentParser("badFormatXML.xml");
 		ArgumentParser testNo = XMLParser.createArgumentParser("nonono.xml");
 	}
+	
+	@Test
+	public void testRequiredOptionalArguments()
+	{
+		ArgumentParser tester = XMLParser.createArgumentParser("arguments.xml");
+		try {
+			tester.parse("2");
+			assertTrue(false);
+		} catch (NotEnoughArgValuesException  | TooManyArgValuesException | IncorrectTypeException e) {
+		e.printStackTrace();
+		}
+	}	
 
 }

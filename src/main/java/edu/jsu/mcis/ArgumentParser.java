@@ -13,10 +13,12 @@ public class ArgumentParser
     private String incorrectType;
     private int countOptionalArguments;
     private String output;
+	private List <CommandLineArgument> requiredOptionals;
     
     public ArgumentParser()
     {
         argumentList = new ArrayList<CommandLineArgument>();
+        requiredOptionals = new ArrayList<CommandLineArgument>();
         unmatched ="";
         incorrectType= "";
     }
@@ -132,6 +134,17 @@ public class ArgumentParser
     {
         return argumentList.get(argumentList.indexOf(new OptionalArgument(title))).getNumberValues();
     }
+
+	public void setRequired(String title)
+	{
+		argumentList.get(argumentList.indexOf(new OptionalArgument(title))).setRequired();
+		requiredOptionals.add(new OptionalArgument(title));
+	}
+	
+	public boolean getRequired(String title)
+	{
+		return argumentList.get(argumentList.indexOf(new OptionalArgument(title))).getRequired();
+	}
     
     public String getUnmatched()
     {
@@ -154,12 +167,14 @@ public class ArgumentParser
     {
         Scanner scan = new Scanner(str);
 		String tempOpt = "";
+		String tempLine = "";
         int countArgValues = 0;
         unmatched = "unrecognised arguments: ";
         int numberValues = 0;
         while(scan.hasNext())
         {
             String extra  = scan.next();
+			tempLine += extra;
 			if (extra.equals("-h") || extra.equals("--help"))
 	        {
 	                System.out.println(getHelpText());
@@ -201,6 +216,22 @@ public class ArgumentParser
                 countArgValues++;
             }
         }
+		
+		for(int i = 0; i<requiredOptionals.size(); i++)
+		{
+			if(!tempLine.contains(requiredOptionals.get(i).getTitle()))
+			{
+				unmatched = "the following arguments are required: ";
+				for(int k = 0; k< requiredOptionals.size(); k++)
+				{
+					if( k == requiredOptionals.size() -1)
+						unmatched += requiredOptionals.get(k).getTitle();
+					else
+						unmatched += requiredOptionals.get(k).getTitle() + " ";
+				}
+	            throw new NotEnoughArgValuesException(unmatched);
+			}
+		}
         
         if (unmatched != "")
             unmatched = unmatched.substring(0, unmatched.length() -1);

@@ -346,4 +346,20 @@ public class ArgumentParserTest {
         tester.addOptionalArgument("type", CommandLineArgument.DataType.String);
         assertEquals(CommandLineArgument.DataType.String, tester.getArgumentDataType("type"));
     }
+
+	@Test
+	public void testRequiredOptionalArguments()
+	{
+		tester.addArgument("length");
+		tester.addOptionalArgument("type");
+		tester.setRequired("type");
+		try {
+			tester.parse("2");
+			assertTrue(false);
+		} catch (NotEnoughArgValuesException  | TooManyArgValuesException | IncorrectTypeException e) {
+			e.printStackTrace();
+			
+		}
+	}
+	
 }

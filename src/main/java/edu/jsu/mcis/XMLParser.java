@@ -87,6 +87,13 @@ public class XMLParser extends DefaultHandler
 			}
 			if (element.equalsIgnoreCase("numValues")) {
 				argPars.argumentList.get(argPars.argumentList.indexOf(new OptionalArgument(tmpName))).setNumberValues(Integer.parseInt(tmpValue));
+			}
+			
+			if (element.equalsIgnoreCase("required")) {
+				if(tmpValue.equals("true"))	
+				{
+					argPars.argumentList.get(argPars.argumentList.indexOf(new OptionalArgument(tmpName))).setRequired();
+				}
 			}	
 			
 			if (element.equalsIgnoreCase("type")) {
