@@ -12,7 +12,7 @@ public class ArgumentParser
     private String programDescription;
     private String incorrectType;
     private int countOptionalArguments;
-	private int nextArgumentIndex; // helps determine what the index of the next argument is in the list.
+	//private int nextArgumentIndex;  helps determine what the index of the next argument is in the list.
     private String output;
 	private List <CommandLineArgument> requiredOptionals;
     
@@ -71,13 +71,24 @@ public class ArgumentParser
         countOptionalArguments++;
     }
     
-    public void setValue(Object o, int index) throws IncorrectTypeException
+	//Since the index is not being used any more, this one might end up getting combined with the other one, but not now.
+	// test at line 228 or argument parser.test is failing. Please look at it, I'll check it out later
+    public void setValue(Object o, int index) throws IncorrectTypeException 
     {
+		int k=0;
         incorrectType = program + ".java: error: argument ";
         try{
-            argumentList.get(getArgumentIndex()).setValue(o);
+			for (k =0; k<argumentList.size(); k++)
+			{
+				if (argumentList.get(k) instanceof Argument && argumentList.get(k).getValue() == null)
+				{
+					argumentList.get(k).setValue(o);
+					return;
+				}
+			}
+			// argumentList.get(getArgumentIndex()).setValue(o);
 			//System.out.println("---------- The index of the first arg is " + nextArgumentIndex);
-			System.out.println(argumentList.get(argumentList.indexOf(new Argument("length"))).getValue());
+			//System.out.println(argumentList.get(argumentList.indexOf(new Argument("length"))).getValue());
 			/*int myCount = 0;
 			System.out.println();
 			for(CommandLineArgument a : argumentList) {
@@ -91,14 +102,14 @@ public class ArgumentParser
 				else myCount++;
 			}*/
         } catch (NumberFormatException e) {
-            incorrectType = incorrectType + argumentList.get(getArgumentIndex()).getTitle() +
+            incorrectType = incorrectType + argumentList.get(k).getTitle() +
             " invalid "+argumentList.get(index).getDataType().toString().toLowerCase() +" value: " + o;
             throw new IncorrectTypeException(incorrectType);
         }
     }
 	
 	//Let the program determine what the next index that has an argument is
-	public int getArgumentIndex()
+	/*public int getArgumentIndex()
 	{
 		for (int i= nextArgumentIndex; i< argumentList.size();i++)
 		{
@@ -108,7 +119,7 @@ public class ArgumentParser
 				return nextArgumentIndex;
 		}
 		return nextArgumentIndex;
-	}
+	}*/
 	public void setValue(String ... args)
 	{
 		if(args.length == 1)
@@ -271,7 +282,7 @@ public class ArgumentParser
         
         if(argumentList.size() > countArgValues + countOptionalArguments){
             unmatched = "the following arguments are required: ";
-            for(int k = countArgValues; k< argumentList.size(); k++) // probably nextArgumentIndex
+           /* for(int k = countArgValues; k< argumentList.size(); k++) // probably nextArgumentIndex
             {
 				if (!(argumentList.get(k) instanceof OptionalArgument))
 				{
@@ -280,7 +291,17 @@ public class ArgumentParser
                 else
                     unmatched += argumentList.get(k).getTitle() + " ";
 				}
-            }
+            }*/
+			for (int k =0; k<argumentList.size(); k++) //Look at all the arguments instead and add a value to the first one that does not have one
+			{
+				if (argumentList.get(k) instanceof Argument && argumentList.get(k).getValue() == null)
+				{
+                if( k == argumentList.size() -1)
+                    unmatched += argumentList.get(k).getTitle();
+                else
+                    unmatched += argumentList.get(k).getTitle() + " ";
+				}
+			}
             throw new NotEnoughArgValuesException(unmatched);
         }
         
@@ -298,7 +319,7 @@ public class ArgumentParser
         String description2 = "";
         for (CommandLineArgument a : argumentList)
         {	
-            if (!a.getTitle().contains("-"))
+            if ( a instanceof Argument)
             {
                 argumentTitles += a.getTitle() + " ";
                 description += a.getTitle() +" "+ a.getDataType().toString().toLowerCase()+"\t\t"+a.getDescription() + "\r\n";

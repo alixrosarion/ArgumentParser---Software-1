@@ -13,14 +13,14 @@ public class ArgumentParserTest {
 		tester = new ArgumentParser();
 	}
 	
-	/*@Test
+	@Test
 	public void testAddMultipleArguments()
 	{
-		assertEquals(0, tester.getSize());
-		tester.addArgument("length");
 		assertEquals(1, tester.getSize());
-		tester.addArgument("width");
+		tester.addArgument("length");
 		assertEquals(2, tester.getSize());
+		tester.addArgument("width");
+		assertEquals(3, tester.getSize());
 	}
 	
 	@Test
@@ -65,7 +65,7 @@ public class ArgumentParserTest {
 			assertEquals("unrecognised arguments: 10 2", tester.getUnmatched());
 		}
 	}
-	*/
+	
 	@Test
 	public void testNotEnoughArgumentValues() {
 		tester.addArgument("length");
@@ -82,7 +82,7 @@ public class ArgumentParserTest {
 		
 		}
 	}
-	/*
+	
 	@Test
 	public void testAddArgDataTypes()
 	{
@@ -219,11 +219,13 @@ public class ArgumentParserTest {
 		{
 			tester.parse("7 --type sphere 5 -h 2 --actor will smith");
 		}catch(NotEnoughArgValuesException  | TooManyArgValuesException | IncorrectTypeException e){
+		System.out.println("------------ther e ie io " + e.toString());
+		e.printStackTrace();
 			assertTrue(false);
 		}
 	}
 	
-	@Test
+	@Test // -h does not seem to be recognized. It does not stop the program and return, it keeps on going.
 	public void testOptionalArgumentsWithDefaults(){
 		tester.addArgument("length");
 		tester.addArgument("width");
@@ -286,7 +288,7 @@ public class ArgumentParserTest {
 		tester.setShortOption("type", "t");
 		assertEquals("t", tester.getShortOption("type"));
 		assertTrue(tester.getArgumentList().contains(new OptionalArgument("t")));
-		assertEquals(0, tester.getArgumentList().indexOf((new OptionalArgument("t"))));
+		assertEquals(1, tester.getArgumentList().indexOf((new OptionalArgument("t"))));
 		try {
 			tester.parse("-t shape");
 		} catch (NotEnoughArgValuesException  | TooManyArgValuesException | IncorrectTypeException e) {
@@ -360,6 +362,6 @@ public class ArgumentParserTest {
 			e.printStackTrace();
 			
 		}
-	}*/
+	}
 	
 }
