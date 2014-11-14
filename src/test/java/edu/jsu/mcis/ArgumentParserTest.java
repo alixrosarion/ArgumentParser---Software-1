@@ -13,7 +13,7 @@ public class ArgumentParserTest {
 		tester = new ArgumentParser();
 	}
 	
-	@Test
+	/*@Test
 	public void testAddMultipleArguments()
 	{
 		assertEquals(0, tester.getSize());
@@ -65,7 +65,7 @@ public class ArgumentParserTest {
 			assertEquals("unrecognised arguments: 10 2", tester.getUnmatched());
 		}
 	}
-	
+	*/
 	@Test
 	public void testNotEnoughArgumentValues() {
 		tester.addArgument("length");
@@ -74,13 +74,15 @@ public class ArgumentParserTest {
 		System.out.println(tester.getOutput());
 		try
 		{
-			tester.parse("7");
+			tester.parse("2");
 			assertTrue(false);
 		}catch(NotEnoughArgValuesException  | TooManyArgValuesException | IncorrectTypeException e){
+				System.out.println(tester.getOutput());
 			assertEquals("the following arguments are required: width height", tester.getUnmatched());
+		
 		}
 	}
-	
+	/*
 	@Test
 	public void testAddArgDataTypes()
 	{
@@ -358,6 +360,6 @@ public class ArgumentParserTest {
 			e.printStackTrace();
 			
 		}
-	}
+	}*/
 	
 }

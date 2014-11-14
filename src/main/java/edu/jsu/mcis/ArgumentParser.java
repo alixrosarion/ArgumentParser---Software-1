@@ -12,6 +12,7 @@ public class ArgumentParser
     private String programDescription;
     private String incorrectType;
     private int countOptionalArguments;
+	private int nextArgumentIndex; // helps determine what the index of the next argument is in the list.
     private String output;
 	private List <CommandLineArgument> requiredOptionals;
     
@@ -74,26 +75,40 @@ public class ArgumentParser
     {
         incorrectType = program + ".java: error: argument ";
         try{
-            //argumentList.get(index).setValue(o);
-			int myCount = 0;
+            argumentList.get(getArgumentIndex()).setValue(o);
+			//System.out.println("---------- The index of the first arg is " + nextArgumentIndex);
+			System.out.println(argumentList.get(argumentList.indexOf(new Argument("length"))).getValue());
+			/*int myCount = 0;
 			System.out.println();
 			for(CommandLineArgument a : argumentList) {
 				if(a instanceof Argument) {
 					if(myCount == index) {
-						a.setValue(o);
+					a.setValue(o);
 						return;
 					}
 					myCount++;
-				}
-				else myCount++;
 			}
+				else myCount++;
+			}*/
         } catch (NumberFormatException e) {
-            incorrectType = incorrectType + argumentList.get(index).getTitle() +
+            incorrectType = incorrectType + argumentList.get(getArgumentIndex()).getTitle() +
             " invalid "+argumentList.get(index).getDataType().toString().toLowerCase() +" value: " + o;
             throw new IncorrectTypeException(incorrectType);
         }
     }
 	
+	//Let the program determine what the next index that has an argument is
+	public int getArgumentIndex()
+	{
+		for (int i= nextArgumentIndex; i< argumentList.size();i++)
+		{
+			if (argumentList.get(i) instanceof OptionalArgument)
+				nextArgumentIndex++;
+			else
+				return nextArgumentIndex;
+		}
+		return nextArgumentIndex;
+	}
 	public void setValue(String ... args)
 	{
 		if(args.length == 1)
@@ -256,12 +271,15 @@ public class ArgumentParser
         
         if(argumentList.size() > countArgValues + countOptionalArguments){
             unmatched = "the following arguments are required: ";
-            for(int k = countArgValues; k< argumentList.size(); k++)
+            for(int k = countArgValues; k< argumentList.size(); k++) // probably nextArgumentIndex
             {
+				if (!(argumentList.get(k) instanceof OptionalArgument))
+				{
                 if( k == argumentList.size() -1)
                     unmatched += argumentList.get(k).getTitle();
                 else
                     unmatched += argumentList.get(k).getTitle() + " ";
+				}
             }
             throw new NotEnoughArgValuesException(unmatched);
         }
