@@ -5,17 +5,8 @@ public abstract class CommandLineArgument {
 	protected Object value;
 	protected String description;
 	protected DataType type;
-	public enum DataType {
-		Integer, Float, String, Boolean;
-		public String toString()
-		{
-			if(this == Float) return "Float";
-			else if(this == String) return "String";
-			else if(this == Boolean) return "Boolean";
-			else if(this == Integer) return "Integer";
-			else return "";
-		}
-	};
+	public enum DataType {Integer, Float, String, Boolean}
+		
 	
 	public String getTitle() {
 		return title;
