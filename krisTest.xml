@@ -16,19 +16,11 @@
 		<description>the height of the box</description>
 	</argument>
 	<optionalArgument>
-		<name>-h</name>
-		<numValues>0</numValues>
-		<type>String</type>
-		<description></description>
-		<value>null</value>
-		<shortName></shortName>
-	</optionalArgument>
-	<optionalArgument>
-		<name>--type</name>
+		<name>type</name>
 		<numValues>1</numValues>
 		<type>String</type>
 		<description>Shape of object to be calculated</description>
 		<value>null</value>
-		<shortName>-t</shortName>
+		<shortName>t</shortName>
 	</optionalArgument>
 </arguments>

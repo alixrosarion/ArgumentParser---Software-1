@@ -5,7 +5,7 @@ public class Argument extends CommandLineArgument
 	public Argument(String title)
 	{
 		this.title = title;
-		type =	CommandLineArgument.DataType.Unknown;
+		type =	CommandLineArgument.DataType.String;
 		description = "";
 	}
 	

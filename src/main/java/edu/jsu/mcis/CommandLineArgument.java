@@ -6,7 +6,7 @@ public abstract class CommandLineArgument {
 	protected String description;
 	protected DataType type;
 	public enum DataType {
-		Integer, Float, String, Boolean, Unknown;
+		Integer, Float, String, Boolean;
 		public String toString()
 		{
 			if(this == Float) return "Float";

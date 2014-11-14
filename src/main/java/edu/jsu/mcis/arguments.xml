@@ -21,20 +21,11 @@
 	</argument>
 	
 	<optionalArgument>
-		<name>--help</name>
-		<numValues>0</numValues>
-		<type>boolean</type>
-		<description>help center</description>
-		<value></value>
-		<shortName>-h</shortName>
-	</optionalArgument>
-	
-	<optionalArgument>
-		<name>--type</name>
+		<name>type</name>
 		<type>string</type>
 		<description>Type of shape</description>
 		<value>box</value>
-		<shortName>-t</shortName>
+		<shortName>t</shortName>
 	</optionalArgument>
 	
 </arguments>

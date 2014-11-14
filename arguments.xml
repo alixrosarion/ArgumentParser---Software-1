@@ -16,17 +16,7 @@
 		<type>float</type>
 		<description>height of the box</description>
 	</argument>
-	
-	<optionalArgument>
-		<name>help</name>
-		<numValues>0</numValues>
-		<type></type>
-		<description>help center</description>
-        <required>false</required>
-        <value></value>
-		<shortName>h</shortName>
-	</optionalArgument>
-	
+
 	<optionalArgument>
 		<name>type</name>
 		<numValues>1</numValues>

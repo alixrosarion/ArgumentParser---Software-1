@@ -11,7 +11,7 @@ public class OptionalArgument extends CommandLineArgument{
 		this.title = title;
 		shortName = "";
 		description = "";
-		type =	CommandLineArgument.DataType.Unknown;
+		type =	CommandLineArgument.DataType.String;
 		required = false;
 	}
 	
@@ -69,7 +69,7 @@ public class OptionalArgument extends CommandLineArgument{
 		output += "\r\n\t<optionalArgument>\r\n\t\t<name>" + title + "</name>";
 		output += "\r\n\t\t<numValues>" + numberValues + "</numValues>";
 		output += "\r\n\t\t<type>" + type + "</type>";
-		output += "\r\n\t\t<description>" + description + "</description>";	
+		output += "\r\n\t\t<description>" + description + "</description>";
 		output += "\r\n\t\t<value>" + value + "</value>";
 		output += "\r\n\t\t<shortName>" + shortName + "</shortName>\r\n\t</optionalArgument>";
 		return output;

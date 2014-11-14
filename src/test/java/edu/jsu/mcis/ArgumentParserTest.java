@@ -119,7 +119,7 @@ public class ArgumentParserTest {
 			tester.parse("-h");
 		}catch(NotEnoughArgValuesException  | TooManyArgValuesException | IncorrectTypeException e){
 			assertTrue(false);}
-		assertEquals("usage: java VolCalc length width height \r\nCalculate the volume of a box\r\nPositional Arguments:\r\nlength integer\t\tthe length of the box\r\nwidth float\t\tthe width of the box\r\nheight float\t\tthe height of the box\r\n\r\nOptional Arguments:\r\n-h boolean\t\t\r\n", tester.getHelpText());
+		assertEquals("usage: java VolCalc length width height \r\nCalculate the volume of a box\r\nPositional Arguments:\r\nlength integer\t\tthe length of the box\r\nwidth float\t\tthe width of the box\r\nheight float\t\tthe height of the box\r\n\r\nOptional Arguments:\r\nhelp boolean\t\t\r\n", tester.getHelpText());
 	}
 	
 	@Test
@@ -330,7 +330,7 @@ public class ArgumentParserTest {
 		ArgumentParser testNo = XMLParser.createArgumentParser("test.xml");
 		assertEquals("<?xml version=\"1.0\" encoding=\""+ "UTF-8" + "\"?>\r\n<arguments>\r\n\t<argument>\r\n\t\t<name>length</name>"+
 		"\r\n\t\t<type>Integer</type>\r\n\t\t<description>the length of the box</description>\r\n\t</argument>\r\n\t<optionalArgument>\r\n\t\t"+
-		"<name>type</name>\r\n\t\t<numValues>0</numValues>\r\n\t\t<type>String</type>\r\n\t\t<description></description>"+	
+		"<name>type</name>\r\n\t\t<numValues>0</numValues>\r\n\t\t<type>String</type>\r\n\t\t<description></description>"+
 		"\r\n\t\t<value>" + null + "</value>\r\n\t\t<shortName></shortName>\r\n\t</optionalArgument>\r\n</arguments>",tester.getOutput());
 	}
     

@@ -12,7 +12,6 @@ public class ArgumentParser
     private String programDescription;
     private String incorrectType;
     private int countOptionalArguments;
-	//private int nextArgumentIndex;  helps determine what the index of the next argument is in the list.
     private String output;
 	private List <CommandLineArgument> requiredOptionals;
     
@@ -22,7 +21,8 @@ public class ArgumentParser
         requiredOptionals = new ArrayList<CommandLineArgument>();
         unmatched ="";
         incorrectType= "";
-		addOptionalArgument("h", CommandLineArgument.DataType.Boolean);
+		addOptionalArgument("help", CommandLineArgument.DataType.Boolean);
+		setShortOption("help", "h");
     }
     
     public int getSize()
@@ -70,9 +70,7 @@ public class ArgumentParser
         argumentList.add(new OptionalArgument(title));
         countOptionalArguments++;
     }
-    
-	//Since the index is not being used any more, this one might end up getting combined with the other one, but not now.
-	// test at line 228 or argument parser.test is failing. Please look at it, I'll check it out later
+
     public void setValue(Object o, int index) throws IncorrectTypeException 
     {
 		int k=0;
@@ -86,21 +84,6 @@ public class ArgumentParser
 					return;
 				}
 			}
-			// argumentList.get(getArgumentIndex()).setValue(o);
-			//System.out.println("---------- The index of the first arg is " + nextArgumentIndex);
-			//System.out.println(argumentList.get(argumentList.indexOf(new Argument("length"))).getValue());
-			/*int myCount = 0;
-			System.out.println();
-			for(CommandLineArgument a : argumentList) {
-				if(a instanceof Argument) {
-					if(myCount == index) {
-					a.setValue(o);
-						return;
-					}
-					myCount++;
-			}
-				else myCount++;
-			}*/
         } catch (NumberFormatException e) {
             incorrectType = incorrectType + argumentList.get(k).getTitle() +
             " invalid "+argumentList.get(index).getDataType().toString().toLowerCase() +" value: " + o;
@@ -108,18 +91,6 @@ public class ArgumentParser
         }
     }
 	
-	//Let the program determine what the next index that has an argument is
-	/*public int getArgumentIndex()
-	{
-		for (int i= nextArgumentIndex; i< argumentList.size();i++)
-		{
-			if (argumentList.get(i) instanceof OptionalArgument)
-				nextArgumentIndex++;
-			else
-				return nextArgumentIndex;
-		}
-		return nextArgumentIndex;
-	}*/
 	public void setValue(String ... args)
 	{
 		if(args.length == 1)
@@ -216,6 +187,12 @@ public class ArgumentParser
             String extra  = scan.next();
 			tempLine += extra;
 			
+			if (extra.equals("-h") || extra.equals("--help"))
+			{	
+				System.out.println(getHelpText());
+				return;
+			}
+			
             if (extra.startsWith("-"))
             {
 				for(int i =0; i < extra.length(); i++)
@@ -228,12 +205,7 @@ public class ArgumentParser
 				{			
 	                if(argumentList.get(argumentList.indexOf(new OptionalArgument(tempOpt))).getNumberValues() == 0)
 	                {
-						 if (tempOpt.equals("h") || tempOpt.equals("help"))
-						 {	
-							 System.out.println(getHelpText());
-							 return;
-					   	 }
-						else setValue(tempOpt);
+						 setValue(tempOpt);
 	                }
 	                else
 	                {
@@ -282,17 +254,8 @@ public class ArgumentParser
         
         if(argumentList.size() > countArgValues + countOptionalArguments){
             unmatched = "the following arguments are required: ";
-           /* for(int k = countArgValues; k< argumentList.size(); k++) // probably nextArgumentIndex
-            {
-				if (!(argumentList.get(k) instanceof OptionalArgument))
-				{
-                if( k == argumentList.size() -1)
-                    unmatched += argumentList.get(k).getTitle();
-                else
-                    unmatched += argumentList.get(k).getTitle() + " ";
-				}
-            }*/
-			for (int k =0; k<argumentList.size(); k++) //Look at all the arguments instead and add a value to the first one that does not have one
+          
+			for (int k =0; k<argumentList.size(); k++)
 			{
 				if (argumentList.get(k) instanceof Argument && argumentList.get(k).getValue() == null)
 				{
