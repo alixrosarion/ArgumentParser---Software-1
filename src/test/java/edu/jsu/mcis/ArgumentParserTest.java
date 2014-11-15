@@ -312,7 +312,9 @@ public class ArgumentParserTest {
 		tester.addArgument("length", CommandLineArgument.DataType.Integer);
 		tester.setDescription("length", "the length of the box");
 		tester.addOptionalArgument("type", CommandLineArgument.DataType.String);
-		assertEquals("<?xml version=\"1.0\" encoding=\""+ "UTF-8" + "\"?>\r\n<arguments>\r\n\t<argument>\r\n\t\t<name>length</name>"+
+		assertEquals("<?xml version=\"1.0\" encoding=\""+ "UTF-8" + "\"?>\r\n<arguments>\r\n\t<optionalArgument>\r\n\t\t"+
+		"<name>help</name>\r\n\t\t<numValues>0</numValues>\r\n\t\t<type>Boolean</type>\r\n\t\t<description></description>"+
+		"\r\n\t\t<value>" + null + "</value>\r\n\t\t<shortName>h</shortName>\r\n\t</optionalArgument>\r\n\t<argument>\r\n\t\t<name>length</name>"+
 		"\r\n\t\t<type>Integer</type>\r\n\t\t<description>the length of the box</description>\r\n\t</argument>\r\n\t<optionalArgument>\r\n\t\t"+
 		"<name>type</name>\r\n\t\t<numValues>0</numValues>\r\n\t\t<type>String</type>\r\n\t\t<description></description>"+
 		"\r\n\t\t<value>" + null + "</value>\r\n\t\t<shortName></shortName>\r\n\t</optionalArgument>\r\n</arguments>",tester.getOutput());
@@ -328,7 +330,9 @@ public class ArgumentParserTest {
 		assertTrue(new File("test.xml").exists());
 		
 		ArgumentParser testNo = XMLParser.createArgumentParser("test.xml");
-		assertEquals("<?xml version=\"1.0\" encoding=\""+ "UTF-8" + "\"?>\r\n<arguments>\r\n\t<argument>\r\n\t\t<name>length</name>"+
+		assertEquals("<?xml version=\"1.0\" encoding=\""+ "UTF-8" + "\"?>\r\n<arguments>\r\n\t<optionalArgument>\r\n\t\t"+
+		"<name>help</name>\r\n\t\t<numValues>0</numValues>\r\n\t\t<type>Boolean</type>\r\n\t\t<description></description>"+
+		"\r\n\t\t<value>" + null + "</value>\r\n\t\t<shortName>h</shortName>\r\n\t</optionalArgument>\r\n\t<argument>\r\n\t\t<name>length</name>"+
 		"\r\n\t\t<type>Integer</type>\r\n\t\t<description>the length of the box</description>\r\n\t</argument>\r\n\t<optionalArgument>\r\n\t\t"+
 		"<name>type</name>\r\n\t\t<numValues>0</numValues>\r\n\t\t<type>String</type>\r\n\t\t<description></description>"+
 		"\r\n\t\t<value>" + null + "</value>\r\n\t\t<shortName></shortName>\r\n\t</optionalArgument>\r\n</arguments>",tester.getOutput());
