@@ -6,7 +6,7 @@ import static org.junit.Assert.*;
 public class XMLParserTest
 {
 
-	@Test
+	/*@Test
 	public void testXMLParsingArguments()
 	{
 		ArgumentParser tester = XMLParser.createArgumentParser("arguments.xml");
@@ -75,6 +75,6 @@ public class XMLParserTest
 		} catch (NotEnoughArgValuesException  | TooManyArgValuesException | IncorrectTypeException e) {
 		e.printStackTrace();
 		}
-	}	
+	}*/
 
 }

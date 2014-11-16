@@ -1,4 +1,5 @@
 package edu.jsu.mcis;
+import java.util.*;
 
 public abstract class CommandLineArgument {
 	protected String title;
@@ -6,7 +7,23 @@ public abstract class CommandLineArgument {
 	protected String description;
 	protected DataType type;
 	public enum DataType {Integer, Float, String, Boolean}
-		
+	public List <Object> restrictedValues = new ArrayList<Object>();
+	private boolean hasRestricted;
+	
+	public String getRestricted()
+	{
+		String output = "";
+		for (int i = 0; i<restrictedValues.size(); i++)
+		{
+			output += restrictedValues.get(i) + " ";
+		}
+		return output;
+	}
+	
+	public boolean hasRestricted()
+	{
+		return hasRestricted;
+	}
 	
 	public String getTitle() {
 		return title;
@@ -26,6 +43,12 @@ public abstract class CommandLineArgument {
 	public DataType getDataType()
 	{
 		return type;
+	}
+	
+	public void setRestricted(Object arg)
+	{
+		restrictedValues.add(arg);
+		hasRestricted = true;
 	}
 	
 	abstract public String getShort();

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="edu.jsu.mcis.XMLParserTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2014-11-15T23:38:55" hostname="Sari" time="0.032">
+<testsuite name="edu.jsu.mcis.XMLParserTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2014-11-16T22:33:05" hostname="Sari" time="0.063">
   <properties/>
-  <testcase name="testRequiredOptionalArguments" classname="edu.jsu.mcis.XMLParserTest" time="0.016"/>
+  <testcase name="testRequiredOptionalArguments" classname="edu.jsu.mcis.XMLParserTest" time="0.032"/>
   <testcase name="testXMLParsingArguments" classname="edu.jsu.mcis.XMLParserTest" time="0.0"/>
-  <testcase name="testXMLParserOptionalTypes" classname="edu.jsu.mcis.XMLParserTest" time="0.016"/>
-  <testcase name="testXMLParsingOptional" classname="edu.jsu.mcis.XMLParserTest" time="0.0"/>
+  <testcase name="testXMLParserOptionalTypes" classname="edu.jsu.mcis.XMLParserTest" time="0.015"/>
+  <testcase name="testXMLParsingOptional" classname="edu.jsu.mcis.XMLParserTest" time="0.016"/>
   <testcase name="testXMLParserTypes" classname="edu.jsu.mcis.XMLParserTest" time="0.0"/>
   <testcase name="testXMLHelp" classname="edu.jsu.mcis.XMLParserTest" time="0.0"/>
   <system-out><![CDATA[usage: java null length width height booleanTest 
@@ -47,7 +47,7 @@ type string		Type of shape
 
 ]]></system-out>
   <system-err><![CDATA[edu.jsu.mcis.NotEnoughArgValuesException: the following arguments are required: width height 
-	at edu.jsu.mcis.ArgumentParser.parse(ArgumentParser.java:268)
+	at edu.jsu.mcis.ArgumentParser.parse(ArgumentParser.java:281)
 	at edu.jsu.mcis.XMLParserTest.testRequiredOptionalArguments(XMLParserTest.java:73)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)

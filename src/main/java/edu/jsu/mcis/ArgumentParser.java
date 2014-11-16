@@ -29,6 +29,25 @@ public class ArgumentParser
     {
         return argumentList.size();
     }
+	
+	public void setRestricted(String title, Object ... args)
+	{
+		for(Object arg : args)
+		{
+			if(argumentList.contains(new Argument(title)))
+				argumentList.get(argumentList.indexOf(new Argument(title))).setRestricted(arg);
+			else
+				argumentList.get(argumentList.indexOf(new OptionalArgument(title))).setRestricted(arg);
+		}
+	}
+	
+	public String checkRestricted(String title)
+	{
+		if(argumentList.contains(new Argument(title)))
+			return argumentList.get(argumentList.indexOf(new Argument(title))).getRestricted();
+		else
+			return argumentList.get(argumentList.indexOf(new OptionalArgument(title))).getRestricted();
+	}
     
     public void addProgram(String name, String description)
     {
@@ -200,19 +219,26 @@ public class ArgumentParser
 					if (extra.charAt(i) != '-') tempOpt += extra.charAt(i);
 				}
 					
-				
-				if (argumentList.contains(new OptionalArgument(tempOpt)))
+				OptionalArgument tempArg = new OptionalArgument(tempOpt);
+				if (argumentList.contains(tempArg))
 				{			
-	                if(argumentList.get(argumentList.indexOf(new OptionalArgument(tempOpt))).getNumberValues() == 0)
+	                if(argumentList.get(argumentList.indexOf(tempArg)).getNumberValues() == 0)
 	                {
 						 setValue(tempOpt);
 	                }
 	                else
 	                {
-	                    numberValues = argumentList.get(argumentList.indexOf(new OptionalArgument(tempOpt))).getNumberValues();
+	                    numberValues = argumentList.get(argumentList.indexOf(tempArg)).getNumberValues();
 	                    for (int i = 0; i<numberValues; i++)
 	                    {
-	                        setValue(tempOpt, scan.next());
+							String tempScan = scan.next();
+							if (tempArg.hasRestricted())
+							{
+								System.out.println("AAAAAAAAAAAAAAAAA");
+								if(checkRestricted(tempOpt).contains(tempScan)) setValue(tempOpt, tempScan);
+								else System.out.println(tempScan + " is not an accepted value!"); System.exit(1);
+							}
+							else setValue(tempOpt, tempScan);
 	                    }
 	                }
 				}

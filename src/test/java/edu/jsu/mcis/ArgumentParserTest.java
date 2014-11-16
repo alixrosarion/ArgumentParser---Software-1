@@ -14,6 +14,31 @@ public class ArgumentParserTest {
 	}
 	
 	@Test
+	public void testRestrictedValues()
+	{
+		tester.addArgument("length", CommandLineArgument.DataType.Integer);
+		tester.addOptionalArgument("type");
+		tester.setRestricted("length", 7, 5, 2);
+		tester.setRestricted("type", "sphere", "pyramid", "box");
+		assertEquals("7 5 2 ", tester.checkRestricted("length"));
+		assertEquals("sphere pyramid box ", tester.checkRestricted("type"));
+	}
+	
+	@Test
+	public void testParsingRestricted()
+	{
+		tester.addArgument("length", CommandLineArgument.DataType.Integer);
+		tester.addOptionalArgument("type");
+		tester.setRestricted("length", 7, 5, 2);
+		tester.setRestricted("type", "sphere", "pyramid", "box");
+		tester.setNumberValues("type", 1);
+		try
+		{
+			tester.parse("7 --type jon");
+		}catch(NotEnoughArgValuesException  | TooManyArgValuesException | IncorrectTypeException e){assertTrue(false);}
+	}
+	
+	/*@Test
 	public void testAddMultipleArguments()
 	{
 		assertEquals(1, tester.getSize());
@@ -366,6 +391,6 @@ public class ArgumentParserTest {
 			e.printStackTrace();
 			
 		}
-	}
+	}*/
 	
 }
