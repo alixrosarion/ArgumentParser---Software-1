@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="edu.jsu.mcis.ArgumentParserTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2014-11-16T23:10:19" hostname="Sari" time="0.015">
-  <properties/>
-  <testcase name="testRestrictedValues" classname="edu.jsu.mcis.ArgumentParserTest" time="0.015"/>
-  <testcase name="testParsingRestricted" classname="edu.jsu.mcis.ArgumentParserTest" time="0.0"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
