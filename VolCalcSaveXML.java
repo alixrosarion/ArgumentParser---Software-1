@@ -40,7 +40,6 @@ public class VolCalcSaveXML
 			int height = parser.getValue("height");
 			float width = parser.getValue("width");
 			System.out.println("Volume is " + height * width * length);
-			
 			}
 			catch(NullPointerException e){}
 			System.exit(1);

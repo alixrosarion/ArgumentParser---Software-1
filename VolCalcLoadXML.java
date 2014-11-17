@@ -12,10 +12,7 @@ public class VolCalcLoadXML
 		}try{
 			ArgumentParser parser = XMLParser.createArgumentParser("arguments.xml");
 			
-			parser.addProgram("VolCalc","Calculates the volume of an object");
-			
-			System.out.println(parser.getArgumentList());
-			
+			parser.addProgram("VolCalc","Calculates the volume of an object");			
 			
 			parser.parse(read);
 			try{

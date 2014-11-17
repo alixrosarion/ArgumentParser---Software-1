@@ -32,11 +32,11 @@
 		<shortName></shortName>
 	</optionalArgument>
 	<optionalArgument>
-		<name>--type</name>
+		<name>type</name>
 		<numValues>1</numValues>
 		<type>String</type>
 		<description>Shape of object to be calculated</description>
-		<value>null</value>
-		<shortName>-t</shortName>
+		<value>kite</value>
+		<shortName>t</shortName>
 	</optionalArgument>
 </arguments>
