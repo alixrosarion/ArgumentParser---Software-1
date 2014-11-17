@@ -19,7 +19,11 @@ public class Argument extends CommandLineArgument
 	public void setValue(Object o) throws NumberFormatException
 	{
 			if(type == CommandLineArgument.DataType.Integer)
+			{
 					value =Integer.parseInt(o.toString());
+					if(restrictedValues.size() != 0 && !restrictedValues.contains(value))
+						throw new NumberFormatException();
+			}
 			else if(type == CommandLineArgument.DataType.Boolean)
 			{
 				if((o.toString().equals("true")) || o.toString().equals("false"))
@@ -28,9 +32,17 @@ public class Argument extends CommandLineArgument
 					throw new NumberFormatException();
 			}
 			else if( type == CommandLineArgument.DataType.Float)
+			{
 				value =Float.parseFloat(o.toString());
+				if(restrictedValues.size() != 0 && !restrictedValues.contains(value))
+						throw new NumberFormatException();
+			}
 			else
+			{
 				value = o.toString();
+				if(restrictedValues.size() != 0 && !restrictedValues.contains(value))
+						throw new NumberFormatException();
+			}
 	}
 	
 	public <T> T getValue()

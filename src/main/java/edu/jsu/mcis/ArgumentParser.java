@@ -105,17 +105,31 @@ public class ArgumentParser
 			}
         } catch (NumberFormatException e) {
             incorrectType = incorrectType + argumentList.get(k).getTitle() +
-            " invalid "+argumentList.get(index).getDataType().toString().toLowerCase() +" value: " + o;
+            " invalid "+argumentList.get(k).getDataType().toString().toLowerCase() +" value: " + o;
             throw new IncorrectTypeException(incorrectType);
-        }
+		  }
     }
+	//Looks bad we should probably get the index once for each case and then work with that index insted  of what I'm doing at lines
+	//126, 127
 	
-	public void setValue(String ... args)
+	public void setValue(String ... args) throws IncorrectTypeException 
 	{
-		if(args.length == 1)
-			argumentList.get(argumentList.indexOf(new OptionalArgument(args[0]))).setValue(true);
-		else if (args.length == 2)
-			argumentList.get(argumentList.indexOf(new OptionalArgument(args[0]))).setValue(args[1]);
+		incorrectType = program + ".java: error: argument ";
+		try{
+			if(args.length == 1)
+			{
+				argumentList.get(argumentList.indexOf(new OptionalArgument(args[0]))).setValue(true);
+			}
+			else if (args.length == 2)
+			{
+				argumentList.get(argumentList.indexOf(new OptionalArgument(args[0]))).setValue(args[1]);
+			}
+		}catch(NumberFormatException e){
+			incorrectType += argumentList.get(argumentList.indexOf(new OptionalArgument(args[0]))).getTitle() +
+            " invalid "+argumentList.get(argumentList.indexOf(new OptionalArgument(args[0]))).getDataType().toString().toLowerCase() +
+			" value: " + args[1];
+            throw new IncorrectTypeException(incorrectType);
+		 }
 	}
     
     public void setDescription(String title, String description)

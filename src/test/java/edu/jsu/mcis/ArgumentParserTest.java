@@ -13,15 +13,19 @@ public class ArgumentParserTest {
 		tester = new ArgumentParser();
 	}
 	
+	//This test is doing way too much. Should break it down into more elementary ones.
+	//we should check those from Argument and OptionalArgument as well
 	@Test
 	public void testRestrictedValues()
 	{
 		tester.addArgument("length", CommandLineArgument.DataType.Integer);
 		tester.addOptionalArgument("type");
 		tester.setRestricted("length", 7, 5, 2);
+		tester.setValue(new Integer(5), 10);
 		tester.setRestricted("type", "sphere", "pyramid", "box");
-		assertEquals("7 5 2 ", tester.checkRestricted("length"));
-		assertEquals("sphere pyramid box ", tester.checkRestricted("type"));
+		tester.setValue("type", "sphere");
+		assertEquals("7 5 2", tester.checkRestricted("length"));
+		assertEquals("sphere pyramid box", tester.checkRestricted("type"));
 	}
 	
 	@Test
@@ -35,10 +39,11 @@ public class ArgumentParserTest {
 		try
 		{
 			tester.parse("7 --type jon");
-		}catch(NotEnoughArgValuesException  | TooManyArgValuesException | IncorrectTypeException e){assertTrue(false);}
+			assertTrue(false);
+		}catch(NotEnoughArgValuesException  | TooManyArgValuesException | IncorrectTypeException e){}
 	}
 	
-	/*@Test
+	@Test
 	public void testAddMultipleArguments()
 	{
 		assertEquals(1, tester.getSize());
@@ -250,7 +255,7 @@ public class ArgumentParserTest {
 		}
 	}
 	
-	@Test // -h does not seem to be recognized. It does not stop the program and return, it keeps on going.
+	@Test 
 	public void testOptionalArgumentsWithDefaults(){
 		tester.addArgument("length");
 		tester.addArgument("width");
@@ -391,6 +396,6 @@ public class ArgumentParserTest {
 			e.printStackTrace();
 			
 		}
-	}*/
+	}
 	
 }

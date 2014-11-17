@@ -7,7 +7,7 @@ public abstract class CommandLineArgument {
 	protected String description;
 	protected DataType type;
 	public enum DataType {Integer, Float, String, Boolean}
-	public List <Object> restrictedValues = new ArrayList<Object>();
+	protected List <Object> restrictedValues = new ArrayList<Object>();
 	private boolean hasRestricted;
 	
 	public String getRestricted()
@@ -15,7 +15,10 @@ public abstract class CommandLineArgument {
 		String output = "";
 		for (int i = 0; i<restrictedValues.size(); i++)
 		{
-			output += restrictedValues.get(i) + " ";
+			if(i == restrictedValues.size() -1)
+				output += restrictedValues.get(i).toString();
+			else
+				output += restrictedValues.get(i).toString() + " ";
 		}
 		return output;
 	}
