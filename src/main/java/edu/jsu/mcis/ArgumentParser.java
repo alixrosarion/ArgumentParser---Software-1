@@ -276,7 +276,6 @@ public class ArgumentParser
 							String tempScan = scan.next();
 							if (tempArg.hasRestricted())
 							{
-								System.out.println("AAAAAAAAAAAAAAAAA");
 								if(checkRestricted(tempOpt).contains(tempScan)) setValue(tempOpt, tempScan);
 								else System.out.println(tempScan + " is not an accepted value!"); System.exit(1);
 							}
@@ -304,7 +303,6 @@ public class ArgumentParser
 		{
 			if(!tempLine.contains(requiredOptionals.get(i).getTitle()))
 			{
-				System.out.println("AaaAAAAAAAAAA");
 				unmatched = "the following arguments are required: ";
 				for(int k = 0; k< requiredOptionals.size(); k++)
 				{

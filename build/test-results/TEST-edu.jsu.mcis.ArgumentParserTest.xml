@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="edu.jsu.mcis.ArgumentParserTest" tests="28" skipped="0" failures="0" errors="0" timestamp="2014-11-17T18:49:46" hostname="Kris-PC" time="0.14">
+<testsuite name="edu.jsu.mcis.ArgumentParserTest" tests="28" skipped="0" failures="0" errors="0" timestamp="2014-11-17T21:40:52" hostname="ALIX" time="0.109">
   <properties/>
-  <testcase name="testAddMultipleArguments" classname="edu.jsu.mcis.ArgumentParserTest" time="0.015"/>
-  <testcase name="testRestrictedValues" classname="edu.jsu.mcis.ArgumentParserTest" time="0.016"/>
+  <testcase name="testAddMultipleArguments" classname="edu.jsu.mcis.ArgumentParserTest" time="0.016"/>
+  <testcase name="testRestrictedValues" classname="edu.jsu.mcis.ArgumentParserTest" time="0.0"/>
   <testcase name="testGetNumberValues" classname="edu.jsu.mcis.ArgumentParserTest" time="0.0"/>
   <testcase name="testAddArgDescriptions" classname="edu.jsu.mcis.ArgumentParserTest" time="0.0"/>
   <testcase name="testCatchWrongDataTypeForBoolean" classname="edu.jsu.mcis.ArgumentParserTest" time="0.0"/>
   <testcase name="testOutputXML" classname="edu.jsu.mcis.ArgumentParserTest" time="0.0"/>
-  <testcase name="testRequiredOptionalArguments" classname="edu.jsu.mcis.ArgumentParserTest" time="0.047"/>
+  <testcase name="testRequiredOptionalArguments" classname="edu.jsu.mcis.ArgumentParserTest" time="0.0"/>
   <testcase name="testShortName" classname="edu.jsu.mcis.ArgumentParserTest" time="0.0"/>
   <testcase name="testOptionalArgumentAsFlag" classname="edu.jsu.mcis.ArgumentParserTest" time="0.0"/>
-  <testcase name="testXMLFileWriting" classname="edu.jsu.mcis.ArgumentParserTest" time="0.046"/>
+  <testcase name="testXMLFileWriting" classname="edu.jsu.mcis.ArgumentParserTest" time="0.032"/>
   <testcase name="testOptionalArgumentValues" classname="edu.jsu.mcis.ArgumentParserTest" time="0.0"/>
   <testcase name="testTooManyArgumentValues" classname="edu.jsu.mcis.ArgumentParserTest" time="0.0"/>
   <testcase name="testReadingOptionalArgumentAtEnd" classname="edu.jsu.mcis.ArgumentParserTest" time="0.0"/>
   <testcase name="testOptionalArgumentsWithDefaults" classname="edu.jsu.mcis.ArgumentParserTest" time="0.0"/>
   <testcase name="testParsingRestricted" classname="edu.jsu.mcis.ArgumentParserTest" time="0.0"/>
-  <testcase name="testReadingMoreOptionalArguments" classname="edu.jsu.mcis.ArgumentParserTest" time="0.0"/>
+  <testcase name="testReadingMoreOptionalArguments" classname="edu.jsu.mcis.ArgumentParserTest" time="0.031"/>
   <testcase name="testParseVolCalc" classname="edu.jsu.mcis.ArgumentParserTest" time="0.0"/>
-  <testcase name="testDataTypeParsing" classname="edu.jsu.mcis.ArgumentParserTest" time="0.016"/>
+  <testcase name="testDataTypeParsing" classname="edu.jsu.mcis.ArgumentParserTest" time="0.0"/>
   <testcase name="testCatchWrongDataTypeForInteger" classname="edu.jsu.mcis.ArgumentParserTest" time="0.0"/>
   <testcase name="testOptionText" classname="edu.jsu.mcis.ArgumentParserTest" time="0.0"/>
   <testcase name="testAddProgram" classname="edu.jsu.mcis.ArgumentParserTest" time="0.0"/>
@@ -29,8 +29,7 @@
   <testcase name="testCatchWrongDataTypeForFloat" classname="edu.jsu.mcis.ArgumentParserTest" time="0.0"/>
   <testcase name="testOptionalArgumentOverrideDefaultValue" classname="edu.jsu.mcis.ArgumentParserTest" time="0.0"/>
   <testcase name="testNotEnoughArgumentValues" classname="edu.jsu.mcis.ArgumentParserTest" time="0.0"/>
-  <system-out><![CDATA[AaaAAAAAAAAAA
-usage: java null length width height 
+  <system-out><![CDATA[usage: java null length width height 
 null
 Positional Arguments:
 length string		
