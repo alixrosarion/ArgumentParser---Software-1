@@ -89,8 +89,9 @@ public class ArgumentParser
         argumentList.add(new OptionalArgument(title));
         countOptionalArguments++;
     }
+// I left that just in case it the new setValue does not cooperate with main
 
-    public void setValue(Object o, int index) throws IncorrectTypeException, IncorrectValueException
+   /*public void setValue(Object o, int index) throws IncorrectTypeException, IncorrectValueException
     {
 		int k=0;
         incorrectType = program + ".java: error: argument ";
@@ -111,30 +112,46 @@ public class ArgumentParser
 			else
 				throw new IncorrectValueException(incorrectType);
 		  }
-    }
+    }*/
 	//Looks bad we should probably get the index once for each case and then work with that index instead  of what I'm doing at lines
 	//126, 127
 	
 	public void setValue(String ... args) throws IncorrectTypeException, IncorrectValueException
 	{
+		int k=0;
 		incorrectType = program + ".java: error: argument ";
 		try{
-			if(args.length == 1)
+			if(argumentList.contains(new OptionalArgument(args[0])))
 			{
-				argumentList.get(argumentList.indexOf(new OptionalArgument(args[0]))).setValue(true);
+				k = argumentList.indexOf(new OptionalArgument(args[0]));
+				if(args.length == 1)
+				{
+					argumentList.get(k).setValue(true);
+				}
+				else if (args.length == 2)
+				{
+					argumentList.get(k).setValue(args[1]);
+				}
 			}
-			else if (args.length == 2)
-			{
-				argumentList.get(argumentList.indexOf(new OptionalArgument(args[0]))).setValue(args[1]);
-			}
+			else //It is an Argument, let s find the index.
+				for (k =0; k<argumentList.size(); k++)
+				{
+					if (argumentList.get(k) instanceof Argument && argumentList.get(k).getValue() == null)
+					{
+						argumentList.get(k).setValue(args[0]);
+						return;
+					}
+				}
 		}catch(NumberFormatException | IncorrectValueException e){
-			incorrectType += argumentList.get(argumentList.indexOf(new OptionalArgument(args[0]))).getTitle() +
-            " invalid "+argumentList.get(argumentList.indexOf(new OptionalArgument(args[0]))).getDataType().toString().toLowerCase() +
+			
+			incorrectType += argumentList.get(k).getTitle() +
+            " invalid "+argumentList.get(k).getDataType().toString().toLowerCase() +
 			" value: ";
-			if(args.length ==2)
-				incorrectType += args[1];
+			if (args.length ==2)
+				incorrectType+= args[1];
 			else
 				incorrectType += args[0];
+				
 			if( e instanceof NumberFormatException)
 				throw new IncorrectTypeException(incorrectType);
 			else
@@ -272,7 +289,7 @@ public class ArgumentParser
             {
                 if(countArgValues <argumentList.size() - countOptionalArguments)
                 {
-                    setValue(extra, countArgValues);
+                    setValue(extra);
                 }
                 else
                 {
