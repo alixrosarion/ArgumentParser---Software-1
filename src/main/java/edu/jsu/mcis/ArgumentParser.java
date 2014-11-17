@@ -90,7 +90,7 @@ public class ArgumentParser
         countOptionalArguments++;
     }
 
-    public void setValue(Object o, int index) throws IncorrectTypeException 
+    public void setValue(Object o, int index) throws IncorrectTypeException, IncorrectValueException
     {
 		int k=0;
         incorrectType = program + ".java: error: argument ";
@@ -103,16 +103,19 @@ public class ArgumentParser
 					return;
 				}
 			}
-        } catch (NumberFormatException e) {
-            incorrectType = incorrectType + argumentList.get(k).getTitle() +
+        } catch (NumberFormatException | IncorrectValueException e) {
+            incorrectType += argumentList.get(k).getTitle() +
             " invalid "+argumentList.get(k).getDataType().toString().toLowerCase() +" value: " + o;
-            throw new IncorrectTypeException(incorrectType);
+			if( e instanceof NumberFormatException)
+				throw new IncorrectTypeException(incorrectType);
+			else
+				throw new IncorrectValueException(incorrectType);
 		  }
     }
-	//Looks bad we should probably get the index once for each case and then work with that index insted  of what I'm doing at lines
+	//Looks bad we should probably get the index once for each case and then work with that index instead  of what I'm doing at lines
 	//126, 127
 	
-	public void setValue(String ... args) throws IncorrectTypeException 
+	public void setValue(String ... args) throws IncorrectTypeException, IncorrectValueException
 	{
 		incorrectType = program + ".java: error: argument ";
 		try{
@@ -124,12 +127,20 @@ public class ArgumentParser
 			{
 				argumentList.get(argumentList.indexOf(new OptionalArgument(args[0]))).setValue(args[1]);
 			}
-		}catch(NumberFormatException e){
+		}catch(NumberFormatException | IncorrectValueException e){
 			incorrectType += argumentList.get(argumentList.indexOf(new OptionalArgument(args[0]))).getTitle() +
             " invalid "+argumentList.get(argumentList.indexOf(new OptionalArgument(args[0]))).getDataType().toString().toLowerCase() +
-			" value: " + args[1];
-            throw new IncorrectTypeException(incorrectType);
+			" value: ";
+			if(args.length ==2)
+				incorrectType += args[1];
+			else
+				incorrectType += args[0];
+			if( e instanceof NumberFormatException)
+				throw new IncorrectTypeException(incorrectType);
+			else
+				throw new IncorrectValueException(incorrectType);
 		 }
+		 
 	}
     
     public void setDescription(String title, String description)
@@ -207,7 +218,7 @@ public class ArgumentParser
         return argumentList;
     }
     
-    public void parse(String str) throws NotEnoughArgValuesException, TooManyArgValuesException, IncorrectTypeException
+    public void parse(String str) throws NotEnoughArgValuesException, TooManyArgValuesException, IncorrectTypeException, IncorrectValueException
     {
         Scanner scan = new Scanner(str);
 		String tempOpt = "";

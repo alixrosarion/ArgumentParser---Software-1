@@ -16,13 +16,13 @@ public class Argument extends CommandLineArgument
 		description = "";
 	}
 	
-	public void setValue(Object o) throws NumberFormatException
+	public void setValue(Object o) throws NumberFormatException, IncorrectValueException
 	{
 			if(type == CommandLineArgument.DataType.Integer)
 			{
 					value =Integer.parseInt(o.toString());
 					if(restrictedValues.size() != 0 && !restrictedValues.contains(value))
-						throw new NumberFormatException();
+						throw new IncorrectValueException();
 			}
 			else if(type == CommandLineArgument.DataType.Boolean)
 			{
@@ -35,13 +35,13 @@ public class Argument extends CommandLineArgument
 			{
 				value =Float.parseFloat(o.toString());
 				if(restrictedValues.size() != 0 && !restrictedValues.contains(value))
-						throw new NumberFormatException();
+						throw new IncorrectValueException();
 			}
 			else
 			{
 				value = o.toString();
 				if(restrictedValues.size() != 0 && !restrictedValues.contains(value))
-						throw new NumberFormatException();
+						throw new IncorrectValueException();
 			}
 	}
 	

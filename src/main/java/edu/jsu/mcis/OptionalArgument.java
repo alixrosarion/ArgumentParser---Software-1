@@ -44,11 +44,11 @@ public class OptionalArgument extends CommandLineArgument{
 		return numberValues;
 	}
 	
-	public void setValue(Object object) throws NumberFormatException
+	public void setValue(Object object) throws NumberFormatException, IncorrectValueException
 	{
 			value = object;
 		if(restrictedValues.size() != 0 && !restrictedValues.contains(value))
-			throw new NumberFormatException();
+			throw new IncorrectValueException();
 	}
 	public Object getValue()
 	{

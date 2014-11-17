@@ -18,29 +18,43 @@ public class ArgumentParserTest {
 	@Test
 	public void testRestrictedValues()
 	{
+	try
+		{
+		tester.addProgram("Volcalc", "Calculates some volume");
 		tester.addArgument("length", CommandLineArgument.DataType.Integer);
 		tester.addOptionalArgument("type");
+		tester.setNumberValues("type", 1);
 		tester.setRestricted("length", 7, 5, 2);
-		tester.setValue(new Integer(5), 10);
 		tester.setRestricted("type", "sphere", "pyramid", "box");
-		tester.setValue("type", "sphere");
 		assertEquals("7 5 2", tester.checkRestricted("length"));
 		assertEquals("sphere pyramid box", tester.checkRestricted("type"));
+		//tester.parse("7 --type spher");
+		tester.parse("4 --type sphere");
+		}
+		catch(NotEnoughArgValuesException  | TooManyArgValuesException | IncorrectValueException | IncorrectTypeException e)
+		{
+			//assertEquals("edu.jsu.mcis.IncorrectTypeException: Volcalc.java: error: argument type invalid string value: spher", e.toString());
+			assertEquals("edu.jsu.mcis.IncorrectValueException: Volcalc.java: error: argument length invalid integer value: 4", e.toString());
+		}
 	}
 	
 	@Test
 	public void testParsingRestricted()
 	{
-		tester.addArgument("length", CommandLineArgument.DataType.Integer);
-		tester.addOptionalArgument("type");
-		tester.setRestricted("length", 7, 5, 2);
-		tester.setRestricted("type", "sphere", "pyramid", "box");
-		tester.setNumberValues("type", 1);
-		try
-		{
+		try{
+			tester.addProgram("Volcalc", "Calculates some volume");
+			tester.addArgument("length", CommandLineArgument.DataType.Integer);
+			tester.addOptionalArgument("type");
+			tester.setRestricted("length", 7, 5, 2);
+			tester.setRestricted("type", "sphere", "pyramid", "box");
+			tester.setNumberValues("type", 1);
+			
 			tester.parse("7 --type jon");
 			assertTrue(false);
-		}catch(NotEnoughArgValuesException  | TooManyArgValuesException | IncorrectTypeException e){}
+		}catch(NotEnoughArgValuesException  | TooManyArgValuesException | IncorrectValueException | IncorrectTypeException e)
+		{
+			assertEquals("edu.jsu.mcis.IncorrectValueException: Volcalc.java: error: argument type invalid string value: jon", e.toString());
+		}
 	}
 	
 	@Test
@@ -62,7 +76,7 @@ public class ArgumentParserTest {
 		tester.parse("7 2");
 			assertEquals("7", tester.getValue("length"));
 			assertEquals("2", tester.getValue("width"));
-		}catch(NotEnoughArgValuesException  | TooManyArgValuesException | IncorrectTypeException e){}
+		}catch(NotEnoughArgValuesException  | TooManyArgValuesException | IncorrectValueException | IncorrectTypeException e){}
 		
 	}
 	
@@ -74,7 +88,7 @@ public class ArgumentParserTest {
 		try
 		{
 			tester.parse("7 5 2");
-		}catch(NotEnoughArgValuesException  | TooManyArgValuesException | IncorrectTypeException e){
+		}catch(NotEnoughArgValuesException  | TooManyArgValuesException | IncorrectValueException | IncorrectTypeException e){
 			assertTrue(false);
 		}
 		assertEquals("7", tester.getValue("length"));
@@ -91,7 +105,7 @@ public class ArgumentParserTest {
 		{
 			tester.parse("7 5 2 10 2");
 			assertTrue(false);
-		}catch(TooManyArgValuesException | NotEnoughArgValuesException | IncorrectTypeException e){
+		}catch(TooManyArgValuesException | NotEnoughArgValuesException | IncorrectValueException | IncorrectTypeException e){
 			assertEquals("unrecognised arguments: 10 2", tester.getUnmatched());
 		}
 	}
@@ -106,7 +120,7 @@ public class ArgumentParserTest {
 		{
 			tester.parse("2");
 			assertTrue(false);
-		}catch(NotEnoughArgValuesException  | TooManyArgValuesException | IncorrectTypeException e){
+		}catch(NotEnoughArgValuesException  | TooManyArgValuesException | IncorrectValueException | IncorrectTypeException e){
 				System.out.println(tester.getOutput());
 			assertEquals("the following arguments are required: width height", tester.getUnmatched());
 		
@@ -147,7 +161,7 @@ public class ArgumentParserTest {
 		try
 		{
 			tester.parse("-h");
-		}catch(NotEnoughArgValuesException  | TooManyArgValuesException | IncorrectTypeException e){
+		}catch(NotEnoughArgValuesException  | TooManyArgValuesException | IncorrectValueException | IncorrectTypeException e){
 			assertTrue(false);}
 		assertEquals("usage: java VolCalc length width height \r\nCalculate the volume of a box\r\nPositional Arguments:\r\nlength integer\t\tthe length of the box\r\nwidth float\t\tthe width of the box\r\nheight float\t\tthe height of the box\r\n\r\nOptional Arguments:\r\nhelp boolean\t\t\r\n", tester.getHelpText());
 	}
@@ -162,7 +176,7 @@ public class ArgumentParserTest {
 		try
 		{
 			tester.parse("7 5.2 true someString");
-		}catch(NotEnoughArgValuesException  | TooManyArgValuesException | IncorrectTypeException e){
+		}catch(NotEnoughArgValuesException  | TooManyArgValuesException | IncorrectValueException | IncorrectTypeException e){
 			assertTrue(false);
 		}
 		assertEquals(7, tester.getValue("length"));
@@ -179,7 +193,7 @@ public class ArgumentParserTest {
 		{
 			tester.parse("something");
 			assertTrue(false);
-		}catch(NotEnoughArgValuesException  | TooManyArgValuesException | IncorrectTypeException e){
+		}catch(NotEnoughArgValuesException  | TooManyArgValuesException | IncorrectValueException | IncorrectTypeException e){
 		}
 	}
 	
@@ -191,7 +205,7 @@ public class ArgumentParserTest {
 		{
 			tester.parse("something");
 			assertTrue(false);
-		}catch(NotEnoughArgValuesException  | TooManyArgValuesException | IncorrectTypeException e){
+		}catch(NotEnoughArgValuesException  | TooManyArgValuesException | IncorrectValueException | IncorrectTypeException e){
 		}
 	}
 	
@@ -203,7 +217,7 @@ public class ArgumentParserTest {
 		{
 			tester.parse("something");
 			assertTrue(false);
-		}catch(NotEnoughArgValuesException  | TooManyArgValuesException | IncorrectTypeException e){
+		}catch(NotEnoughArgValuesException  | TooManyArgValuesException | IncorrectValueException | IncorrectTypeException e){
 		}
 	}
 	
@@ -217,7 +231,7 @@ public class ArgumentParserTest {
 		try
 		{
 			tester.parse("7 --type sphere");
-		}catch(NotEnoughArgValuesException  | TooManyArgValuesException | IncorrectTypeException e){
+		}catch(NotEnoughArgValuesException  | TooManyArgValuesException | IncorrectValueException | IncorrectTypeException e){
 			assertTrue(false);
 		}
 	}
@@ -232,7 +246,7 @@ public class ArgumentParserTest {
 		try
 		{
 			tester.parse("7 --type sphere 5 2");
-		}catch(NotEnoughArgValuesException  | TooManyArgValuesException | IncorrectTypeException e){
+		}catch(NotEnoughArgValuesException  | TooManyArgValuesException | IncorrectValueException | IncorrectTypeException e){
 			assertTrue(false);
 		}
 		assertEquals("sphere", tester.getValue("type"));
@@ -248,7 +262,7 @@ public class ArgumentParserTest {
 		try
 		{
 			tester.parse("7 --type sphere 5 -h 2 --actor will smith");
-		}catch(NotEnoughArgValuesException  | TooManyArgValuesException | IncorrectTypeException e){
+		}catch(NotEnoughArgValuesException  | TooManyArgValuesException | IncorrectValueException | IncorrectTypeException e){
 		System.out.println("------------ther e ie io " + e.toString());
 		e.printStackTrace();
 			assertTrue(false);
@@ -261,12 +275,12 @@ public class ArgumentParserTest {
 		tester.addArgument("width");
 		tester.addArgument("height");
 		tester.addOptionalArgument("type", CommandLineArgument.DataType.String);
-		tester.setValue("type", "Box");
 		try
 		{
+			tester.setValue("type", "Box");
 			tester.parse("7 5 2");
 			assertEquals("Box", tester.getValue("type"));
-		}catch(NotEnoughArgValuesException  | TooManyArgValuesException | IncorrectTypeException e){
+		}catch(NotEnoughArgValuesException  | TooManyArgValuesException | IncorrectValueException | IncorrectTypeException e){
 			assertTrue(false);
 		}
 	}
@@ -321,7 +335,7 @@ public class ArgumentParserTest {
 		assertEquals(1, tester.getArgumentList().indexOf((new OptionalArgument("t"))));
 		try {
 			tester.parse("-t shape");
-		} catch (NotEnoughArgValuesException  | TooManyArgValuesException | IncorrectTypeException e) {
+		} catch (NotEnoughArgValuesException  | TooManyArgValuesException | IncorrectValueException | IncorrectTypeException e) {
 			e.printStackTrace();
 			assertTrue(false);
 		}
@@ -392,8 +406,8 @@ public class ArgumentParserTest {
 		try {
 			tester.parse("2");
 			assertTrue(false);
-		} catch (NotEnoughArgValuesException  | TooManyArgValuesException | IncorrectTypeException e) {
-			e.printStackTrace();
+		} catch (NotEnoughArgValuesException  | TooManyArgValuesException | IncorrectValueException | IncorrectTypeException e) {
+			assertEquals("edu.jsu.mcis.NotEnoughArgValuesException: the following arguments are required: type", e.toString());
 			
 		}
 	}
