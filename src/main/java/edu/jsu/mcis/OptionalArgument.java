@@ -64,7 +64,7 @@ public class OptionalArgument extends CommandLineArgument{
 	{
 		return required;
 	}
-	
+
 	public String toString()
 	{
 		String output = "";

@@ -48,8 +48,23 @@ public abstract class CommandLineArgument {
 		return type;
 	}
 	
-	public void setRestricted(Object arg)
+	public void setRestricted(Object arg) throws IncorrectTypeException
 	{
+		if(type == DataType.Float)
+			try {
+				Float.parseFloat(arg.toString());
+		} catch (Exception e) {throw new IncorrectTypeException(arg.toString());
+		}
+		else if(type == DataType.Integer)
+			try {
+				Integer.parseInt(arg.toString());
+		} catch (Exception e) {throw new IncorrectTypeException(arg.toString());
+		}
+		else if(type == DataType.Boolean)
+			try {
+				Boolean.parseBoolean(arg.toString());
+		} catch (Exception e) {throw new IncorrectTypeException(arg.toString());
+		}
 		restrictedValues.add(arg);
 		hasRestricted = true;
 	}
@@ -61,5 +76,5 @@ public abstract class CommandLineArgument {
 	abstract public void setShort(String s);
 	abstract public void setValue(Object v);
 	abstract public void setRequired();
-	abstract public boolean getRequired();	
+	abstract public boolean getRequired();
 }

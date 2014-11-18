@@ -30,14 +30,35 @@ public class ArgumentParser
         return argumentList.size();
     }
 	
-	public void setRestricted(String title, Object ... args)
+	public void setRestricted(String title, Object ... args) throws IncorrectTypeException
 	{
+		int k =0;
+		incorrectType = program + ".java: error: argument ";
 		for(Object arg : args)
 		{
 			if(argumentList.contains(new Argument(title)))
-				argumentList.get(argumentList.indexOf(new Argument(title))).setRestricted(arg);
-			else
-				argumentList.get(argumentList.indexOf(new OptionalArgument(title))).setRestricted(arg);
+			{
+				try {
+					argumentList.get(argumentList.indexOf(new Argument(title))).setRestricted(arg);
+					k = argumentList.indexOf(new Argument(title));
+				} catch (Exception e) {
+					incorrectType += title +" invalid "+argumentList.get(k).getDataType().toString().toLowerCase() +
+								" value: " + arg.toString();
+					throw new IncorrectTypeException(incorrectType);
+					
+				}
+			}
+			else {
+				try {
+					argumentList.get(argumentList.indexOf(new OptionalArgument(title))).setRestricted(arg);
+					k = argumentList.indexOf(new OptionalArgument(title));
+				} catch (Exception e) {
+				incorrectType += title +" invalid "+argumentList.get(k).getDataType().toString().toLowerCase() +
+												" value: " + arg.toString();
+				throw new IncorrectTypeException(incorrectType);
+
+				}
+			}
 		}
 	}
 	
@@ -88,35 +109,7 @@ public class ArgumentParser
     {
         argumentList.add(new OptionalArgument(title));
         countOptionalArguments++;
-    }
-// I left that just in case it the new setValue does not cooperate with main
-
-   /*public void setValue(Object o, int index) throws IncorrectTypeException, IncorrectValueException
-    {
-		int k=0;
-        incorrectType = program + ".java: error: argument ";
-        try{
-			for (k =0; k<argumentList.size(); k++)
-			{
-				if (argumentList.get(k) instanceof Argument && argumentList.get(k).getValue() == null)
-				{
-					argumentList.get(k).setValue(o);
-					return;
-				}
-			}
-        } catch (NumberFormatException | IncorrectValueException e) {
-            incorrectType += argumentList.get(k).getTitle() +
-            " invalid "+argumentList.get(k).getDataType().toString().toLowerCase() +" value: " + o;
-			if( e instanceof NumberFormatException)
-				throw new IncorrectTypeException(incorrectType);
-			else
-				throw new IncorrectValueException(incorrectType);
-		  }
-    }*/
-	//Looks bad we should probably get the index once for each case and then work with that index instead  of what I'm doing at lines
-	//126, 127
-	
-	public void setValue(String ... args) throws IncorrectTypeException, IncorrectValueException
+    }	public void setValue(String ... args) throws IncorrectTypeException, IncorrectValueException
 	{
 		int k=0;
 		incorrectType = program + ".java: error: argument ";
@@ -217,7 +210,7 @@ public class ArgumentParser
 	{
 		return argumentList.get(argumentList.indexOf(new OptionalArgument(title))).getRequired();
 	}
-    
+
     public String getUnmatched()
     {
         return unmatched;
@@ -260,9 +253,12 @@ public class ArgumentParser
 				{
 					if (extra.charAt(i) != '-') tempOpt += extra.charAt(i);
 				}
-					
+				
 				OptionalArgument tempArg = new OptionalArgument(tempOpt);
 				if (argumentList.contains(tempArg))
+
+				if (argumentList.contains(new OptionalArgument(tempOpt)))
+
 				{			
 	                if(argumentList.get(argumentList.indexOf(tempArg)).getNumberValues() == 0)
 	                {

@@ -23,9 +23,6 @@ public class VolCalc
 		parser.addArgument("height", CommandLineArgument.DataType.Integer);
 		parser.setDescription("height", "the height of the box");
 		
-		parser.addOptionalArgument("-h",CommandLineArgument.DataType.String);
-		parser.setNumberValues("-h", 0);
-		
 		parser.addOptionalArgument("type", CommandLineArgument.DataType.String);
 		parser.setNumberValues("type", 1);		
 		parser.setDescription("type", "Shape of object to be calculated");

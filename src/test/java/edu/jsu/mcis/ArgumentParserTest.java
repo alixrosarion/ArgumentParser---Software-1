@@ -12,29 +12,80 @@ public class ArgumentParserTest {
 	{
 		tester = new ArgumentParser();
 	}
-	
-	//This test is doing way too much. Should break it down into more elementary ones.
-	//we should check those from Argument and OptionalArgument as well
+
 	@Test
-	public void testRestrictedValues()
+	public void testSetRestrictedArgumentValues()
 	{
-	try
-		{
 		tester.addProgram("Volcalc", "Calculates some volume");
 		tester.addArgument("length", CommandLineArgument.DataType.Integer);
-		tester.addOptionalArgument("type");
-		tester.setNumberValues("type", 1);
 		tester.setRestricted("length", 7, 5, 2);
-		tester.setRestricted("type", "sphere", "pyramid", "box");
 		assertEquals("7 5 2", tester.checkRestricted("length"));
-		assertEquals("sphere pyramid box", tester.checkRestricted("type"));
-		//tester.parse("7 --type spher");
-		tester.parse("4 --type sphere");
+	}
+	
+	@Test 
+	public void testSetRestrictedArgumentValuesWithInvalidType()
+	{
+		tester.addProgram("Volcalc", "Calculates some volume");
+		tester.addArgument("length", CommandLineArgument.DataType.Integer);
+		
+		try {
+			tester.setRestricted("length", 7, 5, "box");
+		} catch (Exception e) {
+			assertEquals("edu.jsu.mcis.IncorrectTypeException: Volcalc.java: error: argument length invalid integer value: box", e.toString());
+		}
+	}
+	
+	@Test
+	public void testParseRestrictedArgumentValues()
+	{
+		tester.addProgram("Volcalc", "Calculates some volume");
+		tester.addArgument("length", CommandLineArgument.DataType.Integer);
+		tester.setRestricted("length", 7, 5, 2);
+		try
+		{
+			tester.parse("4");
 		}
 		catch(NotEnoughArgValuesException  | TooManyArgValuesException | IncorrectValueException | IncorrectTypeException e)
 		{
-			//assertEquals("edu.jsu.mcis.IncorrectTypeException: Volcalc.java: error: argument type invalid string value: spher", e.toString());
 			assertEquals("edu.jsu.mcis.IncorrectValueException: Volcalc.java: error: argument length invalid integer value: 4", e.toString());
+		}
+	}
+	
+	@Test
+	public void testSetRestrictedOptionalArgumentValues()
+	{
+		tester.addProgram("Volcalc", "Calculates some volume");
+		tester.addOptionalArgument("type");
+		tester.setNumberValues("type", 1);
+		tester.setRestricted("type", "sphere", "pyramid", "box");
+		assertEquals("sphere pyramid box", tester.checkRestricted("type"));
+	}
+	
+	@Test 
+	public void testSetRestrictedOptionalArgumentValuesWithInvalidType()
+	{
+		tester.addProgram("Volcalc", "Calculates some volume");
+		tester.addOptionalArgument("type");
+		tester.setNumberValues("type", 1);
+		try {
+			//tester.setRestricted("type", "sphere", "pyramid");
+			tester.parse("--type 5");
+		} catch (Exception e) {
+			assertEquals("edu.jsu.mcis.IncorrectValueException: Volcalc.java: error: argument type invalid string value: 5", e.toString());
+		}
+	}
+	
+	@Test
+	public void testParseRestrictedOptionalArgumentValues()
+	{
+		tester.addProgram("Volcalc", "Calculates some volume");
+		tester.addOptionalArgument("type");
+		tester.setNumberValues("type", 1);
+		tester.setRestricted("type", "sphere", "pyramid", "box");
+		try {
+			tester.parse("--type spher");
+		} catch (Exception e) {
+			assertEquals("edu.jsu.mcis.IncorrectValueException: Volcalc.java: error: argument type invalid string value: spher", e.toString());
 		}
 	}
 	
@@ -410,6 +461,14 @@ public class ArgumentParserTest {
 			assertEquals("edu.jsu.mcis.NotEnoughArgValuesException: the following arguments are required: type", e.toString());
 			
 		}
+	}
+	
+	@Test
+	public void testSetRequiredOptionalArguments()
+	{
+		tester.addOptionalArgument("type");
+		tester.setRequired("type");
+		assertTrue(tester.getRequired("type"));
 	}
 	
 }
