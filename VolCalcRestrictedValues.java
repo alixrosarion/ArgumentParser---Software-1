@@ -37,8 +37,15 @@ public class VolCalcRestrictedValues
             int length = parser.getValue("length");
 			int height = parser.getValue("height");
 			float width = parser.getValue("width");
-			System.out.println("Volume is " + height * width * length);
 			
+			if(parser.getValue("type").toString().equalsIgnoreCase("pyramid"))
+			{
+				System.out.println("Volume is " + (height * width * length) / 3 );
+			}
+			else if(parser.getValue("type").toString().equalsIgnoreCase("sphere"))
+			{
+				System.out.println("Volume is " + length * width * Math.pow(height, 3));
+			}
 			}
 			catch(NullPointerException e){}
 			System.exit(1);

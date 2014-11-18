@@ -471,4 +471,12 @@ public class ArgumentParserTest {
 		assertTrue(tester.getRequired("type"));
 	}
 	
+	@Test
+	public void testSetDefaultValue()
+	{
+		tester.addOptionalArgument("type");
+		tester.setDefaultValue("type", "box");
+		assertEquals("box", tester.getValue("type"));
+	}
+	
 }
