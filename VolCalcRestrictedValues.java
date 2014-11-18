@@ -26,7 +26,6 @@ public class VolCalcRestrictedValues
 		parser.addOptionalArgument("type", CommandLineArgument.DataType.String);
 		parser.setNumberValues("type", 1);		
 		parser.setDescription("type", "Shape of object to be calculated");
-		
 		parser.setShortOption("type", "t");
 		
 		parser.setRestricted("type","sphere","pyramid");
