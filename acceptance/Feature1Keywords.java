@@ -29,8 +29,8 @@ public class Feature1Keywords
 		parser.addArgument("length");
 		parser.addArgument("width");
 		parser.addArgument("height");
-		parser.addOptionalArgument("--type", CommandLineArgument.DataType.String);
-		parser.setNumberValues("--type", 1);
+		parser.addOptionalArgument("type", CommandLineArgument.DataType.String);
+		parser.setNumberValues("type", 1);
 		addValues(args);
 	}
 	
@@ -40,9 +40,9 @@ public class Feature1Keywords
 		parser.addArgument("length");
 		parser.addArgument("width");
 		parser.addArgument("height");
-		parser.addOptionalArgument("--type", CommandLineArgument.DataType.String);
-		parser.setNumberValues("--type", 1);
-		parser.setShortOption("--type", "-t");
+		parser.addOptionalArgument("type", CommandLineArgument.DataType.String);
+		parser.setNumberValues("type", 1);
+		parser.setShortOption("type", "t");
 		addValues(args);
 	}
 	

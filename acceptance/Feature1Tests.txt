@@ -25,13 +25,13 @@ Test Case 2
 	
 Test Case 3
 	Start Program With Optionals   7 --type box 5 2
-	${type}= 	Get   --Type
+	${type}= 	Get   Type
 	Should Be Equal   ${type}   box
 	
 
 Test Case 4
 	Start Program With Short   7 -t box 5 2
-	${type}= 	Get   --Type
+	${type}= 	Get   Type
 	Should Be Equal   ${type}   box
 	
 Test Case 5
