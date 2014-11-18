@@ -22,7 +22,7 @@
 		<numValues>1</numValues>
 		<type>string</type>
         <required>true</required>
-		<description>Type of shape</description>
+		<description>Garrett is awesome!</description>
 		<value>box</value>
 		<shortName>t</shortName>
 	</optionalArgument>

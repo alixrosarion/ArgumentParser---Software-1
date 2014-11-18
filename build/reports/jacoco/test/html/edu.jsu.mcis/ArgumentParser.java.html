@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>ArgumentParser.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">GroupA</a> &gt; <a href="index.source.html" class="el_package">edu.jsu.mcis</a> &gt; <span class="el_source">ArgumentParser.java</span></div><h1>ArgumentParser.java</h1><pre class="source lang-java linenums">package edu.jsu.mcis;
+
+import java.util.*;
+import java.io.*;
+
+public class ArgumentParser
+{
+    public List &lt;CommandLineArgument&gt; argumentList;
+    private String unmatched;
+    private String help;
+    private String program;
+    private String programDescription;
+    private String incorrectType;
+    private int countOptionalArguments;
+    private String output;
+	private List &lt;CommandLineArgument&gt; requiredOptionals;
+    
+    public ArgumentParser()
+<span class="fc" id="L19">    {</span>
+<span class="fc" id="L20">        argumentList = new ArrayList&lt;CommandLineArgument&gt;();</span>
+<span class="fc" id="L21">        requiredOptionals = new ArrayList&lt;CommandLineArgument&gt;();</span>
+<span class="fc" id="L22">        unmatched =&quot;&quot;;</span>
+<span class="fc" id="L23">        incorrectType= &quot;&quot;;</span>
+<span class="fc" id="L24">		addOptionalArgument(&quot;help&quot;, CommandLineArgument.DataType.Boolean);</span>
+<span class="fc" id="L25">		setShortOption(&quot;help&quot;, &quot;h&quot;);</span>
+<span class="fc" id="L26">    }</span>
+    
+    public int getSize()
+    {
+<span class="fc" id="L30">        return argumentList.size();</span>
+    }
+	
+	public void setRestricted(String title, Object ... args) throws IncorrectTypeException
+	{
+<span class="fc" id="L35">		int k =0;</span>
+<span class="fc" id="L36">		incorrectType = program + &quot;.java: error: argument &quot;;</span>
+<span class="fc bfc" id="L37" title="All 2 branches covered.">		for(Object arg : args)</span>
+		{
+<span class="fc bfc" id="L39" title="All 2 branches covered.">			if(argumentList.contains(new Argument(title)))</span>
+			{
+				try {
+<span class="fc" id="L42">					Argument tmpArg = new Argument(title);</span>
+<span class="fc" id="L43">					argumentList.get(argumentList.indexOf(tmpArg)).setRestricted(arg);</span>
+<span class="fc" id="L44">					k = argumentList.indexOf(tmpArg);</span>
+<span class="fc" id="L45">				} catch (Exception e) {</span>
+<span class="fc" id="L46">					incorrectType += title +&quot; invalid &quot;+argumentList.get(k).getDataType().toString().toLowerCase() +</span>
+<span class="fc" id="L47">								&quot; value: &quot; + arg.toString();</span>
+<span class="fc" id="L48">					throw new IncorrectTypeException(incorrectType);</span>
+					
+<span class="fc" id="L50">				}</span>
+			}
+			else {
+				try {
+<span class="fc" id="L54">					OptionalArgument tmpArg = new OptionalArgument(title);</span>
+<span class="fc" id="L55">					argumentList.get(argumentList.indexOf(tmpArg)).setRestricted(arg);</span>
+<span class="fc" id="L56">					k = argumentList.indexOf(tmpArg);</span>
+<span class="nc" id="L57">				} catch (Exception e) {</span>
+<span class="nc" id="L58">				incorrectType += title +&quot; invalid &quot;+argumentList.get(k).getDataType().toString().toLowerCase() +</span>
+<span class="nc" id="L59">												&quot; value: &quot; + arg.toString();</span>
+<span class="nc" id="L60">				throw new IncorrectTypeException(incorrectType);</span>
+
+<span class="fc" id="L62">				}</span>
+			}
+		}
+<span class="fc" id="L65">	}</span>
+	
+	public String checkRestricted(String title)
+	{
+<span class="fc bfc" id="L69" title="All 2 branches covered.">		if(argumentList.contains(new Argument(title)))</span>
+<span class="fc" id="L70">			return argumentList.get(argumentList.indexOf(new Argument(title))).getRestricted();</span>
+		else
+<span class="fc" id="L72">			return argumentList.get(argumentList.indexOf(new OptionalArgument(title))).getRestricted();</span>
+	}
+    
+    public void addProgram(String name, String description)
+    {
+<span class="fc" id="L77">        program = name;</span>
+<span class="fc" id="L78">        programDescription = description;</span>
+<span class="fc" id="L79">    }</span>
+    
+    public void addArgument(String str)
+    {
+<span class="fc" id="L83">        argumentList.add(new Argument(str));</span>
+<span class="fc" id="L84">    }</span>
+    
+    public void addArgument(String title, CommandLineArgument.DataType type)
+    {
+<span class="fc" id="L88">		Argument arg = new Argument(title);</span>
+<span class="fc" id="L89">		arg.setDataType(type);</span>
+<span class="fc" id="L90">		argumentList.add(arg);</span>
+<span class="fc" id="L91">    }</span>
+    
+    public void setShortOption(String title, String str)
+    {
+<span class="fc" id="L95">        argumentList.get(argumentList.indexOf(new OptionalArgument(title))).setShort(str);</span>
+<span class="fc" id="L96">    }</span>
+    
+    public String getShortOption(String title)
+    {
+<span class="fc" id="L100">        return argumentList.get(argumentList.indexOf(new OptionalArgument(title))).getShort();</span>
+    }
+    
+    public void addOptionalArgument(String title, CommandLineArgument.DataType type)
+    {
+<span class="fc" id="L105">		OptionalArgument arg = new OptionalArgument(title);</span>
+<span class="fc" id="L106">		arg.setDataType(type);</span>
+<span class="fc" id="L107">        argumentList.add(arg);</span>
+<span class="fc" id="L108">        countOptionalArguments++;</span>
+<span class="fc" id="L109">    }</span>
+    
+    public void addOptionalArgument(String title)
+    {
+<span class="fc" id="L113">        argumentList.add(new OptionalArgument(title));</span>
+<span class="fc" id="L114">        countOptionalArguments++;</span>
+<span class="fc" id="L115">    }	</span>
+	
+	public void setDefaultValue(String title, String value)
+	{
+<span class="fc" id="L119">		setValue(title, value);</span>
+<span class="fc" id="L120">	}</span>
+	
+	public void setValue(String ... args) throws IncorrectTypeException, IncorrectValueException
+	{
+<span class="fc" id="L124">		int k=0;</span>
+<span class="fc" id="L125">		incorrectType = program + &quot;.java: error: argument &quot;;</span>
+		try{
+<span class="fc bfc" id="L127" title="All 2 branches covered.">			if(argumentList.contains(new OptionalArgument(args[0])))</span>
+			{
+<span class="fc" id="L129">				k = argumentList.indexOf(new OptionalArgument(args[0]));</span>
+<span class="fc bfc" id="L130" title="All 2 branches covered.">				if(args.length == 1)</span>
+				{
+<span class="fc" id="L132">					argumentList.get(k).setValue(true);</span>
+				}
+<span class="pc bpc" id="L134" title="1 of 2 branches missed.">				else if (args.length == 2)</span>
+				{
+<span class="fc" id="L136">					argumentList.get(k).setValue(args[1]);</span>
+				}
+			}
+			else //It is an Argument, let s find the index.
+<span class="pc bpc" id="L140" title="1 of 2 branches missed.">				for (k =0; k&lt;argumentList.size(); k++)</span>
+				{
+<span class="fc bfc" id="L142" title="All 4 branches covered.">					if (argumentList.get(k) instanceof Argument &amp;&amp; argumentList.get(k).getValue() == null)</span>
+					{
+<span class="fc" id="L144">						argumentList.get(k).setValue(args[0]);</span>
+<span class="fc" id="L145">						return;</span>
+					}
+				}
+<span class="fc" id="L148">		}catch(NumberFormatException | IncorrectValueException e){</span>
+			
+<span class="fc" id="L150">			incorrectType += argumentList.get(k).getTitle() +</span>
+<span class="fc" id="L151">            &quot; invalid &quot;+argumentList.get(k).getDataType().toString().toLowerCase() +</span>
+			&quot; value: &quot;;
+<span class="fc bfc" id="L153" title="All 2 branches covered.">			if (args.length ==2)</span>
+<span class="fc" id="L154">				incorrectType+= args[1];</span>
+			else
+<span class="fc" id="L156">				incorrectType += args[0];</span>
+				
+<span class="fc bfc" id="L158" title="All 2 branches covered.">			if( e instanceof NumberFormatException)</span>
+<span class="fc" id="L159">				throw new IncorrectTypeException(incorrectType);</span>
+			else
+<span class="fc" id="L161">				throw new IncorrectValueException(incorrectType);</span>
+<span class="fc" id="L162">		 }</span>
+		 
+<span class="fc" id="L164">	}</span>
+    
+    public void setDescription(String title, String description)
+    {
+<span class="fc bfc" id="L168" title="All 2 branches covered.">        if(argumentList.contains(new Argument(title)))</span>
+<span class="fc" id="L169">            argumentList.get(argumentList.indexOf(new Argument(title))).setDescription(description);</span>
+<span class="pc bpc" id="L170" title="1 of 2 branches missed.">        else if(argumentList.contains(new OptionalArgument(title)))</span>
+<span class="fc" id="L171">            argumentList.get(argumentList.indexOf(new OptionalArgument(title))).setDescription(description);</span>
+<span class="fc" id="L172">    }</span>
+    
+    public String getDescription(String title)
+    {
+<span class="fc bfc" id="L176" title="All 2 branches covered.">        if(argumentList.contains(new Argument(title)))</span>
+<span class="fc" id="L177">            return argumentList.get(argumentList.indexOf(new Argument(title))).getDescription();</span>
+        else
+<span class="fc" id="L179">            return argumentList.get(argumentList.indexOf(new OptionalArgument(title))).getDescription();</span>
+    }
+    
+    public &lt;T&gt; T getValue(String title)
+    {
+<span class="fc bfc" id="L184" title="All 2 branches covered.">        if(argumentList.contains(new Argument(title)))</span>
+<span class="fc" id="L185">            return (T)argumentList.get(argumentList.indexOf(new Argument(title))).getValue();</span>
+        else
+<span class="fc" id="L187">            return (T)argumentList.get(argumentList.indexOf(new OptionalArgument(title))).getValue();</span>
+    }
+    
+    public CommandLineArgument.DataType getArgumentDataType(String title)
+    {
+<span class="fc bfc" id="L192" title="All 2 branches covered.">        if(argumentList.contains(new Argument(title)))</span>
+<span class="fc" id="L193">            return argumentList.get(argumentList.indexOf(new Argument(title))).getDataType();</span>
+        else
+<span class="fc" id="L195">            return argumentList.get(argumentList.indexOf(new OptionalArgument(title))).getDataType();</span>
+    }
+    
+    public String getOptionalArgument(String title)
+    {
+<span class="fc" id="L200">        return argumentList.get(argumentList.indexOf(new OptionalArgument(title))).getTitle();</span>
+    }
+    
+    public void setNumberValues(String title, int number)
+    {
+<span class="fc" id="L205">        argumentList.get(argumentList.indexOf(new OptionalArgument(title))).setNumberValues(number);</span>
+<span class="fc" id="L206">    }</span>
+    
+    public int getNumberValues(String title)
+    {
+<span class="fc" id="L210">        return argumentList.get(argumentList.indexOf(new OptionalArgument(title))).getNumberValues();</span>
+    }
+
+	public void setRequired(String title)
+	{
+<span class="fc" id="L215">		OptionalArgument arg = new OptionalArgument(title);</span>
+<span class="fc" id="L216">		argumentList.get(argumentList.indexOf(arg)).setRequired();</span>
+<span class="fc" id="L217">		requiredOptionals.add(arg);</span>
+<span class="fc" id="L218">	}</span>
+	
+	public boolean getRequired(String title)
+	{
+<span class="fc" id="L222">		return argumentList.get(argumentList.indexOf(new OptionalArgument(title))).getRequired();</span>
+	}
+
+    public String getUnmatched()
+    {
+<span class="fc" id="L227">        return unmatched;</span>
+    }
+    public String getProgramName()
+    {
+<span class="fc" id="L231">        return program;</span>
+    }
+    public String getProgramDescription()
+    {
+<span class="fc" id="L235">        return programDescription;</span>
+    }
+    public List getArgumentList()
+    {
+<span class="fc" id="L239">        return argumentList;</span>
+    }
+    
+    public void parse(String str) throws NotEnoughArgValuesException, TooManyArgValuesException, IncorrectTypeException, IncorrectValueException
+    {
+<span class="fc" id="L244">        Scanner scan = new Scanner(str);</span>
+<span class="fc" id="L245">		String tempOpt = &quot;&quot;;</span>
+<span class="fc" id="L246">		String tempLine = &quot;&quot;;</span>
+<span class="fc" id="L247">        int countArgValues = 0;</span>
+<span class="fc" id="L248">        unmatched = &quot;unrecognised arguments: &quot;;</span>
+<span class="fc" id="L249">        int numberValues = 0;</span>
+<span class="fc bfc" id="L250" title="All 2 branches covered.">        while(scan.hasNext())</span>
+        {
+<span class="fc" id="L252">            String extra  = scan.next();</span>
+<span class="fc" id="L253">			tempLine += extra;</span>
+			
+<span class="pc bpc" id="L255" title="1 of 4 branches missed.">			if (extra.equals(&quot;-h&quot;) || extra.equals(&quot;--help&quot;))</span>
+			{	
+<span class="fc" id="L257">				System.out.println(getHelpText());</span>
+<span class="fc" id="L258">				return;</span>
+			}
+			
+<span class="fc bfc" id="L261" title="All 2 branches covered.">            if (extra.startsWith(&quot;-&quot;))</span>
+            {
+<span class="fc bfc" id="L263" title="All 2 branches covered.">				for(int i =0; i &lt; extra.length(); i++)</span>
+				{
+<span class="fc bfc" id="L265" title="All 2 branches covered.">					if (extra.charAt(i) != '-') tempOpt += extra.charAt(i);</span>
+				}
+				
+<span class="fc" id="L268">				OptionalArgument tempArg = new OptionalArgument(tempOpt);</span>
+<span class="pc bpc" id="L269" title="1 of 2 branches missed.">				if (argumentList.contains(tempArg))</span>
+
+<span class="pc bpc" id="L271" title="1 of 2 branches missed.">				if (argumentList.contains(new OptionalArgument(tempOpt)))</span>
+
+				{			
+<span class="fc bfc" id="L274" title="All 2 branches covered.">	                if(argumentList.get(argumentList.indexOf(tempArg)).getNumberValues() == 0)</span>
+	                {
+<span class="fc" id="L276">						 setValue(tempOpt);</span>
+	                }
+	                else
+	                {
+<span class="fc" id="L280">	                    numberValues = argumentList.get(argumentList.indexOf(tempArg)).getNumberValues();</span>
+<span class="fc bfc" id="L281" title="All 2 branches covered.">	                    for (int i = 0; i&lt;numberValues; i++)</span>
+	                    {
+<span class="fc" id="L283">							String tempScan = scan.next();</span>
+<span class="pc bpc" id="L284" title="1 of 2 branches missed.">							if (tempArg.hasRestricted())</span>
+							{
+<span class="nc bnc" id="L286" title="All 2 branches missed.">								if(checkRestricted(tempOpt).contains(tempScan)) setValue(tempOpt, tempScan);</span>
+								//else System.out.println(tempScan + &quot; is not an accepted value!&quot;); System.exit(1);
+							}
+<span class="fc" id="L289">							else setValue(tempOpt, tempScan);</span>
+	                    }
+	                }
+				}
+<span class="fc" id="L293">            }</span>
+            else
+            {
+<span class="fc bfc" id="L296" title="All 2 branches covered.">                if(countArgValues &lt;argumentList.size() - countOptionalArguments)</span>
+                {
+<span class="fc" id="L298">                    setValue(extra);</span>
+                }
+                else
+                {
+<span class="fc" id="L302">                    unmatched += extra + &quot; &quot;;</span>
+                }
+                
+<span class="fc" id="L305">                countArgValues++;</span>
+            }
+<span class="fc" id="L307">        }</span>
+		
+<span class="pc bfc" id="L309" title="All 2 branches covered.">		for(int i = 0; i&lt;requiredOptionals.size(); i++)</span>
+		{
+<span class="pc bpc" id="L311" title="1 of 2 branches missed.">			if(!tempLine.contains(requiredOptionals.get(i).getTitle()))</span>
+			{
+<span class="fc" id="L313">				unmatched = &quot;the following arguments are required: &quot;;</span>
+<span class="fc bfc" id="L314" title="All 2 branches covered.">				for(int k = 0; k&lt; requiredOptionals.size(); k++)</span>
+				{
+<span class="pc bpc" id="L316" title="1 of 2 branches missed.">					if( k == requiredOptionals.size() -1)</span>
+<span class="fc" id="L317">						unmatched += requiredOptionals.get(k).getTitle();</span>
+					else
+<span class="nc" id="L319">						unmatched += requiredOptionals.get(k).getTitle() + &quot; &quot;;</span>
+				}
+<span class="fc" id="L321">	            throw new NotEnoughArgValuesException(unmatched);</span>
+			}
+		}
+        
+<span class="pc bpc" id="L325" title="1 of 2 branches missed.">        if (unmatched != &quot;&quot;)</span>
+<span class="fc" id="L326">            unmatched = unmatched.substring(0, unmatched.length() -1);</span>
+        
+<span class="fc bfc" id="L328" title="All 2 branches covered.">        if(argumentList.size() &gt; countArgValues + countOptionalArguments){</span>
+<span class="fc" id="L329">            unmatched = &quot;the following arguments are required: &quot;;</span>
+          
+<span class="fc bfc" id="L331" title="All 2 branches covered.">			for (int k =0; k&lt;argumentList.size(); k++)</span>
+			{
+<span class="fc bfc" id="L333" title="All 4 branches covered.">				if (argumentList.get(k) instanceof Argument &amp;&amp; argumentList.get(k).getValue() == null)</span>
+				{
+<span class="fc bfc" id="L335" title="All 2 branches covered.">                if( k == argumentList.size() -1)</span>
+<span class="fc" id="L336">                    unmatched += argumentList.get(k).getTitle();</span>
+                else
+<span class="fc" id="L338">                    unmatched += argumentList.get(k).getTitle() + &quot; &quot;;</span>
+				}
+			}
+<span class="fc" id="L341">            throw new NotEnoughArgValuesException(unmatched);</span>
+        }
+        
+<span class="fc bfc" id="L344" title="All 2 branches covered.">        else if (argumentList.size() - countOptionalArguments &lt; countArgValues)</span>
+        {
+<span class="fc" id="L346">            throw new TooManyArgValuesException(unmatched);</span>
+        }
+<span class="fc" id="L348">    }</span>
+    
+    public String getHelpText()
+    {
+<span class="fc" id="L352">        String argumentTitles = &quot;&quot;;</span>
+<span class="fc" id="L353">        String optionalArgumentTitles = &quot;&quot;;</span>
+<span class="fc" id="L354">        String description = &quot;&quot;;</span>
+<span class="fc" id="L355">        String description2 = &quot;&quot;;</span>
+<span class="fc bfc" id="L356" title="All 2 branches covered.">        for (CommandLineArgument a : argumentList)</span>
+        {	
+<span class="fc bfc" id="L358" title="All 2 branches covered.">            if ( a instanceof Argument)</span>
+            {
+<span class="fc" id="L360">                argumentTitles += a.getTitle() + &quot; &quot;;</span>
+<span class="fc" id="L361">                description += a.getTitle() +&quot; &quot;+ a.getDataType().toString().toLowerCase()+&quot;\t\t&quot;+a.getDescription() + &quot;\r\n&quot;;</span>
+            }
+            else {
+<span class="fc" id="L364">                optionalArgumentTitles += a.getTitle() + &quot; &quot;;</span>
+<span class="fc" id="L365">                description2 += a.getTitle() +&quot; &quot;+ a.getDataType().toString().toLowerCase()+&quot;\t\t&quot;+a.getDescription() + &quot;\r\n&quot;;</span>
+            }
+<span class="fc" id="L367">        }</span>
+<span class="fc" id="L368">        help = &quot;usage: java &quot; + program + &quot; &quot; + argumentTitles + &quot;\r\n&quot; + programDescription +&quot;\r\nPositional Arguments:\r\n&quot; + description + &quot;\r\nOptional Arguments:\r\n&quot; + description2;</span>
+<span class="fc" id="L369">        return help;</span>
+    }
+    
+    public String getOutput()
+    {
+<span class="fc" id="L374">        output = &quot;&lt;?xml version=\&quot;1.0\&quot; encoding=\&quot;&quot;+ &quot;UTF-8&quot; + &quot;\&quot;?&gt;&quot;+&quot;\r\n&lt;arguments&gt;&quot;;</span>
+<span class="fc bfc" id="L375" title="All 2 branches covered.">        for (int i = 0; i&lt;getSize(); i++)</span>
+        {
+<span class="fc" id="L377">            output += argumentList.get(i).toString();</span>
+        }
+<span class="fc" id="L379">        output += &quot;\r\n&lt;/arguments&gt;&quot;;</span>
+<span class="fc" id="L380">        return output;</span>
+    }
+    
+    public void writeToXMLFile(String filename)
+    {
+        try
+        {
+<span class="fc" id="L387">            PrintWriter file = new PrintWriter(filename);</span>
+<span class="fc" id="L388">            file.write(getOutput());</span>
+<span class="fc" id="L389">            file.close();</span>
+<span class="pc" id="L390">        }catch(FileNotFoundException e){e.printStackTrace();}</span>
+<span class="fc" id="L391">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>
