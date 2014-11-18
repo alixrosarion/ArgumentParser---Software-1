@@ -39,8 +39,9 @@ public class ArgumentParser
 			if(argumentList.contains(new Argument(title)))
 			{
 				try {
-					argumentList.get(argumentList.indexOf(new Argument(title))).setRestricted(arg);
-					k = argumentList.indexOf(new Argument(title));
+					Argument tmpArg = new Argument(title);
+					argumentList.get(argumentList.indexOf(tmpArg)).setRestricted(arg);
+					k = argumentList.indexOf(tmpArg);
 				} catch (Exception e) {
 					incorrectType += title +" invalid "+argumentList.get(k).getDataType().toString().toLowerCase() +
 								" value: " + arg.toString();
@@ -50,8 +51,9 @@ public class ArgumentParser
 			}
 			else {
 				try {
-					argumentList.get(argumentList.indexOf(new OptionalArgument(title))).setRestricted(arg);
-					k = argumentList.indexOf(new OptionalArgument(title));
+					OptionalArgument tmpArg = new OptionalArgument(title);
+					argumentList.get(argumentList.indexOf(tmpArg)).setRestricted(arg);
+					k = argumentList.indexOf(tmpArg);
 				} catch (Exception e) {
 				incorrectType += title +" invalid "+argumentList.get(k).getDataType().toString().toLowerCase() +
 												" value: " + arg.toString();
@@ -83,8 +85,9 @@ public class ArgumentParser
     
     public void addArgument(String title, CommandLineArgument.DataType type)
     {
-        argumentList.add(new Argument(title));
-        argumentList.get(argumentList.indexOf(new Argument(title))).setDataType(type);
+		Argument arg = new Argument(title);
+		arg.setDataType(type);
+		argumentList.add(arg);
     }
     
     public void setShortOption(String title, String str)
@@ -209,8 +212,9 @@ public class ArgumentParser
 
 	public void setRequired(String title)
 	{
-		argumentList.get(argumentList.indexOf(new OptionalArgument(title))).setRequired();
-		requiredOptionals.add(new OptionalArgument(title));
+		OptionalArgument arg = new OptionalArgument(title);
+		argumentList.get(argumentList.indexOf(arg)).setRequired();
+		requiredOptionals.add(arg);
 	}
 	
 	public boolean getRequired(String title)
