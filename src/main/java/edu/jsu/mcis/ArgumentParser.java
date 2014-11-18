@@ -109,7 +109,14 @@ public class ArgumentParser
     {
         argumentList.add(new OptionalArgument(title));
         countOptionalArguments++;
-    }	public void setValue(String ... args) throws IncorrectTypeException, IncorrectValueException
+    }	
+	
+	public void setDefaultValue(String title, String value)
+	{
+		setValue(title, value);
+	}
+	
+	public void setValue(String ... args) throws IncorrectTypeException, IncorrectValueException
 	{
 		int k=0;
 		incorrectType = program + ".java: error: argument ";
