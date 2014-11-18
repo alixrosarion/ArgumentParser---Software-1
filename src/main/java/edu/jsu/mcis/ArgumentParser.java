@@ -280,7 +280,7 @@ public class ArgumentParser
 							if (tempArg.hasRestricted())
 							{
 								if(checkRestricted(tempOpt).contains(tempScan)) setValue(tempOpt, tempScan);
-								else System.out.println(tempScan + " is not an accepted value!"); System.exit(1);
+								//else System.out.println(tempScan + " is not an accepted value!"); System.exit(1);
 							}
 							else setValue(tempOpt, tempScan);
 	                    }
