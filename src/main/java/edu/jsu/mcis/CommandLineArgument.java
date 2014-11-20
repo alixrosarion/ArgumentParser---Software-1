@@ -6,6 +6,7 @@ public abstract class CommandLineArgument {
 	protected Object value;
 	protected String description;
 	protected DataType type;
+	protected int numberValues;
 	public enum DataType {Integer, Float, String, Boolean}
 	protected List <Object> restrictedValues = new ArrayList<Object>();
 	private boolean hasRestricted;
@@ -31,18 +32,22 @@ public abstract class CommandLineArgument {
 	public String getTitle() {
 		return title;
 	}
+	
 	public void setDescription(String d)
 	{
 		description = d;
 	}
+	
 	public void setDataType(DataType t)
 	{
 		type = t;
 	}
+	
 	public String getDescription()
 	{
 		return description;
 	}
+	
 	public DataType getDataType()
 	{
 		return type;
@@ -69,10 +74,18 @@ public abstract class CommandLineArgument {
 		hasRestricted = true;
 	}
 	
+	public void setNumberValues(int number)
+	{
+		numberValues = number;
+	}
+	
+	public int getNumberValues()
+	{
+		return numberValues;
+	}
+	
 	abstract public String getShort();
-	abstract public int getNumberValues();
 	abstract public <T> T getValue();
-	abstract public void setNumberValues(int i);
 	abstract public void setShort(String s);
 	abstract public void setValue(Object v);
 	abstract public void setRequired();

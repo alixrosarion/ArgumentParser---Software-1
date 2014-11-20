@@ -7,6 +7,7 @@ public class Argument extends CommandLineArgument
 		this.title = title;
 		type =	CommandLineArgument.DataType.String;
 		description = "";
+		numberValues = 1;
 	}
 	
 	public Argument(String title, CommandLineArgument.DataType type)
@@ -14,6 +15,7 @@ public class Argument extends CommandLineArgument
 		this.title = title;
 		this.type = type;
 		description = "";
+		numberValues = 1;
 	}
 	
 	public void setValue(Object o) throws NumberFormatException, IncorrectValueException
@@ -65,11 +67,6 @@ public class Argument extends CommandLineArgument
 		return output;
 	}
 	
-	public int getNumberValues()
-	{
-		return 0;
-	}
-	
 	public String getShort()
 	{
 		return "";
@@ -96,6 +93,5 @@ public class Argument extends CommandLineArgument
 	}
 	
 	public void setShort(String s){}
-	public void setNumberValues(int num){}
 	public void setRequired(){}
 }

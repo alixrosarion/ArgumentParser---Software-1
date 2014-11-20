@@ -2,7 +2,6 @@ package edu.jsu.mcis;
 
 public class OptionalArgument extends CommandLineArgument{
 	
-	private int numberValues;
 	private String shortName;
 	private boolean required;
 	
@@ -13,6 +12,7 @@ public class OptionalArgument extends CommandLineArgument{
 		description = "";
 		type =	CommandLineArgument.DataType.String;
 		required = false;
+		numberValues = 0;
 	}
 	
 	public OptionalArgument(String title, CommandLineArgument.DataType type)
@@ -22,6 +22,7 @@ public class OptionalArgument extends CommandLineArgument{
 		description = "";
 		shortName = "";
 		required = false;
+		numberValues = 0;
 	}
 	
 	public void setShort(String string)
@@ -32,16 +33,6 @@ public class OptionalArgument extends CommandLineArgument{
 	public String getShort()
 	{
 		return shortName;
-	}
-	
-	public void setNumberValues(int number)
-	{
-		numberValues = number;
-	}
-	
-	public int getNumberValues()
-	{
-		return numberValues;
 	}
 	
 	public void setValue(Object object) throws NumberFormatException, IncorrectValueException
