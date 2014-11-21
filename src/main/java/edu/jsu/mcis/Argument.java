@@ -2,6 +2,11 @@ package edu.jsu.mcis;
 
 public class Argument extends CommandLineArgument
 {	
+/**
+ *@author GroupA
+ *
+ *@param title The title of the argument
+ */
 	public Argument(String title)
 	{
 		this.title = title;
@@ -10,6 +15,10 @@ public class Argument extends CommandLineArgument
 		numberValues = 1;
 	}
 	
+/**
+ *@param title The title of the argument
+ *@param type The datatype of the argument
+ */
 	public Argument(String title, CommandLineArgument.DataType type)
 	{
 		this.title = title;
@@ -18,6 +27,11 @@ public class Argument extends CommandLineArgument
 		numberValues = 1;
 	}
 	
+/**
+ *@param o The value to be set
+ *@throws NumberFormatException Improper Data type
+ *@throws IncorrectValueException The value is not within the restricted settings
+ */
 	public void setValue(Object o) throws NumberFormatException, IncorrectValueException
 	{
 			if(type == CommandLineArgument.DataType.Integer)
@@ -47,6 +61,11 @@ public class Argument extends CommandLineArgument
 			}
 	}
 	
+/**
+ *
+ *
+ *
+ */
 	public <T> T getValue()
 	{
 		return (T) value;

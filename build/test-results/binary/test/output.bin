@@ -1,0 +1,74 @@
+'usage: java null length width height 
+null
+Positional Arguments:
+length string		
+width string		
+height string		
+
+Optional Arguments:
+help boolean		
+type string		
+actor string		
+
+*usage: java VolCalc length width height 
+Calculate the volume of a box
+Positional Arguments:
+'length integer		the length of the box
+#width float		the width of the box
+%height float		the height of the box
+
+Optional Arguments:
+help boolean		
+
+$(<?xml version="1.0" encoding="UTF-8"?>
+$<arguments>
+$	<optionalArgument>
+$		<name>help</name>
+$		<numValues>0</numValues>
+$		<type>Boolean</type>
+$		<description></description>
+$		<value>null</value>
+$		<shortName>h</shortName>
+$	</optionalArgument>
+$	<argument>
+$		<name>length</name>
+$		<type>String</type>
+$		<description></description>
+$	</argument>
+$	<argument>
+$		<name>width</name>
+$		<type>String</type>
+$		<description></description>
+$	</argument>
+$	<argument>
+$		<name>height</name>
+$		<type>String</type>
+$		<description></description>
+$	</argument>
+$</arguments>
+$(<?xml version="1.0" encoding="UTF-8"?>
+$<arguments>
+$	<optionalArgument>
+$		<name>help</name>
+$		<numValues>0</numValues>
+$		<type>Boolean</type>
+$		<description></description>
+$		<value>null</value>
+$		<shortName>h</shortName>
+$	</optionalArgument>
+$	<argument>
+$		<name>length</name>
+$		<type>String</type>
+$		<description></description>
+$	</argument>
+$	<argument>
+$		<name>width</name>
+$		<type>String</type>
+$		<description></description>
+$	</argument>
+$	<argument>
+$		<name>height</name>
+$		<type>String</type>
+$		<description></description>
+$	</argument>
+$</arguments>
