@@ -22,12 +22,25 @@ public class XMLParser extends DefaultHandler
 	private List <CommandLineArgument> argumentList;
 	private int optCount;
 	
+/**
+ *
+ *
+ *@param file the XML file (with it's extension) the arguments and their data to be loaded from
+ *@return i
+ */
 	public static ArgumentParser createArgumentParser(String file)
 	{
 		XMLParser p = new XMLParser(file);
 		return p.getArgumentParser();
 	}
-
+	
+/**
+ *Class constructor with a specified XML file to load the argument
+ *data from.
+ *
+ *@param filename the name of the file to be parsed. Must be within same folder
+ *                as the parse and must include the file extension (.xml)
+ */
 	private XMLParser(String filename)
 	{
 		argPars = new ArgumentParser();	
@@ -43,18 +56,42 @@ public class XMLParser extends DefaultHandler
 			System.out.println("IO error");
 		}
 	}
-
+	
+/**
+ *
+ *
+ *
+ *@return i
+ */
 	private ArgumentParser getArgumentParser()
 	{
 		return argPars;
 	}
-
 	
+/**
+ *
+ *
+ *
+ *@param s
+ *@param s1
+ *@param elementName the name of the element in the XML file
+ *@param attributes
+ *@throws SAXException
+ */
 	public void startElement(String s, String s1, String elementName, Attributes attributes) throws SAXException {
         if (elementName.equalsIgnoreCase("argument")) argCheck = true;
 		else if (elementName.equalsIgnoreCase("optionalArgument")) argCheck = false;
     }
-	
+		
+/**
+ *
+ *
+ *
+ *@param s
+ *@param s1
+ *@param element the name of the element being used in the 
+ *@throws SAXEException
+ */
 	@Override
     public void endElement(String s, String s1, String element) throws SAXException {
 		if (argCheck)
@@ -140,7 +177,16 @@ public class XMLParser extends DefaultHandler
 			}
 		}
     }
-	
+		
+/**
+ *
+ *
+ *
+ *@param ac
+ *@param i
+ *@param j
+ *@throws SAXException
+ */
 	@Override
     public void characters(char[] ac, int i, int j) throws SAXException {
         tmpValue = new String(ac, i, j);

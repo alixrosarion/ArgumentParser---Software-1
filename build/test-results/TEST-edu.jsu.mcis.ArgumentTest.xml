@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="edu.jsu.mcis.ArgumentTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2014-11-21T19:31:56" hostname="Kris-PC" time="0.0">
+<testsuite name="edu.jsu.mcis.ArgumentTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2014-11-28T21:10:00" hostname="Kris-PC" time="0.0">
   <properties/>
   <testcase name="testGetNumValues" classname="edu.jsu.mcis.ArgumentTest" time="0.0"/>
   <testcase name="testGetShort" classname="edu.jsu.mcis.ArgumentTest" time="0.0"/>

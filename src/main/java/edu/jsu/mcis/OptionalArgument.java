@@ -5,6 +5,12 @@ public class OptionalArgument extends CommandLineArgument{
 	private String shortName;
 	private boolean required;
 	
+/**
+ *
+ *
+ *
+ *
+ */
 	public OptionalArgument(String title)
 	{
 		this.title = title;
@@ -15,6 +21,12 @@ public class OptionalArgument extends CommandLineArgument{
 		numberValues = 0;
 	}
 	
+/**
+ *
+ *
+ *
+ *
+ */
 	public OptionalArgument(String title, CommandLineArgument.DataType type)
 	{
 		this.title = title;
@@ -25,37 +37,80 @@ public class OptionalArgument extends CommandLineArgument{
 		numberValues = 0;
 	}
 	
+/**
+ *
+ *
+ *
+ *
+ */
 	public void setShort(String string)
 	{
 		shortName = string;
 	}
 	
+/**
+ *
+ *
+ *
+ *
+ */
 	public String getShort()
 	{
 		return shortName;
 	}
 	
+/**
+ *
+ *
+ *
+ *
+ */
 	public void setValue(Object object) throws NumberFormatException, IncorrectValueException
 	{
 			value = object;
 		if(restrictedValues.size() != 0 && !restrictedValues.contains(value))
 			throw new IncorrectValueException();
 	}
+	
+/**
+ *
+ *
+ *
+ *
+ */
 	public Object getValue()
 	{
 		return value;
 	}
 	
+/**
+ *
+ *
+ *
+ *
+ */
 	public void setRequired() 
 	{
 		required = true;
 	}
 	
+/**
+ *
+ *
+ *
+ *
+ */
 	public boolean getRequired()
 	{
 		return required;
 	}
 
+/**
+ *
+ *
+ *
+ *
+ */
 	public String toString()
 	{
 		String output = "";
@@ -68,6 +123,12 @@ public class OptionalArgument extends CommandLineArgument{
 		return output;
 	}
 
+/**
+ *
+ *
+ *
+ *@return true if the title of the optional argument is equal to the
+ */
 	public boolean equals(Object o)
 	{
 	//"this" keyword refers to the one in the list
@@ -83,6 +144,13 @@ public class OptionalArgument extends CommandLineArgument{
 		}
 		return result;
 	}
+	
+/**
+ *
+ *
+ *
+ *
+ */
 	public int hashCode() {
 		return 17;	
     }

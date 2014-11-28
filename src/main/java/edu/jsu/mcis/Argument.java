@@ -3,7 +3,7 @@ package edu.jsu.mcis;
 public class Argument extends CommandLineArgument
 {	
 /**
- *@author GroupA
+ *Class constructor.
  *
  *@param title The title of the argument
  */
@@ -16,8 +16,10 @@ public class Argument extends CommandLineArgument
 	}
 	
 /**
+ *
+ *
  *@param title The title of the argument
- *@param type The datatype of the argument
+ *@param type The Data type of the argument
  */
 	public Argument(String title, CommandLineArgument.DataType type)
 	{
@@ -28,6 +30,8 @@ public class Argument extends CommandLineArgument
 	}
 	
 /**
+ *
+ *
  *@param o The value to be set
  *@throws NumberFormatException Improper Data type
  *@throws IncorrectValueException The value is not within the restricted settings
@@ -64,18 +68,28 @@ public class Argument extends CommandLineArgument
 /**
  *
  *
- *
+ *@return the value of the argument
  */
 	public <T> T getValue()
 	{
 		return (T) value;
 	}
 	
+/**
+ *
+ *@return the title of the argument
+ */
 	public String getTitle()
 	{
 		return title;
 	}
 	
+/**
+ *
+ *
+ *
+ *@return the output which includes: argument name, type, and description.
+ */
 	public String toString()
 	{	
 		String output = "";
@@ -86,11 +100,23 @@ public class Argument extends CommandLineArgument
 		return output;
 	}
 	
+/**
+ *
+ *
+ *
+ *@return nothing: positional arguments do not have a short
+ */
 	public String getShort()
 	{
 		return "";
 	}
 
+/**
+ *
+ *
+ *
+ *@return if the argument equals the object(true/false)
+ */
 	public boolean equals(Object o)
 	{
 		if(o instanceof Argument)
@@ -101,11 +127,23 @@ public class Argument extends CommandLineArgument
 		return false;	
 	}
 	
+/**
+ *
+ *
+ *
+ *
+ */
 	public int hashCode() {
 		int result = 31 * title.hashCode();
 		return result;	
     }
 
+/**
+ *
+ *
+ *
+ *@return If the positional argument is required or not.
+ */
 	public boolean getRequired()
 	{
 		return true;

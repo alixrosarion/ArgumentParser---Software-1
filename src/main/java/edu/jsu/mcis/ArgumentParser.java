@@ -15,6 +15,9 @@ public class ArgumentParser
     private String output;
 	private List <CommandLineArgument> requiredOptionals;
     
+/**
+ *Class constructor.
+ */
     public ArgumentParser()
     {
         argumentList = new ArrayList<CommandLineArgument>();
@@ -24,12 +27,25 @@ public class ArgumentParser
 		addOptionalArgument("help", CommandLineArgument.DataType.Boolean);
 		setShortOption("help", "h");
     }
-    
+
+/**
+ *Returns the size of the argumentList
+ *
+ *@return The size of the argument list
+ */
     public int getSize()
     {
         return argumentList.size();
     }
 	
+/**
+ *Sets the argument to only accept a set of restricted values. Multiple values can be
+ *added(separated by a comma). 
+ *
+ *@param title The name of the argument
+ *@param args The value(s) the argument is restricted to
+ *@throws IncorrectTypeException If an incorrect data type is entered for the argument
+ */	
 	public void setRestricted(String title, Object ... args) throws IncorrectTypeException
 	{
 		int k =0;
@@ -64,6 +80,11 @@ public class ArgumentParser
 		}
 	}
 	
+/**
+ *Returns the values that the argument is restricted to using.
+ *
+ *@return the values the argument is restricted to
+ */	
 	public String checkRestricted(String title)
 	{
 		if(argumentList.contains(new Argument(title)))
@@ -72,17 +93,35 @@ public class ArgumentParser
 			return argumentList.get(argumentList.indexOf(new OptionalArgument(title))).getRestricted();
 	}
     
+/**
+ *Adds the program name and the program's description.
+ *
+ *@param name the name of the program
+ *@param description the description of the program
+ */
     public void addProgram(String name, String description)
     {
         program = name;
         programDescription = description;
     }
     
+/**
+ *Adds a new argument to the list of arguments.
+ *
+ *@param str the name of the argument
+ */
     public void addArgument(String str)
     {
         argumentList.add(new Argument(str));
     }
     
+/**
+ *Adds a new argument to the list of arguments and sets the data type
+ *that argument can hold.
+ *
+ *@param title the name of the argument
+ *@param type the data type of the argument
+ */
     public void addArgument(String title, CommandLineArgument.DataType type)
     {
 		Argument arg = new Argument(title);
@@ -90,16 +129,34 @@ public class ArgumentParser
 		argumentList.add(arg);
     }
     
+/**
+ * 
+ *
+ *@param title the name of the argument
+ *@param str the short name to be attached to the argument
+ */
     public void setShortOption(String title, String str)
     {
         argumentList.get(argumentList.indexOf(new OptionalArgument(title))).setShort(str);
     }
     
+/**
+ *Returns the short option associated with an argument, if it has one.
+ *
+ *@param title the name of the argument
+ *@return the short option associated with the argument
+ */
     public String getShortOption(String title)
     {
         return argumentList.get(argumentList.indexOf(new OptionalArgument(title))).getShort();
     }
     
+/**
+ *Adds a new optional argument to the argument list with a specified data type.
+ *
+ *@param title the title of the optional argument
+ *@param type the data type of the optional argument
+ */
     public void addOptionalArgument(String title, CommandLineArgument.DataType type)
     {
 		OptionalArgument arg = new OptionalArgument(title);
@@ -108,17 +165,36 @@ public class ArgumentParser
         countOptionalArguments++;
     }
     
+/**
+ *Adds a new optional argument to the argument list. 
+ *
+ *
+ *@param title name of the optional argument
+ */
     public void addOptionalArgument(String title)
     {
         argumentList.add(new OptionalArgument(title));
         countOptionalArguments++;
     }	
 	
+/**
+ *
+ *
+ *@param title the name of the argument
+ *@param value the desired default value of the argument
+ */
 	public void setDefaultValue(String title, String value)
 	{
 		setValue(title, value);
 	}
 	
+/**
+ *
+ *
+ *@param args 
+ *@throws IncorrectTypeException if the data type does not match the data type of the argument
+ *@throws IncorrectValueException if the value does not match the restricted values
+ */
 	public void setValue(String ... args) throws IncorrectTypeException, IncorrectValueException
 	{
 		int k=0;
@@ -163,6 +239,12 @@ public class ArgumentParser
 		 
 	}
     
+/**
+ *
+ *
+ *@param title the name of the argument
+ *@param description the description of the argument
+ */
     public void setDescription(String title, String description)
     {
         if(argumentList.contains(new Argument(title)))
@@ -171,6 +253,13 @@ public class ArgumentParser
             argumentList.get(argumentList.indexOf(new OptionalArgument(title))).setDescription(description);
     }
     
+/**
+ *Returns the description associated with the argument
+ *if that argument has one.
+ *
+ *@param title the name of the argument
+ *@return the set description of the argument
+ */
     public String getDescription(String title)
     {
         if(argumentList.contains(new Argument(title)))
@@ -179,6 +268,12 @@ public class ArgumentParser
             return argumentList.get(argumentList.indexOf(new OptionalArgument(title))).getDescription();
     }
     
+/**
+ *
+ *
+ *@param title the name of the argument
+ *@return the value held by argument
+ */
     public <T> T getValue(String title)
     {
         if(argumentList.contains(new Argument(title)))
@@ -187,6 +282,12 @@ public class ArgumentParser
             return (T)argumentList.get(argumentList.indexOf(new OptionalArgument(title))).getValue();
     }
     
+/**
+ *
+ *
+ *@param title the name of the argument
+ *@return the data type associated with the argument
+ */
     public CommandLineArgument.DataType getArgumentDataType(String title)
     {
         if(argumentList.contains(new Argument(title)))
@@ -195,21 +296,45 @@ public class ArgumentParser
             return argumentList.get(argumentList.indexOf(new OptionalArgument(title))).getDataType();
     }
     
+/**
+ *
+ *
+ *@param title the name of the argument
+ *@return i 
+ */
     public String getOptionalArgument(String title)
     {
         return argumentList.get(argumentList.indexOf(new OptionalArgument(title))).getTitle();
     }
     
+/**
+ *
+ *
+ *@param title the name of the argument
+ *@param number the number of values the argument holds
+ */
     public void setNumberValues(String title, int number)
     {
         argumentList.get(argumentList.indexOf(new OptionalArgument(title))).setNumberValues(number);
     }
     
+/**
+ *
+ *
+ *@param title the name of the argument
+ *@return the number of values associated with an argument
+ */
     public int getNumberValues(String title)
     {
         return argumentList.get(argumentList.indexOf(new OptionalArgument(title))).getNumberValues();
     }
 
+/**
+ *
+ *
+ *
+ *@param title the name of the argument
+ */
 	public void setRequired(String title)
 	{
 		OptionalArgument arg = new OptionalArgument(title);
@@ -217,28 +342,71 @@ public class ArgumentParser
 		requiredOptionals.add(arg);
 	}
 	
+/**
+ *
+ *
+ *@param title the name of the argument
+ *@return if the argument is required of not required
+ */
 	public boolean getRequired(String title)
 	{
 		return argumentList.get(argumentList.indexOf(new OptionalArgument(title))).getRequired();
 	}
 
+/**
+ *
+ *
+ *
+ *@return the required arguments that did not receive a value
+ */
     public String getUnmatched()
     {
         return unmatched;
     }
+
+/**
+ *
+ *
+ *
+ *@return the name of the program
+ */
     public String getProgramName()
     {
         return program;
     }
+	
+/**
+ *
+ *
+ *
+ *@return the description of the program
+ */
     public String getProgramDescription()
     {
         return programDescription;
     }
+	
+/**
+ *
+ *
+ *
+ *@return the list of all arguments
+ */
     public List getArgumentList()
     {
         return argumentList;
     }
     
+/**
+ *
+ *
+ *
+ *@param str the string to be parsed
+ *@throws NotEnoughArgValuesException if the amount of values parsed does not match the number of required arguments
+ *@throws TooManyArgValuesException if the amount of values parsed exceeds the number of required arguments
+ *@throws IncorrectTypeException if the data type of a value does not match the data type of the argument
+ *@throws IncorrectValueException if the value does not match the restricted values of an argument
+ */
     public void parse(String str) throws NotEnoughArgValuesException, TooManyArgValuesException, IncorrectTypeException, IncorrectValueException
     {
         Scanner scan = new Scanner(str);
@@ -347,6 +515,12 @@ public class ArgumentParser
         }
     }
     
+/**
+ *
+ *
+ *
+ *@return the formatted help text of the program and arguments
+ */
     public String getHelpText()
     {
         String argumentTitles = "";
@@ -369,6 +543,12 @@ public class ArgumentParser
         return help;
     }
     
+/**
+ *
+ *
+ *
+ *@return the 
+ */
     public String getOutput()
     {
         output = "<?xml version=\"1.0\" encoding=\""+ "UTF-8" + "\"?>"+"\r\n<arguments>";
@@ -380,6 +560,13 @@ public class ArgumentParser
         return output;
     }
     
+/**
+ *Takes the information of the arguments and optional arguments - title, description,
+ *number of values, and the data type - and writes it to an XML file. Automatically 
+ *generates the XML tags appropriate for each piece of data.
+ *
+ *@param filename the name of the file to write the XML code to
+ */
     public void writeToXMLFile(String filename)
     {
         try
