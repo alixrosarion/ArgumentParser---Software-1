@@ -116,12 +116,37 @@ public class XMLParser extends DefaultHandler
 			if(element.equalsIgnoreCase("description")){
 			   argPars.setDescription(tmpName, tmpValue);
 			}
+			if (element.equalsIgnoreCase("restricted")) {
+				String tempStr = "";
+				for(char ch: tmpValue.toCharArray())
+				{					
+					if(ch == ',')
+					{
+						argPars.setRestricted(tmpName, tempStr);
+						tempStr = "";
+					}
+					else if(ch != ' ') tempStr += ch;
+				}
+			}
 		}
 		else
 		{
 			if (element.equalsIgnoreCase("name")) {
 				argPars.addOptionalArgument(tmpValue);
 				tmpName = tmpValue;
+			}
+			
+			if (element.equalsIgnoreCase("restricted")) {
+				String tempStr = "";
+				for(char ch: tmpValue.toCharArray())
+				{					
+					if(ch == ',')
+					{
+						argPars.setRestricted(tmpName, tempStr);
+						tempStr = "";
+					}
+					else if(ch != ' ') tempStr += ch;
+				}
 			}
 			
 			OptionalArgument argOpt = new OptionalArgument(tmpName, optArgXML);
@@ -132,10 +157,12 @@ public class XMLParser extends DefaultHandler
 				argPars.argumentList.get(argPars.argumentList.indexOf(arg)).setNumberValues(Integer.parseInt(tmpValue));
 			}
 			
+			
+			
 			if (element.equalsIgnoreCase("required")) {
 				if(tmpValue.equals("true"))	
 				{
-					argPars.argumentList.get(argPars.argumentList.indexOf(arg)).setRequired();
+					argPars.setRequired(tmpName);
 				}
 			}	
 			
@@ -164,7 +191,7 @@ public class XMLParser extends DefaultHandler
 			}
 			if (optArgXML != CommandLineArgument.DataType.Boolean)
 			{
-				if (element.equalsIgnoreCase("value")) {
+				if (element.equalsIgnoreCase("default")) {
 					argPars.argumentList.get(argPars.argumentList.indexOf(arg)).setValue(tmpValue);
 				}
 			}

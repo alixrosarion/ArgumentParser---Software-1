@@ -21,10 +21,21 @@
 		<name>type</name>
 		<numValues>1</numValues>
 		<type>string</type>
-        <required>true</required>
+        <required>false</required>
 		<description>Garrett is awesome!</description>
-		<value>box</value>
+		<default>box</default>
 		<shortName>t</shortName>
+		<restricted>3,2,5,</restricted>
+	</optionalArgument>
+	
+	<optionalArgument>
+		<name>req</name>
+		<numValues>1</numValues>
+		<type>string</type>
+        <required>true</required>
+		<description>tester argument</description>
+		<default>wtev</default>
+		<shortName>r</shortName>
 	</optionalArgument>
 	
 </arguments>

@@ -6,12 +6,21 @@ import static org.junit.Assert.*;
 public class XMLParserTest
 {
 
-	/*@Test
+	@Test
+	public void testRestricted()
+	{
+		ArgumentParser tester = XMLParser.createArgumentParser("arguments.xml");
+		System.out.println(tester.checkRestricted("type"));
+		// I AM NOT TESTING SHIT IN HERE JUST STRYING TO UNDERSTAND WHY ITS NOT WORKING
+		
+	}
+	
+	@Test
 	public void testXMLParsingArguments()
 	{
 		ArgumentParser tester = XMLParser.createArgumentParser("arguments.xml");
 		try {
-			tester.parse("2 2 2");
+			tester.parse("2 2 2 --req a");
 		} catch (Exception e) {
 			assertTrue(false);
 		}
@@ -75,6 +84,6 @@ public class XMLParserTest
 		} catch (NotEnoughArgValuesException  | TooManyArgValuesException | IncorrectTypeException e) {
 		e.printStackTrace();
 		}
-	}*/
+	}
 
 }
