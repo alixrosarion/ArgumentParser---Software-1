@@ -9,7 +9,7 @@ public class OptionalArgument extends CommandLineArgument{
  *
  *
  *
- *
+ *@param title The title of the optional argument
  */
 	public OptionalArgument(String title)
 	{
@@ -24,8 +24,8 @@ public class OptionalArgument extends CommandLineArgument{
 /**
  *
  *
- *
- *
+ *@param title The title of the optional argument
+ *@param type The type of the optional argument
  */
 	public OptionalArgument(String title, CommandLineArgument.DataType type)
 	{
@@ -41,7 +41,7 @@ public class OptionalArgument extends CommandLineArgument{
  *
  *
  *
- *
+ *@param string The short name of the optinal argument
  */
 	public void setShort(String string)
 	{
@@ -52,7 +52,7 @@ public class OptionalArgument extends CommandLineArgument{
  *
  *
  *
- *
+ *@return  The short name of the optional argument
  */
 	public String getShort()
 	{
@@ -63,7 +63,9 @@ public class OptionalArgument extends CommandLineArgument{
  *
  *
  *
- *
+ *@param object The value of the optional argument
+ *@throws NumberFormatException Improper Data type
+ *@throws IncorrectValueException The value is not within the restricted settings
  */
 	public void setValue(Object object) throws NumberFormatException, IncorrectValueException
 	{
@@ -76,11 +78,11 @@ public class OptionalArgument extends CommandLineArgument{
  *
  *
  *
- *
+ *@return the value of the argument
  */
-	public Object getValue()
+	public <T> T getValue()
 	{
-		return value;
+		return (T) value;
 	}
 	
 /**
@@ -98,7 +100,7 @@ public class OptionalArgument extends CommandLineArgument{
  *
  *
  *
- *
+ *@return <code>true</code>If the positional argument is required or not.
  */
 	public boolean getRequired()
 	{
@@ -109,7 +111,7 @@ public class OptionalArgument extends CommandLineArgument{
  *
  *
  *
- *
+ *@return a string representing the argument which includes: argument name, type,description,value and short name
  */
 	public String toString()
 	{
@@ -131,7 +133,6 @@ public class OptionalArgument extends CommandLineArgument{
  */
 	public boolean equals(Object o)
 	{
-	//"this" keyword refers to the one in the list
 		boolean result = false;
 		if(o instanceof OptionalArgument)
 		{
@@ -139,7 +140,7 @@ public class OptionalArgument extends CommandLineArgument{
 			
 			if(this.title.equals(arg.getTitle()) || this.getShort().equals(arg.getTitle()))
 				result = true;
-			if(this.title.equals(arg.getShort())) //Reflexivity needed by list.contains(Object o)
+			if(this.title.equals(arg.getShort()))
 				result = true;
 		}
 		return result;
@@ -149,7 +150,7 @@ public class OptionalArgument extends CommandLineArgument{
  *
  *
  *
- *
+ *@return a hashCode for each optional argument
  */
 	public int hashCode() {
 		return 17;	

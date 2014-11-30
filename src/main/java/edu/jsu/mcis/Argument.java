@@ -5,7 +5,7 @@ public class Argument extends CommandLineArgument
 /**
  *Class constructor.
  *
- *@param title The title of the argument
+ *@param title The title of the positional argument
  */
 	public Argument(String title)
 	{
@@ -88,7 +88,7 @@ public class Argument extends CommandLineArgument
  *
  *
  *
- *@return the output which includes: argument name, type, and description.
+ *@return a string representing the argument which includes: argument name, type, and description.
  */
 	public String toString()
 	{	
@@ -115,7 +115,7 @@ public class Argument extends CommandLineArgument
  *
  *
  *
- *@return if the argument equals the object(true/false)
+ *@return <code>true</code>if two arguments are equivalent
  */
 	public boolean equals(Object o)
 	{
@@ -131,7 +131,7 @@ public class Argument extends CommandLineArgument
  *
  *
  *
- *
+ *@return a unique hashCode for each argument, based on the title which is unique.
  */
 	public int hashCode() {
 		int result = 31 * title.hashCode();
@@ -142,7 +142,7 @@ public class Argument extends CommandLineArgument
  *
  *
  *
- *@return If the positional argument is required or not.
+ *@return <code>true</code>If the positional argument is required or not.
  */
 	public boolean getRequired()
 	{

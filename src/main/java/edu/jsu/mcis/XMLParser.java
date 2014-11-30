@@ -26,7 +26,7 @@ public class XMLParser extends DefaultHandler
  *
  *
  *@param file the XML file (with it's extension) the arguments and their data to be loaded from
- *@return i
+ *@return the argument parser created from the file
  */
 	public static ArgumentParser createArgumentParser(String file)
 	{
@@ -38,8 +38,7 @@ public class XMLParser extends DefaultHandler
  *Class constructor with a specified XML file to load the argument
  *data from.
  *
- *@param filename the name of the file to be parsed. Must be within same folder
- *                as the parse and must include the file extension (.xml)
+ *@param filename the complete name of the file to be parsed. Must be within same folder
  */
 	private XMLParser(String filename)
 	{
@@ -61,7 +60,7 @@ public class XMLParser extends DefaultHandler
  *
  *
  *
- *@return i
+ *@return the argument parser created
  */
 	private ArgumentParser getArgumentParser()
 	{
@@ -72,11 +71,11 @@ public class XMLParser extends DefaultHandler
  *
  *
  *
- *@param s
- *@param s1
+ *@param s the Namespace URI, or the empty string if the element has no Namespace URI 
+ *@param s1 the local name (without prefix), or the empty string if Namespace 
  *@param elementName the name of the element in the XML file
- *@param attributes
- *@throws SAXException
+ *@param attributes  the attributes attached to the element. If there are no attributes, it shall be an empty Attributes object.
+ *@throws SAXException any SAX exception, possibly wrapping another exception
  */
 	public void startElement(String s, String s1, String elementName, Attributes attributes) throws SAXException {
         if (elementName.equalsIgnoreCase("argument")) argCheck = true;
@@ -87,10 +86,10 @@ public class XMLParser extends DefaultHandler
  *
  *
  *
- *@param s
- *@param s1
+ *@param s the Namespace URI, or the empty string if the element has no Namespace URI 
+ *@param s1 the local name (without prefix), or the empty string if Namespace 
  *@param element the name of the element being used in the 
- *@throws SAXEException
+ *@throws SAXException any SAX exception, possibly wrapping another exception
  */
 	@Override
     public void endElement(String s, String s1, String element) throws SAXException {
@@ -152,12 +151,9 @@ public class XMLParser extends DefaultHandler
 			OptionalArgument argOpt = new OptionalArgument(tmpName, optArgXML);
 			OptionalArgument arg = new OptionalArgument(tmpName);
 
-			
 			if (element.equalsIgnoreCase("numValues")) {
 				argPars.argumentList.get(argPars.argumentList.indexOf(arg)).setNumberValues(Integer.parseInt(tmpValue));
 			}
-			
-			
 			
 			if (element.equalsIgnoreCase("required")) {
 				if(tmpValue.equals("true"))	
@@ -209,10 +205,10 @@ public class XMLParser extends DefaultHandler
  *
  *
  *
- *@param ac
- *@param i
- *@param j
- *@throws SAXException
+ *@param ac the characters from the XML document
+ *@param i the start position in the array
+ *@param j the number of characters to read from the array
+ *@throws SAXException any SAX exception, possibly wrapping another exception
  */
 	@Override
     public void characters(char[] ac, int i, int j) throws SAXException {

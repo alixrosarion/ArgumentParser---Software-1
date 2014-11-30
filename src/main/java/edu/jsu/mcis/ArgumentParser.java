@@ -81,7 +81,7 @@ public class ArgumentParser
 	}
 	
 /**
- *Returns the values that the argument is restricted to using.
+ *@param title the title of the argument
  *
  *@return the values the argument is restricted to
  */	
@@ -191,7 +191,7 @@ public class ArgumentParser
 /**
  *
  *
- *@param args 
+ *@param args the value(s) of the referenced optional argument or the next positional argument
  *@throws IncorrectTypeException if the data type does not match the data type of the argument
  *@throws IncorrectValueException if the value does not match the restricted values
  */
@@ -272,6 +272,7 @@ public class ArgumentParser
  *
  *
  *@param title the name of the argument
+ *@param <T> the type of the argument being referenced
  *@return the value held by argument
  */
     public <T> T getValue(String title)
@@ -299,8 +300,8 @@ public class ArgumentParser
 /**
  *
  *
- *@param title the name of the argument
- *@return i 
+ *@param title the name of the optional argument
+ *@return the corresponding optional argument 
  */
     public String getOptionalArgument(String title)
     {
@@ -547,7 +548,7 @@ public class ArgumentParser
  *
  *
  *
- *@return the 
+ *@return the XML notation of the argument list
  */
     public String getOutput()
     {
