@@ -27,7 +27,7 @@ public class XMLParserTest
 		//assertEquals(2.0f, tester.getValue("length"));
 	}
 	
-	/*@Test
+	@Test
 	public void testXMLHelp()
 	{
 		ArgumentParser tester = XMLParser.createArgumentParser("arguments.xml");
@@ -85,5 +85,5 @@ public class XMLParserTest
 		e.printStackTrace();
 		}
 	}
-*/
+
 }

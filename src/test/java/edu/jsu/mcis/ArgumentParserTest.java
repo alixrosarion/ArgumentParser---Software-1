@@ -13,7 +13,7 @@ public class ArgumentParserTest {
 		tester = new ArgumentParser();
 	}
 
-	/*@Test
+	@Test
 	public void testSetRestrictedArgumentValues()
 	{
 		tester.addProgram("Volcalc", "Calculates some volume");
@@ -96,16 +96,20 @@ public class ArgumentParserTest {
 			tester.addProgram("Volcalc", "Calculates some volume");
 			tester.addArgument("length", CommandLineArgument.DataType.Integer);
 			tester.addOptionalArgument("type");
-			tester.setRestricted("length", 7, 5, 2);
+			//tester.setRestricted("length", 7, 5, 2);
 			tester.setRestricted("type", "sphere", "pyramid", "box");
 			tester.setNumberValues("type", 1);
 			
 			tester.parse("7 --type jon");
+			
 			assertTrue(false);
 		}catch(NotEnoughArgValuesException  | TooManyArgValuesException | IncorrectValueException | IncorrectTypeException e)
 		{
+			System.out.println(tester.getValue("length"));
 			assertEquals("edu.jsu.mcis.IncorrectValueException: Volcalc.java: error: argument type invalid string value: jon", e.toString());
 		}
+		
+		
 	}
 	
 	@Test
@@ -266,7 +270,8 @@ public class ArgumentParserTest {
 		tester.addArgument("length", CommandLineArgument.DataType.Boolean);
 		try
 		{
-			tester.parse("something");
+			tester.parse("word");
+			System.out.println(tester.getValue("length"));
 			assertTrue(false);
 		}catch(NotEnoughArgValuesException  | TooManyArgValuesException | IncorrectValueException | IncorrectTypeException e){
 		}
@@ -338,8 +343,7 @@ public class ArgumentParserTest {
 	
 	@Test
 	public void testOptionalArgumentAsFlag() {
-		tester.addOptionalArgument("type", CommandLineArgument.DataType.String);
-		boolean flag = true;
+		tester.addOptionalArgument("type", CommandLineArgument.DataType.Boolean);
 		try {
 			tester.parse("--type");
 			assertEquals(true, tester.getValue("type"));
@@ -478,5 +482,5 @@ public class ArgumentParserTest {
 		tester.setDefaultValue("type", "box");
 		assertEquals("box", tester.getValue("type"));
 	}
-	*/
+	
 }

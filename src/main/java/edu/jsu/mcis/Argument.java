@@ -29,53 +29,9 @@ public class Argument extends CommandLineArgument
 		numberValues = 1;
 	}
 	
-/**
- *
- *
- *@param o The value to be set
- *@throws NumberFormatException Improper Data type
- *@throws IncorrectValueException The value is not within the restricted settings
- */
-	public void setValue(Object o) throws NumberFormatException, IncorrectValueException
-	{
-			if(type == CommandLineArgument.DataType.Integer)
-			{
-					value =Integer.parseInt(o.toString());
-					if(restrictedValues.size() != 0 && !restrictedValues.contains(value))
-						throw new IncorrectValueException();
-			}
-			else if(type == CommandLineArgument.DataType.Boolean)
-			{
-				if((o.toString().equals("true")) || o.toString().equals("false"))
-					value =Boolean.parseBoolean(o.toString());
-			    else 
-					throw new NumberFormatException();
-			}
-			else if( type == CommandLineArgument.DataType.Float)
-			{
-				value =Float.parseFloat(o.toString());
-				System.out.println(value);
-				System.out.println(restrictedValues.contains(value));
-				if(restrictedValues.size() != 0 && !restrictedValues.contains(value))
-						throw new IncorrectValueException();
-			}
-			else
-			{
-				value = o.toString();
-				if(restrictedValues.size() != 0 && !restrictedValues.contains(value))
-						throw new IncorrectValueException();
-			}
-	}
+
 	
-/**
- *
- *
- *@return the value of the argument
- */
-	public <T> T getValue()
-	{
-		return (T) value;
-	}
+
 	
 /**
  *

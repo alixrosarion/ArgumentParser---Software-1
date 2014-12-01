@@ -3,13 +3,31 @@ import java.util.*;
 
 public abstract class CommandLineArgument {
 	protected String title;
-	protected Object value;
+	protected List <Object> values = new ArrayList<Object>();
 	protected String description;
 	protected DataType type;
 	protected int numberValues;
 	public enum DataType {Integer, Float, String, Boolean}
 	protected List <Object> restrictedValues = new ArrayList<Object>();
 	private boolean hasRestricted;
+	
+	
+/**
+ *
+ *
+ *
+ *@return the value of the argument
+ */
+	public <T> T getValue()
+	{
+		if(numberValues < 2)		return (T) values.get(0);
+		else return (T) values;
+	}	
+	
+	public List getValuesList()
+	{
+		return values;
+	}
 	
 /**
  *
@@ -116,13 +134,50 @@ public abstract class CommandLineArgument {
 		}
 		else if(type == DataType.Boolean)
 			try {
-				Boolean.parseBoolean(arg.toString());
+				
+				if(Boolean.parseBoolean(arg.toString()));
 		} catch (Exception e) {throw new IncorrectTypeException(arg.toString());
 		}
 		restrictedValues.add(arg);
 		hasRestricted = true;
 	}
 	
+/**
+ *
+ *
+ *@param o The value to be set
+ *@throws NumberFormatException Improper Data type
+ *@throws IncorrectValueException The value is not within the restricted settings
+ */
+	public void setValue(Object o) throws NumberFormatException, IncorrectValueException
+	{
+	
+		if(type == CommandLineArgument.DataType.Integer)
+		{
+				values.add(Integer.parseInt(o.toString()));
+				if(restrictedValues.size() != 0 && !restrictedValues.contains(values))
+					throw new IncorrectValueException();
+		}
+		else if(type == CommandLineArgument.DataType.Boolean)
+		{
+			if((o.toString().equals("true")) || o.toString().equals("false"))
+				values.add(Boolean.parseBoolean(o.toString()));
+			else 
+				throw new NumberFormatException();
+		}
+		else if( type == CommandLineArgument.DataType.Float)
+		{
+			values.add(Float.parseFloat(o.toString()));
+			if(restrictedValues.size() != 0 && !restrictedValues.contains(values))
+					throw new IncorrectValueException();
+		}
+		else
+		{
+			values.add(o.toString());
+			if(restrictedValues.size() != 0 && !restrictedValues.contains(values))
+					throw new IncorrectValueException();
+		}
+	}
 /**
  *
  *
@@ -146,9 +201,9 @@ public abstract class CommandLineArgument {
 	}
 	
 	abstract public String getShort();
-	abstract public <T> T getValue();
+	//abstract public <T> T getValue();
 	abstract public void setShort(String s);
-	abstract public void setValue(Object v);
+	//abstract public void setValue(Object v);
 	abstract public void setRequired();
 	abstract public boolean getRequired();
 }
