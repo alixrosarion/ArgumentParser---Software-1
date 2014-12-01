@@ -54,6 +54,8 @@ public class Argument extends CommandLineArgument
 			else if( type == CommandLineArgument.DataType.Float)
 			{
 				value =Float.parseFloat(o.toString());
+				System.out.println(value);
+				System.out.println(restrictedValues.contains(value));
 				if(restrictedValues.size() != 0 && !restrictedValues.contains(value))
 						throw new IncorrectValueException();
 			}

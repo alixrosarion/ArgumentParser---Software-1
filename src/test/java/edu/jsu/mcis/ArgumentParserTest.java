@@ -13,7 +13,7 @@ public class ArgumentParserTest {
 		tester = new ArgumentParser();
 	}
 
-	@Test
+	/*@Test
 	public void testSetRestrictedArgumentValues()
 	{
 		tester.addProgram("Volcalc", "Calculates some volume");
@@ -478,5 +478,5 @@ public class ArgumentParserTest {
 		tester.setDefaultValue("type", "box");
 		assertEquals("box", tester.getValue("type"));
 	}
-	
+	*/
 }

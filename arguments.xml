@@ -15,6 +15,7 @@
 		<name>height</name>
 		<type>float</type>
 		<description>height of the box</description>
+		<restricted>3.7,2.5,5.7,</restricted>
 	</argument>
 
 	<optionalArgument>
@@ -25,7 +26,6 @@
 		<description>Garrett is awesome!</description>
 		<default>box</default>
 		<shortName>t</shortName>
-		<restricted>3,2,5,</restricted>
 	</optionalArgument>
 	
 	<optionalArgument>
