@@ -528,6 +528,13 @@ public class ArgumentParser
             throw new TooManyArgValuesException(unmatched);
         }
     }
+
+/**
+ *It finds the next free or not used argument, and finds its number of values
+ *
+ *
+ *@return the number of values from the first not used argument
+ */
     
 	public int getNextArgumentNumberValues()
 	{

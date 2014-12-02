@@ -3,12 +3,14 @@
 		<name>length</name>
 		<type>float</type>
 		<description>length of the box</description>
+		<numValues>0</numValues>
 	</argument>
 	
 	<argument>
 		<name>width</name>
 		<type>float</type>
 		<description>width of the box</description>
+		<numValues>3</numValues>
 	</argument>
 	
 	<argument>
@@ -16,6 +18,7 @@
 		<type>float</type>
 		<description>height of the box</description>
 		<restricted>3,2,5,</restricted>
+		<numValues>0</numValues>
 	</argument>
 
 	<optionalArgument>

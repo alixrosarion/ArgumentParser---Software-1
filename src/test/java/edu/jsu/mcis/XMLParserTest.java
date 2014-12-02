@@ -7,6 +7,17 @@ public class XMLParserTest
 {
 
 	@Test
+	public void testXMLMultipleValues()
+	{
+		ArgumentParser tester = XMLParser.createArgumentParser("argumentsMultipleValues.xml");
+		try {
+			tester.parse("2 2 3 4 5");
+			assertTrue(false);
+		} catch (Exception e) { e.printStackTrace();
+		}
+	}
+
+	@Test
 	public void testXMLRequired()
 	{
 		ArgumentParser tester = XMLParser.createArgumentParser("arguments.xml");

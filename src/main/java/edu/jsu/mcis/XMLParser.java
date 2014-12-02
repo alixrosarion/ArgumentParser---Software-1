@@ -128,6 +128,10 @@ public class XMLParser extends DefaultHandler
 					else if(ch != ' ') tempStr += ch;
 				}
 			}
+			
+			if (element.equalsIgnoreCase("numValues")) {
+				argPars.argumentList.get(argPars.argumentList.indexOf(new Argument(tmpName))).setNumberValues(Integer.parseInt(tmpValue));
+			}
 		}
 		else
 		{
