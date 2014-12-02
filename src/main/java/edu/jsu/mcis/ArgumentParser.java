@@ -215,9 +215,11 @@ public class ArgumentParser
 			else //It is an Argument, let s find the index.
 				for (k =0; k<argumentList.size(); k++)
 				{
-					if (argumentList.get(k) instanceof Argument && argumentList.get(k).getValuesList().isEmpty())
+					if (argumentList.get(k) instanceof Argument && argumentList.get(k).getValue() == null)
 					{
+						System.out.println("GOOD HERE");
 						argumentList.get(k).setValue(args[0]);
+						System.out.println("WE WERE WRONG");
 						return;
 					}
 				}
@@ -464,7 +466,7 @@ public class ArgumentParser
             {
                 if(countArgValues <argumentList.size() - countOptionalArguments)
                 {
-					setValue(extra);
+                    setValue(extra);
                 }
                 else
                 {

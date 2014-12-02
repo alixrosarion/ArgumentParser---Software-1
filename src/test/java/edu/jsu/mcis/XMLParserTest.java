@@ -7,12 +7,22 @@ public class XMLParserTest
 {
 
 	@Test
+	public void testXMLRequired()
+	{
+		ArgumentParser tester = XMLParser.createArgumentParser("arguments.xml");
+		try {
+			tester.parse("2 2 5");
+			assertTrue(false);
+		} catch (Exception e) { e.printStackTrace();
+		}
+	}
+
+	@Test
 	public void testRestricted()
 	{
 		ArgumentParser tester = XMLParser.createArgumentParser("arguments.xml");
 		System.out.println(tester.checkRestricted("height"));
 		// I AM NOT TESTING SHIT IN HERE JUST STRYING TO UNDERSTAND WHY ITS NOT WORKING
-		
 	}
 	
 	@Test
@@ -20,11 +30,11 @@ public class XMLParserTest
 	{
 		ArgumentParser tester = XMLParser.createArgumentParser("arguments.xml");
 		try {
-			tester.parse("2 2 2.5 --req a");
+			tester.parse("2 2 5 --req a");
 		} catch (Exception e) { e.printStackTrace();
-			//assertTrue(false);
+			assertTrue(false);
 		}
-		//assertEquals(2.0f, tester.getValue("length"));
+		assertEquals(2.0f, tester.getValue("length"));
 	}
 	
 	@Test
@@ -38,7 +48,7 @@ public class XMLParserTest
 		}
 	}
 		
-	//@Test
+	@Test
 	public void testXMLParsingOptional()
 	{
 		ArgumentParser tester = XMLParser.createArgumentParser("arguments.xml");

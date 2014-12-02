@@ -59,6 +59,31 @@ public class OptionalArgument extends CommandLineArgument{
 		return shortName;
 	}
 	
+/**
+ *
+ *
+ *
+ *@param object The value of the optional argument
+ *@throws NumberFormatException Improper Data type
+ *@throws IncorrectValueException The value is not within the restricted settings
+ */
+	public void setValue(Object object) throws NumberFormatException, IncorrectValueException
+	{
+			value = object;
+		if(restrictedValues.size() != 0 && !restrictedValues.contains(value))
+			throw new IncorrectValueException();
+	}
+	
+/**
+ *
+ *
+ *
+ *@return the value of the argument
+ */
+	public <T> T getValue()
+	{
+		return (T) value;
+	}
 	
 /**
  *
@@ -86,7 +111,7 @@ public class OptionalArgument extends CommandLineArgument{
  *
  *
  *
- *@return a string representing the argument which includes: argument name, type,description,values and short name
+ *@return a string representing the argument which includes: argument name, type,description,value and short name
  */
 	public String toString()
 	{
@@ -95,7 +120,7 @@ public class OptionalArgument extends CommandLineArgument{
 		output += "\r\n\t\t<numValues>" + numberValues + "</numValues>";
 		output += "\r\n\t\t<type>" + type + "</type>";
 		output += "\r\n\t\t<description>" + description + "</description>";
-		output += "\r\n\t\t<value>" + values + "</value>";
+		output += "\r\n\t\t<value>" + value + "</value>";
 		output += "\r\n\t\t<shortName>" + shortName + "</shortName>\r\n\t</optionalArgument>";
 		return output;
 	}

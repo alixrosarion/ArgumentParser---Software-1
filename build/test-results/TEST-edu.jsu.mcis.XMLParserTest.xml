@@ -1,13 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="edu.jsu.mcis.XMLParserTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2014-12-01T18:00:03" hostname="ALIX" time="0.083">
+<testsuite name="edu.jsu.mcis.XMLParserTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2014-12-02T00:43:18" hostname="Sari" time="0.078">
   <properties/>
-  <testcase name="testRestricted" classname="edu.jsu.mcis.XMLParserTest" time="0.015"/>
-  <testcase name="testRequiredOptionalArguments" classname="edu.jsu.mcis.XMLParserTest" time="0.034"/>
-  <testcase name="testXMLParsingArguments" classname="edu.jsu.mcis.XMLParserTest" time="0.002"/>
-  <testcase name="testXMLParserOptionalTypes" classname="edu.jsu.mcis.XMLParserTest" time="0.032"/>
-  <testcase name="testXMLParserTypes" classname="edu.jsu.mcis.XMLParserTest" time="0.0"/>
+  <testcase name="testRestricted" classname="edu.jsu.mcis.XMLParserTest" time="0.031"/>
+  <testcase name="testRequiredOptionalArguments" classname="edu.jsu.mcis.XMLParserTest" time="0.015"/>
+  <testcase name="testXMLParsingArguments" classname="edu.jsu.mcis.XMLParserTest" time="0.0"/>
+  <testcase name="testXMLParserOptionalTypes" classname="edu.jsu.mcis.XMLParserTest" time="0.016"/>
+  <testcase name="testXMLParsingOptional" classname="edu.jsu.mcis.XMLParserTest" time="0.0"/>
+  <testcase name="testXMLParserTypes" classname="edu.jsu.mcis.XMLParserTest" time="0.016"/>
+  <testcase name="testXMLRequired" classname="edu.jsu.mcis.XMLParserTest" time="0.0"/>
   <testcase name="testXMLHelp" classname="edu.jsu.mcis.XMLParserTest" time="0.0"/>
-  <system-out><![CDATA[3.7 2.5 5.7
+  <system-out><![CDATA[3.0 2.0 5.0
+GOOD HERE
+2.0
+[]
+false
+WE WERE WRONG
+GOOD HERE
+2.0
+[]
+false
+WE WERE WRONG
+GOOD HERE
+2.0
+[]
+false
+WE WERE WRONG
+GOOD HERE
+5.0
+[3.0, 2.0, 5.0]
+true
+WE WERE WRONG
+GOOD HERE
+2.0
+[]
+false
+WE WERE WRONG
+GOOD HERE
+WE WERE WRONG
+GOOD HERE
+WE WERE WRONG
+GOOD HERE
+WE WERE WRONG
 usage: java null length width height booleanTest 
 null
 Positional Arguments:
@@ -24,6 +57,59 @@ float float		Type of shape
 
 SAXException : xml not well formed
 IO error
+GOOD HERE
+2.0
+[]
+false
+WE WERE WRONG
+GOOD HERE
+2.0
+[]
+false
+WE WERE WRONG
+GOOD HERE
+2.0
+[3.0, 2.0, 5.0]
+true
+WE WERE WRONG
+usage: java null length width height 
+null
+Positional Arguments:
+length float		length of the box
+width float		width of the box
+height float		height of the box
+
+Optional Arguments:
+help boolean		
+type string		Garrett is awesome!
+req string		tester argument
+
+GOOD HERE
+2.0
+[]
+false
+WE WERE WRONG
+GOOD HERE
+WE WERE WRONG
+GOOD HERE
+WE WERE WRONG
+GOOD HERE
+WE WERE WRONG
+GOOD HERE
+2.0
+[]
+false
+WE WERE WRONG
+GOOD HERE
+2.0
+[]
+false
+WE WERE WRONG
+GOOD HERE
+5.0
+[3.0, 2.0, 5.0]
+true
+WE WERE WRONG
 usage: java null length width height 
 null
 Positional Arguments:
@@ -38,12 +124,12 @@ req string		tester argument
 
 ]]></system-out>
   <system-err><![CDATA[edu.jsu.mcis.NotEnoughArgValuesException: the following arguments are required: req
-	at edu.jsu.mcis.ArgumentParser.parse(ArgumentParser.java:490)
-	at edu.jsu.mcis.XMLParserTest.testRequiredOptionalArguments(XMLParserTest.java:82)
+	at edu.jsu.mcis.ArgumentParser.parse(ArgumentParser.java:492)
+	at edu.jsu.mcis.XMLParserTest.testRequiredOptionalArguments(XMLParserTest.java:92)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:483)
+	at java.lang.reflect.Method.invoke(Method.java:606)
 	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
 	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
 	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
@@ -62,9 +148,9 @@ req string		tester argument
 	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassProcessor.processTestClass(JUnitTestClassProcessor.java:69)
 	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.processTestClass(SuiteTestClassProcessor.java:48)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:483)
+	at java.lang.reflect.Method.invoke(Method.java:606)
 	at org.gradle.messaging.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
 	at org.gradle.messaging.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
 	at org.gradle.messaging.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:32)
@@ -72,24 +158,23 @@ req string		tester argument
 	at com.sun.proxy.$Proxy2.processTestClass(Unknown Source)
 	at org.gradle.api.internal.tasks.testing.worker.TestWorker.processTestClass(TestWorker.java:105)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:483)
+	at java.lang.reflect.Method.invoke(Method.java:606)
 	at org.gradle.messaging.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
 	at org.gradle.messaging.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
 	at org.gradle.messaging.remote.internal.hub.MessageHub$Handler.run(MessageHub.java:355)
 	at org.gradle.internal.concurrent.DefaultExecutorFactory$StoppableExecutorImpl$1.run(DefaultExecutorFactory.java:64)
-	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
-	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
 	at java.lang.Thread.run(Thread.java:745)
-edu.jsu.mcis.IncorrectValueException: null.java: error: argument height invalid float value: 2.5
-	at edu.jsu.mcis.ArgumentParser.setValue(ArgumentParser.java:237)
-	at edu.jsu.mcis.ArgumentParser.parse(ArgumentParser.java:467)
-	at edu.jsu.mcis.XMLParserTest.testXMLParsingArguments(XMLParserTest.java:23)
+edu.jsu.mcis.NotEnoughArgValuesException: the following arguments are required: req
+	at edu.jsu.mcis.ArgumentParser.parse(ArgumentParser.java:492)
+	at edu.jsu.mcis.XMLParserTest.testXMLRequired(XMLParserTest.java:14)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:483)
+	at java.lang.reflect.Method.invoke(Method.java:606)
 	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
 	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
 	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
@@ -108,9 +193,9 @@ edu.jsu.mcis.IncorrectValueException: null.java: error: argument height invalid 
 	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassProcessor.processTestClass(JUnitTestClassProcessor.java:69)
 	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.processTestClass(SuiteTestClassProcessor.java:48)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:483)
+	at java.lang.reflect.Method.invoke(Method.java:606)
 	at org.gradle.messaging.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
 	at org.gradle.messaging.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
 	at org.gradle.messaging.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:32)
@@ -118,15 +203,15 @@ edu.jsu.mcis.IncorrectValueException: null.java: error: argument height invalid 
 	at com.sun.proxy.$Proxy2.processTestClass(Unknown Source)
 	at org.gradle.api.internal.tasks.testing.worker.TestWorker.processTestClass(TestWorker.java:105)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:483)
+	at java.lang.reflect.Method.invoke(Method.java:606)
 	at org.gradle.messaging.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
 	at org.gradle.messaging.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
 	at org.gradle.messaging.remote.internal.hub.MessageHub$Handler.run(MessageHub.java:355)
 	at org.gradle.internal.concurrent.DefaultExecutorFactory$StoppableExecutorImpl$1.run(DefaultExecutorFactory.java:64)
-	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
-	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
 	at java.lang.Thread.run(Thread.java:745)
 ]]></system-err>
 </testsuite>

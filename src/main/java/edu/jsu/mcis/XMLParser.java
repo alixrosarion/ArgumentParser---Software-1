@@ -116,6 +116,7 @@ public class XMLParser extends DefaultHandler
 			   argPars.setDescription(tmpName, tmpValue);
 			}
 			if (element.equalsIgnoreCase("restricted")) {
+				// You should just use a java.util.Scanner for this parsing problem.
 				String tempStr = "";
 				for(char ch: tmpValue.toCharArray())
 				{					

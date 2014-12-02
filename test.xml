@@ -5,7 +5,7 @@
 		<numValues>0</numValues>
 		<type>Boolean</type>
 		<description></description>
-		<value>[]</value>
+		<value>null</value>
 		<shortName>h</shortName>
 	</optionalArgument>
 	<argument>
@@ -18,7 +18,7 @@
 		<numValues>0</numValues>
 		<type>String</type>
 		<description></description>
-		<value>[]</value>
+		<value>null</value>
 		<shortName></shortName>
 	</optionalArgument>
 </arguments>
