@@ -18,8 +18,27 @@ public class ArgumentParserTest {
 	{
 		tester.setMutualGroup(1, "type", "al");
 		assertEquals("[type, al]", tester.getMutualGroup(1));
-		
 	}
+	
+	@Test
+	public void testSetInvalidGroupNumber()
+	{
+		try {
+			tester.setMutualGroup(5, "here", "there");
+		} catch (Exception e) {
+			assertEquals("edu.jsu.mcis.InvalidGroupException: Invalid group number: 5", e.toString());
+		}
+	}
+	
+	@Test
+		public void testGetInvalidGroupNumber()
+		{
+			try {
+				tester.getMutualGroup(5);
+			} catch (Exception e) {
+				assertEquals("edu.jsu.mcis.InvalidGroupException: Invalid group number: 5", e.toString());
+			}
+		}
 	
 	@Test
 	public void testMultipleValues()
@@ -197,7 +216,7 @@ public class ArgumentParserTest {
 			tester.parse("2");
 			assertTrue(false);
 		}catch(NotEnoughArgValuesException  | TooManyArgValuesException | IncorrectValueException | IncorrectTypeException e){
-				System.out.println(tester.getOutput());
+			System.out.println(tester.getOutput());
 			assertEquals("the following arguments are required: width height", tester.getUnmatched());
 		
 		}

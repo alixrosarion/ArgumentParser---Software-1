@@ -13,8 +13,8 @@ public class ArgumentParser
     private int countOptionalArguments;
     private String output;
 	private List <CommandLineArgument> requiredOptionals;
-	private List <CommandLineArgument> groupOne = new ArrayList<CommandLineArgument>();
-	private List <CommandLineArgument> groupTwo = new ArrayList<CommandLineArgument>();
+	private List <String> groupOne = new ArrayList<String>();
+	private List <String> groupTwo = new ArrayList<String>();
     
 /**
  *Class constructor.
@@ -41,12 +41,12 @@ public class ArgumentParser
 	
 	public void setMutualGroup(int num, String ... args) throws InvalidGroupException
 	{
-		String message = "" + num;
+		String message = "Invalid group number: " + num;
 		if (num == 1)
 		{
 			for (String arg : args)
 			{
-				groupOne.add(new OptionalArgument(arg));
+				groupOne.add(arg);
 			}
 		}
 		
@@ -54,7 +54,7 @@ public class ArgumentParser
 		{
 			for (String arg : args)
 			{
-				groupTwo.add(new OptionalArgument(arg));
+				groupTwo.add(arg);
 			}
 		}
 		
@@ -63,7 +63,7 @@ public class ArgumentParser
 	
 	public String getMutualGroup(int num) throws InvalidGroupException
 	{
-		String message = "" + num;
+		String message = "Invalid group number: " + num;
 		if (num == 1)
 			return groupOne.toString();
 		else if(num == 2)
@@ -246,7 +246,7 @@ public class ArgumentParser
 				}
 			}
 			else //It is an Argument, let s find the index.
-				for (k =0; k<argumentList.size(); k++)
+				for (k = 0; k < argumentList.size(); k++)
 				{
 					if (argumentList.get(k) instanceof Argument)
 					{
