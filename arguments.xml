@@ -15,7 +15,7 @@
 		<name>height</name>
 		<type>float</type>
 		<description>height of the box</description>
-		<restricted>3,2,5,</restricted>
+		<restricted>3.0,2.0,5.0,</restricted>
 	</argument>
 
 	<optionalArgument>

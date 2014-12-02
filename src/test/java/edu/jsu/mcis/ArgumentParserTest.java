@@ -18,15 +18,17 @@ public class ArgumentParserTest {
 	{
 		tester.addProgram("Volcalc", "Calculates some volume");
 		tester.addArgument("length", CommandLineArgument.DataType.Integer);
-		tester.setNumberValues("length", 3);
 		tester.addArgument("width", CommandLineArgument.DataType.Integer);
+		tester.setNumberValues("length", 3);
+		tester.setNumberValues("width", 2);
 		try {
-			tester.parse("1 2 4 7");
+			tester.parse("1 2 4 7 4");
+			assertEquals(3, tester.getNumberValues("length"));
+			assertEquals("[1, 2, 4]", tester.getValue("length"));
+			assertEquals("[7, 4]", tester.getValue("width"));
 		} catch (Exception e) {
 			assertTrue(false);
 		}
-		assertEquals(3, tester.getNumberValues("length"));
-		assertEquals("[1, 2, 4]", tester.getValue("length"));
 	}
 	
 	@Test
@@ -83,7 +85,7 @@ public class ArgumentParserTest {
 		tester.addOptionalArgument("type");
 		tester.setNumberValues("type", 1);
 		try {
-			//tester.setRestricted("type", "sphere", "pyramid");
+			tester.setRestricted("type", "sphere", "pyramid");
 			tester.parse("--type 5");
 		} catch (Exception e) {
 			assertEquals("edu.jsu.mcis.IncorrectValueException: Volcalc.java: error: argument type invalid string value: 5", e.toString());

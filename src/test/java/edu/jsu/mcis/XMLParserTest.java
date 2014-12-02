@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 
 public class XMLParserTest
 {
-/*
+
 	@Test
 	public void testXMLRequired()
 	{
@@ -21,8 +21,8 @@ public class XMLParserTest
 	public void testRestricted()
 	{
 		ArgumentParser tester = XMLParser.createArgumentParser("arguments.xml");
-		System.out.println(tester.checkRestricted("height"));
-		// I AM NOT TESTING SHIT IN HERE JUST STRYING TO UNDERSTAND WHY ITS NOT WORKING
+		assertEquals("3.0 2.0 5.0",tester.checkRestricted("height"));
+		
 	}
 	
 	@Test
@@ -95,5 +95,4 @@ public class XMLParserTest
 		e.printStackTrace();
 		}
 	}
-*/
 }
