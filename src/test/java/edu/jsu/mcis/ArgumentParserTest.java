@@ -14,6 +14,14 @@ public class ArgumentParserTest {
 	}
 
 	@Test
+	public void testMutualGroups()
+	{
+		tester.setMutualGroup(1, "type", "al");
+		assertEquals("[type, al]", tester.getMutualGroup(1));
+		
+	}
+	
+	@Test
 	public void testMultipleValues()
 	{
 		tester.addProgram("Volcalc", "Calculates some volume");
@@ -32,21 +40,21 @@ public class ArgumentParserTest {
 	}
 	
 	@Test
-	public void testSetRestrictedArgumentValues()
+	public void testaddRestrictedArgumentValues()
 	{
 		tester.addProgram("Volcalc", "Calculates some volume");
 		tester.addArgument("length", CommandLineArgument.DataType.Integer);
-		tester.setRestricted("length", 7, 5, 2);
+		tester.addRestricted("length", 7, 5, 2);
 		assertEquals("7 5 2", tester.checkRestricted("length"));
 	}
 	
 	@Test 
-	public void testSetRestrictedArgumentValuesWithInvalidType()
+	public void testaddRestrictedArgumentValuesWithInvalidType()
 	{
 		tester.addProgram("Volcalc", "Calculates some volume");
 		tester.addArgument("length", CommandLineArgument.DataType.Integer);
 		try {
-			tester.setRestricted("length", 7, 5, "box");
+			tester.addRestricted("length", 7, 5, "box");
 		} catch (Exception e) {
 			assertEquals("edu.jsu.mcis.IncorrectTypeException: Volcalc.java: error: argument length invalid integer value: box", e.toString());
 		}
@@ -57,7 +65,7 @@ public class ArgumentParserTest {
 	{
 		tester.addProgram("Volcalc", "Calculates some volume");
 		tester.addArgument("length", CommandLineArgument.DataType.Integer);
-		tester.setRestricted("length", 7, 5, 2);
+		tester.addRestricted("length", 7, 5, 2);
 		try
 		{
 			tester.parse("4");
@@ -69,23 +77,23 @@ public class ArgumentParserTest {
 	}
 	
 	@Test
-	public void testSetRestrictedOptionalArgumentValues()
+	public void testaddRestrictedOptionalArgumentValues()
 	{
 		tester.addProgram("Volcalc", "Calculates some volume");
 		tester.addOptionalArgument("type");
 		tester.setNumberValues("type", 1);
-		tester.setRestricted("type", "sphere", "pyramid", "box");
+		tester.addRestricted("type", "sphere", "pyramid", "box");
 		assertEquals("sphere pyramid box", tester.checkRestricted("type"));
 	}
 	
 	@Test 
-	public void testSetRestrictedOptionalArgumentValuesWithInvalidType()
+	public void testaddRestrictedOptionalArgumentValuesWithInvalidType()
 	{
 		tester.addProgram("Volcalc", "Calculates some volume");
 		tester.addOptionalArgument("type");
 		tester.setNumberValues("type", 1);
 		try {
-			tester.setRestricted("type", "sphere", "pyramid");
+			tester.addRestricted("type", "sphere", "pyramid");
 			tester.parse("--type 5");
 		} catch (Exception e) {
 			assertEquals("edu.jsu.mcis.IncorrectValueException: Volcalc.java: error: argument type invalid string value: 5", e.toString());
@@ -98,7 +106,7 @@ public class ArgumentParserTest {
 		tester.addProgram("Volcalc", "Calculates some volume");
 		tester.addOptionalArgument("type");
 		tester.setNumberValues("type", 1);
-		tester.setRestricted("type", "sphere", "pyramid", "box");
+		tester.addRestricted("type", "sphere", "pyramid", "box");
 		try {
 			tester.parse("--type spher");
 		} catch (Exception e) {
@@ -113,8 +121,8 @@ public class ArgumentParserTest {
 			tester.addProgram("Volcalc", "Calculates some volume");
 			tester.addArgument("length", CommandLineArgument.DataType.Integer);
 			tester.addOptionalArgument("type");
-			tester.setRestricted("length", 7, 5, 2);
-			tester.setRestricted("type", "sphere", "pyramid", "box");
+			tester.addRestricted("length", 7, 5, 2);
+			tester.addRestricted("type", "sphere", "pyramid", "box");
 			tester.setNumberValues("type", 1);
 			
 			tester.parse("7 --type jon");
@@ -438,7 +446,7 @@ public class ArgumentParserTest {
 		tester.addArgument("length", CommandLineArgument.DataType.Integer);
 		tester.setDescription("length", "the length of the box");
 		tester.addOptionalArgument("type", CommandLineArgument.DataType.String);
-		tester.writeToXMLFile("test.xml");
+		XMLParser.saveXMLFile(tester, "test.xml");
 		assertTrue(new File("test.xml").exists());
 		
 		ArgumentParser testNo = XMLParser.createArgumentParser("test.xml");

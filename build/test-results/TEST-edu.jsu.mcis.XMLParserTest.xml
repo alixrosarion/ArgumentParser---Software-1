@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="edu.jsu.mcis.XMLParserTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2014-12-02T17:42:23" hostname="Sari" time="0.047">
+<testsuite name="edu.jsu.mcis.XMLParserTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2014-12-02T20:00:34" hostname="Sari" time="0.063">
   <properties/>
-  <testcase name="testRestricted" classname="edu.jsu.mcis.XMLParserTest" time="0.0"/>
-  <testcase name="testRequiredOptionalArguments" classname="edu.jsu.mcis.XMLParserTest" time="0.016"/>
+  <testcase name="testRestricted" classname="edu.jsu.mcis.XMLParserTest" time="0.016"/>
+  <testcase name="testRequiredOptionalArguments" classname="edu.jsu.mcis.XMLParserTest" time="0.0"/>
   <testcase name="testXMLParsingArguments" classname="edu.jsu.mcis.XMLParserTest" time="0.0"/>
-  <testcase name="testXMLMultipleValues" classname="edu.jsu.mcis.XMLParserTest" time="0.0"/>
+  <testcase name="testXMLMultipleValues" classname="edu.jsu.mcis.XMLParserTest" time="0.016"/>
   <testcase name="testXMLParserOptionalTypes" classname="edu.jsu.mcis.XMLParserTest" time="0.015"/>
   <testcase name="testXMLParsingOptional" classname="edu.jsu.mcis.XMLParserTest" time="0.0"/>
-  <testcase name="testXMLParserTypes" classname="edu.jsu.mcis.XMLParserTest" time="0.0"/>
-  <testcase name="testXMLRequired" classname="edu.jsu.mcis.XMLParserTest" time="0.016"/>
+  <testcase name="testXMLParserTypes" classname="edu.jsu.mcis.XMLParserTest" time="0.016"/>
+  <testcase name="testXMLRequired" classname="edu.jsu.mcis.XMLParserTest" time="0.0"/>
   <testcase name="testXMLHelp" classname="edu.jsu.mcis.XMLParserTest" time="0.0"/>
   <system-out><![CDATA[usage: java null length width height booleanTest 
 null
@@ -52,7 +52,7 @@ req string		tester argument
 
 ]]></system-out>
   <system-err><![CDATA[edu.jsu.mcis.NotEnoughArgValuesException: the following arguments are required: req
-	at edu.jsu.mcis.ArgumentParser.parse(ArgumentParser.java:503)
+	at edu.jsu.mcis.ArgumentParser.parse(ArgumentParser.java:536)
 	at edu.jsu.mcis.XMLParserTest.testRequiredOptionalArguments(XMLParserTest.java:103)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
@@ -97,7 +97,7 @@ req string		tester argument
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
 	at java.lang.Thread.run(Thread.java:745)
 edu.jsu.mcis.NotEnoughArgValuesException: the following arguments are required: req
-	at edu.jsu.mcis.ArgumentParser.parse(ArgumentParser.java:503)
+	at edu.jsu.mcis.ArgumentParser.parse(ArgumentParser.java:536)
 	at edu.jsu.mcis.XMLParserTest.testXMLMultipleValues(XMLParserTest.java:14)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
@@ -142,7 +142,7 @@ edu.jsu.mcis.NotEnoughArgValuesException: the following arguments are required: 
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
 	at java.lang.Thread.run(Thread.java:745)
 edu.jsu.mcis.NotEnoughArgValuesException: the following arguments are required: req
-	at edu.jsu.mcis.ArgumentParser.parse(ArgumentParser.java:503)
+	at edu.jsu.mcis.ArgumentParser.parse(ArgumentParser.java:536)
 	at edu.jsu.mcis.XMLParserTest.testXMLRequired(XMLParserTest.java:25)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)

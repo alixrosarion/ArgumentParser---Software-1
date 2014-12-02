@@ -8,27 +8,4 @@
 		<value>null</value>
 		<shortName>h</shortName>
 	</optionalArgument>
-	<argument>
-		<name>length</name>
-		<type>Integer</type>
-		<description>the length of the box</description>
-	</argument>
-	<argument>
-		<name>width</name>
-		<type>Float</type>
-		<description>the width of the box</description>
-	</argument>
-	<argument>
-		<name>height</name>
-		<type>Integer</type>
-		<description>the height of the box</description>
-	</argument>
-	<optionalArgument>
-		<name>type</name>
-		<numValues>1</numValues>
-		<type>String</type>
-		<description>Shape of object to be calculated</description>
-		<value>null</value>
-		<shortName>t</shortName>
-	</optionalArgument>
 </arguments>

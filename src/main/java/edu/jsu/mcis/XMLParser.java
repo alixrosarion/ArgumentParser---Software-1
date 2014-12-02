@@ -1,6 +1,7 @@
 package edu.jsu.mcis;
 
 import java.util.*;
+import java.io.*;
 import java.io.IOException;
 import java.text.ParseException;
 
@@ -66,6 +67,24 @@ public class XMLParser extends DefaultHandler
 	{
 		return argPars;
 	}
+
+/**
+ *Takes the information of the arguments and optional arguments - title, description,
+ *number of values, and the data type - and writes it to an XML file. Automatically 
+ *generates the XML tags appropriate for each piece of data.
+ *
+ *@param filename the name of the file to write the XML code to
+ */
+    public static void saveXMLFile(ArgumentParser argPars, String filename)
+    {
+        try
+        {
+            PrintWriter file = new PrintWriter(filename);
+            file.write(argPars.getOutput());
+            file.close();
+        }catch(FileNotFoundException e){e.printStackTrace();}
+    }
+	
 	
 /**
  *
@@ -122,7 +141,7 @@ public class XMLParser extends DefaultHandler
 				{					
 					if(ch == ',')
 					{
-						argPars.setRestricted(tmpName, tempStr);
+						argPars.addRestricted(tmpName, tempStr);
 						tempStr = "";
 					}
 					else if(ch != ' ') tempStr += ch;
@@ -146,7 +165,7 @@ public class XMLParser extends DefaultHandler
 				{					
 					if(ch == ',')
 					{
-						argPars.setRestricted(tmpName, tempStr);
+						argPars.addRestricted(tmpName, tempStr);
 						tempStr = "";
 					}
 					else if(ch != ' ') tempStr += ch;

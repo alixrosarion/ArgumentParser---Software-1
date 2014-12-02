@@ -105,7 +105,7 @@ public abstract class CommandLineArgument {
  *@throws IncorrectTypeException if the data type of the argument
  *                               and of the value do not match
  */
-	public void setRestricted(Object arg) throws IncorrectTypeException
+	public void addRestricted(Object arg) throws IncorrectTypeException
 	{
 		if(type == DataType.Float)
 			try {

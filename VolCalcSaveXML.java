@@ -30,7 +30,7 @@ public class VolCalcSaveXML
 		
 		try{
 			parser.parse(read);
-			parser.writeToXMLFile("MCIS.xml");
+			XMLParser.saveXMLFile("MCIS.xml");
 		
 			try{
             int length = parser.getValue("length");

@@ -1,7 +1,6 @@
 package edu.jsu.mcis;
 
 import java.util.*;
-import java.io.*;
 
 public class ArgumentParser
 {
@@ -14,6 +13,8 @@ public class ArgumentParser
     private int countOptionalArguments;
     private String output;
 	private List <CommandLineArgument> requiredOptionals;
+	private List <CommandLineArgument> groupOne = new ArrayList<CommandLineArgument>();
+	private List <CommandLineArgument> groupTwo = new ArrayList<CommandLineArgument>();
     
 /**
  *Class constructor.
@@ -38,6 +39,38 @@ public class ArgumentParser
         return argumentList.size();
     }
 	
+	public void setMutualGroup(int num, String ... args) throws InvalidGroupException
+	{
+		String message = "" + num;
+		if (num == 1)
+		{
+			for (String arg : args)
+			{
+				groupOne.add(new OptionalArgument(arg));
+			}
+		}
+		
+		else if (num == 2)
+		{
+			for (String arg : args)
+			{
+				groupTwo.add(new OptionalArgument(arg));
+			}
+		}
+		
+		else throw new InvalidGroupException(message);
+	}
+	
+	public String getMutualGroup(int num) throws InvalidGroupException
+	{
+		String message = "" + num;
+		if (num == 1)
+			return groupOne.toString();
+		else if(num == 2)
+			return groupTwo.toString();
+		else throw new InvalidGroupException(message);
+	}
+	
 /**
  *Sets the argument to only accept a set of restricted values. Multiple values can be
  *added(separated by a comma). 
@@ -46,7 +79,7 @@ public class ArgumentParser
  *@param args The value(s) the argument is restricted to
  *@throws IncorrectTypeException If an incorrect data type is entered for the argument
  */	
-	public void setRestricted(String title, Object ... args) throws IncorrectTypeException
+	public void addRestricted(String title, Object ... args) throws IncorrectTypeException
 	{
 		int k =0;
 		incorrectType = program + ".java: error: argument ";
@@ -56,7 +89,7 @@ public class ArgumentParser
 			{
 				try {
 					Argument tmpArg = new Argument(title);
-					argumentList.get(argumentList.indexOf(tmpArg)).setRestricted(arg);
+					argumentList.get(argumentList.indexOf(tmpArg)).addRestricted(arg);
 					k = argumentList.indexOf(tmpArg);
 				} catch (Exception e) {
 					incorrectType += title +" invalid "+argumentList.get(k).getDataType().toString().toLowerCase() +
@@ -68,7 +101,7 @@ public class ArgumentParser
 			else {
 				try {
 					OptionalArgument tmpArg = new OptionalArgument(title);
-					argumentList.get(argumentList.indexOf(tmpArg)).setRestricted(arg);
+					argumentList.get(argumentList.indexOf(tmpArg)).addRestricted(arg);
 					k = argumentList.indexOf(tmpArg);
 				} catch (Exception e) {
 				incorrectType += title +" invalid "+argumentList.get(k).getDataType().toString().toLowerCase() +
@@ -596,20 +629,5 @@ public class ArgumentParser
         return output;
     }
     
-/**
- *Takes the information of the arguments and optional arguments - title, description,
- *number of values, and the data type - and writes it to an XML file. Automatically 
- *generates the XML tags appropriate for each piece of data.
- *
- *@param filename the name of the file to write the XML code to
- */
-    public void writeToXMLFile(String filename)
-    {
-        try
-        {
-            PrintWriter file = new PrintWriter(filename);
-            file.write(getOutput());
-            file.close();
-        }catch(FileNotFoundException e){e.printStackTrace();}
-    }
+
 }
