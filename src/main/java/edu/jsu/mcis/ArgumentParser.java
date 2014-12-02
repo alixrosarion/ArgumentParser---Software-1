@@ -215,12 +215,13 @@ public class ArgumentParser
 			else //It is an Argument, let s find the index.
 				for (k =0; k<argumentList.size(); k++)
 				{
-					if (argumentList.get(k) instanceof Argument && argumentList.get(k).getValue() == null)
+					if (argumentList.get(k) instanceof Argument)
 					{
-						System.out.println("GOOD HERE");
-						argumentList.get(k).setValue(args[0]);
-						System.out.println("WE WERE WRONG");
-						return;
+						if (argumentList.get(k).getValue() == null || argumentList.get(k).getNumberValues() > argumentList.get(k).getMultiplesCount())
+						{
+							argumentList.get(k).setValue(args[0]);
+							return;
+						}
 					}
 				}
 		}catch(NumberFormatException | IncorrectValueException e){
@@ -332,7 +333,10 @@ public class ArgumentParser
  */
     public int getNumberValues(String title)
     {
-        return argumentList.get(argumentList.indexOf(new OptionalArgument(title))).getNumberValues();
+		if(argumentList.contains(new Argument(title)))
+            return argumentList.get(argumentList.indexOf(new Argument(title))).getNumberValues();
+        else
+            return argumentList.get(argumentList.indexOf(new OptionalArgument(title))).getNumberValues();
     }
 
 /**
@@ -469,7 +473,12 @@ public class ArgumentParser
             {
                 if(countArgValues <argumentList.size() - countOptionalArguments)
                 {
-                    setValue(extra);
+					for (int i = 0; i<getNextArgumentNumberValues(); i++)
+					{						
+						setValue(scan.next());			
+						//else System.out.println(tempScan + " is not an accepted value!"); System.exit(1);
+					}
+                    //setValue(extra);
                 }
                 else
                 {
@@ -521,6 +530,21 @@ public class ArgumentParser
         }
     }
     
+	public int getNextArgumentNumberValues()
+	{
+		for (int k = 0 ;k < argumentList.size(); k++)
+		{
+			if (argumentList.get(k) instanceof Argument)
+			{
+				if (argumentList.get(k).getValue() == null || argumentList.get(k).getNumberValues() > argumentList.get(k).getMultiplesCount())
+				{
+					return argumentList.get(k).getNumberValues();
+				}
+			}
+		}
+		return -1;
+	}
+	
 /**
  *
  *

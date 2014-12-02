@@ -31,6 +31,8 @@ public abstract class CommandLineArgument {
 		return output;
 	}
 	
+	
+	
 /**
  *
  *
@@ -152,4 +154,5 @@ public abstract class CommandLineArgument {
 	abstract public void setValue(Object v);
 	abstract public void setRequired();
 	abstract public boolean getRequired();
+	abstract public int getMultiplesCount();
 }

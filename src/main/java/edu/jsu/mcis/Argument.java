@@ -38,39 +38,35 @@ public class Argument extends CommandLineArgument
  */
 	public void setValue(Object o) throws NumberFormatException, IncorrectValueException
 	{
-		if(numberValues == 0)
+		Object tmpValue = null;
+		System.out.println("AAAAAAAAAA");
+		if(type == CommandLineArgument.DataType.Integer)
 		{
-			if(type == CommandLineArgument.DataType.Integer)
-			{
-					value =Integer.parseInt(o.toString());
-					if(restrictedValues.size() != 0 && !restrictedValues.contains(value))
-						throw new IncorrectValueException();
-			}
-			else if(type == CommandLineArgument.DataType.Boolean)
-			{
-				if((o.toString().equals("true")) || o.toString().equals("false"))
-					value =Boolean.parseBoolean(o.toString());
-			    else 
-					throw new NumberFormatException();
-			}
-			else if( type == CommandLineArgument.DataType.Float)
-			{
-				value =Float.parseFloat(o.toString());
-				System.out.println(value);
-				System.out.println(restrictedValues);
-				System.out.println(restrictedValues.contains(value));
-				if(restrictedValues.size() != 0 && !restrictedValues.contains(value))
-						throw new IncorrectValueException();
-			}
-			else
-			{
-				value = o.toString();
-				if(restrictedValues.size() != 0 && !restrictedValues.contains(value))
-						throw new IncorrectValueException();
-			}
+				tmpValue =Integer.parseInt(o.toString());
+				if(restrictedValues.size() != 0 && !restrictedValues.contains(tmpValue))
+					throw new IncorrectValueException();
 		}
-		
-		else multipleValues.add(o);
+		else if(type == CommandLineArgument.DataType.Boolean)
+		{
+			if((o.toString().equals("true")) || o.toString().equals("false"))
+				tmpValue =Boolean.parseBoolean(o.toString());
+			else 
+				throw new NumberFormatException();
+		}
+		else if( type == CommandLineArgument.DataType.Float)
+		{
+			tmpValue =Float.parseFloat(o.toString());
+			if(restrictedValues.size() != 0 && !restrictedValues.contains(tmpValue))
+					throw new IncorrectValueException();
+		}
+		else
+		{
+			tmpValue = o.toString();
+			if(restrictedValues.size() != 0 && !restrictedValues.contains(tmpValue))
+					throw new IncorrectValueException();
+		}
+		if (numberValues ==0)	value = tmpValue;
+		else multipleValues.add(tmpValue);
 	}
 	
 /**
@@ -81,7 +77,12 @@ public class Argument extends CommandLineArgument
 	public <T> T getValue()
 	{
 		if(numberValues == 0)	return (T) value;
-		else return (T) multipleValues;
+		else return (T) multipleValues.toString();
+	}
+	
+	public int getMultiplesCount()
+	{
+		return multipleValues.size();
 	}
 	
 /**

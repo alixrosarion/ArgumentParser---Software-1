@@ -48,6 +48,11 @@ public class OptionalArgument extends CommandLineArgument{
 		shortName = string;
 	}
 	
+	public int getMultiplesCount()
+	{
+		return multipleValues.size();
+	}
+	
 /**
  *
  *

@@ -24,6 +24,9 @@ public class ArgumentParserTest {
 		} catch (Exception e) {
 			assertTrue(false);
 		}
+		System.out.println(tester.getNumberValues("length"));
+		System.out.println(tester.getValue("length"));
+		assertEquals(1, tester.getNumberValues("length"));
 		assertEquals("[1]", tester.getValue("length"));
 	}
 	
