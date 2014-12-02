@@ -39,7 +39,6 @@ public class Argument extends CommandLineArgument
 	public void setValue(Object o) throws NumberFormatException, IncorrectValueException
 	{
 		Object tmpValue = null;
-		System.out.println("AAAAAAAAAA");
 		if(type == CommandLineArgument.DataType.Integer)
 		{
 				tmpValue =Integer.parseInt(o.toString());

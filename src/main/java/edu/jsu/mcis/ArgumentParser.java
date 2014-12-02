@@ -473,12 +473,11 @@ public class ArgumentParser
             {
                 if(countArgValues <argumentList.size() - countOptionalArguments)
                 {
+					setValue(extra);
 					for (int i = 0; i<getNextArgumentNumberValues(); i++)
 					{						
 						setValue(scan.next());			
-						//else System.out.println(tempScan + " is not an accepted value!"); System.exit(1);
 					}
-                    //setValue(extra);
                 }
                 else
                 {
@@ -542,7 +541,7 @@ public class ArgumentParser
 				}
 			}
 		}
-		return -1;
+		return 0;
 	}
 	
 /**

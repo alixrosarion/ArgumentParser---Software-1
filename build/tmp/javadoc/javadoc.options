@@ -1,0 +1,13 @@
+-d 'C:\\Users\\Alix\\Documents\\jsu-mcis-cs310\\GroupA\\build\\docs\\javadoc'
+-doctitle 'GroupA 1.0 API'
+-quiet 
+-windowtitle 'GroupA 1.0 API'
+'C:\\Users\\Alix\\Documents\\jsu-mcis-cs310\\GroupA\\src\\main\\java\\edu\\jsu\\mcis\\Argument.java'
+'C:\\Users\\Alix\\Documents\\jsu-mcis-cs310\\GroupA\\src\\main\\java\\edu\\jsu\\mcis\\ArgumentParser.java'
+'C:\\Users\\Alix\\Documents\\jsu-mcis-cs310\\GroupA\\src\\main\\java\\edu\\jsu\\mcis\\CommandLineArgument.java'
+'C:\\Users\\Alix\\Documents\\jsu-mcis-cs310\\GroupA\\src\\main\\java\\edu\\jsu\\mcis\\IncorrectTypeException.java'
+'C:\\Users\\Alix\\Documents\\jsu-mcis-cs310\\GroupA\\src\\main\\java\\edu\\jsu\\mcis\\IncorrectValueException.java'
+'C:\\Users\\Alix\\Documents\\jsu-mcis-cs310\\GroupA\\src\\main\\java\\edu\\jsu\\mcis\\NotEnoughArgValuesException.java'
+'C:\\Users\\Alix\\Documents\\jsu-mcis-cs310\\GroupA\\src\\main\\java\\edu\\jsu\\mcis\\OptionalArgument.java'
+'C:\\Users\\Alix\\Documents\\jsu-mcis-cs310\\GroupA\\src\\main\\java\\edu\\jsu\\mcis\\TooManyArgValuesException.java'
+'C:\\Users\\Alix\\Documents\\jsu-mcis-cs310\\GroupA\\src\\main\\java\\edu\\jsu\\mcis\\XMLParser.java'

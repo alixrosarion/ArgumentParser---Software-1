@@ -18,16 +18,15 @@ public class ArgumentParserTest {
 	{
 		tester.addProgram("Volcalc", "Calculates some volume");
 		tester.addArgument("length", CommandLineArgument.DataType.Integer);
-		tester.setNumberValues("length", 1);
+		tester.setNumberValues("length", 3);
+		tester.addArgument("width", CommandLineArgument.DataType.Integer);
 		try {
-			tester.parse("1");
+			tester.parse("1 2 4 7");
 		} catch (Exception e) {
 			assertTrue(false);
 		}
-		System.out.println(tester.getNumberValues("length"));
-		System.out.println(tester.getValue("length"));
-		assertEquals(1, tester.getNumberValues("length"));
-		assertEquals("[1]", tester.getValue("length"));
+		assertEquals(3, tester.getNumberValues("length"));
+		assertEquals("[1, 2, 4]", tester.getValue("length"));
 	}
 	
 	@Test
