@@ -10,6 +10,7 @@ public abstract class CommandLineArgument {
 	public enum DataType {Integer, Float, String, Boolean}
 	protected List <Object> restrictedValues = new ArrayList<Object>();
 	private boolean hasRestricted;
+	protected List <Object> multipleValues = new ArrayList<Object>();
 	
 /**
  *

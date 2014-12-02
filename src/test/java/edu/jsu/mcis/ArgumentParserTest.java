@@ -12,7 +12,21 @@ public class ArgumentParserTest {
 	{
 		tester = new ArgumentParser();
 	}
-/*
+
+	@Test
+	public void testMultipleValues()
+	{
+		tester.addProgram("Volcalc", "Calculates some volume");
+		tester.addArgument("length", CommandLineArgument.DataType.Integer);
+		tester.setNumberValues("length", 1);
+		try {
+			tester.parse("1");
+		} catch (Exception e) {
+			assertTrue(false);
+		}
+		assertEquals("[1]", tester.getValue("length"));
+	}
+	
 	@Test
 	public void testSetRestrictedArgumentValues()
 	{
@@ -27,7 +41,6 @@ public class ArgumentParserTest {
 	{
 		tester.addProgram("Volcalc", "Calculates some volume");
 		tester.addArgument("length", CommandLineArgument.DataType.Integer);
-		
 		try {
 			tester.setRestricted("length", 7, 5, "box");
 		} catch (Exception e) {
@@ -478,5 +491,5 @@ public class ArgumentParserTest {
 		tester.setDefaultValue("type", "box");
 		assertEquals("box", tester.getValue("type"));
 	}
-	*/
+	
 }

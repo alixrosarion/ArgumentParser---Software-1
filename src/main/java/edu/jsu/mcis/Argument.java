@@ -12,7 +12,7 @@ public class Argument extends CommandLineArgument
 		this.title = title;
 		type =	CommandLineArgument.DataType.String;
 		description = "";
-		numberValues = 1;
+		numberValues = 0;
 	}
 	
 /**
@@ -26,7 +26,7 @@ public class Argument extends CommandLineArgument
 		this.title = title;
 		this.type = type;
 		description = "";
-		numberValues = 1;
+		numberValues = 0;
 	}
 	
 /**
@@ -38,6 +38,8 @@ public class Argument extends CommandLineArgument
  */
 	public void setValue(Object o) throws NumberFormatException, IncorrectValueException
 	{
+		if(numberValues == 0)
+		{
 			if(type == CommandLineArgument.DataType.Integer)
 			{
 					value =Integer.parseInt(o.toString());
@@ -66,6 +68,9 @@ public class Argument extends CommandLineArgument
 				if(restrictedValues.size() != 0 && !restrictedValues.contains(value))
 						throw new IncorrectValueException();
 			}
+		}
+		
+		else multipleValues.add(o);
 	}
 	
 /**
@@ -75,7 +80,8 @@ public class Argument extends CommandLineArgument
  */
 	public <T> T getValue()
 	{
-		return (T) value;
+		if(numberValues == 0)	return (T) value;
+		else return (T) multipleValues;
 	}
 	
 /**

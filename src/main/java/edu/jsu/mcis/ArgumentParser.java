@@ -318,7 +318,10 @@ public class ArgumentParser
  */
     public void setNumberValues(String title, int number)
     {
-        argumentList.get(argumentList.indexOf(new OptionalArgument(title))).setNumberValues(number);
+		if(argumentList.contains(new Argument(title)))
+            argumentList.get(argumentList.indexOf(new Argument(title))).setNumberValues(number);
+        else
+            argumentList.get(argumentList.indexOf(new OptionalArgument(title))).setNumberValues(number);
     }
     
 /**
