@@ -4,6 +4,7 @@ public class Argument extends CommandLineArgument
 {	
 /**
  *Class constructor.
+ *Constructs an argument with the default data type set as string.
  *
  *@param title The title of the positional argument
  */
@@ -16,10 +17,10 @@ public class Argument extends CommandLineArgument
 	}
 	
 /**
+ *Class constructor.
  *
- *
- *@param title The title of the argument
- *@param type The Data type of the argument
+ *@param title - the title of the argument
+ *@param type - the Data type of the argument
  */
 	public Argument(String title, CommandLineArgument.DataType type)
 	{
@@ -30,11 +31,11 @@ public class Argument extends CommandLineArgument
 	}
 	
 /**
+ *Sets the value of an argument.
  *
- *
- *@param o The value to be set
- *@throws NumberFormatException Improper Data type
- *@throws IncorrectValueException The value is not within the restricted settings
+ *@param o - the value to be set
+ *@throws NumberFormatException - improper data type
+ *@throws IncorrectValueException - the value is not within the restricted settings
  */
 	public void setValue(Object o) throws NumberFormatException, IncorrectValueException
 	{
@@ -69,7 +70,7 @@ public class Argument extends CommandLineArgument
 	}
 	
 /**
- *
+ *Returns the value of an argument.
  *
  *@return the value of the argument
  */
@@ -85,6 +86,7 @@ public class Argument extends CommandLineArgument
 	}
 	
 /**
+ *Returns the title of the argument.
  *
  *@return the title of the argument
  */
@@ -94,7 +96,7 @@ public class Argument extends CommandLineArgument
 	}
 	
 /**
- *
+ *Returns the string representation of an argument for use in XML formatting.
  *
  *
  *@return a string representing the argument which includes: argument name, type, and description.
@@ -110,10 +112,10 @@ public class Argument extends CommandLineArgument
 	}
 	
 /**
+ *Returns an empty string.
  *
  *
- *
- *@return nothing: positional arguments do not have a short
+ *@return nothing: positional arguments do not have a shorthand name
  */
 	public String getShort()
 	{
@@ -121,9 +123,9 @@ public class Argument extends CommandLineArgument
 	}
 
 /**
+ *Returns whether or not two arguments are the same.
  *
- *
- *
+ *@param o - the argument that is being compared
  *@return <code>true</code>if two arguments are equivalent
  */
 	public boolean equals(Object o)
@@ -148,10 +150,10 @@ public class Argument extends CommandLineArgument
     }
 
 /**
+ *Returns true since all positional arguments are required.
  *
  *
- *
- *@return <code>true</code>If the positional argument is required or not.
+ *@return <code>true</code> if the positional argument is required or not.
  */
 	public boolean getRequired()
 	{

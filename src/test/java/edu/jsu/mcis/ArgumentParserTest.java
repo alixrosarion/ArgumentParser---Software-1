@@ -588,8 +588,8 @@ public class ArgumentParserTest {
 		tester.addOptionalArgument("verbose");
 		tester.addOptionalArgument("quiet");
 		tester.addOptionalArgument("type");
-		tester.addOptionalArgument("what");		
-			tester.parse("--quiet --help");
+		tester.addOptionalArgument("what");	
+		tester.parse("--quiet --help");
 		} catch (NotEnoughArgValuesException  | TooManyArgValuesException | IncorrectValueException | IncorrectTypeException | InvalidGroupException e) {
 			assertTrue(false);		
 		}
@@ -604,11 +604,30 @@ public class ArgumentParserTest {
 		
 		tester.addArgument("length", CommandLineArgument.DataType.Integer);
 		tester.addOptionalArgument("type");
-		tester.addOptionalArgument("what");		
-			tester.parse("--quiet 7");
-			assertTrue(false);
+		tester.addOptionalArgument("what");	
+		tester.parse("--quiet 7");
+		assertTrue(false);
 		} catch (NotEnoughArgValuesException  | TooManyArgValuesException | IncorrectValueException | IncorrectTypeException | InvalidGroupException e) {
 			assertEquals("edu.jsu.mcis.IncorrectValueException: quiet is not a valid argument.", e.toString());
+		}
+	}
+	
+	@Test
+	public void testAddingMutallyExclusiveAtDifferentTimes()
+	{
+		try{
+		tester.setMutualGroup(1, "type");
+		tester.setMutualGroup(2, "what", "quiet");
+		tester.setMutualGroup(1, "verbose");
+		
+		tester.addOptionalArgument("verbose");
+		tester.addOptionalArgument("quiet");
+		tester.addOptionalArgument("type");
+		tester.addOptionalArgument("what");
+		tester.parse("--quiet");
+		assertEquals("[type, verbose]", tester.getMutualGroup(1));
+		} catch (NotEnoughArgValuesException  | TooManyArgValuesException | IncorrectValueException | IncorrectTypeException | InvalidGroupException e) {
+			assertTrue(false);		
 		}
 	}
 	

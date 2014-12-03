@@ -13,7 +13,7 @@ public abstract class CommandLineArgument {
 	protected List <Object> multipleValues = new ArrayList<Object>();
 	
 /**
- *
+ *Returns the values an argument is restricted to having.
  *
  *
  *@return the restricted values associated with an argument
@@ -34,7 +34,7 @@ public abstract class CommandLineArgument {
 	
 	
 /**
- *
+ *Returns whether or not the argument has restricted values.
  *
  *
  *@return if the argument has restricted values or no restricted values (true/false)
@@ -45,7 +45,7 @@ public abstract class CommandLineArgument {
 	}
 	
 /**
- *
+ *Returns the title of the argument.
  *
  *
  *@return the title of the argument
@@ -55,10 +55,10 @@ public abstract class CommandLineArgument {
 	}
 	
 /**
+ *Sets the description of an argument.
  *
  *
- *
- *@param d the description of the argument
+ *@param d - the description of the argument
  */
 	public void setDescription(String d)
 	{
@@ -66,10 +66,11 @@ public abstract class CommandLineArgument {
 	}
 	
 /**
+ *Sets the data type of an argument.
+ *<p>
+ *Accepted Data Types: Boolean, Float, String, Integer
  *
- *
- *
- *@param t the data type of the argument
+ *@param t - the data type of the argument
  */
 	public void setDataType(DataType t)
 	{
@@ -77,7 +78,7 @@ public abstract class CommandLineArgument {
 	}
 	
 /**
- *
+ *Returns the description of the argument
  *
  *
  *@return the description of the argument
@@ -88,7 +89,7 @@ public abstract class CommandLineArgument {
 	}
 	
 /**
- *
+ *Returns the data type of the argument
  *
  *
  *@return the data type of the argument
@@ -99,10 +100,10 @@ public abstract class CommandLineArgument {
 	}
 	
 /**
+ *Adds the values an argument is restricted to.
  *
- *
- *@param arg the value the argument is restricted to
- *@throws IncorrectTypeException if the data type of the argument
+ *@param arg - the value the argument is restricted to
+ *@throws IncorrectTypeException - if the data type of the argument
  *                               and of the value do not match
  */
 	public void addRestricted(Object arg) throws IncorrectTypeException
@@ -127,11 +128,11 @@ public abstract class CommandLineArgument {
 	}
 	
 /**
+ *Sets the value of an argument.
  *
- *
- *@param o The value to be set
- *@throws NumberFormatException Improper Data type
- *@throws IncorrectValueException The value is not within the restricted settings
+ *@param o - the value to be set
+ *@throws NumberFormatException - improper data type
+ *@throws IncorrectValueException - the value is not within the restricted settings
  */
 	public void setValue(Object o) throws NumberFormatException, IncorrectValueException
 	{
@@ -163,10 +164,10 @@ public abstract class CommandLineArgument {
 		}
 	}
 /**
+ *Sets the number of values an argument has.
  *
  *
- *
- *@param number the number of values the argument can hold
+ *@param number - the number of values the argument can hold
  */
 	public void setNumberValues(int number)
 	{
@@ -174,7 +175,7 @@ public abstract class CommandLineArgument {
 	}
 	
 /**
- *
+ *Returns the number of values an argument has
  *
  *
  *@return the number of values the argument can hold

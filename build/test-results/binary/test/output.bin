@@ -1,88 +1,0 @@
-*usage: java VolCalc length width height 
-Calculate the volume of a box
-Positional Arguments:
->length integer & restricted to: 3 4 5		the length of the box
-#width float		the width of the box
-%height float		the height of the box
-
-Optional Arguments:
---help -h boolean		
-T--type -t string required & restricted to: box pyramid mutual exclusive group: 1		
-+--what string mutual exclusive group: 2		
-/--verbose boolean mutual exclusive group: 1		
----quiet boolean mutual exclusive group: 2		
-
-*usage: java Volcalc length width height 
-Calculates some volume
-Positional Arguments:
-length string		
-width string		
-height string		
-
-Optional Arguments:
---help -h boolean		
---type string		
---actor string		
-
-*usage: java VolCalc length width height 
-Calculate the volume of a box
-Positional Arguments:
-'length integer		the length of the box
-#width float		the width of the box
-%height float		the height of the box
-
-Optional Arguments:
---help -h boolean		
-
-*usage: java Volcalc 
-*Calculates some volume
-*Positional Arguments:
-*
-*Optional Arguments:
-*--help -h boolean		
-*.--verbose string mutual exclusive group: 1		
-*,--quiet string mutual exclusive group: 2		
-*+--type string mutual exclusive group: 1		
-*+--what string mutual exclusive group: 2		
-*
-<@3usage: java null length width height booleanTest 
-<@null
-<@Positional Arguments:
-<@!length float		length of the box
-<@ width string		width of the box
-<@"height string		height of the box
-<@(booleanTest boolean		height of the box
-<@
-<@Optional Arguments:
-<@--help -h boolean		
-<@!--type -t string		Type of shape
-<@ --int -t string		Type of shape
-<@!--float -t float		Type of shape
-<@
-<@$SAXException : xml not well formed
-<@
-IO error
-<A'usage: java null length width height 
-<Anull
-<APositional Arguments:
-<A!length float		length of the box
-<Awidth float		width of the box
-<A>height float & restricted to: 3.0 2.0 5.0		height of the box
-<A
-<AOptional Arguments:
-<A--help -h boolean		
-<A'--type -t string		Garrett is awesome!
-<A+--req -r string required		tester argument
-<A
-<D'usage: java null length width height 
-<Dnull
-<DPositional Arguments:
-<D!length float		length of the box
-<Dwidth float		width of the box
-<D>height float & restricted to: 3.0 2.0 5.0		height of the box
-<D
-<DOptional Arguments:
-<D--help -h boolean		
-<D'--type -t string		Garrett is awesome!
-<D+--req -r string required		tester argument
-<D

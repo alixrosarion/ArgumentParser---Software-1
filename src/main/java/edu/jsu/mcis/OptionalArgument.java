@@ -6,10 +6,11 @@ public class OptionalArgument extends CommandLineArgument{
 	private boolean required;
 	
 /**
+ *Class constructor.
+ *Creates an optional argument with the default value set to string, 
+required set to false, and number of values set to 0.
  *
- *
- *
- *@param title The title of the optional argument
+ *@param title - the title of the optional argument
  */
 	public OptionalArgument(String title)
 	{
@@ -22,10 +23,11 @@ public class OptionalArgument extends CommandLineArgument{
 	}
 	
 /**
+ *Class constructor.
+ *Creates an argument with the title and data type passed in.
  *
- *
- *@param title The title of the optional argument
- *@param type The type of the optional argument
+ *@param title - the title of the optional argument
+ *@param type - the type of the optional argument
  */
 	public OptionalArgument(String title, CommandLineArgument.DataType type)
 	{
@@ -38,26 +40,32 @@ public class OptionalArgument extends CommandLineArgument{
 	}
 	
 /**
+ *Sets the shorthand name of the optional argument.
  *
  *
- *
- *@param string The short name of the optinal argument
+ *@param string - the short name of the optinal argument
  */
 	public void setShort(String string)
 	{
 		shortName = string;
 	}
 	
+/**
+ *Returns the number of multiple values an optional argument has.
+ *
+ *
+ *@return the size of the array with multiple values
+ */	
 	public int getMultiplesCount()
 	{
 		return multipleValues.size();
 	}
 	
 /**
+ *Returns the shorthand name of an optional argument.
  *
  *
- *
- *@return  The short name of the optional argument
+ *@return  the short name of the optional argument
  */
 	public String getShort()
 	{
@@ -65,12 +73,12 @@ public class OptionalArgument extends CommandLineArgument{
 	}
 	
 /**
+ *Sets the value of the optional argument.
  *
  *
- *
- *@param object The value of the optional argument
- *@throws NumberFormatException Improper Data type
- *@throws IncorrectValueException The value is not within the restricted settings
+ *@param object - the value of the optional argument
+ *@throws NumberFormatException - improper data type
+ *@throws IncorrectValueException - the value is not within the restricted settings
  */
 	public void setValue(Object object) throws NumberFormatException, IncorrectValueException
 	{
@@ -80,7 +88,7 @@ public class OptionalArgument extends CommandLineArgument{
 	}
 	
 /**
- *
+ *Returns the value of the optional argument.
  *
  *
  *@return the value of the argument
@@ -91,7 +99,7 @@ public class OptionalArgument extends CommandLineArgument{
 	}
 	
 /**
- *
+ *Sets the optional argument as required.
  *
  *
  *
@@ -102,7 +110,7 @@ public class OptionalArgument extends CommandLineArgument{
 	}
 	
 /**
- *
+ *Returns whether or not the optional argument is required.
  *
  *
  *@return <code>true</code>If the positional argument is required or not.
@@ -113,7 +121,7 @@ public class OptionalArgument extends CommandLineArgument{
 	}
 
 /**
- *
+ *Returns the string representation of an optional argument for use in XML formatting.
  *
  *
  *@return a string representing the argument which includes: argument name, type,description,value and short name
@@ -131,9 +139,9 @@ public class OptionalArgument extends CommandLineArgument{
 	}
 
 /**
+ *Returns whether or not two optional arguments are the same.
  *
- *
- *
+ *@param o - the argument that is being compared
  *@return true if the title of the optional argument is equal to the
  */
 	public boolean equals(Object o)
