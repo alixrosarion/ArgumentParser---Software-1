@@ -13,7 +13,7 @@ public class XMLParserTest
 		try {
 			tester.parse("2 2 3 4 5");
 			assertTrue(false);
-		} catch (Exception e) { e.printStackTrace();
+		} catch (Exception e) { //e.printStackTrace();
 		}
 	}
 
@@ -24,7 +24,7 @@ public class XMLParserTest
 		try {
 			tester.parse("2 2 5");
 			assertTrue(false);
-		} catch (Exception e) { e.printStackTrace();
+		} catch (Exception e) { //e.printStackTrace();
 		}
 	}
 
@@ -42,7 +42,7 @@ public class XMLParserTest
 		ArgumentParser tester = XMLParser.createArgumentParser("arguments.xml");
 		try {
 			tester.parse("2 2 5 --req a");
-		} catch (Exception e) { e.printStackTrace();
+		} catch (Exception e) { //e.printStackTrace();
 			assertTrue(false);
 		}
 		assertEquals(2.0f, tester.getValue("length"));
@@ -65,7 +65,7 @@ public class XMLParserTest
 		ArgumentParser tester = XMLParser.createArgumentParser("arguments.xml");
 		try {
 			tester.parse("2 2 2 -h -t sphere");
-		} catch (Exception e) { e.printStackTrace();
+		} catch (Exception e) { //e.printStackTrace();
 			assertTrue(false);
 		}
 	}
@@ -103,7 +103,7 @@ public class XMLParserTest
 			tester.parse("2");
 			assertTrue(false);
 		} catch (NotEnoughArgValuesException  | TooManyArgValuesException | IncorrectTypeException e) {
-		e.printStackTrace();
+			e.printStackTrace();
 		}
 	}
 }

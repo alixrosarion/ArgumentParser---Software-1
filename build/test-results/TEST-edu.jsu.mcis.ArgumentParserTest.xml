@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="edu.jsu.mcis.ArgumentParserTest" tests="42" skipped="0" failures="0" errors="0" timestamp="2014-12-03T02:49:17" hostname="ALIX" time="0.125">
+  <properties/>
+  <testcase name="testAddMultipleArguments" classname="edu.jsu.mcis.ArgumentParserTest" time="0.015"/>
+  <testcase name="testGetNumberValues" classname="edu.jsu.mcis.ArgumentParserTest" time="0.0"/>
+  <testcase name="testAddArgDescriptions" classname="edu.jsu.mcis.ArgumentParserTest" time="0.0"/>
+  <testcase name="testSetInvalidGroupNumber" classname="edu.jsu.mcis.ArgumentParserTest" time="0.0"/>
+  <testcase name="testCatchWrongDataTypeForBoolean" classname="edu.jsu.mcis.ArgumentParserTest" time="0.0"/>
+  <testcase name="testOutputXML" classname="edu.jsu.mcis.ArgumentParserTest" time="0.0"/>
+  <testcase name="testaddRestrictedOptionalArgumentValues" classname="edu.jsu.mcis.ArgumentParserTest" time="0.0"/>
+  <testcase name="testRequiredOptionalArguments" classname="edu.jsu.mcis.ArgumentParserTest" time="0.0"/>
+  <testcase name="testShortName" classname="edu.jsu.mcis.ArgumentParserTest" time="0.016"/>
+  <testcase name="testOptionalArgumentAsFlag" classname="edu.jsu.mcis.ArgumentParserTest" time="0.0"/>
+  <testcase name="testaddRestrictedArgumentValuesWithInvalidType" classname="edu.jsu.mcis.ArgumentParserTest" time="0.0"/>
+  <testcase name="testXMLFileWriting" classname="edu.jsu.mcis.ArgumentParserTest" time="0.031"/>
+  <testcase name="testParseRestrictedArgumentValues" classname="edu.jsu.mcis.ArgumentParserTest" time="0.0"/>
+  <testcase name="testOptionalArgumentValues" classname="edu.jsu.mcis.ArgumentParserTest" time="0.0"/>
+  <testcase name="testTooManyArgumentValues" classname="edu.jsu.mcis.ArgumentParserTest" time="0.0"/>
+  <testcase name="testSetRequiredOptionalArguments" classname="edu.jsu.mcis.ArgumentParserTest" time="0.0"/>
+  <testcase name="testReadingOptionalArgumentAtEnd" classname="edu.jsu.mcis.ArgumentParserTest" time="0.0"/>
+  <testcase name="testOptionalArgumentsWithDefaults" classname="edu.jsu.mcis.ArgumentParserTest" time="0.0"/>
+  <testcase name="testParsingRestricted" classname="edu.jsu.mcis.ArgumentParserTest" time="0.0"/>
+  <testcase name="testReadingMoreOptionalArguments" classname="edu.jsu.mcis.ArgumentParserTest" time="0.031"/>
+  <testcase name="testParseVolCalc" classname="edu.jsu.mcis.ArgumentParserTest" time="0.0"/>
+  <testcase name="testMultipleValues" classname="edu.jsu.mcis.ArgumentParserTest" time="0.0"/>
+  <testcase name="testaddRestrictedOptionalArgumentValuesWithInvalidType" classname="edu.jsu.mcis.ArgumentParserTest" time="0.0"/>
+  <testcase name="testDataTypeParsing" classname="edu.jsu.mcis.ArgumentParserTest" time="0.0"/>
+  <testcase name="testMutuallyExclusiveOptionalArguments" classname="edu.jsu.mcis.ArgumentParserTest" time="0.0"/>
+  <testcase name="testGetInvalidGroupNumber" classname="edu.jsu.mcis.ArgumentParserTest" time="0.0"/>
+  <testcase name="testCatchWrongDataTypeForInteger" classname="edu.jsu.mcis.ArgumentParserTest" time="0.0"/>
+  <testcase name="testOptionText" classname="edu.jsu.mcis.ArgumentParserTest" time="0.0"/>
+  <testcase name="testMutualGroups" classname="edu.jsu.mcis.ArgumentParserTest" time="0.0"/>
+  <testcase name="testAddProgram" classname="edu.jsu.mcis.ArgumentParserTest" time="0.0"/>
+  <testcase name="testaddRestrictedArgumentValues" classname="edu.jsu.mcis.ArgumentParserTest" time="0.0"/>
+  <testcase name="testAllArgumentStylesCombined" classname="edu.jsu.mcis.ArgumentParserTest" time="0.0"/>
+  <testcase name="testParseSingleArgument" classname="edu.jsu.mcis.ArgumentParserTest" time="0.0"/>
+  <testcase name="testParseRestrictedOptionalArgumentValues" classname="edu.jsu.mcis.ArgumentParserTest" time="0.0"/>
+  <testcase name="testOptionalArgumentDescription" classname="edu.jsu.mcis.ArgumentParserTest" time="0.0"/>
+  <testcase name="testAddArgDataTypes" classname="edu.jsu.mcis.ArgumentParserTest" time="0.0"/>
+  <testcase name="testGetOptionalArgumentDataType" classname="edu.jsu.mcis.ArgumentParserTest" time="0.0"/>
+  <testcase name="testSetDefaultValue" classname="edu.jsu.mcis.ArgumentParserTest" time="0.0"/>
+  <testcase name="testCatchWrongDataTypeForFloat" classname="edu.jsu.mcis.ArgumentParserTest" time="0.0"/>
+  <testcase name="testMutallyExclusiveAndNotMutallyExclusiveOptionalArguments" classname="edu.jsu.mcis.ArgumentParserTest" time="0.0"/>
+  <testcase name="testOptionalArgumentOverrideDefaultValue" classname="edu.jsu.mcis.ArgumentParserTest" time="0.0"/>
+  <testcase name="testNotEnoughArgumentValues" classname="edu.jsu.mcis.ArgumentParserTest" time="0.016"/>
+  <system-out><![CDATA[usage: java null length width height 
+null
+Positional Arguments:
+length string		
+width string		
+height string		
+
+Optional Arguments:
+help boolean		
+type string		
+actor string		
+
+usage: java VolCalc length width height 
+Calculate the volume of a box
+Positional Arguments:
+length integer		the length of the box
+width float		the width of the box
+height float		the height of the box
+
+Optional Arguments:
+help boolean		
+
+usage: java null 
+null
+Positional Arguments:
+
+Optional Arguments:
+help boolean		
+verbose string		
+quiet string		
+type string		
+what string		
+
+<?xml version="1.0" encoding="UTF-8"?>
+<arguments>
+	<optionalArgument>
+		<name>help</name>
+		<numValues>0</numValues>
+		<type>Boolean</type>
+		<description></description>
+		<value>null</value>
+		<shortName>h</shortName>
+	</optionalArgument>
+	<argument>
+		<name>length</name>
+		<type>String</type>
+		<description></description>
+	</argument>
+	<argument>
+		<name>width</name>
+		<type>String</type>
+		<description></description>
+	</argument>
+	<argument>
+		<name>height</name>
+		<type>String</type>
+		<description></description>
+	</argument>
+</arguments>
+<?xml version="1.0" encoding="UTF-8"?>
+<arguments>
+	<optionalArgument>
+		<name>help</name>
+		<numValues>0</numValues>
+		<type>Boolean</type>
+		<description></description>
+		<value>null</value>
+		<shortName>h</shortName>
+	</optionalArgument>
+	<argument>
+		<name>length</name>
+		<type>String</type>
+		<description></description>
+	</argument>
+	<argument>
+		<name>width</name>
+		<type>String</type>
+		<description></description>
+	</argument>
+	<argument>
+		<name>height</name>
+		<type>String</type>
+		<description></description>
+	</argument>
+</arguments>
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

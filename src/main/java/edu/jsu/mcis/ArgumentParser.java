@@ -15,6 +15,8 @@ public class ArgumentParser
 	private List <CommandLineArgument> requiredOptionals;
 	private List <String> groupOne = new ArrayList<String>();
 	private List <String> groupTwo = new ArrayList<String>();
+	private boolean firstPass;
+	private boolean mutualCheck;
     
 /**
  *Class constructor.
@@ -27,7 +29,7 @@ public class ArgumentParser
         incorrectType= "";
 		addOptionalArgument("help", CommandLineArgument.DataType.Boolean);
 		setShortOption("help", "h");
-    }
+	}
 
 /**
  *Returns the size of the argumentList
@@ -42,6 +44,7 @@ public class ArgumentParser
 	public void setMutualGroup(int num, String ... args) throws InvalidGroupException
 	{
 		String message = "Invalid group number: " + num;
+		mutualCheck = true;
 		if (num == 1)
 		{
 			for (String arg : args)
@@ -450,24 +453,25 @@ public class ArgumentParser
  *@throws IncorrectTypeException if the data type of a value does not match the data type of the argument
  *@throws IncorrectValueException if the value does not match the restricted values of an argument
  */
-    public void parse(String str) throws NotEnoughArgValuesException, TooManyArgValuesException, IncorrectTypeException, IncorrectValueException
+    public void parse(String str) throws NotEnoughArgValuesException, TooManyArgValuesException, IncorrectTypeException, IncorrectValueException, InvalidGroupException
     {
         Scanner scan = new Scanner(str);
-		String tempOpt = "";
 		String tempLine = "";
         int countArgValues = 0;
         unmatched = "unrecognised arguments: ";
+		int optionalArgumentCount = 0;
         int numberValues = 0;
         while(scan.hasNext())
         {
+			String tempOpt = "";
             String extra  = scan.next();
 			tempLine += extra;
 			
-			if (extra.equals("-h") || extra.equals("--help"))
+			if (str.contains("-h") || str.contains("--help"))
 			{	
 				System.out.println(getHelpText());
 				return;
-			}
+			}					
 			
             if (extra.startsWith("-"))
             {
@@ -475,32 +479,60 @@ public class ArgumentParser
 				{
 					if (extra.charAt(i) != '-') tempOpt += extra.charAt(i);
 				}
-				
+								
 				OptionalArgument tempArg = new OptionalArgument(tempOpt);
 				if (argumentList.contains(tempArg))
-
-				if (argumentList.contains(new OptionalArgument(tempOpt)))
-
-				{			
-	                if(argumentList.get(argumentList.indexOf(tempArg)).getNumberValues() == 0)
-	                {
-						 setValue(tempOpt);
-	                }
-	                else
-	                {
-	                    numberValues = argumentList.get(argumentList.indexOf(tempArg)).getNumberValues();
-	                    for (int i = 0; i<numberValues; i++)
-	                    {
+				{
+				
+					if (mutualCheck)
+					{
+						optionalArgumentCount++;
+						if(optionalArgumentCount == 1)
+							setPass(tempOpt);
+					}
+					if(argumentList.get(argumentList.indexOf(tempArg)).getNumberValues() == 0)
+					{
+							
+						String message = "This Group does not contain ";
+						if (mutualCheck)
+						{
+							if(firstPass)
+							{
+								if(groupOne.contains(tempOpt))
+									setValue(tempOpt);
+								else
+									throw new InvalidGroupException(message + tempOpt);
+							}
+							else
+							{
+								if(groupTwo.contains(tempOpt))
+								
+									setValue(tempOpt);
+								else
+									throw new InvalidGroupException(message + tempOpt);
+							}
+						}
+						
+						else 
+							setValue(tempOpt);
+					}
+					else
+					{
+						numberValues = argumentList.get(argumentList.indexOf(tempArg)).getNumberValues();
+						for (int i = 0; i<numberValues; i++)
+						{
 							String tempScan = scan.next();
 							if (tempArg.hasRestricted())
 							{
-								if(checkRestricted(tempOpt).contains(tempScan)) setValue(tempOpt, tempScan);
-								//else System.out.println(tempScan + " is not an accepted value!"); System.exit(1);
+								if(checkRestricted(tempOpt).contains(tempScan)) 
+									setValue(tempOpt, tempScan);
 							}
 							else setValue(tempOpt, tempScan);
-	                    }
-	                }
+						}
+					}
 				}
+				else
+					throw new IncorrectValueException(tempOpt + " is not a valid argument.");
             }
             else
             {
@@ -561,6 +593,14 @@ public class ArgumentParser
             throw new TooManyArgValuesException(unmatched);
         }
     }
+	
+	public void setPass(String title)
+	{
+		if(groupOne.contains(title))
+			firstPass = true;
+		else
+			firstPass = false;
+	}
 
 /**
  *It finds the next free or not used argument, and finds its number of values
@@ -629,5 +669,11 @@ public class ArgumentParser
         return output;
     }
     
-
+	public List getGroup(int num)
+	{
+		if(num == 1)
+			return groupOne;
+		else
+			return groupTwo;
+	}
 }

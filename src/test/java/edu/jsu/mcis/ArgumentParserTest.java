@@ -31,14 +31,14 @@ public class ArgumentParserTest {
 	}
 	
 	@Test
-		public void testGetInvalidGroupNumber()
-		{
-			try {
-				tester.getMutualGroup(5);
-			} catch (Exception e) {
-				assertEquals("edu.jsu.mcis.InvalidGroupException: Invalid group number: 5", e.toString());
-			}
+	public void testGetInvalidGroupNumber()
+	{
+		try {
+			tester.getMutualGroup(5);
+		} catch (Exception e) {
+			assertEquals("edu.jsu.mcis.InvalidGroupException: Invalid group number: 5", e.toString());
 		}
+	}
 	
 	@Test
 	public void testMultipleValues()
@@ -358,8 +358,7 @@ public class ArgumentParserTest {
 		{
 			tester.parse("7 --type sphere 5 -h 2 --actor will smith");
 		}catch(NotEnoughArgValuesException  | TooManyArgValuesException | IncorrectValueException | IncorrectTypeException e){
-		System.out.println("------------ther e ie io " + e.toString());
-		e.printStackTrace();
+		//e.printStackTrace();
 			assertTrue(false);
 		}
 	}
@@ -431,7 +430,7 @@ public class ArgumentParserTest {
 		try {
 			tester.parse("-t shape");
 		} catch (NotEnoughArgValuesException  | TooManyArgValuesException | IncorrectValueException | IncorrectTypeException e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 			assertTrue(false);
 		}
 
@@ -515,12 +514,66 @@ public class ArgumentParserTest {
 		assertTrue(tester.getRequired("type"));
 	}
 	
-	@Test
+	@Test 
 	public void testSetDefaultValue()
 	{
 		tester.addOptionalArgument("type");
 		tester.setDefaultValue("type", "box");
 		assertEquals("box", tester.getValue("type"));
+	}
+	
+	@Test
+	public void testMutuallyExclusiveOptionalArguments()
+	{
+		try{
+		tester.addOptionalArgument("verbose");
+		tester.addOptionalArgument("quiet");
+		tester.addOptionalArgument("type");
+		tester.addOptionalArgument("what");
+		
+		tester.setMutualGroup(1, "type", "verbose");
+		tester.setMutualGroup(2, "what", "quiet");
+				
+		tester.parse("--quiet --verbose");
+		assertTrue(false);
+		} catch (NotEnoughArgValuesException  | TooManyArgValuesException | IncorrectValueException | IncorrectTypeException | InvalidGroupException e) {
+			assertEquals("edu.jsu.mcis.InvalidGroupException: This Group does not contain verbose"  ,e.toString());
+			
+		}
+	}
+	
+	@Test
+	public void testMutallyExclusiveAndNotMutallyExclusiveOptionalArguments()
+	{
+		try{
+		tester.setMutualGroup(1, "type", "verbose");
+		tester.setMutualGroup(2, "what", "quiet");
+		
+		tester.addOptionalArgument("verbose");
+		tester.addOptionalArgument("quiet");
+		tester.addOptionalArgument("type");
+		tester.addOptionalArgument("what");		
+			tester.parse("--quiet --help");
+		} catch (NotEnoughArgValuesException  | TooManyArgValuesException | IncorrectValueException | IncorrectTypeException | InvalidGroupException e) {
+			assertTrue(false);		
+		}
+	}
+	
+	@Test 
+	public void testAllArgumentStylesCombined()
+	{
+		try{
+		tester.setMutualGroup(1, "type");
+		tester.setMutualGroup(2, "what");
+		
+		tester.addArgument("length", CommandLineArgument.DataType.Integer);
+		tester.addOptionalArgument("type");
+		tester.addOptionalArgument("what");		
+			tester.parse("--quiet 7");
+			assertTrue(false);
+		} catch (NotEnoughArgValuesException  | TooManyArgValuesException | IncorrectValueException | IncorrectTypeException | InvalidGroupException e) {
+			assertEquals("edu.jsu.mcis.IncorrectValueException: quiet is not a valid argument.", e.toString());
+		}
 	}
 	
 }
