@@ -1,6 +1,22 @@
 package edu.jsu.mcis;
 import java.util.*;
 
+/**
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ */
+
 public abstract class CommandLineArgument {
 	protected String title;
 	protected Object value;
@@ -13,7 +29,7 @@ public abstract class CommandLineArgument {
 	protected List <Object> multipleValues = new ArrayList<Object>();
 	
 /**
- *Returns the values an argument is restricted to having.
+ *Returns the values an argument is restricted to using.
  *
  *
  *@return the restricted values associated with an argument
@@ -78,8 +94,8 @@ public abstract class CommandLineArgument {
 	}
 	
 /**
- *Returns the description of the argument
- *
+ *Returns the description of the argument for generating
+ * and formatting the help text.
  *
  *@return the description of the argument
  */
@@ -89,8 +105,10 @@ public abstract class CommandLineArgument {
 	}
 	
 /**
- *Returns the data type of the argument
- *
+ *Returns what data type the argument can hold. This is
+ *used when the program checks to make sure the argument
+ *and value have matching data types when adding a value
+ *to the argument.
  *
  *@return the data type of the argument
  */
@@ -100,7 +118,7 @@ public abstract class CommandLineArgument {
 	}
 	
 /**
- *Adds the values an argument is restricted to.
+ *Adds a set list of values an argument is restricted to using.
  *
  *@param arg the value the argument is restricted to
  *@throws IncorrectTypeException - if the data type of the argument
@@ -128,7 +146,13 @@ public abstract class CommandLineArgument {
 	}
 	
 /**
- *Sets the value of an argument.
+ *Sets the value of an argument after checking if the data
+ *type of both the argument and the value match. If the data
+ *types do not match an error is thrown. 
+ *<p>
+ *Additionally, if the
+ *argument has a set of restricted values this method checks if 
+ *the value being added is one of those restricted values.
  *
  *@param o the value to be set
  *@throws NumberFormatException - improper data type
@@ -164,8 +188,12 @@ public abstract class CommandLineArgument {
 		}
 	}
 /**
- *Sets the number of values an argument has.
- *
+ *Sets the number of values an argument has. This is used
+ *when parsing the values to make sure the argument receives
+ *all of the values it is supposed to.
+ *<p>
+ *If the number of values is set to zero ('0') then the
+ *argument becomes a flag argument and will receive no values.
  *
  *@param number the number of values the argument can hold
  */

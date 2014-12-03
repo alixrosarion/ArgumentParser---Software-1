@@ -13,6 +13,23 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
+
+/**
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ */
+
 public class XMLParser extends DefaultHandler
 {
 	private String tmpName;
@@ -24,6 +41,7 @@ public class XMLParser extends DefaultHandler
 	private int optCount;
 	
 /**
+ *Class constructor.
  *
  *
  *@param file the XML file (with it's extension) the arguments and their data to be loaded from
@@ -36,10 +54,11 @@ public class XMLParser extends DefaultHandler
 	}
 	
 /**
- *Class constructor with a specified XML file to load the argument
+ *Class constructor that specifies the XML file to load the argument
  *data from.
  *
- *@param filename the complete name of the file to be parsed. Must be within same folder
+ *@param filename the complete name of the file with the file extension (.xml)
+ *                to be parsed. Must be within same folder
  */
 	private XMLParser(String filename)
 	{
@@ -58,8 +77,8 @@ public class XMLParser extends DefaultHandler
 	}
 	
 /**
- *
- *
+ *Creates a new ArgumentParser to be used while parsing
+ *the information in the XML file.
  *
  *@return the argument parser created
  */

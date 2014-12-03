@@ -1,5 +1,22 @@
 package edu.jsu.mcis;
 
+/**
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ */
+
+
 public class Argument extends CommandLineArgument
 {	
 /**
@@ -35,7 +52,9 @@ public class Argument extends CommandLineArgument
 /**
  *Sets the value of an argument after checking if the data
  *type of both the argument and the value match. If the data
- *types do not match an error is thrown. Additionally, if the
+ *types do not match an error is thrown.
+ *<p>
+ *Additionally, if the
  *argument has a set of restricted values this method checks if 
  *the value being added is one of those restricted values.
  *
@@ -156,8 +175,8 @@ public class Argument extends CommandLineArgument
     }
 
 /**
- *Returns true since all positional arguments are required.
- *
+ *Returns true since all added positional arguments are required for the.
+ *program to run.
  *
  *@return <code>true</code> if the positional argument is required or not.
  */

@@ -1,5 +1,21 @@
 package edu.jsu.mcis;
 
+/**
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ */
+
 public class OptionalArgument extends CommandLineArgument{
 	
 	private String shortName;
@@ -7,10 +23,11 @@ public class OptionalArgument extends CommandLineArgument{
 	
 /**
  *Class constructor.
- *Creates an optional argument with the default value set to string, 
-required set to false, and number of values set to 0.
+ *Creates an optional argument with the following characteristics:
+ *default value set to string, required set to false, and the number
+ *of values set to '0'.
  *
- *@param title the title of the optional argument
+ *@param title the name of the optional argument
  */
 	public OptionalArgument(String title)
 	{
@@ -24,9 +41,11 @@ required set to false, and number of values set to 0.
 	
 /**
  *Class constructor.
- *Creates an argument with the title and data type passed in.
+ *Creates an optional argument with a specified data type.
+ *<p>
+ *Accepted Data Types: Boolean, Float, String, Integer 
  *
- *@param title the title of the optional argument
+ *@param title the name of the optional argument
  *@param type the type of the optional argument
  */
 	public OptionalArgument(String title, CommandLineArgument.DataType type)
@@ -40,10 +59,11 @@ required set to false, and number of values set to 0.
 	}
 	
 /**
- *Sets the shorthand name of the optional argument.
+ *Sets a shorthand name for the optional argument to
+ *be called with from the command line.
  *
  *
- *@param string the short name of the optinal argument
+ *@param string the short name of the optional argument
  */
 	public void setShort(String string)
 	{
@@ -62,7 +82,7 @@ required set to false, and number of values set to 0.
 	}
 	
 /**
- *Returns the shorthand name of an optional argument.
+ *Returns what the shorthand name of an optional argument is.
  *
  *
  *@return  the short name of the optional argument
@@ -73,12 +93,12 @@ required set to false, and number of values set to 0.
 	}
 	
 /**
- *Sets the value of the optional argument.
- *
+ *Sets the value of the optional argument to the object being
+ *passed in.
  *
  *@param object the value of the optional argument
- *@throws NumberFormatException - improper data type
- *@throws IncorrectValueException - the value is not within the restricted settings
+ *@throws NumberFormatException improper data type
+ *@throws IncorrectValueException the value is not within the restricted settings
  */
 	public void setValue(Object object) throws NumberFormatException, IncorrectValueException
 	{
@@ -88,7 +108,7 @@ required set to false, and number of values set to 0.
 	}
 	
 /**
- *Returns the value of the optional argument.
+ *Returns the value of the optional argument as an object.
  *
  *
  *@return the value of the argument
@@ -101,8 +121,6 @@ required set to false, and number of values set to 0.
 /**
  *Sets the optional argument as required.
  *
- *
- *
  */
 	public void setRequired() 
 	{
@@ -110,8 +128,7 @@ required set to false, and number of values set to 0.
 	}
 	
 /**
- *Returns whether or not the optional argument is required.
- *
+ *Returns if the optional argument is required or not required.
  *
  *@return <code>true</code>If the positional argument is required or not.
  */
@@ -121,8 +138,8 @@ required set to false, and number of values set to 0.
 	}
 
 /**
- *Returns the string representation of an optional argument for use in XML formatting.
- *
+ *Returns the string representation of an optional argument for 
+ *use in XML formatting.
  *
  *@return a string representing the argument which includes: argument name, type,description,value and short name
  */
@@ -139,7 +156,7 @@ required set to false, and number of values set to 0.
 	}
 
 /**
- *Returns whether or not two optional arguments are the same.
+ *Returns if two optional arguments are equal to each other.
  *
  *@param o the argument that is being compared
  *@return true if the title of the optional argument is equal to the

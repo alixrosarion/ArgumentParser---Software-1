@@ -2,6 +2,22 @@ package edu.jsu.mcis;
 
 import java.util.*;
 
+/**
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ */
+
 public class ArgumentParser
 {
     public List <CommandLineArgument> argumentList;
