@@ -36,8 +36,8 @@ public class Argument extends CommandLineArgument
  *Sets the value of an argument after checking if the data
  *type of both the argument and the value match. If the data
  *types do not match an error is thrown. Additionally, if the
- *value has a set of restricted values this method checks if 
- *the value is one of 
+ *argument has a set of restricted values this method checks if 
+ *the value being added is one of those restricted values.
  *
  *@param o the value to be set
  *@throws NumberFormatException improper data type
@@ -118,8 +118,8 @@ public class Argument extends CommandLineArgument
 	}
 	
 /**
- *Returns an empty string.
- *
+ *Returns an empty string since positional arguments
+ *do not have shorts.
  *
  *@return nothing: positional arguments do not have a shorthand name
  */
@@ -131,7 +131,7 @@ public class Argument extends CommandLineArgument
 /**
  *Returns whether or not two arguments are the same.
  *
- *@param o - the argument that is being compared
+ *@param o the argument that is being compared
  *@return <code>true</code>if two arguments are equivalent
  */
 	public boolean equals(Object o)

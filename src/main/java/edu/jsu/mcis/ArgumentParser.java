@@ -48,8 +48,8 @@ public class ArgumentParser
  *
  *
  *
- *@param num - the number of the mutual group the argument is to be placed in
- *@param args - the value(s) to be put into the mutual group
+ *@param num the number of the mutual group the argument is to be placed in
+ *@param args the value(s) to be put into the mutual group
  *@throws InvalidGroupException - if an invalid group number is entered
  */
 	public void setMutualGroup(int num, String ... args) throws InvalidGroupException
@@ -78,7 +78,7 @@ public class ArgumentParser
 /**
  *Returns the values contained in the specified mutually exclusive group.
  *
- *@param num - the number of the mutual group
+ *@param num the number of the mutual group
  *@throws InvalidGroupException - if an invalid group number is entered
  *@return the members of the mutual group as a string value
  */	
@@ -96,8 +96,8 @@ public class ArgumentParser
  *Sets the argument to only accept a set of restricted values. Multiple values can be
  *added(separated by a comma). 
  *
- *@param title - the name of the argument
- *@param args - the value(s) the argument is restricted to
+ *@param title the name of the argument
+ *@param args the value(s) the argument is restricted to
  *@throws IncorrectTypeException - if an incorrect data type is entered for the argument
  */	
 	public void addRestricted(String title, Object ... args) throws IncorrectTypeException
@@ -137,7 +137,7 @@ public class ArgumentParser
 /**
  *Returns a list of the values an argument is restricted to.
  *
- *@param title - the title of the argument
+ *@param title the title of the argument
  *@return the values the argument is restricted to
  */	
 	public String checkRestricted(String title)
@@ -151,8 +151,8 @@ public class ArgumentParser
 /**
  *Adds the program name and the program's description.
  *
- *@param name - the name of the program
- *@param description - the description of the program
+ *@param name the name of the program
+ *@param description the description of the program
  */
     public void addProgram(String name, String description)
     {
@@ -163,7 +163,7 @@ public class ArgumentParser
 /**
  *Adds a new argument to the list of arguments.
  *
- *@param str - the name of the argument
+ *@param str the name of the argument
  */
     public void addArgument(String str)
     {
@@ -174,8 +174,8 @@ public class ArgumentParser
  *Adds a new argument to the list of arguments and sets the data type
  *that argument can hold.
  *
- *@param title - the name of the argument
- *@param type - the data type of the argument
+ *@param title the name of the argument
+ *@param type the data type of the argument
  */
     public void addArgument(String title, CommandLineArgument.DataType type)
     {
@@ -189,8 +189,8 @@ public class ArgumentParser
  *optional argument to be called by either it's full name or
  *the declared short name.
  *
- *@param title - the name of the argument
- *@param str - the short name to be attached to the argument
+ *@param title the name of the argument
+ *@param str the short name to be attached to the argument
  */
     public void setShortOption(String title, String str)
     {
@@ -201,7 +201,7 @@ public class ArgumentParser
  *Returns the short name if one has been assigned to the argument. This
  *is used for generating the help text.
  *
- *@param title - the name of the argument
+ *@param title the name of the argument
  *@return the short option associated with the argument
  */
     public String getShortOption(String title)
@@ -230,7 +230,7 @@ public class ArgumentParser
  *Adds a new optional argument to the argument list. 
  *
  *
- *@param title - name of the optional argument
+ *@param title name of the optional argument
  */
     public void addOptionalArgument(String title)
     {
@@ -242,8 +242,8 @@ public class ArgumentParser
  *Sets a default value to an argument that will be used if no
  *other value is assigned to the argument.
  *
- *@param title - the name of the argument
- *@param value - the desired default value of the argument
+ *@param title the name of the argument
+ *@param value the desired default value of the argument
  */
 	public void setDefaultValue(String title, String value)
 	{
@@ -253,7 +253,7 @@ public class ArgumentParser
 /**
  *Sets the value(s) of the argument.
  *
- *@param args - the value(s) of the referenced optional argument or the next positional argument; the first value to be passed in the title of the argument
+ *@param args the value(s) of the referenced optional argument or the next positional argument; the first value to be passed in the title of the argument
  *@throws IncorrectTypeException - if the data type does not match the data type of the argument
  *@throws IncorrectValueException - if the value does not match the restricted values
  */
@@ -307,7 +307,7 @@ public class ArgumentParser
 /**
  *Sets the description of each argument for use in the help text.
  *
- *@param title - the name of the argument
+ *@param title the name of the argument
  *@param description - the description of the argument
  */
     public void setDescription(String title, String description)
@@ -322,7 +322,7 @@ public class ArgumentParser
  *Returns the description associated with the argument
  *if that argument has one.
  *
- *@param title - the name of the argument
+ *@param title the name of the argument
  *@return the set description of the argument
  */
     public String getDescription(String title)
@@ -336,8 +336,8 @@ public class ArgumentParser
 /**
  *Returns the value of an argument.
  *
- *@param title - the name of the argument
- *@param <T> - the type of the argument being referenced
+ *@param title the name of the argument
+ *@param <T> the type of the argument being referenced
  *@return the value held by argument
  */
     public <T> T getValue(String title)
@@ -351,7 +351,7 @@ public class ArgumentParser
 /**
  *Returns the data type of the specified argument.
  *
- *@param - title the name of the argument
+ *@param title the name of the argument
  *@return the data type associated with the argument
  */
     public CommandLineArgument.DataType getArgumentDataType(String title)
@@ -365,7 +365,7 @@ public class ArgumentParser
 /**
  *Returns the requested optional argument.
  *
- *@param title - the name of the optional argument
+ *@param title the name of the optional argument
  *@return the corresponding optional argument 
  */
     public String getOptionalArgument(String title)
@@ -376,8 +376,8 @@ public class ArgumentParser
 /**
  *Sets the number of values each argument has.
  *
- *@param title - the name of the argument
- *@param number - the number of values the argument holds
+ *@param title the name of the argument
+ *@param number the number of values the argument holds
  */
     public void setNumberValues(String title, int number)
     {
@@ -390,7 +390,7 @@ public class ArgumentParser
 /**
  *Returns the number of values the argument has.
  *
- *@param title - the name of the argument
+ *@param title the name of the argument
  *@return the number of values associated with an argument
  */
     public int getNumberValues(String title)
@@ -404,7 +404,7 @@ public class ArgumentParser
 /**
  *Sets the optional argument to be required.
  *
- *@param title - the name of the argument
+ *@param title the name of the argument
  */
 	public void setRequired(String title)
 	{
@@ -416,7 +416,7 @@ public class ArgumentParser
 /**
  *Returns whether or not the optional argument is required.
  *
- *@param title - the name of the argument
+ *@param title the name of the argument
  *@return if the argument is required of not required
  */
 	public boolean getRequired(String title)
@@ -470,7 +470,7 @@ public class ArgumentParser
  *Parses the string passed in through the Command Line.
  *
  *
- *@param str - the string to be parsed
+ *@param str the string to be parsed
  *@throws NotEnoughArgValuesException - if the amount of values parsed does not match the number of required arguments
  *@throws TooManyArgValuesException - if the amount of values parsed exceeds the number of required arguments
  *@throws IncorrectTypeException - if the data type of a value does not match the data type of the argument
@@ -620,7 +620,7 @@ public class ArgumentParser
 /**
  *Sets which group the first mutually exclusive argument comes from.
  *
- *@param title - the name of the argument
+ *@param title the name of the argument
  */
 	public void setPass(String title)
 	{

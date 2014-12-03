@@ -10,7 +10,7 @@ public class OptionalArgument extends CommandLineArgument{
  *Creates an optional argument with the default value set to string, 
 required set to false, and number of values set to 0.
  *
- *@param title - the title of the optional argument
+ *@param title the title of the optional argument
  */
 	public OptionalArgument(String title)
 	{
@@ -26,8 +26,8 @@ required set to false, and number of values set to 0.
  *Class constructor.
  *Creates an argument with the title and data type passed in.
  *
- *@param title - the title of the optional argument
- *@param type - the type of the optional argument
+ *@param title the title of the optional argument
+ *@param type the type of the optional argument
  */
 	public OptionalArgument(String title, CommandLineArgument.DataType type)
 	{
@@ -43,7 +43,7 @@ required set to false, and number of values set to 0.
  *Sets the shorthand name of the optional argument.
  *
  *
- *@param string - the short name of the optinal argument
+ *@param string the short name of the optinal argument
  */
 	public void setShort(String string)
 	{
@@ -76,7 +76,7 @@ required set to false, and number of values set to 0.
  *Sets the value of the optional argument.
  *
  *
- *@param object - the value of the optional argument
+ *@param object the value of the optional argument
  *@throws NumberFormatException - improper data type
  *@throws IncorrectValueException - the value is not within the restricted settings
  */
@@ -141,7 +141,7 @@ required set to false, and number of values set to 0.
 /**
  *Returns whether or not two optional arguments are the same.
  *
- *@param o - the argument that is being compared
+ *@param o the argument that is being compared
  *@return true if the title of the optional argument is equal to the
  */
 	public boolean equals(Object o)

@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="edu.jsu.mcis.XMLParserTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2014-12-03T22:06:41" hostname="Kris-PC" time="0.156">
+<testsuite name="edu.jsu.mcis.XMLParserTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2014-12-03T22:24:20" hostname="Kris-PC" time="0.124">
   <properties/>
-  <testcase name="testRestricted" classname="edu.jsu.mcis.XMLParserTest" time="0.047"/>
+  <testcase name="testRestricted" classname="edu.jsu.mcis.XMLParserTest" time="0.015"/>
   <testcase name="testRequiredOptionalArguments" classname="edu.jsu.mcis.XMLParserTest" time="0.0"/>
-  <testcase name="testXMLParsingArguments" classname="edu.jsu.mcis.XMLParserTest" time="0.0"/>
-  <testcase name="testXMLMultipleValues" classname="edu.jsu.mcis.XMLParserTest" time="0.015"/>
-  <testcase name="testXMLParserOptionalTypes" classname="edu.jsu.mcis.XMLParserTest" time="0.078"/>
-  <testcase name="testXMLParsingOptional" classname="edu.jsu.mcis.XMLParserTest" time="0.0"/>
-  <testcase name="testXMLParserTypes" classname="edu.jsu.mcis.XMLParserTest" time="0.0"/>
+  <testcase name="testXMLParsingArguments" classname="edu.jsu.mcis.XMLParserTest" time="0.016"/>
+  <testcase name="testXMLMultipleValues" classname="edu.jsu.mcis.XMLParserTest" time="0.0"/>
+  <testcase name="testXMLParserOptionalTypes" classname="edu.jsu.mcis.XMLParserTest" time="0.031"/>
+  <testcase name="testXMLParsingOptional" classname="edu.jsu.mcis.XMLParserTest" time="0.047"/>
+  <testcase name="testXMLParserTypes" classname="edu.jsu.mcis.XMLParserTest" time="0.015"/>
   <testcase name="testXMLRequired" classname="edu.jsu.mcis.XMLParserTest" time="0.0"/>
-  <testcase name="testXMLHelp" classname="edu.jsu.mcis.XMLParserTest" time="0.016"/>
+  <testcase name="testXMLHelp" classname="edu.jsu.mcis.XMLParserTest" time="0.0"/>
   <system-out><![CDATA[usage: java null length width height booleanTest 
 null
 Positional Arguments:

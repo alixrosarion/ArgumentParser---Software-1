@@ -58,7 +58,7 @@ public abstract class CommandLineArgument {
  *Sets the description of an argument.
  *
  *
- *@param d - the description of the argument
+ *@param d the description of the argument
  */
 	public void setDescription(String d)
 	{
@@ -70,7 +70,7 @@ public abstract class CommandLineArgument {
  *<p>
  *Accepted Data Types: Boolean, Float, String, Integer
  *
- *@param t - the data type of the argument
+ *@param t the data type of the argument
  */
 	public void setDataType(DataType t)
 	{
@@ -102,7 +102,7 @@ public abstract class CommandLineArgument {
 /**
  *Adds the values an argument is restricted to.
  *
- *@param arg - the value the argument is restricted to
+ *@param arg the value the argument is restricted to
  *@throws IncorrectTypeException - if the data type of the argument
  *                               and of the value do not match
  */
@@ -130,7 +130,7 @@ public abstract class CommandLineArgument {
 /**
  *Sets the value of an argument.
  *
- *@param o - the value to be set
+ *@param o the value to be set
  *@throws NumberFormatException - improper data type
  *@throws IncorrectValueException - the value is not within the restricted settings
  */
@@ -167,7 +167,7 @@ public abstract class CommandLineArgument {
  *Sets the number of values an argument has.
  *
  *
- *@param number - the number of values the argument can hold
+ *@param number the number of values the argument can hold
  */
 	public void setNumberValues(int number)
 	{
