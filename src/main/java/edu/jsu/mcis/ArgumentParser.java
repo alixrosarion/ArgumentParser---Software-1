@@ -76,7 +76,7 @@ public class ArgumentParser
 	}
 	
 /**
- *Returns the values contained in the mutually exclusive group.
+ *Returns the values contained in the specified mutually exclusive group.
  *
  *@param num - the number of the mutual group
  *@throws InvalidGroupException - if an invalid group number is entered

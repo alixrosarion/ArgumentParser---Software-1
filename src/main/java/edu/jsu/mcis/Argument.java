@@ -17,7 +17,9 @@ public class Argument extends CommandLineArgument
 	}
 	
 /**
- *Class constructor.
+ *Class constructor. Constructs an argument with a specified data type
+ *<p>
+ *Accepted Data Types: Boolean, Float, String, Integer
  *
  *@param title - the title of the argument
  *@param type - the Data type of the argument
@@ -31,11 +33,15 @@ public class Argument extends CommandLineArgument
 	}
 	
 /**
- *Sets the value of an argument.
+ *Sets the value of an argument after checking if the data
+ *type of both the argument and the value match. If the data
+ *types do not match an error is thrown. Additionally, if the
+ *value has a set of restricted values this method checks if 
+ *the value is one of 
  *
- *@param o - the value to be set
- *@throws NumberFormatException - improper data type
- *@throws IncorrectValueException - the value is not within the restricted settings
+ *@param o the value to be set
+ *@throws NumberFormatException improper data type
+ *@throws IncorrectValueException the value is not within the restricted settings
  */
 	public void setValue(Object o) throws NumberFormatException, IncorrectValueException
 	{

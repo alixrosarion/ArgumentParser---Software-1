@@ -2,8 +2,7 @@ apply plugin: 'java'
 apply plugin: 'jacoco'
 
 javadoc {
-source = sourceSets.main.allJava
-classpath = configurations.compile
+options.links 'http://java.sun.com/javase/7/docs/api/','http://java.sun.com/javase/7/docs/api/'
 }
 
 sourceCompatibility = 1.7
