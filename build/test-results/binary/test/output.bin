@@ -6,8 +6,8 @@
 %height float		the height of the box
 
 Optional Arguments:
---help -h boolean		
-T--type -t string required & restricted to: box pyramid mutual exclusive group: 1		
+--help, -h boolean		
+U--type, -t string required & restricted to: box pyramid mutual exclusive group: 1		
 +--what string mutual exclusive group: 2		
 /--verbose boolean mutual exclusive group: 1		
 ---quiet boolean mutual exclusive group: 2		
@@ -20,7 +20,7 @@
 height string		
 
 Optional Arguments:
---help -h boolean		
+--help, -h boolean		
 --type string		
 --actor string		
 
@@ -32,14 +32,14 @@
 %height float		the height of the box
 
 Optional Arguments:
---help -h boolean		
+--help, -h boolean		
 
 +usage: java Volcalc 
 +Calculates some volume
 +Positional Arguments:
 +
 +Optional Arguments:
-+--help -h boolean		
++--help, -h boolean		
 +.--verbose string mutual exclusive group: 1		
 +,--quiet string mutual exclusive group: 2		
 ++--type string mutual exclusive group: 1		
@@ -54,10 +54,10 @@
 =A(booleanTest boolean		height of the box
 =A
 =AOptional Arguments:
-=A--help -h boolean		
-=A!--type -t string		Type of shape
-=A --int -t string		Type of shape
-=A!--float -t float		Type of shape
+=A--help, -h boolean		
+=A"--type, -t string		Type of shape
+=A!--int, -t string		Type of shape
+=A"--float, -t float		Type of shape
 =A
 =A$SAXException : xml not well formed
 =A
@@ -70,9 +70,9 @@ IO error
 =B>height float & restricted to: 3.0 2.0 5.0		height of the box
 =B
 =BOptional Arguments:
-=B--help -h boolean		
-=B'--type -t string		Garrett is awesome!
-=B+--req -r string required		tester argument
+=B--help, -h boolean		
+=B(--type, -t string		Garrett is awesome!
+=B,--req, -r string required		tester argument
 =B
 =E'usage: java null length width height 
 =Enull
@@ -82,7 +82,7 @@ IO error
 =E>height float & restricted to: 3.0 2.0 5.0		height of the box
 =E
 =EOptional Arguments:
-=E--help -h boolean		
-=E'--type -t string		Garrett is awesome!
-=E+--req -r string required		tester argument
+=E--help, -h boolean		
+=E(--type, -t string		Garrett is awesome!
+=E,--req, -r string required		tester argument
 =E

@@ -669,7 +669,8 @@ public class ArgumentParser
 	}
 	
 /**
- *Returns the help text for the program.
+ *Returns the formatted help text for the program including
+ *all of the arguments and their information.
  *
  *
  *@return the formatted help text of the program and arguments
@@ -694,7 +695,7 @@ public class ArgumentParser
                 optionalArgumentTitles += a.getTitle() + " ";
                 description2 +="--"+ a.getTitle();
 				if(!a.getShort().equals(""))
-					description2+=" -" + a.getShort();
+					description2+=", -" + a.getShort();
 				description2+=" "+ a.getDataType().toString().toLowerCase();
 				if(a.getRequired() == true)
 					description2+=" required";
