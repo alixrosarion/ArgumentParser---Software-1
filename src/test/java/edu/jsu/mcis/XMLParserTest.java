@@ -103,7 +103,6 @@ public class XMLParserTest
 			tester.parse("2");
 			assertTrue(false);
 		} catch (NotEnoughArgValuesException  | TooManyArgValuesException | IncorrectTypeException e) {
-			e.printStackTrace();
 		}
 	}
 }

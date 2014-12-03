@@ -641,11 +641,22 @@ public class ArgumentParser
             if ( a instanceof Argument)
             {
                 argumentTitles += a.getTitle() + " ";
-                description += a.getTitle() +" "+ a.getDataType().toString().toLowerCase()+"\t\t"+a.getDescription() + "\r\n";
+                description += a.getTitle() +" "+ a.getDataType().toString().toLowerCase();//+"\t\t"+a.getDescription() + "\r\n";
+				if(!a.getRestricted().equals(""))
+					description+=" & restricted to: " + a.getRestricted();
+				description+="\t\t"+a.getDescription() + "\r\n";
             }
             else {
                 optionalArgumentTitles += a.getTitle() + " ";
-                description2 += a.getTitle() +" "+ a.getDataType().toString().toLowerCase()+"\t\t"+a.getDescription() + "\r\n";
+                description2 +="--"+ a.getTitle();
+				if(!a.getShort().equals(""))
+					description2+=" -" + a.getShort();
+				description2+=" "+ a.getDataType().toString().toLowerCase();
+				if(a.getRequired() == true)
+					description2+=" required";
+				if(!a.getRestricted().equals(""))
+					description2+=" & restricted to: " + a.getRestricted();
+				description2+= "\t\t"+a.getDescription() + "\r\n";
             }
         }
         help = "usage: java " + program + " " + argumentTitles + "\r\n" + programDescription +"\r\nPositional Arguments:\r\n" + description + "\r\nOptional Arguments:\r\n" + description2;

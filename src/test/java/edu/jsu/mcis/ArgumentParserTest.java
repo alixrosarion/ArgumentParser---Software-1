@@ -11,6 +11,7 @@ public class ArgumentParserTest {
 	public void startUp()
 	{
 		tester = new ArgumentParser();
+		tester.addProgram("Volcalc", "Calculates some volume");
 	}
 
 	@Test
@@ -210,13 +211,13 @@ public class ArgumentParserTest {
 		tester.addArgument("length");
 		tester.addArgument("width");
 		tester.addArgument("height");
-		System.out.println(tester.getOutput());
+		//System.out.println(tester.getOutput());
 		try
 		{
 			tester.parse("2");
 			assertTrue(false);
 		}catch(NotEnoughArgValuesException  | TooManyArgValuesException | IncorrectValueException | IncorrectTypeException e){
-			System.out.println(tester.getOutput());
+			//System.out.println(tester.getOutput());
 			assertEquals("the following arguments are required: width height", tester.getUnmatched());
 		
 		}
@@ -258,8 +259,37 @@ public class ArgumentParserTest {
 			tester.parse("-h");
 		}catch(NotEnoughArgValuesException  | TooManyArgValuesException | IncorrectValueException | IncorrectTypeException e){
 			assertTrue(false);}
-		assertEquals("usage: java VolCalc length width height \r\nCalculate the volume of a box\r\nPositional Arguments:\r\nlength integer\t\tthe length of the box\r\nwidth float\t\tthe width of the box\r\nheight float\t\tthe height of the box\r\n\r\nOptional Arguments:\r\nhelp boolean\t\t\r\n", tester.getHelpText());
+		assertEquals("usage: java VolCalc length width height \r\nCalculate the volume of a box\r\nPositional Arguments:"+
+		"\r\nlength integer\t\tthe length of the box\r\nwidth float\t\tthe width of the box\r\nheight float\t\tthe height of the box"+
+		"\r\n\r\nOptional Arguments:\r\n--help -h boolean\t\t\r\n", tester.getHelpText());
 	}
+	
+	@Test
+	public void testOptionTextWithRestrictedAndRequired(){
+		tester.addProgram("VolCalc","Calculate the volume of a box");
+		tester.addArgument("length", CommandLineArgument.DataType.Integer);
+		tester.addArgument("width",CommandLineArgument.DataType.Float);
+		tester.addArgument("height",CommandLineArgument.DataType.Float);
+		tester.setDescription("length", "the length of the box");
+		tester.setDescription("width", "the width of the box");
+		tester.setDescription("height","the height of the box");
+		tester.addOptionalArgument("type",CommandLineArgument.DataType.String);
+		tester.setShortOption("type", "t");
+		tester.addRestricted("type","box","pyramid");
+		tester.setRequired("type");
+		tester.addRestricted("length", 3, 4, 5);
+		
+		try
+		{
+			tester.parse("-h");
+		}catch(NotEnoughArgValuesException  | TooManyArgValuesException | IncorrectValueException | IncorrectTypeException e){
+			assertTrue(false);}
+		assertEquals("usage: java VolCalc length width height \r\nCalculate the volume of a box\r\nPositional Arguments:"+
+		"\r\nlength integer & restricted to: 3 4 5\t\tthe length of the box\r\nwidth float\t\tthe width of the box\r\nheight float\t\tthe height of the box"+
+		"\r\n\r\nOptional Arguments:\r\n--help -h boolean\t\t\r\n--type -t string required & restricted to: box pyramid\t\t\r\n", tester.getHelpText());
+	}
+	
+	
 	
 	@Test
 	public void testDataTypeParsing()
