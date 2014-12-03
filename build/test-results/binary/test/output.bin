@@ -7,7 +7,10 @@
 
 Optional Arguments:
 --help -h boolean		
-:--type -t string required & restricted to: box pyramid		
+T--type -t string required & restricted to: box pyramid mutual exclusive group: 1		
++--what string mutual exclusive group: 2		
+/--verbose boolean mutual exclusive group: 1		
+---quiet boolean mutual exclusive group: 2		
 
 *usage: java Volcalc length width height 
 Calculates some volume
@@ -37,10 +40,10 @@
 *
 *Optional Arguments:
 *--help -h boolean		
-*--verbose string		
-*--quiet string		
-*--type string		
-*--what string		
+*.--verbose string mutual exclusive group: 1		
+*,--quiet string mutual exclusive group: 2		
+*+--type string mutual exclusive group: 1		
+*+--what string mutual exclusive group: 2		
 *
 <@3usage: java null length width height booleanTest 
 <@null

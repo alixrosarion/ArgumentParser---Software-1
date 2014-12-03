@@ -274,6 +274,9 @@ public class ArgumentParserTest {
 		tester.setDescription("width", "the width of the box");
 		tester.setDescription("height","the height of the box");
 		tester.addOptionalArgument("type",CommandLineArgument.DataType.String);
+		tester.addOptionalArgument("what",CommandLineArgument.DataType.String);
+		tester.addOptionalArgument("verbose",CommandLineArgument.DataType.Boolean);
+		tester.addOptionalArgument("quiet",CommandLineArgument.DataType.Boolean);
 		tester.setShortOption("type", "t");
 		tester.addRestricted("type","box","pyramid");
 		tester.setRequired("type");
@@ -281,12 +284,15 @@ public class ArgumentParserTest {
 		
 		try
 		{
+			tester.setMutualGroup(1, "type", "verbose");
+			tester.setMutualGroup(2, "what", "quiet");
 			tester.parse("-h");
-		}catch(NotEnoughArgValuesException  | TooManyArgValuesException | IncorrectValueException | IncorrectTypeException e){
+		}catch(NotEnoughArgValuesException  | TooManyArgValuesException | IncorrectValueException | IncorrectTypeException| InvalidGroupException e){
 			assertTrue(false);}
 		assertEquals("usage: java VolCalc length width height \r\nCalculate the volume of a box\r\nPositional Arguments:"+
 		"\r\nlength integer & restricted to: 3 4 5\t\tthe length of the box\r\nwidth float\t\tthe width of the box\r\nheight float\t\tthe height of the box"+
-		"\r\n\r\nOptional Arguments:\r\n--help -h boolean\t\t\r\n--type -t string required & restricted to: box pyramid\t\t\r\n", tester.getHelpText());
+		"\r\n\r\nOptional Arguments:\r\n--help -h boolean\t\t\r\n--type -t string required & restricted to: box pyramid mutual exclusive group: 1\t\t\r\n"+
+		"--what string mutual exclusive group: 2\t\t\r\n--verbose boolean mutual exclusive group: 1\t\t\r\n--quiet boolean mutual exclusive group: 2\t\t\r\n", tester.getHelpText());
 	}
 	
 	

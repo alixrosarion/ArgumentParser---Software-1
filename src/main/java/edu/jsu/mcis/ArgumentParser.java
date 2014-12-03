@@ -641,7 +641,7 @@ public class ArgumentParser
             if ( a instanceof Argument)
             {
                 argumentTitles += a.getTitle() + " ";
-                description += a.getTitle() +" "+ a.getDataType().toString().toLowerCase();//+"\t\t"+a.getDescription() + "\r\n";
+                description += a.getTitle() +" "+ a.getDataType().toString().toLowerCase();
 				if(!a.getRestricted().equals(""))
 					description+=" & restricted to: " + a.getRestricted();
 				description+="\t\t"+a.getDescription() + "\r\n";
@@ -656,6 +656,10 @@ public class ArgumentParser
 					description2+=" required";
 				if(!a.getRestricted().equals(""))
 					description2+=" & restricted to: " + a.getRestricted();
+				if(groupOne.contains(a.getTitle()))
+					description2+=" mutual exclusive group: 1";
+				else if(groupTwo.contains(a.getTitle()))
+					description2+=" mutual exclusive group: 2";
 				description2+= "\t\t"+a.getDescription() + "\r\n";
             }
         }
