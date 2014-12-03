@@ -43,4 +43,11 @@ Test Case 5
 	${height}= 	Get 	Height
 	Should Be Equal 	${height}	2.0 	
 	
-	
+Test Case 6
+	Start Program With Restricted
+
+Test Case 7
+	Start Program With Required
+
+Test Case 8
+	Start Program With Mutually Exclusive

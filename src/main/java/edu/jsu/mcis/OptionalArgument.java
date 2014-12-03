@@ -177,8 +177,8 @@ public class OptionalArgument extends CommandLineArgument{
 	}
 	
 /**
- *
- *
+ *Generates a hash code based on the name of the argument which
+ *is used to check if two or more arguments are equal.
  *
  *@return a hashCode for each optional argument
  */

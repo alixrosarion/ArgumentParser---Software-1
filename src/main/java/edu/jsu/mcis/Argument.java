@@ -164,8 +164,8 @@ public class Argument extends CommandLineArgument
 	}
 	
 /**
- *
- *
+ *Generates a hash code based on the name of the argument which
+ *is used to check if two or more arguments are equal.
  *
  *@return a unique hashCode for each argument, based on the title which is unique.
  */
