@@ -10,25 +10,25 @@
 		<type>float</type>
 		<description>width of the box</description>
 	</argument>
-	
+    
 	<argument>
 		<name>height</name>
 		<type>float</type>
 		<description>height of the box</description>
 		<restricted>3,2,5,</restricted>
 	</argument>
-
+    
 	<optionalArgument>
 		<name>type</name>
 		<numValues>1</numValues>
 		<type>string</type>
         <required>false</required>
-		<description>Garrett is awesome!</description>
+		<description>Shape of the object</description>
 		<default>box</default>
 		<shortName>t</shortName>
 		<mutualGroup>2</mutualGroup>
 	</optionalArgument>
-	
+    
 	<optionalArgument>
 		<name>req</name>
 		<numValues>1</numValues>
@@ -49,5 +49,4 @@
 		<shortName>b</shortName>
 		<mutualGroup>1</mutualGroup>
 	</optionalArgument>
-	
 </arguments>
