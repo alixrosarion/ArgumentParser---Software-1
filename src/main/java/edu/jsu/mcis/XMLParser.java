@@ -15,9 +15,9 @@ import org.xml.sax.helpers.DefaultHandler;
 
 
 /**
- *
- *
- *
+ * XMLParser is an implementation of Argument Parser dedicated for XML. It implements methods used by Argument Parser.
+ * It reads all the tags in an XML and automatically adds them to the dedicated Arguments list using methods from Argument Parser.
+ * It allows Argument Parser to get its content from XML.
  *
  *
  *
