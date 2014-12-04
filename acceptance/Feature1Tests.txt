@@ -44,10 +44,18 @@ Test Case 5
 	Should Be Equal 	${height}	2.0 	
 	
 Test Case 6
-	Start Program With Restricted
+	Start Program With Restricted  7 5 2
+	${type}=  getRest   type
+	Should Be Equal  ${type}  sphere
 
 Test Case 7
-	Start Program With Required
+	Start Program With Required  7 5 2
+	${type}=  getReq  type
+	Should Be Equal  ${type}  true
 
 Test Case 8
-	Start Program With Mutually Exclusive
+	Start Program With Mutually Exclusive  7 5 2
+	${1}=  getGroup  1
+	Should Be Equal  ${1}  [quiet]
+	${2}=  getGroup  2
+	Should Be Equal  ${2}  [verbose]
