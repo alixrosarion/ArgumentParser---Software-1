@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<arguments>
+	<optionalArgument>
+		<name>help</name>
+		<numValues>0</numValues>
+		<type>Boolean</type>
+		<description></description>
+		<value>null</value>
+		<shortName>h</shortName>
+	</optionalArgument>
+	<argument>
+		<name>length</name>
+		<type>Integer</type>
+		<description>the length of the box</description>
+	</argument>
+	<argument>
+		<name>width</name>
+		<type>Float</type>
+		<description>the width of the box</description>
+	</argument>
+	<argument>
+		<name>height</name>
+		<type>Integer</type>
+		<description>the height of the box</description>
+	</argument>
+	<optionalArgument>
+		<name>type</name>
+		<numValues>1</numValues>
+		<type>String</type>
+		<description>Shape of object to be calculated</description>
+		<value>sphere</value>
+		<shortName>t</shortName>
+	</optionalArgument>
+	<optionalArgument>
+		<name>noisy</name>
+		<numValues>0</numValues>
+		<type>Boolean</type>
+		<description></description>
+		<value>null</value>
+		<shortName></shortName>
+	</optionalArgument>
+	<optionalArgument>
+		<name>verbose</name>
+		<numValues>0</numValues>
+		<type>Boolean</type>
+		<description></description>
+		<value>null</value>
+		<shortName></shortName>
+	</optionalArgument>
+	<optionalArgument>
+		<name>quiet</name>
+		<numValues>0</numValues>
+		<type>Boolean</type>
+		<description></description>
+		<value>null</value>
+		<shortName></shortName>
+	</optionalArgument>
+	<optionalArgument>
+		<name>silent</name>
+		<numValues>0</numValues>
+		<type>Boolean</type>
+		<description></description>
+		<value>true</value>
+		<shortName></shortName>
+	</optionalArgument>
+</arguments>

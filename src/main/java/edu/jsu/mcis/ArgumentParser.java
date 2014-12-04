@@ -529,7 +529,7 @@ public class ArgumentParser
 						if(optionalArgumentCount == 1)
 							setPass(tempOpt);
 					}
-					String message = "This Group does not contain ";
+					String message = "The following argument is part of the excluded group ";
 					if(argumentList.get(argumentList.indexOf(tempArg)).getNumberValues() == 0)
 					{
 						if (mutualCheck && (groupOne.contains(tempOpt) || groupTwo.contains(tempOpt)))

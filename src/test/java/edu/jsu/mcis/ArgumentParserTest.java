@@ -598,7 +598,7 @@ public class ArgumentParserTest {
 		tester.parse("--quiet --verbose");
 		assertTrue(false);
 		} catch (NotEnoughArgValuesException  | TooManyArgValuesException | IncorrectValueException | IncorrectTypeException | InvalidGroupException e) {
-			assertEquals("edu.jsu.mcis.InvalidGroupException: This Group does not contain verbose"  ,e.toString());
+			assertEquals("edu.jsu.mcis.InvalidGroupException: The following argument is part of the excluded group verbose"  ,e.toString());
 			
 		}
 	}
