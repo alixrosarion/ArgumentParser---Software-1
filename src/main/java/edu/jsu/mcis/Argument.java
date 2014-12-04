@@ -38,8 +38,8 @@ public class Argument extends CommandLineArgument
  *<p>
  *Accepted Data Types: Boolean, Float, String, Integer
  *
- *@param title - the title of the argument
- *@param type - the Data type of the argument
+ *@param title the title of the argument
+ *@param type the Data type of the argument
  */
 	public Argument(String title, CommandLineArgument.DataType type)
 	{

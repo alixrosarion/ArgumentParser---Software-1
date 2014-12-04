@@ -231,8 +231,8 @@ public class ArgumentParser
  *<p>
  *Accepted Data Types: Boolean, Float, String, Integer 
  *
- *@param title - the title of the optional argument
- *@param type - the data type of the optional argument
+ *@param title the title of the optional argument
+ *@param type the data type of the optional argument
  */
     public void addOptionalArgument(String title, CommandLineArgument.DataType type)
     {
@@ -270,8 +270,8 @@ public class ArgumentParser
  *Sets the value(s) of the argument.
  *
  *@param args the value(s) of the referenced optional argument or the next positional argument; the first value to be passed in the title of the argument
- *@throws IncorrectTypeException - if the data type does not match the data type of the argument
- *@throws IncorrectValueException - if the value does not match the restricted values
+ *@throws IncorrectTypeException if the data type does not match the data type of the argument
+ *@throws IncorrectValueException if the value does not match the restricted values
  */
 	public void setValue(String ... args) throws IncorrectTypeException, IncorrectValueException
 	{
@@ -324,7 +324,7 @@ public class ArgumentParser
  *Sets the description of each argument for use in the help text.
  *
  *@param title the name of the argument
- *@param description - the description of the argument
+ *@param description the description of the argument
  */
     public void setDescription(String title, String description)
     {
@@ -487,10 +487,10 @@ public class ArgumentParser
  *
  *
  *@param str the string to be parsed
- *@throws NotEnoughArgValuesException - if the amount of values parsed does not match the number of required arguments
- *@throws TooManyArgValuesException - if the amount of values parsed exceeds the number of required arguments
- *@throws IncorrectTypeException - if the data type of a value does not match the data type of the argument
- *@throws IncorrectValueException - if the value does not match the restricted values of an argument
+ *@throws NotEnoughArgValuesException if the amount of values parsed does not match the number of required arguments
+ *@throws TooManyArgValuesException if the amount of values parsed exceeds the number of required arguments
+ *@throws IncorrectTypeException if the data type of a value does not match the data type of the argument
+ *@throws IncorrectValueException if the value does not match the restricted values of an argument
  */
     public void parse(String str) throws NotEnoughArgValuesException, TooManyArgValuesException, IncorrectTypeException, IncorrectValueException, InvalidGroupException
     {
