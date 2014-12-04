@@ -1,17 +1,9 @@
 package edu.jsu.mcis;
 
 /**
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
+ *The Argument class extends CommandLineArgument, and represent a positional
+ *argument.The toString() method of this class returns an XML
+ *representation of the argument.
  *
  *
  */
@@ -64,34 +56,33 @@ public class Argument extends CommandLineArgument
  */
 	public void setValue(Object o) throws NumberFormatException, IncorrectValueException
 	{
-		Object tmpValue = null;
 		if(type == CommandLineArgument.DataType.Integer)
 		{
-				tmpValue =Integer.parseInt(o.toString());
-				if(restrictedValues.size() != 0 && !restrictedValues.contains(tmpValue))
+				o =Integer.parseInt(o.toString());
+				if(restrictedValues.size() != 0 && !restrictedValues.contains(o))
 					throw new IncorrectValueException();
 		}
 		else if(type == CommandLineArgument.DataType.Boolean)
 		{
 			if((o.toString().equals("true")) || o.toString().equals("false"))
-				tmpValue =Boolean.parseBoolean(o.toString());
+				o =Boolean.parseBoolean(o.toString());
 			else 
 				throw new NumberFormatException();
 		}
 		else if( type == CommandLineArgument.DataType.Float)
 		{
-			tmpValue =Float.parseFloat(o.toString());
-			if(restrictedValues.size() != 0 && !restrictedValues.contains(tmpValue))
+			o =Float.parseFloat(o.toString());
+			if(restrictedValues.size() != 0 && !restrictedValues.contains(o))
 					throw new IncorrectValueException();
 		}
 		else
 		{
-			tmpValue = o.toString();
-			if(restrictedValues.size() != 0 && !restrictedValues.contains(tmpValue))
+			o = o.toString();
+			if(restrictedValues.size() != 0 && !restrictedValues.contains(o))
 					throw new IncorrectValueException();
 		}
-		if (numberValues ==0)	value = tmpValue;
-		else multipleValues.add(tmpValue);
+		if (numberValues ==0)	value = o;
+		else multipleValues.add(o);
 	}
 	
 /**

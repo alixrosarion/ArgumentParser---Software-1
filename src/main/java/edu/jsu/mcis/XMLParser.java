@@ -19,15 +19,6 @@ import org.xml.sax.helpers.DefaultHandler;
  * It reads all the tags in an XML and automatically adds them to the dedicated Arguments list using methods from Argument Parser.
  * It allows Argument Parser to get its content from XML. It also allows the option of saving all the arguments in a new XML file with the name that the user desires.
  *
- *
- *
- *
- *
- *
- *
- *
- *
- *
  */
 
 public class XMLParser extends DefaultHandler
@@ -93,6 +84,7 @@ public class XMLParser extends DefaultHandler
  *generates the XML tags appropriate for each piece of data.
  *
  *@param filename the name of the file to write the XML code to
+ *@param argPars parser that is being used to write to the XML file.
  */
     public static void saveXMLFile(ArgumentParser argPars, String filename)
     {

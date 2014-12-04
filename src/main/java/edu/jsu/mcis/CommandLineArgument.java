@@ -2,17 +2,11 @@ package edu.jsu.mcis;
 import java.util.*;
 
 /**
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
+ *The CommandLineArgument class represents the abstraction of a
+ *general argument that can be parsed from the command-line. This class
+ *provides Optional and Positional Arguments with methods for specifying title, 
+ *values that can be restrictive if the user desires, description,
+ *data type, and setting the number of expected values for an argument.
  *
  *
  */
@@ -144,49 +138,7 @@ public abstract class CommandLineArgument {
 		else restrictedValues.add(arg);
 		hasRestricted = true;
 	}
-	
-/**
- *Sets the value of an argument after checking if the data
- *type of both the argument and the value match. If the data
- *types do not match an error is thrown. 
- *<p>
- *Additionally, if the
- *argument has a set of restricted values this method checks if 
- *the value being added is one of those restricted values.
- *
- *@param o the value to be set
- *@throws NumberFormatException - improper data type
- *@throws IncorrectValueException - the value is not within the restricted settings
- */
-	public void setValue(Object o) throws NumberFormatException, IncorrectValueException
-	{
-	
-		if(type == CommandLineArgument.DataType.Integer)
-		{
-				value = Integer.parseInt(o.toString());
-				if(restrictedValues.size() != 0 && !restrictedValues.contains(value))
-					throw new IncorrectValueException();
-		}
-		else if(type == CommandLineArgument.DataType.Boolean)
-		{
-			if((o.toString().equals("true")) || o.toString().equals("false"))
-				value = Boolean.parseBoolean(o.toString());
-			else 
-				throw new NumberFormatException();
-		}
-		else if(type == CommandLineArgument.DataType.Float)
-		{
-			value = Float.parseFloat(o.toString());
-			if(restrictedValues.size() != 0 && !restrictedValues.contains(value))
-					throw new IncorrectValueException();
-		}
-		else
-		{
-			value = o.toString();
-			if(restrictedValues.size() != 0 && !restrictedValues.contains(value))
-					throw new IncorrectValueException();
-		}
-	}
+
 /**
  *Sets the number of values an argument has. This is used
  *when parsing the values to make sure the argument receives
@@ -219,4 +171,5 @@ public abstract class CommandLineArgument {
 	abstract public void setRequired();
 	abstract public boolean getRequired();
 	abstract public int getMultiplesCount();
+	abstract public void setValue(Object o);
 }

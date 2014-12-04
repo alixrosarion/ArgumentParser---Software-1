@@ -3,19 +3,12 @@ package edu.jsu.mcis;
 import java.util.*;
 
 /**
- * The Argument Parser module makes it easy to write user-friendly command-line interfaces.
- * The program defines what arguments it requires, and Argument Parser will figure out how to parse those out of System.
+ * The Argument Parser module models after the argparse for Python as it also makes it easy to write user-friendly command-line interfaces.
+ * The program defines what arguments it requires, and ArgumentParser will figure out how to parse those out of System.
  * The Argument Parser module also automatically generates help and usage messages and issues errors when users give the program invalid arguments.
- * It works as well with adding the arguments from an XML file.
- *
- *
- *
- *
- *
- *
- *
- *
- *
+ * Values for positional arguments must be passed in from the command line in the same order that they were created. When passing in an optional argument,
+ * the optional argument in question must be referenced first.
+ * The parser works can also process an argument list from a properly formatted XML file.
  */
 
 public class ArgumentParser

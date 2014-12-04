@@ -1,17 +1,9 @@
 package edu.jsu.mcis;
 
 /**
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
+ *The Argument class extends CommandLineArgument, and represent an optional
+ *argument. The toString() method of this class returns an XML
+ *representation of the argument.
  *
  *
  */
