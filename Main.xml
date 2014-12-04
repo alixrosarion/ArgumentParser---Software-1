@@ -29,7 +29,7 @@
 		<type>String</type>
 		<description>Shape of object to be calculated</description>
 		<value>null</value>
-		<shortName>t</shortName>
+		<shortName></shortName>
 	</optionalArgument>
 	<optionalArgument>
 		<name>noisy</name>

@@ -31,12 +31,12 @@
     
 	<optionalArgument>
 		<name>req</name>
-		<numValues>1</numValues>
+		<numValues>2</numValues>
 		<type>string</type>
         <required>true</required>
 		<description>tester argument</description>
 		<default>wtev</default>
-		<shortName>r</shortName>
+		<shortName></shortName>
 		<restricted>a,b,c,</restricted>
 	</optionalArgument>
 

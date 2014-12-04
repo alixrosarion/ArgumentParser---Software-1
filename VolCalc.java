@@ -17,7 +17,7 @@ public class VolCalc
 		parser.addArgument("length", CommandLineArgument.DataType.Integer);
 		parser.setDescription("length", "the length of the box");
         
-		parser.addRestricted("length", 6, 4);
+		parser.addRestricted("length", 7, 4);
         
 		parser.addArgument("width", CommandLineArgument.DataType.Float);
 		parser.setDescription("width", "the width of the box");
@@ -28,11 +28,8 @@ public class VolCalc
 		parser.addOptionalArgument("type", CommandLineArgument.DataType.String);
 		parser.setNumberValues("type", 1);		
 		parser.setDescription("type", "Shape of object to be calculated");
-		parser.setShortOption("type", "t");
 		parser.addRestricted("type","sphere","pyramid");
-        
-        parser.setMutualGroup(1, "verbose","noisy");
-		parser.setMutualGroup(2, "quiet","silent");
+		parser.setRequired("type");
         
         parser.addOptionalArgument("noisy", CommandLineArgument.DataType.Boolean);
 		parser.addOptionalArgument("verbose", CommandLineArgument.DataType.Boolean);
@@ -40,10 +37,12 @@ public class VolCalc
 		parser.addOptionalArgument("quiet", CommandLineArgument.DataType.Boolean);
 		parser.addOptionalArgument("silent", CommandLineArgument.DataType.Boolean);
 		
+		parser.setMutualGroup(1, "verbose","noisy");
+		parser.setMutualGroup(2, "quiet","silent");
 		
 		try{
 			parser.parse(read);
-			XMLParser.saveXMLFile(parser,"Main.xml");
+			XMLParser.saveXMLFile(parser,"Demo.xml");
 			try{
             int length = parser.getValue("length");
 			int height = parser.getValue("height");
