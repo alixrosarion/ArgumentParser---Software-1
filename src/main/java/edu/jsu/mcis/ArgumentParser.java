@@ -3,19 +3,33 @@ package edu.jsu.mcis;
 import java.util.*;
 
 /**
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
+ *ArgumentParser is the main class in the library. This class
+ *reads in the values and any optional arguments entered
+ *in the command line and parses them. This is done by taking
+ *all if the values entered as a single string - separated by
+ *spaces - and then scanning each value individually. While
+ *doing this this class will identify any optional arguments
+ *in the values, even if mixed in with the positional values
+ *randomly. 
+ <p>
+ *When parsing, the order of the positional values are
+ *important. By example, if two arguments, say "length"
+ *and "width" added in order, then the values '7' and '2'
+ *are entered to be parsed. Since 7 is first, it will be added
+ *to the first argument added, "length." Accordingly, '2' will be
+ *added to the argument "width." This will still be done even if
+ *an optional argument is added between "length" and "width," and
+ *the values will still be parsed the same even if an optional argument
+ *is parsed between them. This is because this class allows for
+ *optionals to be anywhere in the command line and everything will be
+ *parsed as normal.
+ *<p>
+ *This class also creates the optional argument "help" by default. 
+ *This optional, when called, will gather all of the argument and
+ *optional argument information and attributes and format them in
+ *a help text to be printed in the command line. The "help" option
+ *will supersede every thing entered in the command line and will
+ *print the help text no matter what else is added.
  */
 
 public class ArgumentParser
