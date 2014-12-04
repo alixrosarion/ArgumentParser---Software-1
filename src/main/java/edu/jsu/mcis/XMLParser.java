@@ -106,7 +106,7 @@ public class XMLParser extends DefaultHandler
 	
 	
 /**
- *
+ *Starts the XML Parsing method called by the program automatically by checking each tag and starts a process using it.
  *
  *
  *@param s the Namespace URI, or the empty string if the element has no Namespace URI 
@@ -121,7 +121,7 @@ public class XMLParser extends DefaultHandler
     }
 		
 /**
- *
+ *Checks if it is the end of a tag while in the XML Parsing process. If so, it finishes the process.
  *
  *
  *@param s the Namespace URI, or the empty string if the element has no Namespace URI 
@@ -153,11 +153,11 @@ public class XMLParser extends DefaultHandler
 			if(element.equalsIgnoreCase("description")){
 			   argPars.setDescription(tmpName, tmpValue);
 			}
+			
 			if (element.equalsIgnoreCase("restricted")) {
-				// You should just use a java.util.Scanner for this parsing problem.
 				String tempStr = "";
 				for(char ch: tmpValue.toCharArray())
-				{					
+				{
 					if(ch == ',')
 					{
 						argPars.addRestricted(tmpName, tempStr);
@@ -176,6 +176,11 @@ public class XMLParser extends DefaultHandler
 			if (element.equalsIgnoreCase("name")) {
 				argPars.addOptionalArgument(tmpValue);
 				tmpName = tmpValue;
+			}
+			
+			if(element.equalsIgnoreCase("mutualGroup")){
+				int groupNum = Integer.parseInt(tmpValue);
+				argPars.setMutualGroup(groupNum, tmpName);
 			}
 			
 			if (element.equalsIgnoreCase("restricted")) {
@@ -245,8 +250,8 @@ public class XMLParser extends DefaultHandler
     }
 		
 /**
- *
- *
+ *Reads each character inside the XML file, and checks if it is a tag, attribute, etc.
+ *And saves it in a temporary variable.
  *
  *@param ac the characters from the XML document
  *@param i the start position in the array

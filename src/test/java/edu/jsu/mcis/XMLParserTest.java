@@ -16,7 +16,18 @@ public class XMLParserTest
 		} catch (Exception e) { //e.printStackTrace();
 		}
 	}
-
+	
+	@Test
+	public void testXMLMutualGroups()
+	{
+		ArgumentParser tester = XMLParser.createArgumentParser("arguments.xml");
+		try {
+			tester.parse("2 2 2 --type a --boss a --req l");
+			assertTrue(false);
+		} catch (Exception e) { e.printStackTrace(); 
+		}
+	}
+	
 	@Test
 	public void testXMLRequired()
 	{

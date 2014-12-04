@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>OptionalArgument.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">GroupA</a> &gt; <a href="index.source.html" class="el_package">edu.jsu.mcis</a> &gt; <span class="el_source">OptionalArgument.java</span></div><h1>OptionalArgument.java</h1><pre class="source lang-java linenums">package edu.jsu.mcis;
+
+/**
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ */
+
+public class OptionalArgument extends CommandLineArgument{
+	
+	private String shortName;
+	private boolean required;
+	
+/**
+ *Class constructor.
+ *Creates an optional argument with the following characteristics:
+ *default value set to string, required set to false, and the number
+ *of values set to '0'.
+ *
+ *@param title the name of the optional argument
+ */
+	public OptionalArgument(String title)
+<span class="fc" id="L33">	{</span>
+<span class="fc" id="L34">		this.title = title;</span>
+<span class="fc" id="L35">		shortName = &quot;&quot;;</span>
+<span class="fc" id="L36">		description = &quot;&quot;;</span>
+<span class="fc" id="L37">		type =	CommandLineArgument.DataType.String;</span>
+<span class="fc" id="L38">		required = false;</span>
+<span class="fc" id="L39">		numberValues = 0;</span>
+<span class="fc" id="L40">	}</span>
+	
+/**
+ *Class constructor.
+ *Creates an optional argument with a specified data type.
+ *&lt;p&gt;
+ *Accepted Data Types: Boolean, Float, String, Integer 
+ *
+ *@param title the name of the optional argument
+ *@param type the type of the optional argument
+ */
+	public OptionalArgument(String title, CommandLineArgument.DataType type)
+<span class="fc" id="L52">	{</span>
+<span class="fc" id="L53">		this.title = title;</span>
+<span class="fc" id="L54">		this.type = type;</span>
+<span class="fc" id="L55">		description = &quot;&quot;;</span>
+<span class="fc" id="L56">		shortName = &quot;&quot;;</span>
+<span class="fc" id="L57">		required = false;</span>
+<span class="fc" id="L58">		numberValues = 0;</span>
+<span class="fc" id="L59">	}</span>
+	
+/**
+ *Sets a shorthand name for the optional argument to
+ *be called with from the command line.
+ *
+ *
+ *@param string the short name of the optional argument
+ */
+	public void setShort(String string)
+	{
+<span class="fc" id="L70">		shortName = string;</span>
+<span class="fc" id="L71">	}</span>
+	
+/**
+ *Returns the number of multiple values an optional argument has.
+ *
+ *
+ *@return the size of the array with multiple values
+ */	
+	public int getMultiplesCount()
+	{
+<span class="nc" id="L81">		return multipleValues.size();</span>
+	}
+	
+/**
+ *Returns what the shorthand name of an optional argument is.
+ *
+ *
+ *@return  the short name of the optional argument
+ */
+	public String getShort()
+	{
+<span class="fc" id="L92">		return shortName;</span>
+	}
+	
+/**
+ *Sets the value of the optional argument to the object being
+ *passed in.
+ *
+ *@param object the value of the optional argument
+ *@throws NumberFormatException improper data type
+ *@throws IncorrectValueException the value is not within the restricted settings
+ */
+	public void setValue(Object object) throws NumberFormatException, IncorrectValueException
+	{
+<span class="fc" id="L105">			value = object;</span>
+<span class="pc bpc" id="L106" title="1 of 4 branches missed.">		if(restrictedValues.size() != 0 &amp;&amp; !restrictedValues.contains(value))</span>
+<span class="fc" id="L107">			throw new IncorrectValueException();</span>
+<span class="fc" id="L108">	}</span>
+	
+/**
+ *Returns the value of the optional argument as an object.
+ *
+ *
+ *@return the value of the argument
+ */
+	public &lt;T&gt; T getValue()
+	{
+<span class="fc" id="L118">		return (T) value;</span>
+	}
+	
+/**
+ *Sets the optional argument as required.
+ *
+ */
+	public void setRequired() 
+	{
+<span class="fc" id="L127">		required = true;</span>
+<span class="fc" id="L128">	}</span>
+	
+/**
+ *Returns if the optional argument is required or not required.
+ *
+ *@return &lt;code&gt;true&lt;/code&gt;If the positional argument is required or not.
+ */
+	public boolean getRequired()
+	{
+<span class="fc" id="L137">		return required;</span>
+	}
+
+/**
+ *Returns the string representation of an optional argument for 
+ *use in XML formatting.
+ *
+ *@return a string representing the argument which includes: argument name, type,description,value and short name
+ */
+	public String toString()
+	{
+<span class="fc" id="L148">		String output = &quot;&quot;;</span>
+<span class="fc" id="L149">		output += &quot;\r\n\t&lt;optionalArgument&gt;\r\n\t\t&lt;name&gt;&quot; + title + &quot;&lt;/name&gt;&quot;;</span>
+<span class="fc" id="L150">		output += &quot;\r\n\t\t&lt;numValues&gt;&quot; + numberValues + &quot;&lt;/numValues&gt;&quot;;</span>
+<span class="fc" id="L151">		output += &quot;\r\n\t\t&lt;type&gt;&quot; + type + &quot;&lt;/type&gt;&quot;;</span>
+<span class="fc" id="L152">		output += &quot;\r\n\t\t&lt;description&gt;&quot; + description + &quot;&lt;/description&gt;&quot;;</span>
+<span class="fc" id="L153">		output += &quot;\r\n\t\t&lt;value&gt;&quot; + value + &quot;&lt;/value&gt;&quot;;</span>
+<span class="fc" id="L154">		output += &quot;\r\n\t\t&lt;shortName&gt;&quot; + shortName + &quot;&lt;/shortName&gt;\r\n\t&lt;/optionalArgument&gt;&quot;;</span>
+<span class="fc" id="L155">		return output;</span>
+	}
+
+/**
+ *Returns if two optional arguments are equal to each other.
+ *
+ *@param o the argument that is being compared
+ *@return true if the title of the optional argument is equal to the
+ */
+	public boolean equals(Object o)
+	{
+<span class="fc" id="L166">		boolean result = false;</span>
+<span class="fc bfc" id="L167" title="All 2 branches covered.">		if(o instanceof OptionalArgument)</span>
+		{
+<span class="fc" id="L169">			OptionalArgument arg = (OptionalArgument) o;</span>
+			
+<span class="fc bfc" id="L171" title="All 4 branches covered.">			if(this.title.equals(arg.getTitle()) || this.getShort().equals(arg.getTitle()))</span>
+<span class="fc" id="L172">				result = true;</span>
+<span class="fc bfc" id="L173" title="All 2 branches covered.">			if(this.title.equals(arg.getShort()))</span>
+<span class="fc" id="L174">				result = true;</span>
+		}
+<span class="fc" id="L176">		return result;</span>
+	}
+	
+/**
+ *Generates a hash code based on the name of the argument which
+ *is used to check if two or more arguments are equal.
+ *
+ *@return a hashCode for each optional argument
+ */
+	public int hashCode() {
+<span class="nc" id="L186">		return 17;	</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>

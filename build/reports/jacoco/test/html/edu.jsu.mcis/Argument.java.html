@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>Argument.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">GroupA</a> &gt; <a href="index.source.html" class="el_package">edu.jsu.mcis</a> &gt; <span class="el_source">Argument.java</span></div><h1>Argument.java</h1><pre class="source lang-java linenums">package edu.jsu.mcis;
+
+/**
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ */
+
+
+public class Argument extends CommandLineArgument
+{	
+/**
+ *Class constructor.
+ *Constructs an argument with the default data type set as string.
+ *
+ *@param title The title of the positional argument
+ */
+	public Argument(String title)
+<span class="fc" id="L29">	{</span>
+<span class="fc" id="L30">		this.title = title;</span>
+<span class="fc" id="L31">		type =	CommandLineArgument.DataType.String;</span>
+<span class="fc" id="L32">		description = &quot;&quot;;</span>
+<span class="fc" id="L33">		numberValues = 0;</span>
+<span class="fc" id="L34">	}</span>
+	
+/**
+ *Class constructor. Constructs an argument with a specified data type
+ *&lt;p&gt;
+ *Accepted Data Types: Boolean, Float, String, Integer
+ *
+ *@param title the title of the argument
+ *@param type the Data type of the argument
+ */
+	public Argument(String title, CommandLineArgument.DataType type)
+<span class="fc" id="L45">	{</span>
+<span class="fc" id="L46">		this.title = title;</span>
+<span class="fc" id="L47">		this.type = type;</span>
+<span class="fc" id="L48">		description = &quot;&quot;;</span>
+<span class="fc" id="L49">		numberValues = 0;</span>
+<span class="fc" id="L50">	}</span>
+	
+/**
+ *Sets the value of an argument after checking if the data
+ *type of both the argument and the value match. If the data
+ *types do not match an error is thrown.
+ *&lt;p&gt;
+ *Additionally, if the
+ *argument has a set of restricted values this method checks if 
+ *the value being added is one of those restricted values.
+ *
+ *@param o the value to be set
+ *@throws NumberFormatException improper data type
+ *@throws IncorrectValueException the value is not within the restricted settings
+ */
+	public void setValue(Object o) throws NumberFormatException, IncorrectValueException
+	{
+<span class="fc" id="L67">		Object tmpValue = null;</span>
+<span class="fc bfc" id="L68" title="All 2 branches covered.">		if(type == CommandLineArgument.DataType.Integer)</span>
+		{
+<span class="fc" id="L70">				tmpValue =Integer.parseInt(o.toString());</span>
+<span class="fc bfc" id="L71" title="All 4 branches covered.">				if(restrictedValues.size() != 0 &amp;&amp; !restrictedValues.contains(tmpValue))</span>
+<span class="fc" id="L72">					throw new IncorrectValueException();</span>
+		}
+<span class="fc bfc" id="L74" title="All 2 branches covered.">		else if(type == CommandLineArgument.DataType.Boolean)</span>
+		{
+<span class="pc bpc" id="L76" title="1 of 4 branches missed.">			if((o.toString().equals(&quot;true&quot;)) || o.toString().equals(&quot;false&quot;))</span>
+<span class="fc" id="L77">				tmpValue =Boolean.parseBoolean(o.toString());</span>
+			else 
+<span class="fc" id="L79">				throw new NumberFormatException();</span>
+		}
+<span class="fc bfc" id="L81" title="All 2 branches covered.">		else if( type == CommandLineArgument.DataType.Float)</span>
+		{
+<span class="fc" id="L83">			tmpValue =Float.parseFloat(o.toString());</span>
+<span class="pc bpc" id="L84" title="1 of 4 branches missed.">			if(restrictedValues.size() != 0 &amp;&amp; !restrictedValues.contains(tmpValue))</span>
+<span class="nc" id="L85">					throw new IncorrectValueException();</span>
+		}
+		else
+		{
+<span class="fc" id="L89">			tmpValue = o.toString();</span>
+<span class="pc bpc" id="L90" title="3 of 4 branches missed.">			if(restrictedValues.size() != 0 &amp;&amp; !restrictedValues.contains(tmpValue))</span>
+<span class="nc" id="L91">					throw new IncorrectValueException();</span>
+		}
+<span class="fc bfc" id="L93" title="All 2 branches covered.">		if (numberValues ==0)	value = tmpValue;</span>
+<span class="fc" id="L94">		else multipleValues.add(tmpValue);</span>
+<span class="fc" id="L95">	}</span>
+	
+/**
+ *Returns the value of an argument.
+ *
+ *@return the value of the argument
+ */
+	public &lt;T&gt; T getValue()
+	{
+<span class="fc bfc" id="L104" title="All 2 branches covered.">		if(numberValues == 0)	return (T) value;</span>
+<span class="fc" id="L105">		else return (T) multipleValues.toString();</span>
+	}
+	
+	public int getMultiplesCount()
+	{
+<span class="fc" id="L110">		return multipleValues.size();</span>
+	}
+	
+/**
+ *Returns the title of the argument.
+ *
+ *@return the title of the argument
+ */
+	public String getTitle()
+	{
+<span class="fc" id="L120">		return title;</span>
+	}
+	
+/**
+ *Returns the string representation of an argument for use in XML formatting.
+ *
+ *
+ *@return a string representing the argument which includes: argument name, type, and description.
+ */
+	public String toString()
+	{	
+<span class="fc" id="L131">		String output = &quot;&quot;;</span>
+<span class="fc" id="L132">		output += &quot;\r\n\t&lt;argument&gt;\r\n\t\t&lt;name&gt;&quot; + title + &quot;&lt;/name&gt;&quot;;</span>
+<span class="fc" id="L133">		output += &quot;\r\n\t\t&lt;type&gt;&quot; + type + &quot;&lt;/type&gt;&quot;;</span>
+<span class="fc" id="L134">		output += &quot;\r\n\t\t&lt;description&gt;&quot; + description + &quot;&lt;/description&gt;\r\n\t&lt;/argument&gt;&quot;;</span>
+		
+<span class="fc" id="L136">		return output;</span>
+	}
+	
+/**
+ *Returns an empty string since positional arguments
+ *do not have shorts.
+ *
+ *@return nothing: positional arguments do not have a shorthand name
+ */
+	public String getShort()
+	{
+<span class="fc" id="L147">		return &quot;&quot;;</span>
+	}
+
+/**
+ *Returns whether or not two arguments are the same.
+ *
+ *@param o the argument that is being compared
+ *@return &lt;code&gt;true&lt;/code&gt;if two arguments are equivalent
+ */
+	public boolean equals(Object o)
+	{
+<span class="fc bfc" id="L158" title="All 2 branches covered.">		if(o instanceof Argument)</span>
+		{
+<span class="fc" id="L160">			Argument arg = (Argument) o;</span>
+<span class="fc" id="L161">			return this.title.equals(arg.getTitle());</span>
+		}
+<span class="fc" id="L163">		return false;	</span>
+	}
+	
+/**
+ *Generates a hash code based on the name of the argument which
+ *is used to check if two or more arguments are equal.
+ *
+ *@return a unique hashCode for each argument, based on the title which is unique.
+ */
+	public int hashCode() {
+<span class="fc" id="L173">		int result = 31 * title.hashCode();</span>
+<span class="fc" id="L174">		return result;	</span>
+    }
+
+/**
+ *Returns true since all added positional arguments are required for the.
+ *program to run.
+ *
+ *@return &lt;code&gt;true&lt;/code&gt; if the positional argument is required or not.
+ */
+	public boolean getRequired()
+	{
+<span class="nc" id="L185">		return true;</span>
+	}
+	
+<span class="nc" id="L188">	public void setShort(String s){}</span>
+<span class="nc" id="L189">	public void setRequired(){}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>

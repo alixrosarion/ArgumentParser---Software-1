@@ -26,6 +26,7 @@
 		<description>Garrett is awesome!</description>
 		<default>box</default>
 		<shortName>t</shortName>
+		<mutualGroup>2</mutualGroup>
 	</optionalArgument>
 	
 	<optionalArgument>
@@ -36,6 +37,17 @@
 		<description>tester argument</description>
 		<default>wtev</default>
 		<shortName>r</shortName>
+	</optionalArgument>
+
+	<optionalArgument>
+		<name>boss</name>
+		<numValues>1</numValues>
+		<type>string</type>
+        <required>false</required>
+		<description>tester argumen</description>
+		<default>wtv</default>
+		<shortName>b</shortName>
+		<mutualGroup>1</mutualGroup>
 	</optionalArgument>
 	
 </arguments>

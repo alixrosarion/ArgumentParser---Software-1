@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>CommandLineArgument.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">GroupA</a> &gt; <a href="index.source.html" class="el_package">edu.jsu.mcis</a> &gt; <span class="el_source">CommandLineArgument.java</span></div><h1>CommandLineArgument.java</h1><pre class="source lang-java linenums">package edu.jsu.mcis;
+import java.util.*;
+
+/**
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ */
+
+<span class="fc" id="L20">public abstract class CommandLineArgument {</span>
+	protected String title;
+	protected Object value;
+	protected String description;
+	protected DataType type;
+	protected int numberValues;
+<span class="pc" id="L26">	public enum DataType {Integer, Float, String, Boolean}</span>
+<span class="fc" id="L27">	protected List &lt;Object&gt; restrictedValues = new ArrayList&lt;Object&gt;();</span>
+	private boolean hasRestricted;
+<span class="fc" id="L29">	protected List &lt;Object&gt; multipleValues = new ArrayList&lt;Object&gt;();</span>
+	
+/**
+ *Returns the values an argument is restricted to using.
+ *
+ *
+ *@return the restricted values associated with an argument
+ */
+	public String getRestricted()
+	{
+<span class="fc" id="L39">		String output = &quot;&quot;;</span>
+<span class="fc bfc" id="L40" title="All 2 branches covered.">		for (int i = 0; i&lt;restrictedValues.size(); i++)</span>
+		{
+<span class="fc bfc" id="L42" title="All 2 branches covered.">			if(i == restrictedValues.size() -1)</span>
+<span class="fc" id="L43">				output += restrictedValues.get(i).toString();</span>
+			else
+<span class="fc" id="L45">				output += restrictedValues.get(i).toString() + &quot; &quot;;</span>
+		}
+<span class="fc" id="L47">		return output;</span>
+	}
+	
+	
+	
+/**
+ *Returns whether or not the argument has restricted values.
+ *
+ *
+ *@return if the argument has restricted values or no restricted values (true/false)
+ */
+	public boolean hasRestricted()
+	{
+<span class="fc" id="L60">		return hasRestricted;</span>
+	}
+	
+/**
+ *Returns the title of the argument.
+ *
+ *
+ *@return the title of the argument
+ */
+	public String getTitle() {
+<span class="fc" id="L70">		return title;</span>
+	}
+	
+/**
+ *Sets the description of an argument.
+ *
+ *
+ *@param d the description of the argument
+ */
+	public void setDescription(String d)
+	{
+<span class="fc" id="L81">		description = d;</span>
+<span class="fc" id="L82">	}</span>
+	
+/**
+ *Sets the data type of an argument.
+ *&lt;p&gt;
+ *Accepted Data Types: Boolean, Float, String, Integer
+ *
+ *@param t the data type of the argument
+ */
+	public void setDataType(DataType t)
+	{
+<span class="fc" id="L93">		type = t;</span>
+<span class="fc" id="L94">	}</span>
+	
+/**
+ *Returns the description of the argument for generating
+ * and formatting the help text.
+ *
+ *@return the description of the argument
+ */
+	public String getDescription()
+	{
+<span class="fc" id="L104">		return description;</span>
+	}
+	
+/**
+ *Returns what data type the argument can hold. This is
+ *used when the program checks to make sure the argument
+ *and value have matching data types when adding a value
+ *to the argument.
+ *
+ *@return the data type of the argument
+ */
+	public DataType getDataType()
+	{
+<span class="fc" id="L117">		return type;</span>
+	}
+	
+/**
+ *Adds a set list of values an argument is restricted to using.
+ *
+ *@param arg the value the argument is restricted to
+ *@throws IncorrectTypeException - if the data type of the argument
+ *                               and of the value do not match
+ */
+	public void addRestricted(Object arg) throws IncorrectTypeException
+	{
+<span class="fc bfc" id="L129" title="All 2 branches covered.">		if(type == DataType.Float)</span>
+			try {
+<span class="fc" id="L131">				restrictedValues.add(Float.parseFloat(arg.toString()));</span>
+<span class="nc" id="L132">		} catch (Exception e) {throw new IncorrectTypeException(arg.toString());</span>
+<span class="fc" id="L133">		}</span>
+<span class="fc bfc" id="L134" title="All 2 branches covered.">		else if(type == DataType.Integer)</span>
+			try {
+<span class="fc" id="L136">				restrictedValues.add(Integer.parseInt(arg.toString()));</span>
+<span class="fc" id="L137">		} catch (Exception e) {throw new IncorrectTypeException(arg.toString());</span>
+<span class="fc" id="L138">		}</span>
+<span class="pc bpc" id="L139" title="1 of 2 branches missed.">		else if(type == DataType.Boolean)</span>
+			try {
+<span class="nc" id="L141">				restrictedValues.add(Boolean.parseBoolean(arg.toString()));</span>
+<span class="nc" id="L142">		} catch (Exception e) {throw new IncorrectTypeException(arg.toString());</span>
+<span class="nc" id="L143">		}</span>
+<span class="fc" id="L144">		else restrictedValues.add(arg);</span>
+<span class="fc" id="L145">		hasRestricted = true;</span>
+<span class="fc" id="L146">	}</span>
+	
+/**
+ *Sets the value of an argument after checking if the data
+ *type of both the argument and the value match. If the data
+ *types do not match an error is thrown. 
+ *&lt;p&gt;
+ *Additionally, if the
+ *argument has a set of restricted values this method checks if 
+ *the value being added is one of those restricted values.
+ *
+ *@param o the value to be set
+ *@throws NumberFormatException - improper data type
+ *@throws IncorrectValueException - the value is not within the restricted settings
+ */
+	public void setValue(Object o) throws NumberFormatException, IncorrectValueException
+	{
+	
+<span class="nc bnc" id="L164" title="All 2 branches missed.">		if(type == CommandLineArgument.DataType.Integer)</span>
+		{
+<span class="nc" id="L166">				value = Integer.parseInt(o.toString());</span>
+<span class="nc bnc" id="L167" title="All 4 branches missed.">				if(restrictedValues.size() != 0 &amp;&amp; !restrictedValues.contains(value))</span>
+<span class="nc" id="L168">					throw new IncorrectValueException();</span>
+		}
+<span class="nc bnc" id="L170" title="All 2 branches missed.">		else if(type == CommandLineArgument.DataType.Boolean)</span>
+		{
+<span class="nc bnc" id="L172" title="All 4 branches missed.">			if((o.toString().equals(&quot;true&quot;)) || o.toString().equals(&quot;false&quot;))</span>
+<span class="nc" id="L173">				value = Boolean.parseBoolean(o.toString());</span>
+			else 
+<span class="nc" id="L175">				throw new NumberFormatException();</span>
+		}
+<span class="nc bnc" id="L177" title="All 2 branches missed.">		else if(type == CommandLineArgument.DataType.Float)</span>
+		{
+<span class="nc" id="L179">			value = Float.parseFloat(o.toString());</span>
+<span class="nc bnc" id="L180" title="All 4 branches missed.">			if(restrictedValues.size() != 0 &amp;&amp; !restrictedValues.contains(value))</span>
+<span class="nc" id="L181">					throw new IncorrectValueException();</span>
+		}
+		else
+		{
+<span class="nc" id="L185">			value = o.toString();</span>
+<span class="nc bnc" id="L186" title="All 4 branches missed.">			if(restrictedValues.size() != 0 &amp;&amp; !restrictedValues.contains(value))</span>
+<span class="nc" id="L187">					throw new IncorrectValueException();</span>
+		}
+<span class="nc" id="L189">	}</span>
+/**
+ *Sets the number of values an argument has. This is used
+ *when parsing the values to make sure the argument receives
+ *all of the values it is supposed to.
+ *&lt;p&gt;
+ *If the number of values is set to zero ('0') then the
+ *argument becomes a flag argument and will receive no values.
+ *
+ *@param number the number of values the argument can hold
+ */
+	public void setNumberValues(int number)
+	{
+<span class="fc" id="L202">		numberValues = number;</span>
+<span class="fc" id="L203">	}</span>
+	
+/**
+ *Returns the number of values an argument has
+ *
+ *
+ *@return the number of values the argument can hold
+ */
+	public int getNumberValues()
+	{
+<span class="fc" id="L213">		return numberValues;</span>
+	}
+	
+	abstract public String getShort();
+	abstract public &lt;T&gt; T getValue();
+	abstract public void setShort(String s);
+	abstract public void setRequired();
+	abstract public boolean getRequired();
+	abstract public int getMultiplesCount();
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>

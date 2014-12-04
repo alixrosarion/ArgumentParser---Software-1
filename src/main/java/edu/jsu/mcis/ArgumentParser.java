@@ -529,11 +529,10 @@ public class ArgumentParser
 						if(optionalArgumentCount == 1)
 							setPass(tempOpt);
 					}
+					String message = "This Group does not contain ";
 					if(argumentList.get(argumentList.indexOf(tempArg)).getNumberValues() == 0)
 					{
-							
-						String message = "This Group does not contain ";
-						if (mutualCheck)
+						if (mutualCheck && (groupOne.contains(tempOpt) || groupTwo.contains(tempOpt)))
 						{
 							if(firstPass)
 							{
@@ -551,9 +550,10 @@ public class ArgumentParser
 									throw new InvalidGroupException(message + tempOpt);
 							}
 						}
-						
-						else 
+						else
+						{
 							setValue(tempOpt);
+						}
 					}
 					else
 					{
@@ -561,12 +561,33 @@ public class ArgumentParser
 						for (int i = 0; i<numberValues; i++)
 						{
 							String tempScan = scan.next();
-							if (tempArg.hasRestricted())
+							if (mutualCheck && (groupOne.contains(tempOpt) || groupTwo.contains(tempOpt)))
 							{
-								if(checkRestricted(tempOpt).contains(tempScan)) 
-									setValue(tempOpt, tempScan);
+								if(firstPass)
+								{
+									if(groupOne.contains(tempOpt))
+										setValue(tempOpt, tempScan);
+									else
+										throw new InvalidGroupException(message + tempOpt);
+								}
+								else
+								{
+									if(groupTwo.contains(tempOpt))
+									
+										setValue(tempOpt, tempScan);
+									else
+										throw new InvalidGroupException(message + tempOpt);
+								}
 							}
-							else setValue(tempOpt, tempScan);
+							else
+							{
+								if (tempArg.hasRestricted())
+								{
+									if(checkRestricted(tempOpt).contains(tempScan)) 
+										setValue(tempOpt, tempScan);
+								}
+								else setValue(tempOpt, tempScan);
+							}
 						}
 					}
 				}

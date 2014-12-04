@@ -15,10 +15,35 @@ public class ArgumentParserTest {
 	}
 
 	@Test
+	public void testMutualGroupsWithNotMutuals()
+	{
+		tester.setMutualGroup(1, "type", "al");
+		tester.setMutualGroup(2, "bo", "jo");
+		tester.addOptionalArgument("verbose");
+		tester.addOptionalArgument("type");
+		tester.addOptionalArgument("al");
+		tester.addOptionalArgument("bo");
+		tester.addOptionalArgument("jo");
+		try {
+			tester.parse("--type --verbose");
+		} catch (Exception e) {
+			assertTrue(false);
+		}
+		
+	}
+	
+	@Test
 	public void testMutualGroups()
 	{
 		tester.setMutualGroup(1, "type", "al");
+		tester.addOptionalArgument("type");
+		tester.setNumberValues("type", 1);
 		assertEquals("[type, al]", tester.getMutualGroup(1));
+		try {
+			tester.parse("--type a");
+		} catch (Exception e) {
+			assertTrue(false);
+		}
 	}
 	
 	@Test
