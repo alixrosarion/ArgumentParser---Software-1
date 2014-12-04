@@ -236,13 +236,11 @@ public class ArgumentParserTest {
 		tester.addArgument("length");
 		tester.addArgument("width");
 		tester.addArgument("height");
-		//System.out.println(tester.getOutput());
 		try
 		{
 			tester.parse("2");
 			assertTrue(false);
 		}catch(NotEnoughArgValuesException  | TooManyArgValuesException | IncorrectValueException | IncorrectTypeException e){
-			//System.out.println(tester.getOutput());
 			assertEquals("the following arguments are required: width height", tester.getUnmatched());
 		
 		}
@@ -285,8 +283,8 @@ public class ArgumentParserTest {
 		}catch(NotEnoughArgValuesException  | TooManyArgValuesException | IncorrectValueException | IncorrectTypeException e){
 			assertTrue(false);}
 		assertEquals("usage: java VolCalc length width height \r\nCalculate the volume of a box\r\nPositional Arguments:"+
-		"\r\nlength integer\t\tthe length of the box\r\nwidth float\t\tthe width of the box\r\nheight float\t\tthe height of the box"+
-		"\r\n\r\nOptional Arguments:\r\n--help, -h boolean\t\t\r\n", tester.getHelpText());
+		"\r\nlength\tinteger\tthe length of the box\r\nwidth\tfloat\tthe width of the box\r\nheight\tfloat\tthe height of the box"+
+		"\r\n\r\nOptional Arguments:\r\n--help, -h\tboolean\r\n", tester.getHelpText());
 	}
 	
 	@Test
@@ -315,9 +313,9 @@ public class ArgumentParserTest {
 		}catch(NotEnoughArgValuesException  | TooManyArgValuesException | IncorrectValueException | IncorrectTypeException| InvalidGroupException e){
 			assertTrue(false);}
 		assertEquals("usage: java VolCalc length width height \r\nCalculate the volume of a box\r\nPositional Arguments:"+
-		"\r\nlength integer & restricted to: 3 4 5\t\tthe length of the box\r\nwidth float\t\tthe width of the box\r\nheight float\t\tthe height of the box"+
-		"\r\n\r\nOptional Arguments:\r\n--help, -h boolean\t\t\r\n--type, -t string required & restricted to: box pyramid mutual exclusive group: 1\t\t\r\n"+
-		"--what string mutual exclusive group: 2\t\t\r\n--verbose boolean mutual exclusive group: 1\t\t\r\n--quiet boolean mutual exclusive group: 2\t\t\r\n", tester.getHelpText());
+		"\r\nlength\tinteger\tthe length of the box\trestricted to: 3 4 5\r\nwidth\tfloat\tthe width of the box\r\nheight\tfloat\tthe height of the box"+
+		"\r\n\r\nOptional Arguments:\r\n--help, -h\tboolean\r\n--type, -t\tstring\trequired\trestricted to: box pyramid mutual group: 1\r\n"+
+		"--what\tstring mutual group: 2\r\n--verbose\tboolean mutual group: 1\r\n--quiet\tboolean mutual group: 2\r\n", tester.getHelpText());
 	}
 	
 	
@@ -419,7 +417,6 @@ public class ArgumentParserTest {
 		{
 			tester.parse("7 --type sphere 5 -h 2 --actor will smith");
 		}catch(NotEnoughArgValuesException  | TooManyArgValuesException | IncorrectValueException | IncorrectTypeException e){
-		//e.printStackTrace();
 			assertTrue(false);
 		}
 	}
@@ -491,7 +488,6 @@ public class ArgumentParserTest {
 		try {
 			tester.parse("-t shape");
 		} catch (NotEnoughArgValuesException  | TooManyArgValuesException | IncorrectValueException | IncorrectTypeException e) {
-			//e.printStackTrace();
 			assertTrue(false);
 		}
 

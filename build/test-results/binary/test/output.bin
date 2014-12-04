@@ -1,0 +1,90 @@
+*usage: java VolCalc length width height 
+Calculate the volume of a box
+Positional Arguments:
+;length	integer	the length of the box	restricted to: 3 4 5
+"width	float	the width of the box
+$height	float	the height of the box
+
+Optional Arguments:
+--help, -h	boolean
+G--type, -t	string	required	restricted to: box pyramid mutual group: 1
+--what	string mutual group: 2
+#--verbose	boolean mutual group: 1
+!--quiet	boolean mutual group: 2
+
+*usage: java Volcalc length width height 
+Calculates some volume
+Positional Arguments:
+length	string	
+width	string	
+height	string	
+
+Optional Arguments:
+--help, -h	boolean
+--type	string
+--actor	string
+
+*usage: java VolCalc length width height 
+Calculate the volume of a box
+Positional Arguments:
+&length	integer	the length of the box
+"width	float	the width of the box
+$height	float	the height of the box
+
+Optional Arguments:
+--help, -h	boolean
+
+,usage: java Volcalc 
+,Calculates some volume
+,Positional Arguments:
+,
+,Optional Arguments:
+,--help, -h	boolean
+,"--verbose	string mutual group: 1
+, --quiet	string mutual group: 2
+,--type	string mutual group: 1
+,--what	string mutual group: 2
+,
+>C3usage: java null length width height booleanTest 
+>Cnull
+>CPositional Arguments:
+>C length	float	length of the box
+>Cwidth	string	width of the box
+>C!height	string	height of the box
+>C'booleanTest	boolean	height of the box
+>C
+>COptional Arguments:
+>C--help, -h	boolean
+>C"--type, -t	string	Type of shape	
+>C!--int, -t	string	Type of shape	
+>C"--float, -t	float	Type of shape	
+>C
+>C$SAXException : xml not well formed
+>C
+IO error
+>D'usage: java null length width height 
+>Dnull
+>DPositional Arguments:
+>D length	float	length of the box
+>Dwidth	float	width of the box
+>D;height	float	height of the box	restricted to: 3.0 2.0 5.0
+>D
+>DOptional Arguments:
+>D--help, -h	boolean
+>D8--type, -t	string	Shape of the object	 mutual group: 2
+>D---req, -r	string	tester argument		required	
+>D3--boss, -b	string	tester argumen	 mutual group: 1
+>D
+>G'usage: java null length width height 
+>Gnull
+>GPositional Arguments:
+>G length	float	length of the box
+>Gwidth	float	width of the box
+>G;height	float	height of the box	restricted to: 3.0 2.0 5.0
+>G
+>GOptional Arguments:
+>G--help, -h	boolean
+>G8--type, -t	string	Shape of the object	 mutual group: 2
+>G---req, -r	string	tester argument		required	
+>G3--boss, -b	string	tester argumen	 mutual group: 1
+>G

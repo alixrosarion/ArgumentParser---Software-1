@@ -24,7 +24,7 @@ public class XMLParserTest
 		try {
 			tester.parse("2 2 2 --type a --boss a --req l");
 			assertTrue(false);
-		} catch (Exception e) { e.printStackTrace(); 
+		} catch (Exception e) { 
 		}
 	}
 	

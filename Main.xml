@@ -28,7 +28,7 @@
 		<numValues>1</numValues>
 		<type>String</type>
 		<description>Shape of object to be calculated</description>
-		<value>sphere</value>
+		<value>null</value>
 		<shortName>t</shortName>
 	</optionalArgument>
 	<optionalArgument>
@@ -60,7 +60,7 @@
 		<numValues>0</numValues>
 		<type>Boolean</type>
 		<description></description>
-		<value>true</value>
+		<value>null</value>
 		<shortName></shortName>
 	</optionalArgument>
 </arguments>

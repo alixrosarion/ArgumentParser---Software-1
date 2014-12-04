@@ -707,26 +707,28 @@ public class ArgumentParser
             if ( a instanceof Argument)
             {
                 argumentTitles += a.getTitle() + " ";
-                description += a.getTitle() +" "+ a.getDataType().toString().toLowerCase();
+                description += a.getTitle() +"\t"+ a.getDataType().toString().toLowerCase()+"\t"+a.getDescription();
 				if(!a.getRestricted().equals(""))
-					description+=" & restricted to: " + a.getRestricted();
-				description+="\t\t"+a.getDescription() + "\r\n";
+					description+="\trestricted to: " + a.getRestricted();
+				description+="\r\n";
             }
             else {
                 optionalArgumentTitles += a.getTitle() + " ";
                 description2 +="--"+ a.getTitle();
 				if(!a.getShort().equals(""))
 					description2+=", -" + a.getShort();
-				description2+=" "+ a.getDataType().toString().toLowerCase();
+				description2+="\t"+ a.getDataType().toString().toLowerCase();
+				if(!a.getDescription().equals(""))
+					description2+="\t"+a.getDescription() + "\t";
 				if(a.getRequired() == true)
-					description2+=" required";
+					description2+="\trequired\t";
 				if(!a.getRestricted().equals(""))
-					description2+=" & restricted to: " + a.getRestricted();
+					description2+="restricted to: " + a.getRestricted();
 				if(groupOne.contains(a.getTitle()))
-					description2+=" mutual exclusive group: 1";
+					description2+=" mutual group: 1";
 				else if(groupTwo.contains(a.getTitle()))
-					description2+=" mutual exclusive group: 2";
-				description2+= "\t\t"+a.getDescription() + "\r\n";
+					description2+=" mutual group: 2";
+				description2+= "\r\n";
             }
         }
         help = "usage: java " + program + " " + argumentTitles + "\r\n" + programDescription +"\r\nPositional Arguments:\r\n" + description + "\r\nOptional Arguments:\r\n" + description2;
