@@ -37,6 +37,7 @@
 		<description>tester argument</description>
 		<default>wtev</default>
 		<shortName>r</shortName>
+		<restricted>a,b,c,</restricted>
 	</optionalArgument>
 
 	<optionalArgument>

@@ -44,7 +44,10 @@ public class XMLParserTest
 	{
 		ArgumentParser tester = XMLParser.createArgumentParser("arguments.xml");
 		assertEquals("3.0 2.0 5.0",tester.checkRestricted("height"));
-		
+		try {
+			tester.parse("2 2 5 --req a");
+		} catch (Exception e) { assertTrue(false);
+		}
 	}
 	
 	@Test
