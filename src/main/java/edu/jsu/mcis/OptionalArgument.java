@@ -7,16 +7,14 @@ package edu.jsu.mcis;
  *assigning them to the proper element in the optional argument.
  *As with the Argument class, this class allows for 
  *optional arguments to either have a specified data type
- *or, if not declared, use the default data type of string. Unlike
- *the Argument class, optional arguments have the ability to
- *use a short name to be called from instead of having to call
- *the optional argument by it's full name in the command line. For
- *example: "type" can be assigned the short 't' to be called from.
+ *or default to string. Optional arguments have the added ability to
+ *use a short name to be referenced by their short name, if one is provided. For
+ *example: "type" can be assigned the short 't'.
  *This allows the user to call on optional argument "type" from the
  *command line by simply typing "-t" instead of the full "--type."
  *<p>
- *When called, this class will format all of the optional
- *arguments to XML format for writing them to a XML file.
+ *The toString() method of this class will format return the optional
+ *arguments in XML format.
  *
  *
  *

@@ -5,12 +5,9 @@ package edu.jsu.mcis;
  *focuses on everything dealing with positional arguments. Here
  *the set value method is housed which attaches the value(s) to
  *the argument after checking to make sure the argument and the
- *value have the same data type. This class allows the ability
- *of arguments to either have a declared data type or, if not
- *specified, the default data type of string. This class
- *also will create the argument information in XML format when
- *called to do so for writing the argument and it's attributes
- *to a XML file.
+ *value have the same data type. This class allows
+ *arguments to either have a declared data type or,default to string. The toString()
+ * method of this class returns the argument information in XML format.
  *
  *
  *

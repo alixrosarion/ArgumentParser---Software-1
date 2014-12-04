@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="edu.jsu.mcis.XMLParserTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2014-12-04T18:17:18" hostname="ALIX" time="0.203">
+  <properties/>
+  <testcase name="testRestricted" classname="edu.jsu.mcis.XMLParserTest" time="0.015"/>
+  <testcase name="testRequiredOptionalArguments" classname="edu.jsu.mcis.XMLParserTest" time="0.032"/>
+  <testcase name="testXMLParsingArguments" classname="edu.jsu.mcis.XMLParserTest" time="0.015"/>
+  <testcase name="testXMLMultipleValues" classname="edu.jsu.mcis.XMLParserTest" time="0.0"/>
+  <testcase name="testXMLMutualGroups" classname="edu.jsu.mcis.XMLParserTest" time="0.016"/>
+  <testcase name="testXMLParserOptionalTypes" classname="edu.jsu.mcis.XMLParserTest" time="0.078"/>
+  <testcase name="testXMLParsingOptional" classname="edu.jsu.mcis.XMLParserTest" time="0.016"/>
+  <testcase name="testXMLParserTypes" classname="edu.jsu.mcis.XMLParserTest" time="0.015"/>
+  <testcase name="testXMLRequired" classname="edu.jsu.mcis.XMLParserTest" time="0.0"/>
+  <testcase name="testXMLHelp" classname="edu.jsu.mcis.XMLParserTest" time="0.016"/>
+  <system-out><![CDATA[usage: java null length width height booleanTest 
+null
+Positional Arguments:
+length	float	length of the box
+width	string	width of the box
+height	string	height of the box
+booleanTest	boolean	height of the box
+
+Optional Arguments:
+--help, -h	boolean
+--type, -t	string	Type of shape	
+--int, -t	string	Type of shape	
+--float, -t	float	Type of shape	
+
+SAXException : xml not well formed
+IO error
+usage: java null length width height 
+null
+Positional Arguments:
+length	float	length of the box
+width	float	width of the box
+height	float	height of the box	restricted to: 3.0 2.0 5.0
+
+Optional Arguments:
+--help, -h	boolean
+--type, -t	string	Shape of the object	 mutual group: 2
+--req, -r	string	tester argument		required	
+--boss, -b	string	tester argumen	 mutual group: 1
+
+usage: java null length width height 
+null
+Positional Arguments:
+length	float	length of the box
+width	float	width of the box
+height	float	height of the box	restricted to: 3.0 2.0 5.0
+
+Optional Arguments:
+--help, -h	boolean
+--type, -t	string	Shape of the object	 mutual group: 2
+--req, -r	string	tester argument		required	
+--boss, -b	string	tester argumen	 mutual group: 1
+
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

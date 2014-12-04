@@ -90,6 +90,7 @@ public class XMLParser extends DefaultHandler
  *generates the XML tags appropriate for each piece of data.
  *
  *@param filename the name of the file to write the XML code to
+ *@param argPars the argument parser that is used to write to the XML file
  */
     public static void saveXMLFile(ArgumentParser argPars, String filename)
     {
